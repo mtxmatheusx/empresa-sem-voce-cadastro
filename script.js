@@ -58,9 +58,12 @@ function initReveals() {
       { threshold: 0.12, rootMargin: "0px 0px -5% 0px" }
     );
     items.forEach((el) => io.observe(el));
+    // Rede de segurança: revela só o que já está na viewport (caso o IO não dispare).
+    // NÃO revela o que está abaixo da dobra — senão as seções de baixo não animam ao rolar.
     setTimeout(() => {
       document.querySelectorAll(".reveal:not(.is-in)").forEach((el) => {
-        el.classList.add("is-in");
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("is-in");
       });
     }, 1500);
   } else {
