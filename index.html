@@ -349,6 +349,31 @@
     })();
   </script>
 
+  <!-- Coreografia de reveals: cascata escalonada (estilo atrium) -->
+  <script>
+    (function(){
+      var GROUPS = [
+        { s: '.hero__copy',    step: 90,  unwrap: true },
+        { s: '.pillars',       step: 85 },
+        { s: '.phases',        step: 95 },
+        { s: '.oferta__intro', step: 110, unwrap: true },
+        { s: '.deliver-list',  step: 55 },
+        { s: '.steps-list',    step: 70 },
+        { s: '.esv-check',      step: 55, unwrap: true },
+        { s: '.faq__list',     step: 75 }
+      ];
+      GROUPS.forEach(function(g){
+        document.querySelectorAll(g.s).forEach(function(c){
+          if (g.unwrap) c.classList.remove('reveal');
+          Array.prototype.forEach.call(c.children, function(kid, i){
+            kid.classList.add('reveal');
+            kid.style.transitionDelay = (i * g.step) + 'ms';
+          });
+        });
+      });
+    })();
+  </script>
+
   <!-- Lenis — scroll suave (seção a seção) -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
   <script>
