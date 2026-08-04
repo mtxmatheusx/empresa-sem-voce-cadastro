@@ -47,8 +47,8 @@
   .nav.is-scrolled{border-bottom-color:var(--line-2);}
   .nav__inner{max-width:var(--frame);margin:0 auto;padding-inline:clamp(1.25rem,5vw,2rem);height:60px;
     display:flex;align-items:center;justify-content:space-between;gap:1rem;}
-  .nav__brand{font-weight:800;font-size:1rem;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;}
-  .nav__brand .i{color:var(--gold);}
+  .nav__brand{display:inline-flex;align-items:center;text-decoration:none;}
+  .brand-logo{height:26px;width:auto;display:block;}
   .nav__back{font-size:.8rem;color:var(--bone-3);text-decoration:none;transition:color .2s;}
   .nav__back:hover{color:var(--gold);}
 
@@ -164,7 +164,7 @@
 
   <header class="nav" id="nav">
     <div class="nav__inner">
-      <a href="/" class="nav__brand">Empresa <span class="i">Sem Você</span></a>
+      <a href="/" class="nav__brand" aria-label="Empresa Sem Você"><img class="brand-logo" src="/assets/logo.png" alt="Empresa Sem Você" width="300" height="155" /></a>
       <a href="/" class="nav__back">← voltar</a>
     </div>
   </header>
