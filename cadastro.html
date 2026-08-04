@@ -11,24 +11,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Candidatura à turma fundadora · Empresa Sem Você</title>
-  <meta name="description" content="Candidatura à turma fundadora da Mentoria Empresa Sem Você. São 10 vagas e cada uma passa por uma conversa." />
+  <meta name="description" content="Candidatura à turma fundadora da Mentoria Empresa Sem Você. São 9 vagas e cada uma passa por uma conversa." />
   <meta name="robots" content="noindex" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,700;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="https://esv-assets.vercel.app/style.css" />
   <style>
-    .cad-prova{margin:6px 0 4px}.cad-prova .eyebrow--center{margin-bottom:16px}.cad-prova .eyebrow--center + .cad-depo-grid{margin-bottom:26px}
-    .cad-depo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .cad-depo{margin:0;background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:14px;padding:22px 24px;display:flex;flex-direction:column}
-    .cad-depo__head{display:flex;align-items:center;gap:12px;margin:0 0 14px}
-    .cad-depo__ava{width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold,#C9A227),var(--gold-2,#D4AF37));color:#0C0C0C;font-weight:700;font-size:1.1rem}
-    .cad-depo__name{display:block;color:#FFF;font-weight:700;font-size:1rem;line-height:1.2}
-    .cad-depo__role{display:block;margin-top:3px;color:var(--mute,#A0A0A0);font-size:.85rem}
-    .cad-depo blockquote{margin:0;color:#DCDCDC;font-size:.98rem;line-height:1.55}
-    @media(max-width:640px){.cad-depo-grid{grid-template-columns:1fr}}
+  *,*::before,*::after{box-sizing:border-box}
+  [hidden]{display:none!important}
+  :root{
+    color-scheme:dark;
+    --bg:#0A0A0B; --bg-2:#111113; --bg-3:#1A1A1E;
+    --bone:#F2EEE6; --bone-2:#B7B2A9; --bone-3:#7C776F;
+    --line:rgba(242,238,230,.10); --line-2:rgba(242,238,230,.20);
+    --gold:#C6A96C; --gold-2:#DcC28A; --gold-tint:rgba(198,169,108,.08);
+    --err:#E5736B;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    --frame:46rem; --dur:.7s; --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  body{margin:0;background:var(--bg);color:var(--bone);font-family:var(--sans);
+    font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:var(--gold);color:#14110B;}
+  a{color:inherit;}
+
+  .container{width:100%;max-width:var(--frame);margin:0 auto;padding-inline:clamp(1.25rem,5vw,2rem);}
+  .narrow{max-width:40rem;}
+  .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 1rem;}
+  .eyebrow--center{text-align:center;}
+  h2{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:0;color:var(--bone);}
+  .section__title{font-size:clamp(1.9rem,4.4vw,2.8rem);}
+  .section__title--center{text-align:center;}
+  em{font-style:normal;color:var(--gold);}
+  p{margin:0;}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);
+    backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line);transition:border-color .3s;}
+  .nav.is-scrolled{border-bottom-color:var(--line-2);}
+  .nav__inner{max-width:var(--frame);margin:0 auto;padding-inline:clamp(1.25rem,5vw,2rem);height:60px;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+  .nav__brand{font-weight:800;font-size:1rem;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;}
+  .nav__brand .i{color:var(--gold);}
+  .nav__back{font-size:.8rem;color:var(--bone-3);text-decoration:none;transition:color .2s;}
+  .nav__back:hover{color:var(--gold);}
+
+  .section{padding-block:clamp(2.5rem,7vw,4.5rem);}
+  .form-head{margin-bottom:2.5rem;}
+  .form-deck{margin:1.4rem auto 0;max-width:34rem;text-align:center;color:var(--bone-2);font-size:1.05rem;}
+
+  /* pilares mini */
+  .pilares-mini{max-width:34rem;margin:0 auto 2.5rem;}
+  .pilares-mini__list{list-style:none;margin:1.2rem 0 0;padding:0;border-top:1px solid var(--line);}
+  .pm-item{display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  .pm__n{font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;font-size:.95rem;}
+  .pm-item strong{display:block;color:var(--bone);font-weight:700;font-size:1.02rem;}
+  .pm-item span{display:block;margin-top:.25rem;color:var(--bone-2);font-size:.94rem;}
+
+  /* form card */
+  .form-card{max-width:34rem;margin:0 auto;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;
+    padding:clamp(1.5rem,4vw,2.4rem);}
+  .progress{margin-bottom:2rem;}
+  .progress__bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
+  .progress__fill{display:block;height:100%;width:25%;background:var(--gold);border-radius:2px;transition:width .5s var(--ease);}
+  .progress__label{margin:.7rem 0 0;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--bone-3);font-weight:600;font-variant-numeric:tabular-nums;}
+
+  form{margin:0;}
+  .step{display:none;border:0;margin:0;padding:0;min-width:0;}
+  .step.is-active{display:block;animation:stepIn .5s var(--ease);}
+  @keyframes stepIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .step__legend{padding:0;margin:0 0 1.6rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .field{margin-bottom:1.7rem;}
+  .field:last-child{margin-bottom:0;}
+  .field__label{display:block;color:var(--bone);font-weight:600;font-size:1rem;margin-bottom:.85rem;line-height:1.45;}
+  .field__label strong{color:var(--gold-2);}
+  .mute{color:var(--bone-3);font-weight:400;}
+
+  .options{display:grid;gap:.6rem;}
+  .opt{position:relative;display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;border:1px solid var(--line-2);
+    border-radius:8px;cursor:pointer;color:var(--bone-2);font-size:1rem;transition:border-color .18s,background .18s,color .18s;}
+  .opt::before{content:"";flex:none;width:17px;height:17px;border-radius:50%;border:1.5px solid var(--line-2);
+    background:transparent;transition:border-color .18s,box-shadow .18s;}
+  .opt input{position:absolute;opacity:0;width:0;height:0;pointer-events:none;}
+  .opt:hover{border-color:rgba(198,169,108,.5);color:var(--bone);}
+  .opt:has(input:checked){border-color:var(--gold);background:var(--gold-tint);color:var(--bone);}
+  .opt:has(input:checked)::before{border-color:var(--gold);box-shadow:inset 0 0 0 4px var(--gold);}
+  .opt:has(input:focus-visible){outline:2px solid var(--gold-2);outline-offset:2px;}
+
+  .input{width:100%;background:var(--bg-3);border:1px solid var(--line-2);border-radius:8px;padding:.85rem 1rem;
+    color:var(--bone);font-family:var(--sans);font-size:1rem;transition:border-color .18s,box-shadow .18s;}
+  .input::placeholder{color:var(--bone-3);}
+  .input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(198,169,108,.18);}
+  .textarea{resize:vertical;min-height:6.5rem;line-height:1.5;}
+
+  .field.is-invalid .opt,.field.is-invalid .input{border-color:var(--err);}
+  .field.is-invalid .field__label{color:var(--err);}
+  .form-error{margin:1.4rem 0 0;color:var(--err);font-size:.92rem;}
+
+  .form-nav{display:flex;align-items:center;gap:1rem;margin-top:2rem;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--sans);font-size:.9rem;
+    font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:2px;padding:.95rem 1.6rem;cursor:pointer;
+    border:1px solid transparent;text-decoration:none;transition:background .2s,transform .2s,border-color .2s,box-shadow .3s;}
+  .btn--gold{background:var(--gold);color:#141009;border-color:var(--gold);}
+  .btn--gold:hover{background:var(--gold-2);transform:translateY(-1px);box-shadow:0 14px 40px -18px rgba(198,169,108,.7);}
+  .btn--ghost{background:transparent;color:var(--bone);border-color:var(--line-2);}
+  .btn--ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
+  .form-nav__advance{margin-left:auto;}
+
+  .success{max-width:34rem;margin:0 auto;text-align:center;background:var(--bg-2);border:1px solid var(--line);
+    border-radius:10px;padding:clamp(2rem,5vw,3rem);}
+  .success__mark{width:56px;height:56px;margin:0 auto 1.4rem;border-radius:50%;display:grid;place-items:center;
+    background:var(--gold);color:#141009;font-size:1.6rem;font-weight:800;}
+  .success__text{margin:1.2rem auto 0;max-width:28rem;color:var(--bone-2);font-size:1.05rem;}
+  .success__scarcity{margin:1.4rem 0 0;color:var(--gold);font-weight:700;}
+
+  .cad-back{display:inline-block;margin-top:2.2rem;color:var(--bone-3);text-decoration:none;font-size:.9rem;transition:color .2s;}
+  .cad-back:hover{color:var(--gold);}
+
+  .footer{border-top:1px solid var(--line);padding-block:2.4rem;margin-top:1rem;}
+  .footer__inner{text-align:center;display:grid;gap:.5rem;}
+  .footer__brand{font-weight:800;letter-spacing:.03em;text-transform:uppercase;font-size:.95rem;}
+  .footer__brand .i{color:var(--gold);}
+  .footer__meta,.footer__note{color:var(--bone-3);font-size:.82rem;margin:0;}
+
+  .reveal{opacity:0;transform:translateY(20px);}
+  .reveal.is-in{opacity:1;transform:none;transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);}
+  .reveal.forced{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;} .step.is-active{animation:none;}}
+
+  @media (max-width:600px){
+    .form-nav{flex-wrap:wrap;}
+    .btn{width:100%;}
+    .form-nav__advance{margin-left:0;}
+  }
   </style>
   <!-- Meta Pixel Code -->
   <script>
@@ -50,7 +162,6 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-
   <header class="nav" id="nav">
     <div class="nav__inner">
       <a href="/" class="nav__brand">Empresa <span class="i">Sem Você</span></a>
@@ -58,17 +169,17 @@
     </div>
   </header>
 
-  <section class="section form-section cad-head" id="formulario">
+  <section class="section cad-head" id="formulario">
     <div class="container narrow">
       <div class="form-head reveal">
         <p class="eyebrow eyebrow--center">Candidatura</p>
         <h2 class="section__title section__title--center">Candidatura à turma <em>fundadora</em></h2>
         <p class="form-deck">
-          São 10 vagas e cada uma passa por uma conversa. Responde com sinceridade. É assim que eu vejo se a mentoria é pra você agora.
+          São 9 vagas e cada uma passa por uma conversa. Responde com sinceridade. É assim que eu vejo se a mentoria é pra você agora.
         </p>
       </div>
 
-      <div class="pilares-mini">
+      <div class="pilares-mini reveal">
         <p class="eyebrow eyebrow--center">O que você vai construir em 120 dias</p>
         <ul class="pilares-mini__list">
           <li class="pm-item"><span class="pm__n">01</span><div><strong>Calibração do Gestor</strong><span>Sair do modo bombeiro e retomar a agenda.</span></div></li>
@@ -77,31 +188,6 @@
           <li class="pm-item"><span class="pm__n">04</span><div><strong>Eficiência com IA</strong><span>Escalar sem inflar a folha.</span></div></li>
           <li class="pm-item"><span class="pm__n">05</span><div><strong>Marketing &amp; Vendas</strong><span>Canal previsível, sobre base pronta.</span></div></li>
         </ul>
-      </div>
-
-      <div class="cad-prova reveal">
-        <p class="eyebrow eyebrow--center">Resultado em número</p>
-        <div class="cad-depo-grid">
-          <figure class="cad-depo">
-            <figcaption class="cad-depo__head"><span class="cad-depo__ava">F</span><div><span class="cad-depo__name">Francine Martins</span><span class="cad-depo__role">Fundadora e Diretora @anefranbasic_</span></div></figcaption>
-            <blockquote>"Como gestora, vejo um retorno expressivo de R$ 540.672,66 a partir de R$ 54.473,23 investidos em 1 ano e 9 meses: mais de 10 vezes o investimento inicial, quando o e-commerce tradicional costuma retornar de 3 a 5 vezes. O site já vendeu 102% a mais que o mesmo período do ano anterior. E o crescimento de marca é imensurável: engajamento, clientes novos, posicionamento."</blockquote>
-          </figure>
-          <figure class="cad-depo">
-            <figcaption class="cad-depo__head"><span class="cad-depo__ava">B</span><div><span class="cad-depo__name">Bruna Diedrich</span><span class="cad-depo__role">Fundadora da @brunadgourmet</span></div></figcaption>
-            <blockquote>"Vendemos quase o dobro do ano anterior. A pronta entrega esgotou o estoque e atraímos muitos clientes novos. Se eu conseguisse responder as mensagens tão rápido quanto a demanda, teria vendido ainda mais."</blockquote>
-          </figure>
-        </div>
-        <p class="eyebrow eyebrow--center" style="margin-top:28px">Como é trabalhar comigo</p>
-        <div class="cad-depo-grid">
-          <figure class="cad-depo">
-            <figcaption class="cad-depo__head"><span class="cad-depo__ava">C</span><div><span class="cad-depo__name">Cheila Kercher</span><span class="cad-depo__role">Corretora de Imóveis @imobiliariaguia</span></div></figcaption>
-            <blockquote>"Ser acompanhada pelo Matheus é um privilégio. Desde o início ele transmitiu segurança e empatia. A atenção diferenciada inspira confiança, e a dedicação que ele coloca em cada detalhe é impressionante. Ele mergulha no projeto como se fosse dele, transformando tudo."</blockquote>
-          </figure>
-          <figure class="cad-depo">
-            <figcaption class="cad-depo__head"><span class="cad-depo__ava">A</span><div><span class="cad-depo__name">Ana Becker</span><span class="cad-depo__role">Marketing · Baby Drooling</span></div></figcaption>
-            <blockquote>"Muito obrigada Matheus pela tua iniciativa. Não faz ideia de como isso faz a diferença nas nossas vidas 💗"</blockquote>
-          </figure>
-        </div>
       </div>
 
       <div class="form-card reveal" id="formCard">
@@ -192,7 +278,7 @@
               </div>
             </div>
             <div class="field">
-              <label class="field__label">Um gestor de operações custa R$5–8 mil <strong>por mês</strong>. A mentoria custa isso uma vez, e instala o sistema que faz a empresa rodar sem você. São R$5.997 (ou 12× de R$619,40). Você está pronto pra investir agora?</label>
+              <label class="field__label">Resolver isso com um gestor contratado custa alguns milhares <strong>por mês, todo mês</strong> — e ele ainda pode pedir demissão. A mentoria instala o sistema que faz a empresa rodar sem você. Você está pronto pra investir nisso agora?</label>
               <div class="options" data-field="investimento">
                 <label class="opt"><input type="radio" name="investimento" value="sim-avista" required><span>Sim, à vista</span></label>
                 <label class="opt"><input type="radio" name="investimento" value="sim-parcelado"><span>Sim, parcelado</span></label>
@@ -201,7 +287,7 @@
               </div>
             </div>
             <div class="field">
-              <label class="field__label" for="porque_voce">Por que uma das 10 vagas fundadoras deveria ser sua?</label>
+              <label class="field__label" for="porque_voce">Por que uma das 9 vagas fundadoras deveria ser sua?</label>
               <textarea class="input textarea" id="porque_voce" name="porque_voce" rows="4" maxlength="600" placeholder="Ex: quero voltar a ter tempo com a família..."></textarea>
             </div>
           </fieldset>
@@ -236,7 +322,7 @@
         <div class="success__mark" aria-hidden="true">✓</div>
         <h2 class="section__title section__title--center">Recebi sua <em>candidatura.</em></h2>
         <p class="success__text">Se seu perfil bater com a turma fundadora, eu ou minha equipe te chamamos no WhatsApp em até 1 dia útil.</p>
-        <p class="success__scarcity">São apenas <strong>10 vagas</strong> nesta turma fundadora.</p>
+        <p class="success__scarcity">São apenas 9 vagas nesta turma fundadora.</p>
       </div>
 
       <p style="text-align:center;">
