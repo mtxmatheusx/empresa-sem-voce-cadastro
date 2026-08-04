@@ -11,20 +11,190 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mentoria Empresa Sem Você · Matheus Martins</title>
-  <meta name="description" content="Você virou o teto da sua própria empresa. Em 120 dias você sai do tático e ela volta a crescer sem depender de você. Sem trabalhar mais e sem contratar ninguém. Pra donos de R$100–500k/mês com 4–30 funcionários." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Você virou o teto da sua própria empresa" />
-  <meta property="og:description" content="Trabalho duro, consistência e esforço construíram tudo o que você tem hoje. E param exatamente onde você está agora." />
+  <meta name="description" content="Você virou o teto da própria empresa. Em 120 dias você sai da operação e ela volta a crescer sem depender de você no meio de cada decisão. Sem trabalhar mais e sem contratar ninguém. Para donos de R$100k a R$500k/mês, com 4 a 30 funcionários." />
+  <meta property="og:title" content="Você virou o teto da própria empresa" />
+  <meta property="og:description" content="Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente. Mentoria de gestão para donos que viraram o gargalo do próprio negócio." />
   <meta property="og:type" content="website" />
+  <style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    color-scheme:dark;
+    --bg:#0A0A0B; --bg-2:#111113; --bg-3:#1A1A1E;
+    --bone:#F2EEE6; --bone-2:#B7B2A9; --bone-3:#7C776F;
+    --line:rgba(242,238,230,.10); --line-2:rgba(242,238,230,.20);
+    --gold:#C6A96C; --gold-2:#DcC28A; --gold-tint:rgba(198,169,108,.08);
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+    --frame:70rem; --measure:40rem;
+    --dur:.75s; --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  body{margin:0;background:var(--bg);color:var(--bone);font-family:var(--sans);
+    font-size:1.0625rem;line-height:1.66;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:var(--gold);color:#14110B;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..700&display=swap" rel="stylesheet" />
+  .wrap{width:100%;margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem);}
+  .measure{max-width:var(--measure);}
+  .frame{max-width:var(--frame);}
 
-  <link rel="stylesheet" href="https://esv-assets.vercel.app/style.css" />
-  <style>:root{--serif:'DM Sans',system-ui,sans-serif;--serif-quote:'DM Sans',system-ui,sans-serif;--sans:'DM Sans',system-ui,-apple-system,sans-serif}body,.hero__title,.section__title,.mirror-quote,.prose__lift{font-family:'DM Sans',system-ui,-apple-system,sans-serif}.esv-authority{font-family:var(--sans,'DM Sans',sans-serif);font-size:.98rem;letter-spacing:.005em;text-transform:none;color:var(--gold,#C9A227);margin-top:20px;font-weight:600;line-height:1.6;max-width:560px}.esv-check{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:14px}.esv-check li{background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:14px;overflow:hidden;transition:border-color .2s ease}.esv-check li:has(input:checked){border-color:rgba(201,162,39,.45)}.esv-check__row{display:block;position:relative;padding:16px 18px 16px 54px;cursor:pointer;color:var(--text,#F5F5F5);line-height:1.5;font-size:1.02rem;transition:background .2s ease}.esv-check__row:hover{background:rgba(255,255,255,.035)}.esv-check__row input{position:absolute;opacity:0;width:0;height:0}.esv-check__row span::before{content:"";position:absolute;left:18px;top:50%;transform:translateY(-50%);width:18px;height:18px;border:1.5px solid var(--gold,#C9A227);border-radius:5px;transition:background .18s ease,border-color .18s ease}.esv-check__row span::after{content:"";position:absolute;left:24px;top:calc(50% - 5px);width:5px;height:9px;border:solid #0C0C0C;border-width:0 2px 2px 0;transform:rotate(45deg);opacity:0;transition:opacity .15s ease}.esv-check__row input:checked + span::before{background:linear-gradient(135deg,var(--gold,#C9A227),var(--gold-2,#D4AF37));border-color:transparent}.esv-check__row input:checked + span::after{opacity:1}.esv-check__row input:checked + span{color:var(--gold-2,#D4AF37)}.esv-check__row input:focus-visible + span::before{outline:2px solid var(--gold-2,#D4AF37);outline-offset:2px}.esv-verdict--hit{border-left:3px solid var(--gold,#C9A227);padding-left:18px}.esv-cta-mini{opacity:0;transform:translateY(10px);max-height:0;overflow:hidden;transition:opacity .45s ease,transform .45s ease,max-height .45s ease,margin .45s ease;text-align:center;display:grid;gap:14px;justify-items:center;margin-top:0}.esv-cta-mini.is-on{opacity:1;transform:none;max-height:240px;margin-top:24px}.esv-cta-mini p{margin:0;color:var(--gold-2,#D4AF37);font-style:italic;font-size:1.12rem;line-height:1.4}.oferta__steps{max-width:640px;margin:0 auto var(--space-lg,56px)}.oferta__steps .eyebrow--center{margin-bottom:16px}.steps-list{list-style:none;display:grid;gap:12px;margin:0}.steps-list li{display:flex;gap:14px;align-items:flex-start;background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:12px;padding:16px 18px;color:#D8D8D8;font-size:1.02rem;line-height:1.5}.steps__n{flex:none;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,var(--gold,#C9A227),var(--gold-2,#D4AF37));color:#0C0C0C;font-weight:700;font-size:14px}.faq{background:var(--bg,#0C0C0C)}.faq__list{max-width:760px;margin:0 auto;display:grid;gap:14px}.faq__item{background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:14px;padding:22px 24px}.faq__q{color:#FFFFFF;font-weight:700;font-size:1.08rem;margin:0 0 8px}.faq__item p:last-child{margin:0;color:#D2D2D2;line-height:1.6}.esv-verdict{margin-top:26px;font-family:var(--serif,'Playfair Display',serif);font-size:1.35rem;line-height:1.4;color:var(--text,#F5F5F5)}.esv-verdict em{color:var(--gold,#C9A227);font-style:italic}.jornada{background:var(--deep,#050505)}.jornada__flow{margin:0 auto 46px;max-width:760px;text-align:center;font-family:var(--serif,'Playfair Display',serif);font-size:1.5rem;line-height:1.45;color:var(--text,#F5F5F5)}.jornada__flow strong{color:var(--gold,#C9A227);font-weight:700}.jornada__flow small{display:block;margin-top:16px;font-family:var(--sans,'Inter',sans-serif);font-size:.98rem;line-height:1.65;color:var(--mute,#A0A0A0);font-weight:400}.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 44px}.phase{background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-radius:18px;padding:24px}.phase__tag{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold,#C9A227);font-weight:700}.phase__when{display:block;margin:6px 0 12px;color:var(--mute,#A0A0A0);font-size:.9rem}.phase__focus{color:var(--text,#F5F5F5);line-height:1.5;font-size:1rem;margin:0}.esv-tablewrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line,rgba(255,255,255,.08))}.esv-table{width:100%;border-collapse:collapse;min-width:580px;background:var(--soft,#161616)}.esv-table th,.esv-table td{text-align:left;padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.97rem;line-height:1.45;vertical-align:top}.esv-table th{color:var(--gold,#C9A227);font-family:var(--sans,'Inter',sans-serif);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}.esv-table td:first-child{color:var(--gold,#C9A227);font-weight:700;white-space:nowrap}.esv-table tr:last-child td{border-bottom:none}.esv-table .is-mark td{background:rgba(201,162,39,.07)}.jornada__close{margin:40px auto 0;max-width:720px;text-align:center;font-family:var(--serif,'Playfair Display',serif);font-size:1.35rem;line-height:1.45;color:var(--text,#F5F5F5)}.jornada__close strong{color:var(--gold,#C9A227)}.depo__card{max-width:760px;margin:0 auto;background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-left:3px solid var(--gold,#C9A227);border-radius:18px;padding:36px 40px}.depo__quote{font-family:var(--serif-quote,'Cormorant Garamond',serif);font-style:italic;font-size:1.5rem;line-height:1.5;color:var(--text,#F5F5F5);margin:0}.depo__who{margin:22px 0 0;color:var(--gold,#C9A227);font-weight:700;letter-spacing:.04em}.depo__ctx{margin:6px 0 0;color:var(--mute,#A0A0A0);font-size:.95rem;line-height:1.5}@media(max-width:760px){.phases{grid-template-columns:1fr}.jornada__flow{font-size:1.25rem}}.prose p{color:#D8D8D8;font-size:clamp(1.05rem,1.5vw,1.18rem);line-height:1.72}.prose strong{color:#FFFFFF}.prose__lift{color:#F5F5F5 !important}.hero__deck{color:#D2D2D2}.hero__promise{margin:14px 0 0;font-size:clamp(1.15rem,2.2vw,1.5rem);line-height:1.38;color:var(--gold-2,#D4AF37);font-weight:700;max-width:560px}.hero__proof{margin-top:22px;max-width:540px;color:#EDEDED;font-size:1.02rem;line-height:1.55;border-left:2px solid var(--gold,#C9A227);padding-left:16px}.hero__proof strong{color:#FFF}.hero__cta{gap:10px!important;margin-top:20px}.hero__micro{opacity:.8}.hero__cta .hero__micro{margin-top:0!important}.cta-final .hero__micro{margin-top:16px}.hero__qualifier{margin-top:22px;max-width:520px;font-size:.92rem;line-height:1.55;color:#C8C8C8;border-top:1px solid var(--line,rgba(255,255,255,.08));padding-top:18px}.hero__qualifier strong{color:var(--gold-2,#D4AF37);font-weight:700}.hero__qualifier--top{margin-top:14px;margin-bottom:22px;border-top:none;padding-top:0;max-width:560px;color:#B9B9B9}.esv-verdict{color:#F5F5F5}.esv-check__row{font-size:1.04rem;line-height:1.55}.jornada__flow{font-size:clamp(1.2rem,2.1vw,1.42rem)}.jornada__flow small{max-width:620px;margin-left:auto;margin-right:auto;color:#C8C8C8;font-size:1rem;line-height:1.7}.jornada__close{color:#EDEDED;font-size:clamp(1.08rem,1.9vw,1.28rem)}.esv-table td{color:#EAEAEA}.esv-table td:first-child{color:var(--gold,#C9A227)}.phase__focus{color:#E9E9E9}.reveal{opacity:0;transform:translateY(28px) scale(0.95);will-change:opacity,transform}.reveal.is-in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(0.22,1,0.36,1),transform .7s cubic-bezier(0.22,1,0.36,1)}.pillars .pillar:nth-child(2).is-in{transition-delay:.07s}.pillars .pillar:nth-child(3).is-in{transition-delay:.14s}.pillars .pillar:nth-child(4).is-in{transition-delay:.21s}.pillars .pillar:nth-child(5).is-in{transition-delay:.28s}.phases .phase:nth-child(2).is-in{transition-delay:.10s}.phases .phase:nth-child(3).is-in{transition-delay:.20s}@media (prefers-reduced-motion:reduce){.reveal{opacity:1 !important;transform:none !important}}.esv-authority{margin:22px 0 30px;line-height:1.65}@media(max-width:768px){.reveal{transform:translateY(28px) scale(0.965)}.reveal.is-in{transition-duration:.7s}}@media(max-width:640px){.esv-table{min-width:0}.esv-table th,.esv-table td{padding:11px 10px;font-size:.86rem;line-height:1.4}.esv-table th{font-size:.66rem;letter-spacing:.06em}.esv-table td:first-child{white-space:normal}.esv-tablewrap{-webkit-overflow-scrolling:touch}.phase{padding:20px}.esv-check__row{padding:14px 14px 14px 46px;font-size:.98rem}.esv-check__row span::before{left:14px}.esv-check__row span::after{left:20px}}.oferta__prize{max-width:760px;margin:0 auto var(--space-lg,56px);text-align:center}.oferta__prize .eyebrow--center{margin-bottom:10px}.muda__intro{max-width:640px;margin:0 auto 26px;text-align:center;color:#C8C8C8;font-size:clamp(1.02rem,1.6vw,1.12rem);line-height:1.6}.custo{background:var(--deep,#050505)}.custo__callout{max-width:680px;margin:34px auto 0;background:var(--soft,#161616);border:1px solid rgba(255,255,255,.1);border-left:3px solid var(--gold,#C9A227);border-radius:16px;padding:28px 30px}.custo__callout-label{margin:0 0 6px;color:var(--mute,#A0A0A0);font-size:.9rem}.custo__callout-title{margin:0 0 12px;color:#FFF;font-size:1.35rem}.custo__callout p{color:#D8D8D8;line-height:1.6;margin:0 0 12px}.custo__figure{font-size:1.12rem;margin-bottom:0!important}.custo__figure strong{color:var(--gold-2,#D4AF37)}.custo__close{max-width:680px;margin:24px auto 0;text-align:center;color:#EDEDED;font-size:clamp(1.05rem,1.7vw,1.2rem);line-height:1.5}.custo__close strong{color:var(--gold,#C9A227)}.oferta__notfor{max-width:720px;margin:14px auto 0}.oferta__notfor .oferta__card{border-left:3px solid rgba(255,255,255,.16)}.oferta__notfor .oferta__label{color:#C8C8C8}.cta-final{background:var(--deep,#050505)}.cta-final__inner{text-align:center}.cta-final__body{max-width:620px;margin:0 auto 28px;color:#D2D2D2;font-size:clamp(1.05rem,1.7vw,1.18rem);line-height:1.65}.prova{background:var(--bg,#0C0C0C)}.prova .section__title{margin-bottom:14px}.depo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1000px;margin:38px auto 0}.depo-grid .depo__card{max-width:none;margin:0;padding:28px 30px;display:flex;flex-direction:column;border-left:1px solid var(--line,rgba(255,255,255,.08))}.depo__head{display:flex;align-items:center;gap:14px;margin:0 0 18px}.depo__avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--gold,#C9A227);flex:none;background-repeat:no-repeat;background-color:#222}.depo__who{margin:0;color:#FFF;font-weight:700;font-size:1.05rem;line-height:1.2;letter-spacing:0}.depo__ctx{display:block;margin-top:3px;color:var(--mute,#A0A0A0);font-size:.9rem;font-weight:400}.depo-grid .depo__quote{margin:0;color:#E4E4E4;font-size:1.05rem;line-height:1.62;font-style:normal}@media(max-width:760px){.depo-grid{grid-template-columns:1fr}}.oferta__subtitle .mute{display:block;margin-top:7px;font-size:.92rem;font-weight:400;letter-spacing:0}.oferta__deliver-note{margin-top:14px}@media(max-width:640px){.section{padding-top:60px;padding-bottom:60px}.hero{padding-top:110px}.section__title{margin-bottom:22px}.mirror-quote{margin-bottom:0}}.oferta__prize-title{font-family:var(--serif,'DM Sans',sans-serif);font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.35;color:#F5F5F5;margin:0 0 28px}.oferta__prize-title em{color:var(--gold,#C9A227);font-style:italic}.prize-list{list-style:none;display:grid;gap:12px;margin:0;text-align:left}.prize-list li{position:relative;padding:16px 18px 16px 50px;background:var(--soft,#161616);border:1px solid var(--line,rgba(255,255,255,.08));border-left:3px solid var(--gold,#C9A227);border-radius:12px;color:#EDEDED;font-size:1.08rem;line-height:1.5}.prize-list li::before{content:"\2192";position:absolute;left:18px;top:16px;color:var(--gold-2,#D4AF37);font-weight:700}.oferta__deliver-note{max-width:640px;margin:-4px auto 22px;text-align:center;color:var(--mute,#A0A0A0);font-size:.98rem;line-height:1.55}.price__founder{margin:16px 0 4px;padding:14px 16px;background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.25);border-radius:12px;color:#EAEAEA;font-size:.98rem;line-height:1.55}.price__founder strong{color:var(--gold-2,#D4AF37)}@media(max-width:640px){.prize-list li{font-size:1rem;padding:14px 14px 14px 44px}.prize-list li::before{left:16px}}</style>
+  .eyebrow{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 1.4rem;}
+  .eyebrow--muted{color:var(--bone-3);}
+  h1,h2,h3{font-family:var(--sans);font-weight:800;line-height:1.06;letter-spacing:-.02em;text-wrap:balance;margin:0;color:var(--bone);}
+  p{margin:0;}
+  strong{color:var(--bone);font-weight:700;}
+
+  .topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);
+    backdrop-filter:saturate(1.3) blur(12px);border-bottom:1px solid var(--line);}
+  .topbar__in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:62px;
+    max-width:var(--frame);margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem);}
+  .mark{font-weight:800;font-size:1.02rem;letter-spacing:.02em;text-transform:uppercase;}
+  .mark b{color:var(--gold);font-weight:800;}
+  .navcta{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+    padding:.55rem 1rem;border:1px solid var(--line-2);border-radius:2px;transition:border-color .2s,color .2s;white-space:nowrap;}
+  .navcta:hover{border-color:var(--gold);color:var(--gold);}
+
+  section{padding-block:clamp(3.75rem,9vw,6.75rem);position:relative;}
+  .rule{height:1px;background:var(--line);border:0;max-width:var(--frame);margin-inline:auto;}
+  .btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sans);font-size:.9rem;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;color:#141009;background:var(--gold);border:1px solid var(--gold);
+    border-radius:2px;padding:1rem 1.7rem;text-decoration:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .3s;}
+  .btn:hover{background:var(--gold-2);transform:translateY(-1px);box-shadow:0 14px 40px -18px rgba(198,169,108,.7);}
+  .btn__arrow{transition:transform .2s;}
+  .btn:hover .btn__arrow{transform:translateX(3px);}
+  .cta{margin-top:2.6rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.4rem;}
+  .cta__note{font-size:.8rem;color:var(--bone-3);letter-spacing:.02em;}
+  .pull{font-size:clamp(1.4rem,2.9vw,2rem);font-weight:700;line-height:1.24;color:var(--bone);margin-top:2.6rem;
+    padding-left:1.5rem;border-left:3px solid var(--gold);text-wrap:balance;letter-spacing:-.01em;}
+
+  /* hero */
+  .hero{overflow:hidden;padding-top:clamp(3rem,7vw,4.75rem);}
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(60% 55% at 8% -5%,rgba(198,169,108,.14),transparent 60%);}
+  .hero__grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .hero h1{font-size:clamp(2.4rem,5.6vw,4.3rem);letter-spacing:-.025em;line-height:1.03;}
+  .hero__sub{font-size:clamp(1.3rem,2.8vw,1.9rem);font-weight:600;line-height:1.24;color:var(--bone-2);margin-top:1.5rem;letter-spacing:-.01em;}
+  .hero__sub em{font-style:normal;color:var(--gold);}
+  .hero__promise{font-size:clamp(1.05rem,1.6vw,1.18rem);color:var(--bone-2);margin-top:1.9rem;max-width:34rem;}
+  .hero__micro{margin-top:1.05rem;color:var(--bone-3);max-width:34rem;padding-left:1.1rem;border-left:2px solid var(--gold);}
+  .hero__portrait{position:relative;aspect-ratio:4/4.7;border-radius:5px;overflow:hidden;border:1px solid var(--line-2);
+    background:var(--bg-2);box-shadow:0 40px 90px -50px rgba(0,0,0,.9);}
+  .hero__portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;filter:saturate(.94) contrast(1.02);}
+  .hero__portrait::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,transparent 52%,rgba(10,10,11,.55)),linear-gradient(90deg,rgba(10,10,11,.32),transparent 34%);}
+
+  /* authority */
+  .auth__name{font-size:clamp(2rem,4.4vw,3rem);}
+  .auth__role{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-3);font-weight:700;margin-top:1rem;}
+  .auth__body{margin-top:1.7rem;color:var(--bone-2);font-size:1.1rem;}
+  .stat{margin-top:2.2rem;padding-top:1.7rem;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:.2rem 1.5rem;align-items:baseline;}
+  .stat__fig{font-size:clamp(2.6rem,6vw,3.7rem);font-weight:800;color:var(--gold);line-height:.9;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .stat__cap{color:var(--bone-2);font-size:1rem;align-self:center;}
+  .stat__cap b{color:var(--bone);font-weight:700;}
+  .stat__foot{grid-column:1/-1;margin-top:.9rem;color:var(--bone-3);font-size:.85rem;}
+
+  .h-sec{font-size:clamp(1.9rem,4.2vw,3rem);}
+  .intro{margin-top:1.6rem;color:var(--bone-2);font-size:1.1rem;}
+  .body-col{margin-top:2rem;display:flex;flex-direction:column;gap:1.3rem;color:var(--bone-2);font-size:1.1rem;}
+
+  .reckon{margin-top:2.2rem;border-top:1px solid var(--line);padding:0;}
+  .reckon li{list-style:none;display:grid;grid-template-columns:1.7rem 1fr;gap:1rem;align-items:baseline;
+    padding:1.05rem 0;border-bottom:1px solid var(--line);color:var(--bone);font-size:1.05rem;}
+  .reckon .mk{font-size:1.05rem;color:var(--bone-3);font-weight:700;}
+  .reckon--win .mk{color:var(--gold);}
+  .reckon__close{margin-top:1.8rem;color:var(--bone-2);font-size:1.05rem;}
+  .reckon__close b{color:var(--bone);font-weight:700;}
+
+  .mirror__sub{font-size:clamp(1.5rem,3.4vw,2.15rem);font-weight:800;color:var(--gold);margin-top:.7rem;line-height:1.16;letter-spacing:-.015em;}
+
+  .pillars{margin-top:2.4rem;border-top:1px solid var(--line);padding:0;}
+  .pillars li{list-style:none;display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;padding:1.55rem 0;border-bottom:1px solid var(--line);}
+  .pillar__n{font-size:1rem;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;padding-top:.2rem;letter-spacing:.02em;}
+  .pillar__name{font-size:1.3rem;font-weight:800;color:var(--bone);letter-spacing:-.01em;}
+  .pillar__line{margin-top:.45rem;color:var(--bone-2);font-size:1.01rem;}
+
+  .phasehead{font-size:clamp(1.4rem,3vw,1.95rem);font-weight:800;color:var(--bone);margin-top:2.9rem;letter-spacing:-.015em;}
+  .phases{margin-top:1.6rem;}
+  .phase{display:grid;grid-template-columns:10rem 1fr;gap:1.2rem;padding:1.15rem 0;border-top:1px solid var(--line);align-items:baseline;}
+  .phase:last-child{border-bottom:1px solid var(--line);}
+  .phase__when{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .phase__what{color:var(--bone-2);font-size:1.03rem;}
+  .phase__what b{color:var(--bone);font-weight:700;}
+  .format{margin-top:2rem;color:var(--bone-3);font-size:.97rem;}
+
+  .compare{margin-top:2.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  .cell{background:var(--bg-2);padding:1.8rem 1.7rem;}
+  .cell--win{background:var(--gold-tint);}
+  .cell__k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-3);font-weight:700;}
+  .cell--win .cell__k{color:var(--gold);}
+  .cell__v{font-size:clamp(1.6rem,3.4vw,2.1rem);font-weight:800;color:var(--bone);margin-top:.7rem;line-height:1.02;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .cell__note{margin-top:.6rem;color:var(--bone-2);font-size:.9rem;}
+  .slam{margin-top:2.9rem;}
+  .slam__fig{font-size:clamp(3rem,7.5vw,4.8rem);font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+  .slam__sub{margin-top:1.1rem;color:var(--bone-2);font-size:1.08rem;max-width:39rem;}
+  .slam__sub b{color:var(--bone);font-weight:700;}
+
+  /* proof / depoimentos */
+  .depo-grid{margin-top:2.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+  .depo{background:var(--bg-2);border:1px solid var(--line);border-radius:6px;padding:1.75rem 1.65rem;display:flex;flex-direction:column;}
+  .depo__head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.1rem;}
+  .depo__avatar{width:54px;height:54px;border-radius:50%;border:2px solid var(--gold);flex:none;background-repeat:no-repeat;background-color:#222;}
+  .depo__who{font-weight:800;color:var(--bone);font-size:1.02rem;line-height:1.2;}
+  .depo__ctx{display:block;margin-top:3px;color:var(--bone-3);font-size:.86rem;font-weight:600;}
+  .depo__quote{color:var(--bone-2);font-size:1rem;line-height:1.62;}
+  .founder{margin-top:2.4rem;padding:1.8rem 1.7rem;background:var(--bg-2);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:4px;color:var(--bone-2);font-size:1.04rem;}
+  .founder b{color:var(--bone);font-weight:700;}
+
+  .offer{margin-top:2.4rem;border-top:1px solid var(--line);padding:0;}
+  .offer li{list-style:none;padding:1.3rem 0;border-bottom:1px solid var(--line);}
+  .offer__name{font-size:1.22rem;font-weight:800;color:var(--bone);letter-spacing:-.01em;}
+  .offer__name span{color:var(--gold);}
+  .offer__desc{margin-top:.35rem;color:var(--bone-2);font-size:1rem;}
+
+  .steps{margin-top:2.2rem;}
+  .step{display:grid;grid-template-columns:2.7rem 1fr;gap:1.1rem;padding:1.25rem 0;border-top:1px solid var(--line);align-items:baseline;}
+  .step:last-child{border-bottom:1px solid var(--line);}
+  .step__n{font-size:1.35rem;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;}
+  .step__t{color:var(--bone-2);font-size:1.05rem;}
+  .step__t b{color:var(--bone);font-weight:700;}
+  .scarce{margin-top:2rem;font-size:1.3rem;font-weight:800;color:var(--bone);letter-spacing:-.01em;}
+  .scarce em{font-style:normal;color:var(--gold);}
+
+  .obj{margin-top:2.2rem;}
+  .obj__row{padding:1.55rem 0;border-top:1px solid var(--line);}
+  .obj__row:last-child{border-bottom:1px solid var(--line);}
+  .obj__q{font-size:1.22rem;font-weight:800;color:var(--bone);letter-spacing:-.01em;}
+  .obj__a{margin-top:.6rem;color:var(--bone-2);font-size:1.03rem;}
+
+  .final{background:linear-gradient(180deg,var(--bg-2),var(--bg));}
+  .final::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 60% at 80% 120%,rgba(198,169,108,.10),transparent 60%);}
+  .final__in{position:relative;}
+  .final h2{font-size:clamp(2.1rem,4.8vw,3.4rem);}
+
+  .foot{padding-block:2.75rem;border-top:1px solid var(--line);}
+  .foot__in{max-width:var(--frame);margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem;font-size:.8rem;color:var(--bone-3);}
+  .foot b{color:var(--bone-2);font-weight:700;}
+
+  .rise{opacity:0;transform:translateY(20px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease);}
+  .rise.in{opacity:1;transform:none;}
+  .hero .rise{transition-delay:calc(var(--i,0)*90ms);}
+  @media (prefers-reduced-motion:reduce){
+    .rise{opacity:1!important;transform:none!important;transition:none!important;}
+    .btn,.btn__arrow{transition:none!important;}
+  }
+
+  @media (max-width:860px){
+    .hero__grid{grid-template-columns:1fr;gap:2rem;}
+    .hero__portrait{max-width:22rem;aspect-ratio:4/4.4;order:-1;}
+  }
+  @media (max-width:760px){
+    .depo-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .compare{grid-template-columns:1fr;}
+    .phase{grid-template-columns:1fr;gap:.35rem;}
+    .stat{grid-template-columns:1fr;gap:.4rem;}
+  }
+  </style>
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -41,458 +211,318 @@
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFWQMKV3"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFWQMKV3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar__in">
+        <span class="mark">EMPRESA <b>SEM</b> VOCÊ</span>
+        <a class="navcta" href="/cadastro">Candidatura</a>
+      </div>
+    </header>
 
-  <!-- ============ NAVBAR ============ -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#topo" class="nav__brand">Empresa <span class="i">Sem Você</span></a>
-      <a href="/cadastro" class="btn btn--nav">Fazer minha candidatura</a>
-    </div>
-  </header>
-
-  <!-- ============ 1 · DOBRA ============ -->
-  <section class="hero" id="topo">
-    <div class="hero__grain" aria-hidden="true"></div>
-    <div class="container hero__grid">
-      <div class="hero__copy reveal">
-        <p class="eyebrow">Mentoria Empresa Sem Você · Turma Fundadora</p>
-        <p class="hero__qualifier hero__qualifier--top">Você tem time. Tem faturamento. E tudo continua travando quando você não está.</p>
-        <h1 class="hero__title">Você virou o <em>teto</em> da sua própria empresa.</h1>
-        <p class="hero__promise">Em 120 dias você sai do tático e ela volta a crescer sem depender de você estar dentro.</p>
-        <p class="hero__deck">
-          Não é a sua equipe. Não é o mercado. Não é falta de marketing. É que toda decisão ainda passa por uma pessoa só.
-        </p>
-        <p class="hero__proof"><strong>Sem trabalhar mais. Sem contratar mais ninguém.</strong> E já na primeira semana você sai com o mapa exato do que te prende.</p>
-        <p class="hero__qualifier">Feito pra dono de empresa de <strong>R$100–500k/mês</strong>, com <strong>4–30 funcionários</strong>, que já tem time, mas ainda é o gargalo de tudo.</p>
-        <div class="hero__cta">
-          <a href="/cadastro" class="btn btn--gold">Fazer minha candidatura</a>
-          <p class="hero__micro">Leva 2 minutos · candidatura, não compra · garantia de 7 dias</p>
+    <main>
+      <!-- 1 · HERO -->
+      <section class="hero">
+        <div class="wrap frame">
+          <div class="hero__grid">
+            <div>
+              <p class="eyebrow rise" style="--i:0">Mentoria de gestão · donos de R$100k a R$500k / mês</p>
+              <h1 class="rise" style="--i:1">Você tem time. Tem faturamento. E tudo trava quando você não está.</h1>
+              <p class="hero__sub rise" style="--i:2">Em algum momento você virou o <em>teto</em> da própria empresa.</p>
+              <p class="hero__promise rise" style="--i:3">Em 120 dias você sai da operação e ela volta a crescer sem depender de você no meio de cada decisão. Sem trabalhar mais. Sem contratar mais ninguém.</p>
+              <p class="hero__micro rise" style="--i:4">Já na primeira semana você sai com o mapa exato do que te prende.</p>
+              <div class="cta rise" style="--i:5">
+                <a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">→</span></a>
+                <span class="cta__note">2 minutos · é candidatura, não compra · garantia de 7 dias</span>
+              </div>
+            </div>
+            <div class="hero__portrait rise" style="--i:2">
+              <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" loading="eager" width="900" height="1003" />
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="hero__figure reveal">
-        <figure class="portrait">
-          <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins, mentor do programa Empresa Sem Você" loading="eager" />
-          <div class="portrait__veil" aria-hidden="true"></div>
-        </figure>
-      </div>
-    </div>
-  </section>
+      <hr class="rule" />
 
-  <!-- ============ 2 · O MOMENTO ============ -->
-  <section class="section momento">
-    <div class="container narrow">
-      <h2 class="section__title reveal">Existe um momento na vida do dono que é o <em>mais difícil de todos.</em></h2>
-      <div class="prose reveal">
-        <p>E não é falta de dinheiro. Não é perder cliente. Não é demitir alguém.</p>
-        <p>É o momento em que ele olha para a empresa que construiu e percebe que <strong>virou o limite dela.</strong></p>
-        <p>Até certo ponto, esforço resolve. Você trabalha mais, aparece mais, resolve mais. Funcionou. Construiu tudo.</p>
-        <p>Mas quando a empresa já tem equipe montada e o dono continua sendo o executor, ele para de ser o motor. Ele vira o teto. <strong>A empresa cresce até onde o corpo dele aguenta, e para ali.</strong></p>
-        <p>O executor precisa virar gestor. Sair da decisão do dia e entrar na decisão do ano. Olhar a empresa de cima, como um drone, e ver ela acontecendo sem estar dentro dela.</p>
-        <p class="prose__lift">Essa é a parte difícil: olhar no espelho e dizer <em>"até aqui você me ajudou, daqui pra frente eu preciso ser outra pessoa."</em></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 3 · AUTO-DIAGNÓSTICO ============ -->
-  <section class="section virada">
-    <div class="container narrow">
-      <h2 class="section__title reveal">Como você sabe que <em>chegou nesse ponto.</em></h2>
-      <div class="prose reveal"><p>Não é uma sensação. Tem sinal.</p></div>
-
-      <ul class="esv-check reveal">
-        <li><label class="esv-check__row"><input type="checkbox"><span>Faturou mais esse ano e sobrou menos.</span></label></li>
-        <li><label class="esv-check__row"><input type="checkbox"><span>Tem gerente, mas as decisões dele passam por você antes.</span></label></li>
-        <li><label class="esv-check__row"><input type="checkbox"><span>A folha cresceu mais rápido que a margem.</span></label></li>
-        <li><label class="esv-check__row"><input type="checkbox"><span>Não tira férias de verdade há mais de dois anos.</span></label></li>
-        <li><label class="esv-check__row"><input type="checkbox"><span>Perdeu um bom funcionário nos últimos seis meses.</span></label></li>
-        <li><label class="esv-check__row"><input type="checkbox"><span>Se você sumir uma semana, a empresa não quebra. Ela só para de decidir.</span></label></li>
-      </ul>
-      <p class="esv-verdict reveal">Marcou <em>três ou mais</em>? Isso não é sinal de que você fez algo errado. É sinal de que você chegou no limite do modelo que te trouxe até aqui. O problema não é o mercado, não é a equipe e não é falta de marketing: é que tudo ainda passa por uma pessoa só.</p>
-
-      <div class="esv-cta-mini" id="esvCtaMini">
-        <p>Reconheceu o seu dia a dia? Então essa mentoria é pra você.</p>
-        <a href="/cadastro" class="btn btn--gold">Fazer minha candidatura</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 4 · O MECANISMO + 5 · OS PILARES ============ -->
-  <section class="section mecanismo">
-    <div class="container">
-      <div class="mecanismo__head reveal">
-        <p class="eyebrow eyebrow--center">O Princípio do Espelho</p>
-        <h2 class="section__title section__title--center">A empresa é o <em>reflexo do dono.</em></h2>
-      </div>
-
-      <div class="prose reveal" style="max-width:720px;margin:0 auto">
-        <p><strong>Você nunca vê um CNPJ quebrar antes do CPF já ter quebrado.</strong></p>
-        <p>Quem treinou a equipe a perguntar tudo? Quem respondeu às 23h e ensinou que isso era normal? Não é acusação, é a explicação de por que a saída não está em mais uma contratação.</p>
-        <p class="prose__lift">Onde a empresa trava é onde o dono está travado. Por isso a gente não começa consertando a empresa. <strong>A gente começa calibrando quem decide.</strong></p>
-      </div>
-
-      <blockquote class="mirror-quote reveal">
-        "Calibra o dono e o sistema inteiro se reorganiza: a agenda para de ser refém do WhatsApp, as decisões param de voltar pra sua mesa, o que morava só na sua cabeça vira processo. A empresa não muda porque você empurra mais forte. Muda porque o espelho que ela copia mudou."
-      </blockquote>
-
-      <h2 class="section__title section__title--center reveal" style="margin:72px 0 44px">Como o executor <em>vira gestor.</em></h2>
-
-      <div class="pillars">
-        <article class="pillar reveal">
-          <span class="pillar__num">01</span>
-          <h3 class="pillar__name">Calibração do Gestor</h3>
-          <p class="pillar__quote">"Sua empresa não está travada. Você está travado nela."</p>
-          <p class="pillar__desc">Você volta a decidir pra onde a empresa vai, não o que já devia estar decidido.</p>
-        </article>
-        <article class="pillar reveal">
-          <span class="pillar__num">02</span>
-          <h3 class="pillar__name">Hierarquia &amp; Liderança</h3>
-          <p class="pillar__quote">"Equipe que não pode decidir nunca cresce com você."</p>
-          <p class="pillar__desc">Sua equipe passa a levar solução, não pergunta, e para de te procurar no sábado.</p>
-        </article>
-        <article class="pillar reveal">
-          <span class="pillar__num">03</span>
-          <h3 class="pillar__name">Processos &amp; Cultura</h3>
-          <p class="pillar__quote">"Tudo que mora só na sua cabeça morre quando você sai."</p>
-          <p class="pillar__desc">A próxima contratação aprende em duas semanas, não em três meses.</p>
-        </article>
-        <article class="pillar reveal">
-          <span class="pillar__num">04</span>
-          <h3 class="pillar__name">Eficiência com IA</h3>
-          <p class="pillar__quote">"A maioria dos donos contrata gente quando deveria automatizar tarefa."</p>
-          <p class="pillar__desc">Você escala sem inflar a folha e para de contratar pra tapar buraco de processo.</p>
-        </article>
-        <article class="pillar reveal">
-          <span class="pillar__num">05</span>
-          <h3 class="pillar__name">Marketing &amp; Vendas</h3>
-          <p class="pillar__quote">"Vender mais sem virar gerente comercial."</p>
-          <p class="pillar__desc">Canal previsível, sobre base pronta.</p>
-        </article>
-      </div>
-
-      <p class="custo__close reveal" style="max-width:720px">Eu tenho agência de marketing há sete anos e coloquei marketing em último de propósito. <strong>Marketing acelera o que já existe. Se você já é o teto, marketing só te faz bater nele mais rápido.</strong></p>
-    </div>
-  </section>
-
-  <!-- ============ 6 · A JORNADA ============ -->
-  <section class="section jornada">
-    <div class="container">
-      <p class="eyebrow eyebrow--center reveal">A Jornada</p>
-      <h2 class="section__title section__title--center reveal">120 dias pra sair do tático.<br /><em>12 meses</em> pra consolidar.</h2>
-
-      <div class="esv-tablewrap reveal" style="margin-top:44px">
-        <table class="esv-table">
-          <thead><tr><th>Quando</th><th>O que já é diferente</th></tr></thead>
-          <tbody>
-            <tr><td>Semana 1</td><td>Você sai da primeira call com o plano de 120 dias sob medida, sabendo exatamente o que te prende</td></tr>
-            <tr><td>Mês 1</td><td>Agenda de volta nas suas mãos. Fim do modo bombeiro</td></tr>
-            <tr><td>Mês 2</td><td>Sua equipe decide sozinha o que hoje passa por você</td></tr>
-            <tr class="is-mark"><td>Mês 4</td><td><strong>Fora do tático</strong></td></tr>
-            <tr><td>Mês 12</td><td>Consolidado, com plano dos próximos doze meses de pé</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="jornada__flow reveal" style="margin-top:46px">
-        Aula → Tarefa → Feedback no grupo → <strong>Call de lapidação</strong>.
-        <small>Você consome, executa, manda no grupo, a gente valida, e só então entra na call já com plano de ação. Quem segue o fluxo sai com uma empresa diferente. Quem pula etapa, pula resultado.</small>
-      </p>
-
-      <div class="phases">
-        <div class="phase reveal">
-          <span class="phase__tag">1 · Implementação</span>
-          <span class="phase__when">Mês 1–4 · os 120 dias</span>
-          <p class="phase__focus">Instalar os pilares 1 a 4: Gestor, Hierarquia, Processos e IA.</p>
+      <!-- 2 · AUTORIDADE -->
+      <section class="authority">
+        <div class="wrap measure">
+          <p class="eyebrow rise">Quem vai te conduzir</p>
+          <h2 class="auth__name rise">Matheus Martins</h2>
+          <p class="auth__role rise">Gestão · Liderança · Perfil comportamental</p>
+          <p class="auth__body rise">7 anos estruturando empresas por dentro — cultura, liderança, processos e gestão. Formado em gestão estratégica pela G4 e em análise de perfil comportamental pela Febracis. Já sentei no conselho de empresas de clientes.</p>
+          <div class="stat rise">
+            <span class="stat__fig">7&ndash;18×</span>
+            <span class="stat__cap">o marketing que faço pros meus clientes <b>nunca rendeu menos de 7 vezes</b> o valor investido. Nos melhores casos, 18.</span>
+            <span class="stat__foot">Não é teoria de sala. Eu opero — e é isso que separa essa mentoria de uma formação que você assiste e nunca aplica.</span>
+          </div>
         </div>
-        <div class="phase reveal">
-          <span class="phase__tag">2 · Consolidação</span>
-          <span class="phase__when">Mês 5–6</span>
-          <p class="phase__focus">Pilar 5: Marketing &amp; Vendas. Só depois da casa arrumada.</p>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 3 · O PROBLEMA -->
+      <section class="problem">
+        <div class="wrap measure">
+          <p class="eyebrow eyebrow--muted rise">O ponto de virada</p>
+          <h2 class="h-sec rise">Existe um momento na vida do dono que é o mais difícil de todos.</h2>
+          <div class="body-col">
+            <p class="rise">Não é o começo. No começo, esforço resolve tudo: você faz, você decide, você carrega nas costas. E funciona.</p>
+            <p class="rise">O problema é que o que te trouxe até aqui é exatamente o que te prende agora. A empresa cresceu em cima de você. Cada decisão passa por você, nada anda sem a sua palavra final e, sem perceber, você treinou todo mundo a te perguntar tudo.</p>
+            <p class="rise">Você não virou o gargalo por acidente. Você virou o teto. E teto não se resolve trabalhando mais: se resolve mudando o seu papel.</p>
+          </div>
+          <p class="pull rise">O executor precisa virar gestor. Sair da decisão do dia e entrar na decisão do ano.</p>
         </div>
-        <div class="phase reveal">
-          <span class="phase__tag">3 · Sustentação</span>
-          <span class="phase__when">Mês 7–12</span>
-          <p class="phase__focus">Corrigir rota e recalibrar, pra virar sustentável.</p>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 4 · CHECKLIST -->
+      <section class="reckon-sec">
+        <div class="wrap measure">
+          <p class="eyebrow eyebrow--muted rise">O diagnóstico honesto</p>
+          <h2 class="h-sec rise">Como você sabe que chegou nesse ponto.</h2>
+          <p class="intro rise">Você não precisa de relatório pra saber. Precisa reconhecer a lista.</p>
+          <ul class="reckon rise">
+            <li><span class="mk">—</span><span>Você faturou mais esse ano e sobrou menos.</span></li>
+            <li><span class="mk">—</span><span>As decisões passam pelo seu gestor, mas ainda precisam da sua aprovação.</span></li>
+            <li><span class="mk">—</span><span>A folha cresce mais rápido que a margem.</span></li>
+            <li><span class="mk">—</span><span>Você não tira férias de verdade há mais de dois anos.</span></li>
+            <li><span class="mk">—</span><span>Você perdeu gente boa que cansou de esperar autonomia.</span></li>
+            <li><span class="mk">—</span><span>Quando você some por uns dias, a empresa não quebra. Ela para de decidir.</span></li>
+          </ul>
+          <p class="reckon__close rise">Marcou <b>três ou mais</b>? Isso não é sinal de que você fez algo errado. É sinal de que você chegou no limite do modelo que te trouxe até aqui.</p>
         </div>
-      </div>
+      </section>
 
-      <div class="esv-tablewrap reveal">
-        <table class="esv-table">
-          <thead><tr><th>Call</th><th>Quando</th><th>O que sai de lá</th></tr></thead>
-          <tbody>
-            <tr><td>1 · obrigatória</td><td>Semana 1</td><td>Seu plano de 120 dias sob medida (diagnóstico + perfil comportamental CIS)</td></tr>
-            <tr><td>2</td><td>Mês 1</td><td>Calibração do gestor + diário de sabotagem</td></tr>
-            <tr><td>3</td><td>Mês 2</td><td>Hierarquia: matriz RACI, equipe que decide sem você</td></tr>
-            <tr><td>4</td><td>Mês 3</td><td>Processos críticos mapeados, SLAs de pé</td></tr>
-            <tr class="is-mark"><td>5</td><td>Mês 4</td><td>IA: o repetitivo automatizado. <strong>Marco: você fora do tático</strong></td></tr>
-            <tr><td>6</td><td>Mês 5–6</td><td>Marketing &amp; Vendas: funil instalado, aquisição previsível, time comercial autônomo</td></tr>
-            <tr><td>7</td><td>Mês 8</td><td>Revisão dos 6 meses: o que ficou de pé</td></tr>
-            <tr><td>8</td><td>Mês 10</td><td>Revisão anual + ajuste dos próximos 90 dias</td></tr>
-            <tr><td>9</td><td>Mês 12</td><td>Plano dos próximos 12 meses. Renovação, evolui e sai voando</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <hr class="rule" />
 
-      <p class="jornada__close reveal">Você não precisa lembrar de marcar nada. <strong>O método te convoca. Sua parte é aparecer com a pauta.</strong> Ninguém te cobra: nem eu, nem a Carine. Quem avisa é a plataforma, porque você está fazendo.</p>
-
-      <div style="text-align:center;margin-top:40px"><a href="/cadastro" class="btn btn--gold reveal">Fazer minha candidatura</a></div>
-    </div>
-  </section>
-
-  <!-- ============ 7 · O OUTRO LADO ============ -->
-  <section class="section muda">
-    <div class="container narrow">
-      <h2 class="section__title section__title--center reveal">Agora leia a mesma lista <em>do outro lado.</em></h2>
-      <p class="muda__intro reveal">Item por item, na mesma ordem. É isso que muda em 120 dias.</p>
-      <ul class="prize-list reveal">
-        <li>Crescer volta a virar dinheiro: você fatura mais e sobra mais.</li>
-        <li>Seu gerente decide e te informa. Não pede autorização.</li>
-        <li>A folha para de crescer mais rápido que a margem: o repetitivo vira automação, não vaga nova.</li>
-        <li>Quinze dias fora, sem abrir o celular pra resolver nada.</li>
-        <li>Gente boa fica, porque sabe o que pode decidir sozinha.</li>
-        <li>Você some uma semana e a empresa continua decidindo.</li>
-      </ul>
-      <div class="prose reveal" style="margin-top:30px">
-        <p>E aí sobra o que ninguém coloca em planilha: cabeça e agenda pra abrir a segunda unidade, o segundo braço, o segundo negócio. E chegar em casa antes do seu filho dormir, sem exceção virar regra.</p>
-        <p class="prose__lift">O teste é simples e você mesmo aplica: <strong>a empresa aguenta quinze dias sem você?</strong> Hoje ela não quebra, ela só para de decidir. É essa a diferença que os 120 dias fecham.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 8 · A ALTERNATIVA + O CUSTO ============ -->
-  <section class="section custo">
-    <div class="container narrow">
-      <h2 class="section__title section__title--center reveal">Contratar um gerente <em>custa mais e resolve menos.</em></h2>
-      <div class="custo__callout reveal">
-        <p class="custo__callout-label">A saída que quase todo mundo tenta primeiro:</p>
-        <h3 class="custo__callout-title">Contratar um gerente</h3>
-        <p>Dez mil por mês. Quatorze com encargos. Três meses até engrenar. Passados esses três meses, as decisões continuam passando por você, porque o processo que essa pessoa precisaria seguir não existe em lugar nenhum. Mora na sua cabeça.</p>
-        <p class="custo__figure">Em um ano isso é <strong>mais de R$168 mil</strong> pra terceirizar o caos e aumentar a folha. Você não delegou nada. Colocou um salário em cima.</p>
-      </div>
-      <p class="custo__close reveal">A mentoria inteira custa menos que o primeiro mês desse gerente. E não vai embora quando alguém pede demissão: <strong>o processo fica.</strong></p>
-
-      <h2 class="section__title section__title--center reveal" style="margin-top:66px">Fazer nada também tem preço.<br />Ele só não vem com <em>boleto.</em></h2>
-      <div class="prose reveal">
-        <p>Há quanto tempo você está assim, sendo o centro de tudo? Três anos? Cinco?</p>
-        <p>Agora a pergunta que dói: o que isso já te custou? Não em dinheiro, em coisa que você não fez. A unidade que não abriu. O produto que não lançou. A viagem que não teve. O ano que passou igual ao anterior.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 9 · PROVA ============ -->
-  <section class="section prova">
-    <div class="container">
-      <p class="eyebrow eyebrow--center reveal">Quem já passou por isso</p>
-      <h2 class="section__title section__title--center reveal">Não é teoria.<br />É o que aconteceu na <em>Biotop.</em></h2>
-      <div class="depo-grid">
-        <figure class="depo__card reveal">
-          <figcaption class="depo__head">
-            <span class="depo__avatar" style="background-image:url('/assets/joao.jpg');background-position:50% 8%;background-size:200%"></span>
-            <div class="depo__who">João<span class="depo__ctx">Sócio da Biotop</span></div>
-          </figcaption>
-          <blockquote class="depo__quote">"Eu falei pro Matheus logo no começo: o nosso maior trabalho não ia ser na Biotop, ia ser no Dinarte. Porque quem move a empresa são as pessoas, se a empresa tem um problema, muito provavelmente o gestor também tem. E é aí que esse trabalho faz sentido. O produto do Matheus está muito alinhado com o que o mercado precisa hoje: não é só dar visão e estratégia, é entrar e operar junto, botar a mão na massa e ensinar o gestor no processo."</blockquote>
-        </figure>
-        <figure class="depo__card reveal">
-          <figcaption class="depo__head">
-            <span class="depo__avatar" style="background-image:url('/assets/dinarte.jpg');background-position:50% 34%;background-size:118%"></span>
-            <div class="depo__who">Dinarte<span class="depo__ctx">Dono da Biotop</span></div>
-          </figcaption>
-          <blockquote class="depo__quote">"Quando começou, eu tinha uns 10, 12 projetos travados que eu não conseguia resolver, dependia de um, dependia de outro, estava tudo parado. No primeiro mês já veio a clareza: a gente organizou tudo numa linha de produção, e o que antes passava todo por mim, hoje as meninas resolvem e me mostram pronto. Só de ter essa clareza eu já durmo mais tranquilo, tirei um peso das costas. Depois entrou a parte de IA e foi eficiência gigantesca, o que eu levava horas pra fazer, saiu num comando. E agora a delegação ficou clara de verdade: clareza, prazo e monitoramento. Ficou perfeito."</blockquote>
-        </figure>
-      </div>
-      <p class="custo__close reveal" style="margin-top:34px">O sócio disse antes de começar: o trabalho maior não seria na empresa, seria no dono. <strong>É o Princípio do Espelho dito por quem viveu.</strong></p>
-    </div>
-  </section>
-
-  <!-- ============ 10 · A OFERTA ============ -->
-  <section class="section oferta">
-    <div class="container">
-      <p class="eyebrow eyebrow--center reveal">A Oferta</p>
-
-      <div class="oferta__intro reveal">
-        <div class="oferta__card">
-          <h3 class="oferta__label">O que é</h3>
-          <p>Uma mentoria de 120 dias pra tirar você do tático, com 12 meses de acesso pra consolidar.</p>
+      <!-- 5 · PRINCÍPIO DO ESPELHO -->
+      <section class="mirror">
+        <div class="wrap measure">
+          <p class="eyebrow rise">O princípio que guia tudo</p>
+          <h2 class="h-sec rise">O Princípio do Espelho</h2>
+          <p class="mirror__sub rise">A empresa é o reflexo do dono.</p>
+          <div class="body-col">
+            <p class="rise">Você nunca vê um CNPJ quebrar antes do CPF já ter quebrado. Onde a empresa trava é onde o dono está travado.</p>
+            <p class="rise">Por isso a gente não começa consertando a empresa. Começa calibrando quem decide. É desconfortável ouvir, e é exatamente por isso que funciona.</p>
+          </div>
+          <p class="pull rise">Some o dono do meio, e o que sobra é o tamanho real da empresa.</p>
         </div>
-        <div class="oferta__card">
-          <h3 class="oferta__label">Pra quem é</h3>
-          <p>Dono de empresa que fatura entre R$100 mil e R$500 mil por mês, com 4 a 30 funcionários. Já tem time, já tem gente boa, e ainda é o gargalo de tudo. Se a empresa para de decidir quando você para, é pra você.</p>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 6 · O OUTRO LADO -->
+      <section class="otherside">
+        <div class="wrap measure">
+          <p class="eyebrow rise">O outro lado</p>
+          <h2 class="h-sec rise">Agora leia a mesma lista do outro lado.</h2>
+          <p class="intro rise">Não é sonho. É o que muda quando o dono muda de papel.</p>
+          <ul class="reckon reckon--win rise">
+            <li><span class="mk">→</span><span>O faturamento que cresce volta a virar lucro que fica.</span></li>
+            <li><span class="mk">→</span><span>O gestor decide e te informa. Não pergunta: resolve.</span></li>
+            <li><span class="mk">→</span><span>A folha estabiliza em relação à margem.</span></li>
+            <li><span class="mk">→</span><span>Você tira quinze dias reais e a empresa nem sente.</span></li>
+            <li><span class="mk">→</span><span>Gente boa fica, porque agora existe clareza e autonomia.</span></li>
+            <li><span class="mk">→</span><span>Você some por uns dias e a empresa continua decidindo.</span></li>
+          </ul>
+          <p class="reckon__close rise">E sobra o que faz isso valer a pena: cabeça e agenda pra abrir a segunda unidade. E chegar em casa antes do seu filho dormir, sem que a exceção vire regra.</p>
+          <p class="pull rise">O teste é simples: a sua empresa aguenta quinze dias sem você?</p>
         </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 7 · O MÉTODO -->
+      <section class="method">
+        <div class="wrap measure">
+          <p class="eyebrow rise">O método</p>
+          <h2 class="h-sec rise">Como o executor vira gestor.</h2>
+          <p class="intro rise">Cinco pilares, na ordem certa. Não dá pra vender mais numa casa desorganizada — por isso marketing é o último, não o primeiro.</p>
+          <ol class="pillars rise">
+            <li><span class="pillar__n">01</span><div><div class="pillar__name">Calibração do Gestor</div><div class="pillar__line">Sua empresa não está travada. Você está travado nela. Aqui você volta pra decisão estratégica.</div></div></li>
+            <li><span class="pillar__n">02</span><div><div class="pillar__name">Hierarquia &amp; Liderança</div><div class="pillar__line">Equipe que não pode decidir nunca cresce com você. Aqui ela passa a decidir sozinha.</div></div></li>
+            <li><span class="pillar__n">03</span><div><div class="pillar__name">Processos &amp; Cultura</div><div class="pillar__line">Tudo que mora só na sua cabeça morre quando você sai. Aqui vira processo.</div></div></li>
+            <li><span class="pillar__n">04</span><div><div class="pillar__name">Eficiência com IA</div><div class="pillar__line">A maioria contrata gente quando devia automatizar tarefa. Aqui você escala sem inchar a folha.</div></div></li>
+            <li><span class="pillar__n">05</span><div><div class="pillar__name">Marketing &amp; Vendas</div><div class="pillar__line">Vender mais sem virar gerente comercial. Por último, de propósito: acelera o que já está de pé.</div></div></li>
+          </ol>
+          <h3 class="phasehead rise">120 dias pra sair da operação. 12 meses pra consolidar.</h3>
+          <div class="phases rise">
+            <div class="phase"><span class="phase__when">Mês 1–4 · Implementação</span><span class="phase__what">Instalamos os pilares 1 a 4. <b>No mês 4 você sai da operação.</b></span></div>
+            <div class="phase"><span class="phase__when">Mês 5–6 · Consolidação</span><span class="phase__what">Pilar 5, marketing e vendas — agora com a casa em ordem.</span></div>
+            <div class="phase"><span class="phase__when">Mês 7–12 · Sustentação</span><span class="phase__what">Correção de rota e recalibragem, até virar rotina sem você.</span></div>
+          </div>
+          <p class="format rise">São 9 encontros individuais nos marcos: encontro → tarefa → feedback → call de lapidação. Você não precisa lembrar de marcar nada — o método te convoca.</p>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 8 · A CONTA -->
+      <section class="price">
+        <div class="wrap measure">
+          <p class="eyebrow rise">A conta que ninguém faz</p>
+          <h2 class="h-sec rise">Contratar um gerente custa mais e resolve menos.</h2>
+          <div class="body-col">
+            <p class="rise">O caminho óbvio é contratar um gerente pra tirar isso das suas costas. Um bom gestor sai por R$14 mil por mês com encargos — mais de R$168 mil no ano. E, sem processo documentado, você não delega responsabilidade. Delega o caos. As decisões continuam voltando pra você.</p>
+          </div>
+          <div class="compare rise">
+            <div class="cell"><div class="cell__k">O gerente</div><div class="cell__v">R$168.000<span style="font-size:.55em;color:var(--bone-3);font-weight:700"> / ano</span></div><div class="cell__note">E, quando pede demissão, o processo vai junto.</div></div>
+            <div class="cell cell--win"><div class="cell__k">A mentoria</div><div class="cell__v">Uma fração<span style="font-size:.55em;color:var(--bone-3);font-weight:700"> disso</span></div><div class="cell__note">Pelos 12 meses. E o que fica é o processo: ele não vai embora.</div></div>
+          </div>
+          <div class="slam rise">
+            <div class="slam__fig">Menos de um mês.</div>
+            <p class="slam__sub">A mentoria inteira, pelos doze meses, custa <b>menos do que um único mês</b> daquele gerente que não resolve. O valor exato a gente vê na conversa, junto com se faz sentido você entrar agora.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 9 · PROVA -->
+      <section class="proof">
+        <div class="wrap frame">
+          <p class="eyebrow rise">Prova</p>
+          <h2 class="h-sec rise">Funciona com dono de verdade.</h2>
+          <p class="intro rise">A Biotop vivia dependente do dono: tudo passava pelo Dinarte. Veja o que os dois sócios dizem depois do método.</p>
+          <div class="depo-grid rise">
+            <div class="depo">
+              <div class="depo__head">
+                <div class="depo__avatar" style="background-image:url('/assets/dinarte.jpg');background-position:50% 34%;background-size:118%"></div>
+                <div><div class="depo__who">Dinarte</div><span class="depo__ctx">Dono da Biotop</span></div>
+              </div>
+              <p class="depo__quote">“Quando começou, eu tinha uns 10, 12 projetos travados que eu não conseguia resolver, dependia de um, dependia de outro, estava tudo parado. No primeiro mês já veio a clareza: a gente organizou tudo numa linha de produção, e o que antes passava todo por mim, hoje as meninas resolvem e me mostram pronto. Só de ter essa clareza eu já durmo mais tranquilo, tirei um peso das costas. Depois entrou a parte de IA e foi eficiência gigantesca, o que eu levava horas pra fazer, saiu num comando. E agora a delegação ficou clara de verdade: clareza, prazo e monitoramento. Ficou perfeito.”</p>
+            </div>
+            <div class="depo">
+              <div class="depo__head">
+                <div class="depo__avatar" style="background-image:url('/assets/joao.jpg');background-position:50% 8%;background-size:200%"></div>
+                <div><div class="depo__who">João</div><span class="depo__ctx">Sócio da Biotop</span></div>
+              </div>
+              <p class="depo__quote">“Eu falei pro Matheus logo no começo: o nosso maior trabalho não ia ser na Biotop, ia ser no Dinarte. Porque quem move a empresa são as pessoas, se a empresa tem um problema, muito provavelmente o gestor também tem. E é aí que esse trabalho faz sentido. O produto do Matheus está muito alinhado com o que o mercado precisa hoje: não é só dar visão e estratégia, é entrar e operar junto, botar a mão na massa e ensinar o gestor no processo.”</p>
+            </div>
+          </div>
+          <div class="founder rise" style="max-width:var(--measure)"><b>Essa é a turma fundadora — nove vagas.</b> Vou ser honesto sobre o porquê do preço: é com essa turma que eu monto o banco de casos da mentoria. Quem entra agora entra pelo menor valor que vai existir, e vira o resultado que os próximos vão ver nesta página. Depois dessa turma, esse preço não volta.</div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 10 · CUSTO DA INAÇÃO -->
+      <section class="inaction">
+        <div class="wrap measure">
+          <p class="eyebrow eyebrow--muted rise">O outro preço</p>
+          <h2 class="h-sec rise">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
+          <div class="body-col">
+            <p class="rise">Há quanto tempo você está assim? Três anos? Cinco? Pensa no que isso já te custou. Não em dinheiro — em coisa que você não fez. A viagem que não teve. O jantar que virou reunião. A ideia que morreu porque você estava apagando incêndio.</p>
+          </div>
+          <p class="pull rise">Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente.</p>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 11 · A OFERTA -->
+      <section class="offer-sec">
+        <div class="wrap measure">
+          <p class="eyebrow rise">A oferta</p>
+          <h2 class="h-sec rise">O que você leva.</h2>
+          <p class="intro rise">Uma mentoria de 120 dias pra te tirar da operação, com 12 meses de acesso pra consolidar. Na prática:</p>
+          <ul class="offer rise">
+            <li><div class="offer__name">Método Empresa Sem Você</div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.</div></li>
+            <li><div class="offer__name">9 calls individuais</div><div class="offer__desc">Uma em cada marco, olhando o seu negócio — não um conteúdo genérico.</div></li>
+            <li><div class="offer__name">WhatsApp direto</div><div class="offer__desc">Comigo e com a Carine, nossa gestora de sucesso. Sem fila.</div></li>
+            <li><div class="offer__name">IA da mentoria</div><div class="offer__desc">Diagnóstico 24h, pra quando a dúvida aparece fora da call.</div></li>
+            <li><div class="offer__name">Swipe File Espelho</div><div class="offer__desc">Modelos prontos: DISC, RACI, SLAs, scripts e dashboards.</div></li>
+            <li><div class="offer__name">Análise CIS</div><div class="offer__desc">3 ajustes personalizados do seu perfil comportamental.</div></li>
+            <li><div class="offer__name"><span>Bônus ·</span> Sistema RIC</div><div class="offer__desc">O método de produtividade: Foco, Ação, Sistema e Tempo.</div></li>
+          </ul>
+          <p class="reckon__close rise">Consultoria comum otimiza o que já existe. Aqui a gente calibra quem decide — por isso o resultado se sustenta depois que a mentoria acaba.</p>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 12 · CANDIDATURA -->
+      <section id="candidatura" class="apply">
+        <div class="wrap measure">
+          <p class="eyebrow rise">Como entrar</p>
+          <h2 class="h-sec rise">Não é compra. É candidatura.</h2>
+          <p class="intro rise">São 9 vagas nesta turma, e eu escolho quem entra. Não é sobre quem tem dinheiro: pra quem fatura o que você fatura, o valor não é o obstáculo. É porque esta turma vira meus próximos casos, e eu quero os donos certos.</p>
+          <div class="steps rise">
+            <div class="step"><span class="step__n">1</span><span class="step__t"><b>Você preenche uma candidatura de 2 minutos.</b></span></div>
+            <div class="step"><span class="step__n">2</span><span class="step__t">A gente conversa pra ver se faz sentido — pros dois lados.</span></div>
+            <div class="step"><span class="step__n">3</span><span class="step__t">Se entrar, tem <b>7 dias de garantia incondicional</b>. Vê tudo por dentro e, se não for pra você, devolvo 100%. O risco é meu.</span></div>
+          </div>
+          <p class="scarce rise">Turma fundadora · <em>9 vagas</em> · esse preço não volta.</p>
+          <div class="cta rise">
+            <a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">→</span></a>
+            <span class="cta__note">2 minutos · candidatura, não compra · garantia de 7 dias</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="rule" />
+
+      <!-- 13 · OBJEÇÕES -->
+      <section class="objections">
+        <div class="wrap measure">
+          <p class="eyebrow eyebrow--muted rise">Antes de você dizer “agora não”</p>
+          <h2 class="h-sec rise">As quatro coisas que você está pensando agora.</h2>
+          <div class="obj rise">
+            <div class="obj__row"><div class="obj__q">“Não tenho tempo.”</div><div class="obj__a">Você não vai encontrar tempo — ele não está sobrando em canto nenhum. São 9 calls em 12 meses, e a primeira já te devolve horas da semana.</div></div>
+            <div class="obj__row"><div class="obj__q">“Já tentei contratar e não resolveu.”</div><div class="obj__a">Sem processo documentado, você não delegou responsabilidade. Delegou o caos. Aqui a gente documenta primeiro.</div></div>
+            <div class="obj__row"><div class="obj__q">“Já comprei curso que nunca usei.”</div><div class="obj__a">Esse não depende da sua disciplina. O método te convoca: a plataforma marca a call, e a sua parte é aparecer.</div></div>
+            <div class="obj__row"><div class="obj__q">“Meu setor é diferente.”</div><div class="obj__a">O método não mexe no seu produto. Mexe em quem decide. E quem decide é igual em todo setor: você.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 14 · FECHAMENTO -->
+      <section class="final">
+        <div class="wrap measure final__in">
+          <p class="eyebrow rise">A decisão</p>
+          <h2 class="rise">Daqui a um ano você vai estar exatamente onde está hoje. Ou não.</h2>
+          <div class="body-col">
+            <p class="rise">A diferença entre esses dois cenários não é mercado, não é equipe e não é sorte. É o que você decide fazer com o teto que já sabe que existe.</p>
+          </div>
+          <div class="cta rise">
+            <a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">→</span></a>
+            <span class="cta__note">2 minutos · candidatura, não compra · garantia de 7 dias · 9 vagas</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__in">
+        <span><b>Empresa Sem Você</b> · mentoria de gestão conduzida por Matheus Martins</span>
+        <span>@matheusmartins.x</span>
       </div>
+    </footer>
+  </div>
 
-      <div class="oferta__notfor reveal">
-        <div class="oferta__card">
-          <h3 class="oferta__label">Pra quem não é</h3>
-          <p>Se você está começando agora, ainda não tem equipe, ou procura alguém que conserte a empresa no seu lugar, não se candidata. Aqui o trabalho começa em você, e sem isso o método não funciona.</p>
-        </div>
-      </div>
-
-      <div class="oferta__deliver reveal">
-        <h3 class="oferta__subtitle" style="text-align:center;margin:56px 0 32px">O que você recebe</h3>
-        <ol class="deliver-list">
-          <li class="deliver">
-            <span class="deliver__idx">1</span>
-            <div><strong>Método Empresa Sem Você:</strong> os 5 pilares, passo a passo, do tático ao estratégico. O caminho que tira você do meio de cada decisão.</div>
-          </li>
-          <li class="deliver">
-            <span class="deliver__idx">2</span>
-            <div><strong>9 calls individuais:</strong> uma por marco da jornada. A plataforma te convoca, você aparece com a pauta.</div>
-          </li>
-          <li class="deliver">
-            <span class="deliver__idx">3</span>
-            <div><strong>WhatsApp individual:</strong> canal direto comigo e com a Carine, que cuida do sucesso do cliente na mentoria. Resposta em até 1 dia útil.</div>
-          </li>
-          <li class="deliver">
-            <span class="deliver__idx">4</span>
-            <div><strong>IA da Mentoria:</strong> diagnóstico, delegação, agenda e rituais, disponível 24 horas. Você não espera a próxima call pra destravar uma decisão.</div>
-          </li>
-          <li class="deliver">
-            <span class="deliver__idx">5</span>
-            <div><strong>Swipe File Espelho:</strong> DISC, RACI, SLAs, scripts e dashboards prontos. Você adapta em vez de criar do zero.</div>
-          </li>
-          <li class="deliver">
-            <span class="deliver__idx">6</span>
-            <div><strong>Análise comportamental CIS:</strong> três ajustes personalizados pro seu perfil de decisão.</div>
-          </li>
-          <li class="deliver deliver--bonus">
-            <span class="deliver__idx">★</span>
-            <div><strong>Bônus · Sistema RIC:</strong> método de produtividade pra você render mais fora do operacional, em Foco, Ação, Sistema e Tempo.</div>
-          </li>
-        </ol>
-      </div>
-
-      <div class="oferta__why reveal">
-        <h3 class="oferta__label">Por que funciona</h3>
-        <p>Consultoria comum otimiza o que já existe. Aqui a gente calibra quem decide o que existe. O trabalho começa no dono, por isso o resultado se sustenta.</p>
-      </div>
-
-      <!-- 11 · COMO FUNCIONA A ENTRADA -->
-      <div class="oferta__steps reveal" style="margin-top:72px">
-        <p class="eyebrow eyebrow--center">Não é compra. É candidatura.</p>
-        <ol class="steps-list">
-          <li><span class="steps__n">1</span><div>Você preenche a candidatura. Leva 2 minutos.</div></li>
-          <li><span class="steps__n">2</span><div>A gente conversa pra ver se faz sentido pros dois lados. São 9 calls individuais por pessoa, é o que cabe na agenda. 10 vagas nesta turma.</div></li>
-          <li><span class="steps__n">3</span><div>Se for encaixe, você entra com 7 dias de garantia incondicional. Entra, vê tudo por dentro, e se não for pra você, devolvo 100%. O risco é meu.</div></li>
-        </ol>
-      </div>
-
-      <div class="oferta__price oferta__price--solo reveal">
-        <div class="price__guarantee">
-          <p class="price__tag">Turma fundadora · 10 vagas</p>
-          <h3 class="oferta__label">Garantia de 7 dias</h3>
-          <p>7 dias incondicional. Entra, vê tudo por dentro, e se não for pra você, devolvo 100%. <strong>O risco é meu.</strong></p>
-          <p class="price__founder">Este é o <strong>preço de turma fundadora</strong>: as 10 primeiras vagas ancoram o valor mais baixo que a Empresa Sem Você vai ter. Com os primeiros cases documentados, o próximo lote entra em outro patamar. Quem entra agora não vê esse preço de novo.</p>
-          <a href="/cadastro" class="btn btn--gold">Fazer minha candidatura</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 12 · OBJEÇÕES ============ -->
-  <section class="section faq">
-    <div class="container narrow">
-      <p class="eyebrow eyebrow--center reveal">Antes de você dizer "agora não"</p>
-      <div class="faq__list">
-        <div class="faq__item reveal">
-          <p class="faq__q">"Não tenho tempo pra mentoria."</p>
-          <p>Você não vai encontrar tempo. Ele não está sobrando em nenhum canto da sua semana, é exatamente por isso que você precisa sair do lugar que consome ele. São 9 calls em 12 meses e tarefas que substituem coisas que você já faz de forma pior.</p>
-        </div>
-        <div class="faq__item reveal">
-          <p class="faq__q">"Eu já tentei resolver contratando alguém."</p>
-          <p>Quase todo mundo tenta. E quase sempre falha pelo mesmo motivo: sem processo documentado, você não delegou nada, só passou o caos adiante com um salário em cima.</p>
-        </div>
-        <div class="faq__item reveal">
-          <p class="faq__q">"Já comprei curso que não usei."</p>
-          <p>O problema não é o preço, é comprar mais uma coisa que fica parada. Aqui ninguém te cobra: o método te convoca. A plataforma marca a call, e sua parte é aparecer com a pauta.</p>
-        </div>
-        <div class="faq__item reveal">
-          <p class="faq__q">"Meu setor é diferente."</p>
-          <p>O método não mexe no seu produto nem no seu mercado. Mexe em quem decide, em como decide e no que precisa parar de passar por você. Isso é igual numa clínica, numa indústria e numa agência.</p>
-        </div>
-        <div class="faq__item reveal">
-          <p class="faq__q">"Isso não é mais um guru de internet?"</p>
-          <p>Justo. Por isso a inscrição é uma candidatura, e não um botão de compra: a gente conversa antes, eu digo se é pra você agora, e você tem 7 dias pra desistir depois de ver tudo por dentro.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 14 · FECHAMENTO ============ -->
-  <section class="section cta-final">
-    <div class="container narrow cta-final__inner reveal">
-      <h2 class="section__title section__title--center">Daqui a um ano você vai estar exatamente onde está hoje.<br /><em>Ou não.</em></h2>
-      <p class="cta-final__body">A diferença entre esses dois cenários não é mercado, não é equipe e não é sorte. É o que você decide fazer com o teto que já sabe que existe.<br /><br /><strong>Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente.</strong></p>
-      <a href="/cadastro" class="btn btn--gold">Fazer minha candidatura</a>
-      <p class="hero__micro" style="margin-top:16px">Leva 2 minutos · candidatura, não compra · garantia de 7 dias</p>
-    </div>
-  </section>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container footer__inner reveal">
-      <p class="footer__brand">Empresa <span class="i">Sem Você</span></p>
-      <p class="footer__meta">@matheusmartins.x · Mentoria Empresa Sem Você</p>
-      <p class="footer__note">A inscrição é uma candidatura, não uma compra imediata.</p>
-    </div>
-  </footer>
-
-  <!-- Checklist interativo: destaca o veredito ao marcar 3+ -->
   <script>
-    (function(){
-      var boxes = document.querySelectorAll('.esv-check input[type="checkbox"]');
-      var v = document.querySelector('.esv-verdict');
-      var cta = document.getElementById('esvCtaMini');
-      if (!boxes.length || !v) return;
-      boxes.forEach(function(b){
-        b.addEventListener('change', function(){
-          var n = 0; boxes.forEach(function(x){ if (x.checked) n++; });
-          var hit = n >= 3;
-          v.classList.toggle('esv-verdict--hit', hit);
-          if (cta) cta.classList.toggle('is-on', hit);
-        });
-      });
-    })();
-  </script>
-
-  <!-- Coreografia de reveals: cascata escalonada (estilo atrium) -->
-  <script>
-    (function(){
-      var GROUPS = [
-        { s: '.hero__copy',    step: 90,  unwrap: true },
-        { s: '.pillars',       step: 85 },
-        { s: '.phases',        step: 95 },
-        { s: '.oferta__intro', step: 110, unwrap: true },
-        { s: '.prize-list',    step: 70 },
-        { s: '.deliver-list',  step: 55 },
-        { s: '.steps-list',    step: 70 },
-        { s: '.esv-check',      step: 55, unwrap: true },
-        { s: '.faq__list',     step: 75 },
-        { s: '.depo-grid',     step: 130 }
-      ];
-      GROUPS.forEach(function(g){
-        document.querySelectorAll(g.s).forEach(function(c){
-          if (g.unwrap) c.classList.remove('reveal');
-          Array.prototype.forEach.call(c.children, function(kid, i){
-            kid.classList.add('reveal');
-            kid.style.transitionDelay = (i * g.step) + 'ms';
-          });
-        });
-      });
-    })();
-  </script>
-
-  <!-- Lenis — scroll suave (seção a seção) -->
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script>
-    if (window.Lenis && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const lenis = new Lenis({ duration: 1.05, smoothWheel: true });
-      (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })();
+  (function(){
+    var els=document.querySelectorAll('.rise');
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    if(reduce||!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in');});}
+    else{
+      var hero=document.querySelectorAll('.hero .rise');
+      requestAnimationFrame(function(){requestAnimationFrame(function(){hero.forEach(function(e){e.classList.add('in');});});});
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+      },{rootMargin:'0px 0px -12% 0px',threshold:.14});
+      els.forEach(function(e){if(!e.closest('.hero'))io.observe(e);});
     }
+    window.dataLayer=window.dataLayer||[];
+    document.querySelectorAll('a[href="/cadastro"]').forEach(function(a){
+      a.addEventListener('click',function(){window.dataLayer.push({event:'clique_cta'});});
+    });
+  })();
   </script>
-  <script type="module" src="script.js"></script>
 </body>
 </html>
