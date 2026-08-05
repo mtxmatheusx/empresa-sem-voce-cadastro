@@ -49,7 +49,7 @@
   .wrap{width:100%;margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem)}
   .frame{max-width:var(--frame);margin-inline:auto}
   .measure{max-width:var(--measure);margin-inline:auto}
-  section{padding-block:clamp(4rem,9vw,7.5rem);position:relative}
+  section{padding-block:clamp(3.25rem,6.4vw,5.5rem);position:relative}
   .center{text-align:center}
 
   /* dividers */
@@ -98,7 +98,7 @@
   .brand-logo{height:38px;width:auto}
 
   /* hero */
-  .hero{padding-top:clamp(3.5rem,8vw,6rem);text-align:center;overflow:hidden}
+  .hero{padding-top:clamp(2rem,4.5vw,3.5rem);text-align:center;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:-20% 0 auto 0;height:70%;pointer-events:none;
     background:radial-gradient(60% 60% at 50% 0%,rgba(201,162,39,.16),transparent 70%)}
   .hero__in{position:relative;z-index:1;max-width:56rem;margin:0 auto}
@@ -240,6 +240,10 @@
   @media(max-width:560px){
     .cta{align-items:stretch}.btn{width:100%}
     .hero{text-align:center}
+    .stat{flex-direction:column;align-items:flex-start;gap:.7rem}
+    .stat__fig{font-size:2.4rem}
+    .card,.num,.obj__row,.cell,.depo,.founder{padding:1.25rem}
+    .hero__promise{padding-inline:.25rem}
   }
   </style>
 
