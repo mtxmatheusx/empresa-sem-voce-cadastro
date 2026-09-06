@@ -270,7 +270,18 @@
   .founder b{color:var(--gold-3)}
 
   /* offer list */
-  .offer{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
+    .offer{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
+  .offer__val{color:var(--gold-3);font-weight:600;white-space:nowrap;margin-left:.5rem;
+    font-variant-numeric:tabular-nums}
+  .offer__row{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+  .offer__dots{flex:1;height:1px;align-self:center;
+    background:repeating-linear-gradient(90deg,var(--line-2) 0 2px,transparent 2px 6px);opacity:.6}
+  .anchor{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--gold-line);
+    display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .anchor__k{color:var(--mute);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+  .anchor__v{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4.2vw,2.4rem);
+    color:var(--gold-3);font-variant-numeric:tabular-nums}
+  .anchor__note{color:var(--mute);font-size:.98rem;margin-top:.5rem;flex-basis:100%}
   .offer li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;background:var(--panel);
     border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem}
   .offer li::before{content:"✓";color:var(--gold-3);font-weight:800;line-height:1.5}
@@ -607,8 +618,8 @@
           <div class="cell cell--win rise"><div class="cell__k">A mentoria</div><div class="cell__v">Uma fração<span style="font-size:.5em;color:var(--mute)"> disso</span></div><div class="cell__note">Pelos 12 meses. E o que fica é o processo: ele não vai embora.</div></div>
         </div>
         <div class="slam rise">
-          <div class="slam__fig">Pouco mais de um mês.</div>
-          <p class="slam__sub">A mentoria inteira, pelos doze meses, custa <strong>pouco mais do que um único mês</strong> daquele gerente que não resolve. A diferença é que o sistema fica, mesmo quando alguém sai. O valor exato a gente vê na conversa, junto com se faz sentido você entrar agora.</p>
+          <div class="slam__fig">Menos de 10% disso.</div>
+          <p class="slam__sub">O gerente custa R$ 168 mil por ano e leva o processo embora quando pede demissão. A mentoria inteira, pelos doze meses, custa <strong>menos de 10% disso</strong> — e o que ela instala fica, mesmo quando alguém sai. O valor exato a gente vê na conversa, junto com se faz sentido você entrar agora.</p>
         </div>
       </div>
     </section>
@@ -654,6 +665,7 @@
         <div class="body-col" style="margin-top:1.4rem">
           <p class="rise">Há quanto tempo você está assim? Três anos? Cinco? Pensa no que isso já te custou. Não em dinheiro, em coisa que você não fez. A viagem que não teve. O jantar que virou reunião. A ideia que morreu porque você estava apagando incêndio.</p>
         </div>
+        <p class="rise" style="margin-top:1.4rem">E dá pra medir. Dez horas por semana somem em decisão que não era sua: são <strong>520 horas por ano</strong>. Treze semanas de trabalho, todo ano, pagas com a sua vida.</p>
         <p class="pull rise">Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente.</p>
       </div>
     </section>
@@ -667,16 +679,21 @@
         <h2 class="h-sec rise">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
         <ul class="offer">
-          <li class="rise"><div><span class="offer__name">Diagnóstico Espelho + a Régua</span><div class="offer__desc">Na primeira semana a gente mede quantas horas você perde com decisão que não é sua. Esse número vira a sua linha de base, e é ele que a garantia tem que derrubar.</div></div></li>
-          <li class="rise"><div><span class="offer__name">As 3 Primeiras Devoluções</span><div class="offer__desc">Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você ganha tempo antes de ter um único processo documentado.</div></div></li>
-          <li class="rise"><div><span class="offer__name">Método Empresa Sem Você</span><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.</div></div></li>
-          <li class="rise"><div><span class="offer__name">9 calls individuais</span><div class="offer__desc">Uma em cada marco, olhando o seu negócio, não um conteúdo genérico.</div></div></li>
-          <li class="rise"><div><span class="offer__name">WhatsApp direto</span><div class="offer__desc">Comigo e com a Carine, nossa gestora de sucesso. Sem fila.</div></div></li>
-          <li class="rise"><div><span class="offer__name">IA da mentoria</span><div class="offer__desc">Diagnóstico 24h, pra quando a dúvida aparece fora da call.</div></div></li>
-          <li class="rise"><div><span class="offer__name">Swipe File Espelho</span><div class="offer__desc">Modelos prontos: DISC, RACI, SLAs, scripts e dashboards.</div></div></li>
-          <li class="rise"><div><span class="offer__name">Análise DISC</span><div class="offer__desc">Seu perfil de decisão mapeado pelo CIS Assessment (Febracis), com 3 ajustes personalizados.</div></div></li>
-          <li class="rise"><div><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><div class="offer__desc">O método de produtividade: Foco, Ação, Sistema e Tempo.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">Na primeira semana a gente mede quantas horas você perde com decisão que não é sua. Esse número vira a sua linha de base, e é ele que a garantia tem que derrubar.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você ganha tempo antes de ter um único processo documentado.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma em cada marco, olhando o seu negócio, não um conteúdo genérico.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, nossa gestora de sucesso. Sem fila.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra quando a dúvida aparece fora da call.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">Modelos prontos: DISC, RACI, SLAs, scripts e dashboards.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão mapeado pelo CIS Assessment (Febracis), com 3 ajustes personalizados.</div></div></li>
+          <li class="rise"><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">O método de produtividade: Foco, Ação, Sistema e Tempo.</div></div></li>
         </ul>
+        <div class="anchor rise">
+          <span class="anchor__k">Valor de tudo isso</span>
+          <span class="anchor__v">R$ 23.400</span>
+          <p class="anchor__note">O que você investe, a gente vê na conversa. E não é esse número.</p>
+        </div>
         <p class="reckon__close rise">Consultoria comum otimiza o que já existe. Aqui a gente calibra quem decide, por isso o resultado se sustenta depois que a mentoria acaba.</p>
       </div>
     </section>
@@ -709,11 +726,13 @@
     <section>
       <div class="wrap measure">
         <p class="eyebrow eyebrow--muted rise">Antes de você dizer “agora não”</p>
-        <h2 class="h-sec rise">As quatro coisas que você está pensando agora.</h2>
+        <h2 class="h-sec rise">As seis coisas que você está pensando agora.</h2>
         <div class="obj stagger">
           <div class="obj__row rise"><div class="obj__q">“Não tenho tempo.”</div><div class="obj__a">Você não vai encontrar tempo, ele não está sobrando em canto nenhum. São 9 calls em 12 meses, e a primeira já te devolve horas da semana.</div></div>
           <div class="obj__row rise"><div class="obj__q">“Já tentei contratar e não resolveu.”</div><div class="obj__a">Sem processo documentado, você não delegou responsabilidade. Delegou o caos. Aqui a gente documenta primeiro.</div></div>
           <div class="obj__row rise"><div class="obj__q">“Já comprei curso que nunca usei.”</div><div class="obj__a">Esse não depende da sua disciplina. O método te convoca: a plataforma marca a call, e a sua parte é aparecer.</div></div>
+          <div class="obj__row rise"><div class="obj__q">“Você tem quantos casos?”</div><div class="obj__a">Um documentado, a Biotop, e é exatamente por isso que essa turma tem esse preço e essa garantia. Quando eu tiver dez, o preço será outro e a garantia será menor. Você está entrando no momento em que eu preciso que dê certo.</div></div>
+          <div class="obj__row rise"><div class="obj__q">“Deve ser caro.”</div><div class="obj__a">Custa menos de 10% do gerente que você pensou em contratar, e devolve dez horas por semana já nos primeiros 60 dias — ou eu sigo trabalhando sem cobrar. O número exato eu falo na conversa, depois de entender se faz sentido pra você.</div></div>
           <div class="obj__row rise"><div class="obj__q">“Meu setor é diferente.”</div><div class="obj__a">O método não mexe no seu produto. Mexe em quem decide. E quem decide é igual em todo setor: você.</div></div>
         </div>
       </div>
