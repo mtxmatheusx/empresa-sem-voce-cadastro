@@ -90,7 +90,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..900;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&display=swap" rel="stylesheet" />
 
   <style>
   *,*::before,*::after{box-sizing:border-box}
@@ -104,7 +104,8 @@
     --gold-soft:rgba(162,143,112,.10); --gold-line:rgba(191,174,146,.28);
     --ink:#0C0C0C;
     --sans:'DM Sans',system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-    --frame:72rem; --measure:42rem;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --frame:72rem; --measure:40rem;
     --ease:cubic-bezier(.22,1,.36,1);
     --ease-soft:cubic-bezier(.16,.72,.2,1);
   }
@@ -114,9 +115,9 @@
   ::selection{background:var(--gold);color:#14110B}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  h1,h2,h3{font-family:var(--sans);font-weight:600;line-height:1.14;letter-spacing:-.015em;text-wrap:balance;margin:0;color:var(--cream)}
+  h1,h2,h3{font-family:var(--serif);font-weight:300;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;line-height:1.16;letter-spacing:-.012em;text-wrap:balance;margin:0;color:var(--cream)}
   p{margin:0;text-wrap:pretty}
-  em{font-style:italic;color:var(--gold-3);font-weight:500}
+  em{font-family:var(--serif);font-style:italic;color:var(--gold-3);font-weight:300;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0}
   strong{color:var(--cream);font-weight:700}
 
   .wrap{width:100%;margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem)}
@@ -130,9 +131,9 @@
     background:linear-gradient(90deg,transparent,var(--line-2),transparent)}
 
   /* eyebrow with ornaments */
-  .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.72rem;letter-spacing:.24em;
-    text-transform:uppercase;color:var(--gold-2);font-weight:700;margin:0 0 1.3rem}
-  .eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-line))}
+  .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--mute);font-weight:500;margin:0 0 1.6rem}
+  .eyebrow::before{content:none}
   .eyebrow--c{display:flex;justify-content:center}
   .eyebrow--c::after{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--gold-line),transparent)}
   .eyebrow--muted{color:var(--mute-2)}
@@ -157,9 +158,9 @@
   .btn:hover .btn__arrow{transform:translateX(4px)}
   .btn:active{transform:scale(.96);transition-duration:.09s}
   .btn--ghost:active{transform:scale(.97)}
-  .btn--ghost{background:transparent;color:var(--gold-2);border:1px solid var(--gold-line);
+  .btn--ghost{background:transparent;color:var(--gold-3);border:1px solid var(--gold-line);
     box-shadow:none;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:.7rem 1.25rem}
-  .btn--ghost:hover{background:var(--gold-soft);border-color:var(--gold);transform:none;box-shadow:none}
+  .btn--ghost:hover{background:var(--gold-soft);border-color:var(--cream);transform:none;box-shadow:none}
   .cta{display:flex;flex-direction:column;align-items:flex-start;gap:.8rem;margin-top:2rem}
   .cta--c{align-items:center}
   .cta__note{font-size:.85rem;color:var(--mute-2);letter-spacing:.01em}
@@ -191,7 +192,7 @@
     display:grid;place-items:center;font-size:.72rem;font-weight:800;color:var(--ink);
     background:linear-gradient(135deg,var(--gold-3),var(--gold))}
   .av:first-child{margin-left:0}
-  .av--ph{background:linear-gradient(135deg,#2b2b2b,#171717);color:var(--gold-2);border-color:var(--bg)}
+  .av--ph{background:linear-gradient(135deg,#2b2b2b,#171717);color:var(--mute);border-color:var(--bg)}
   .proofpill span{font-size:.9rem;color:var(--text)}
   .proofpill b{color:var(--cream)}
 
@@ -201,19 +202,19 @@
   .g-2{grid-template-columns:repeat(2,1fr)}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.6rem;
     transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);text-align:left}
-  .card:hover{transform:translateY(-4px);border-color:var(--gold-line);box-shadow:0 22px 54px rgba(0,0,0,.45)}
+  .card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 22px 54px rgba(0,0,0,.45)}
   .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:1rem;
-    background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold-2)}
-  .ico svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.7;fill:none}
+    background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--cream)}
+  .ico svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.1;fill:none;opacity:.55}
   .card__t{font-weight:700;color:var(--cream);font-size:1.08rem;letter-spacing:-.01em}
   .card__d{color:var(--mute);margin-top:.5rem;line-height:1.6;font-size:.98rem}
 
   /* numbered list (steps / pillars) */
   .num{display:flex;gap:1rem;align-items:flex-start;background:var(--panel);border:1px solid var(--line);
     border-radius:14px;padding:1.2rem 1.4rem;transition:border-color .3s var(--ease),transform .3s var(--ease)}
-  .num:hover{border-color:var(--gold-line);transform:translateY(-2px)}
+  .num:hover{border-color:var(--line-2);transform:translateY(-2px)}
   .num__n{flex:none;width:2.4rem;height:2.4rem;border-radius:10px;display:grid;place-items:center;
-    font-weight:800;color:var(--gold-2);background:var(--gold-soft);border:1px solid var(--gold-line);font-size:1rem}
+    font-weight:800;color:var(--cream);background:var(--gold-soft);border:1px solid var(--gold-line);font-size:1rem}
   .num__t{font-weight:700;color:var(--cream)}
   .num__d{color:var(--mute);margin-top:.25rem;font-size:.98rem;line-height:1.55}
   .stack{display:grid;gap:.8rem}
@@ -222,14 +223,14 @@
   .reckon{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
   .reckon li{display:flex;gap:.9rem;align-items:flex-start;background:var(--panel);border:1px solid var(--line);
     border-radius:12px;padding:.95rem 1.1rem;color:var(--text);line-height:1.5}
-  .reckon .mk{color:var(--gold-2);font-weight:800;flex:none;line-height:1.5}
+  .reckon .mk{color:var(--mute);font-weight:800;flex:none;line-height:1.5}
   .reckon--win li{border-left:2px solid var(--gold)}
   .reckon__close{margin-top:1.6rem;color:var(--cream);font-size:1.1rem;line-height:1.5}
 
   /* stat */
   .stat{display:flex;gap:1.2rem;align-items:center;background:var(--panel);border:1px solid var(--gold-line);
     border-radius:16px;padding:1.4rem 1.6rem;margin-top:1.6rem}
-  .stat__fig{font-size:clamp(2rem,5vw,2.8rem);font-weight:800;color:var(--gold-2);line-height:1;flex:none}
+  .stat__fig{font-family:var(--serif);font-size:clamp(2.1rem,5.2vw,3rem);font-weight:300;color:var(--gold-3);line-height:1;flex:none}
   .stat__cap{color:var(--text);font-size:.98rem;line-height:1.5}
   .stat__cap b{color:var(--cream)}
 
@@ -238,20 +239,20 @@
   .auth__portrait{border-radius:20px;overflow:hidden;border:1px solid var(--line-2);position:relative;background:#111}
   .auth__portrait img{width:100%;height:100%;object-fit:cover}
   .auth__name{font-size:clamp(1.8rem,4vw,2.5rem);margin:.3rem 0 .2rem}
-  .auth__role{color:var(--gold-2);font-weight:700;letter-spacing:.02em;font-size:.95rem}
+  .auth__role{color:var(--mute);font-weight:700;letter-spacing:.02em;font-size:.95rem}
   .auth__body{color:var(--text);margin-top:1rem;line-height:1.65}
 
   /* compare (a conta) */
   .compare{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.8rem}
   .cell{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.6rem}
-  .cell--win{border-color:var(--gold-line);background:linear-gradient(180deg,var(--gold-soft),transparent)}
+  .cell--win{border-color:var(--line-2);background:linear-gradient(180deg,var(--gold-soft),transparent)}
   .cell__k{color:var(--mute);font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
   .cell__v{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;color:var(--cream);margin:.4rem 0 .5rem}
-  .cell--win .cell__v{color:var(--gold-2)}
+  .cell--win .cell__v{color:var(--gold-3)}
   .cell__note{color:var(--mute);font-size:.92rem;line-height:1.5}
   .slam{margin-top:1.6rem;text-align:center;background:var(--panel);border:1px solid var(--gold-line);
     border-radius:16px;padding:2rem 1.6rem}
-  .slam__fig{font-size:clamp(1.7rem,4.5vw,2.4rem);font-weight:800;color:var(--gold-2)}
+  .slam__fig{font-family:var(--serif);font-size:clamp(1.9rem,4.8vw,2.7rem);font-weight:300;color:var(--gold-2)}
   .slam__sub{color:var(--text);max-width:38rem;margin:.7rem auto 0;line-height:1.6}
 
   /* depoimentos */
@@ -266,16 +267,16 @@
   .depo__quote{color:var(--text);line-height:1.62;font-size:.98rem}
   .founder{margin-top:1.6rem;background:var(--gold-soft);border:1px solid var(--gold-line);border-radius:16px;
     padding:1.5rem 1.7rem;color:var(--text);line-height:1.6;max-width:var(--measure);margin-inline:auto}
-  .founder b{color:var(--gold-2)}
+  .founder b{color:var(--gold-3)}
 
   /* offer list */
   .offer{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
   .offer li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;background:var(--panel);
     border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem}
-  .offer li::before{content:"✓";color:var(--gold-2);font-weight:800;line-height:1.5}
+  .offer li::before{content:"✓";color:var(--mute);font-weight:800;line-height:1.5}
   .offer__name{font-weight:700;color:var(--cream)}
   .offer__desc{color:var(--mute);font-size:.95rem}
-  .offer__name span{color:var(--gold-2)}
+  .offer__name span{color:var(--mute)}
 
   /* objections */
   .obj{display:grid;gap:.7rem;margin-top:1.6rem}
@@ -394,7 +395,7 @@
     .topbar{background:var(--bg);backdrop-filter:none}
   }
   @media (prefers-contrast: more){
-    .card,.num,.obj__row,.cell,.depo,.proofpill,.stat,.founder{border-color:var(--gold-line)}
+    .card,.num,.obj__row,.cell,.depo,.proofpill,.stat,.founder{border-color:var(--line-2)}
     .rule{background:var(--line-2)}
     .hero__promise,.card__d,.num__d,.obj__a,.depo__ctx{color:var(--text)}
   }
@@ -533,7 +534,7 @@
       <div class="wrap measure">
         <p class="eyebrow eyebrow--c rise">O princípio que guia tudo</p>
         <h2 class="h-sec rise">O Princípio do Espelho</h2>
-        <p class="lede rise" style="color:var(--cream)">A empresa é o reflexo do dono.</p>
+        <p class="lede rise" style="color:var(--gold-3)">A empresa é o reflexo do dono.</p>
         <div class="body-col" style="margin-top:1.4rem;text-align:left">
           <p class="rise">Você nunca vê um CNPJ quebrar antes do CPF já ter quebrado. Onde a empresa trava é onde o dono está travado.</p>
           <p class="rise">Por isso a gente não começa consertando a empresa. Começa calibrando quem decide. É desconfortável ouvir, e é exatamente por isso que funciona.</p>
@@ -583,9 +584,9 @@
 
         <h3 class="h-sec rise" style="font-size:clamp(1.3rem,2.6vw,1.7rem);margin-top:3rem;text-align:center">120 dias pra deixar de ser o gargalo. 12 meses pra consolidar.</h3>
         <div class="grid g-3 stagger" style="margin-top:1.6rem">
-          <div class="card rise"><div class="card__t" style="color:var(--gold-2)">Mês 1–4 · Implementação</div><p class="card__d">Instalamos os pilares 1 a 4. <strong>No mês 4 você deixa de ser o gargalo.</strong></p></div>
-          <div class="card rise"><div class="card__t" style="color:var(--gold-2)">Mês 5–6 · Consolidação</div><p class="card__d">Pilar 5, marketing e vendas, agora com a casa em ordem.</p></div>
-          <div class="card rise"><div class="card__t" style="color:var(--gold-2)">Mês 7–12 · Sustentação</div><p class="card__d">Correção de rota e recalibragem, até virar rotina sem você.</p></div>
+          <div class="card rise"><div class="card__t" style="color:var(--gold-3)">Mês 1–4 · Implementação</div><p class="card__d">Instalamos os pilares 1 a 4. <strong>No mês 4 você deixa de ser o gargalo.</strong></p></div>
+          <div class="card rise"><div class="card__t" style="color:var(--gold-3)">Mês 5–6 · Consolidação</div><p class="card__d">Pilar 5, marketing e vendas, agora com a casa em ordem.</p></div>
+          <div class="card rise"><div class="card__t" style="color:var(--gold-3)">Mês 7–12 · Sustentação</div><p class="card__d">Correção de rota e recalibragem, até virar rotina sem você.</p></div>
         </div>
         <p class="lede rise center" style="margin-top:1.8rem;max-width:44rem;margin-inline:auto">São 9 encontros individuais nos marcos: encontro → tarefa → feedback → call de lapidação. Você não precisa lembrar de marcar nada, o método te convoca.</p>
       </div>
