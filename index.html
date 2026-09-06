@@ -106,6 +106,7 @@
     --sans:'DM Sans',system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
     --frame:72rem; --measure:42rem;
     --ease:cubic-bezier(.22,1,.36,1);
+    --ease-soft:cubic-bezier(.16,.72,.2,1);
   }
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
@@ -311,12 +312,33 @@
 
   /* reveal animations */
   .rise{opacity:0;transform:translateY(22px) scale(.985);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+
+  /* entrada coreografada do hero, no load, sem esperar scroll */
+  @keyframes heroUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes heroMask{from{opacity:0;transform:translateY(22px);clip-path:inset(0 0 106% 0)}to{opacity:1;transform:none;clip-path:inset(0 0 -22% 0)}}
+  @keyframes heroFrame{from{opacity:0;transform:translateY(48px) scale(.94)}to{opacity:1;transform:none}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .hero__in .rise{transition:none;animation:heroUp .9s var(--ease-soft) both}
+  .hero__in .eyebrow{animation-delay:.06s}
+  .hero__in h1{animation:heroMask 1.15s var(--ease-soft) both .16s}
+  .hero__in .hero__sub{animation-delay:.34s}
+  .hero__in .hero__promise{animation-delay:.46s}
+  .hero__in .hero__micro{animation-delay:.56s}
+  .hero__in .cta{animation-delay:.66s}
+  .hero__in .proofpill{animation-delay:.78s}
+  .hero .grid.rise{transition:none;animation:heroFrame 1.3s var(--ease) both .9s}
+  .hero .grid .rise{transition:none;animation:none;opacity:1;transform:none}
+  .proofpill .avs{animation:floaty 7s ease-in-out infinite 1.8s}
+
+  /* titulo de secao revela por mascara, como na ocrm */
+  .h-sec.rise{clip-path:inset(0 0 106% 0);transition:opacity .85s var(--ease),transform .85s var(--ease),clip-path 1.05s var(--ease)}
+  .h-sec.rise.in{clip-path:inset(0 0 -22% 0)}
   .rise.in{opacity:1;transform:none}
   .stagger .rise:nth-child(2){transition-delay:.08s}
   .stagger .rise:nth-child(3){transition-delay:.16s}
   .stagger .rise:nth-child(4){transition-delay:.24s}
   .stagger .rise:nth-child(5){transition-delay:.32s}
-  @media (prefers-reduced-motion:reduce){.rise{opacity:1!important;transform:none!important}html{scroll-behavior:auto}}
+  @media (prefers-reduced-motion:reduce){.rise{opacity:1!important;transform:none!important;clip-path:none!important}*{animation:none!important}html{scroll-behavior:auto}}
 
   /* responsive */
   @media(max-width:860px){
@@ -697,7 +719,7 @@
       requestAnimationFrame(function(){requestAnimationFrame(function(){hero.forEach(function(e){e.classList.add('in');});});});
       var io=new IntersectionObserver(function(entries){
         entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-      },{rootMargin:'0px 0px -10% 0px',threshold:.12});
+      },{rootMargin:'0px 0px -7% 0px',threshold:.12});
       els.forEach(function(e){if(!e.closest('.hero'))io.observe(e);});
     }
     var tb=document.querySelector('.topbar');
