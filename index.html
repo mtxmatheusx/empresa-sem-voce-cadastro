@@ -473,6 +473,75 @@
     .mirror__b::after{opacity:0}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== tira compacta da semana, no hero ===== */
+  .strip{margin-top:clamp(2.2rem,4.5vw,3rem)}
+  .strip__g{display:grid;grid-template-columns:repeat(5,1fr);gap:.34rem;max-width:26rem;margin-inline:auto}
+  .strip__c{display:flex;flex-direction:column;gap:.34rem}
+  .strip__c i{height:1.05rem;border-radius:5px;background:rgba(255,255,255,.055);
+    border:.5px solid var(--line);display:block;
+    opacity:0;scale:.6;transition:opacity .5s var(--ease),scale .7s var(--spring),background .6s var(--ease)}
+  .strip__c i.n{background:linear-gradient(180deg,rgba(196,154,82,.5),rgba(176,141,79,.28));
+    border-color:var(--gold-line);box-shadow:0 1px 8px rgba(0,0,0,.3)}
+  .strip.on .strip__c i{opacity:1;scale:1;transition-delay:calc(var(--i,0) * .028s)}
+  .strip__cap{text-align:center;color:var(--mute);font-size:.92rem;margin-top:1rem;line-height:1.5}
+  .strip__cap b{color:var(--gold-3);font-weight:700}
+
+  /* ===== medidor do checklist: seis segmentos e o limiar em tres ===== */
+  .tally{flex-wrap:wrap}
+  .tally__n{transition:scale .7s var(--spring),color .5s var(--ease);transform-origin:left center}
+  .tally.n0 .tally__n{scale:.72;color:var(--mute-2)}
+  .tally.n1 .tally__n,.tally.n2 .tally__n{scale:.86}
+  .tally.is-hot .tally__n{scale:1.06}
+  .meter{display:flex;gap:.3rem;width:100%;margin-top:.9rem;position:relative}
+  .meter i{flex:1;height:.42rem;border-radius:999px;background:rgba(255,255,255,.08);
+    border:.5px solid var(--line);transition:background .45s var(--spring),box-shadow .45s var(--ease)}
+  .meter i.on{background:linear-gradient(90deg,var(--gold),var(--gold-3));border-color:transparent;
+    box-shadow:0 0 10px rgba(196,154,82,.45)}
+  .meter::after{content:"ponto de virada";position:absolute;top:-1.15rem;left:calc(50% - .15rem);
+    translate:-50% 0;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    color:var(--mute-2);white-space:nowrap;transition:color .45s var(--ease)}
+  .meter::before{content:"";position:absolute;top:-.34rem;bottom:-.34rem;left:calc(50% - .15rem);
+    width:1px;background:var(--line-2);transition:background .45s var(--ease)}
+  .tally.is-hot .meter::after{color:var(--gold-3)}
+  .tally.is-hot .meter::before{background:var(--gold-2)}
+  /* marcar da um pulso no card inteiro, nao so na caixinha */
+  @keyframes bateu{0%{scale:1}38%{scale:.985}100%{scale:1}}
+  .reckon--live li.pulsa{animation:bateu .42s var(--spring)}
+
+  /* ===== a prova ganha forma: antes e depois ===== */
+  .caso{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:stretch;margin-top:1.8rem}
+  .caso__c{border-radius:18px;padding:1.2rem 1.3rem;position:relative;
+    background:var(--panel);border:.5px solid var(--line)}
+  .caso__c--d{border-color:var(--gold-line);background:linear-gradient(180deg,var(--gold-soft),var(--panel))}
+  .caso__k{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--mute-2)}
+  .caso__c--d .caso__k{color:var(--gold-2)}
+  .caso__l{list-style:none;padding:0;margin:.8rem 0 0;display:grid;gap:.6rem}
+  .caso__l li{display:flex;gap:.55rem;align-items:flex-start;line-height:1.45;font-size:.95rem;color:var(--text)}
+  .caso__l li::before{content:"";width:.4rem;height:.4rem;border-radius:50%;flex:none;margin-top:.5rem;
+    background:var(--mute-2)}
+  .caso__c--d .caso__l li::before{background:var(--gold-2)}
+  .caso__s{width:2.4rem;display:grid;place-items:center;position:relative}
+  .caso__s::before{content:"";position:absolute;top:0;bottom:0;width:2px;border-radius:2px;
+    background:linear-gradient(180deg,transparent,var(--gold-2),transparent);
+    box-shadow:0 0 10px rgba(196,154,82,.35)}
+  .caso__s b{position:relative;z-index:1;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:800;color:var(--gold-3);background:var(--bg);padding:.35rem .15rem;border-radius:999px;
+    writing-mode:vertical-rl;text-orientation:mixed}
+  .section--light .caso__s b{background:#F5F2EA}
+  @media(max-width:700px){
+    .caso{grid-template-columns:1fr;gap:.5rem}
+    .caso__s{width:auto;height:2rem}
+    .caso__s::before{top:auto;left:0;right:0;height:2px;width:auto;
+      background:linear-gradient(90deg,transparent,var(--gold-2),transparent)}
+    .caso__s b{writing-mode:horizontal-tb;padding:.15rem .6rem}
+  }
+
+  /* ===== o eco das 52 semanas no fechamento ===== */
+  .weeks--eco span.lost{transition:background .8s var(--ease),box-shadow .8s var(--ease),
+    opacity .8s var(--ease),scale .9s var(--spring)}
+  .weeks--eco.apaga span.lost{background:var(--line);box-shadow:none;opacity:.5;scale:.82}
+  .weeks--eco{margin-inline:auto}
+
   /* ===== o medidor da garantia das 10 horas ===== */
   .gar{border-radius:20px;padding:1.5rem 1.6rem;margin-top:1.4rem;position:relative;
     background:linear-gradient(180deg,var(--gold-soft),var(--glass));border:.5px solid var(--gold-line);
@@ -1393,6 +1462,10 @@
           </div>
         </div>
 
+        <div class="strip rise" id="strip">
+          <div class="strip__g"><div class="strip__c"><i class="" style="--i:0"></i><i class="n" style="--i:1"></i><i class="" style="--i:2"></i><i class="n" style="--i:3"></i></div><div class="strip__c"><i class="n" style="--i:4"></i><i class="" style="--i:5"></i><i class="n" style="--i:6"></i><i class="" style="--i:7"></i></div><div class="strip__c"><i class="" style="--i:8"></i><i class="n" style="--i:9"></i><i class="" style="--i:10"></i><i class="n" style="--i:11"></i></div><div class="strip__c"><i class="n" style="--i:12"></i><i class="" style="--i:13"></i><i class="n" style="--i:14"></i><i class="" style="--i:15"></i></div><div class="strip__c"><i class="" style="--i:16"></i><i class="n" style="--i:17"></i><i class="" style="--i:18"></i><i class="n" style="--i:19"></i></div></div>
+          <p class="strip__cap">Uma semana sua. <b>Dez blocos</b> que não precisavam de você.</p>
+        </div>
         <div class="grid g-3 stagger rise" style="margin-top:clamp(3rem,6vw,4.5rem);text-align:left">
           <div class="card rise">
             <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 8.7a3.3 3.3 0 100 6.6 3.3 3.3 0 000-6.6"/><path d="M12 5.4V2.8M12 5.4l1.8 1.8M12 5.4 10.2 7.2"/><path d="M18.6 12h2.6M18.6 12l-1.8-1.8M18.6 12l-1.8 1.8"/><path d="M12 18.6v2.6M12 18.6l1.8-1.8M12 18.6l-1.8-1.8"/><path d="M5.4 12H2.8M5.4 12 3.6 13.8M5.4 12 3.6 10.2"/></svg></div>
@@ -1469,9 +1542,10 @@
           <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Você perdeu gente boa que cansou de esperar autonomia.</span></button></li>
           <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Quando você some por uns dias, a empresa não quebra. Ela para de decidir.</span></button></li>
         </ul>
-        <div class="tally rise" id="tally">
+        <div class="tally rise n0" id="tally">
           <span class="tally__n"><span id="tallyN">0</span><small> / 6</small></span>
           <p class="tally__t" id="tallyT">Vá marcando. No fim eu te digo o que essa contagem significa.</p>
+          <span class="meter" id="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
         </div>
       </div>
     </section>
@@ -1679,6 +1753,11 @@
           <h2 class="h-sec rise" data-dock="<b>Biotop</b> · o dono saiu de cada decisão">Funciona com dono de verdade.</h2>
           <p class="lede rise">A Biotop vivia dependente do dono: tudo passava pelo Dinarte. Veja o que os dois sócios dizem depois do método.</p>
         </div>
+        <div class="caso rise">
+          <div class="caso__c"><div class="caso__k">Antes</div><ul class="caso__l"><li>Todo pagamento esperava a palavra do dono.</li><li>Toda compra passava por ele antes de acontecer.</li><li>A empresa não parava de faturar quando ele saía. Parava de decidir.</li></ul></div>
+          <div class="caso__s"><b>4 meses</b></div>
+          <div class="caso__c caso__c--d"><div class="caso__k">Depois</div><ul class="caso__l"><li>A Camila resolve dentro de um valor de aval definido.</li><li>O processo está no Drive e o time segue sem perguntar.</li><li>O dono acompanha. Não aprova.</li></ul></div>
+        </div>
         <div class="depo-grid stagger">
           <div class="depo rise">
             <div class="depo__head">
@@ -1820,6 +1899,9 @@
         <p class="eyebrow eyebrow--c rise">A decisão</p>
         <h2 class="rise">Daqui a um ano você vai estar exatamente onde está hoje. Ou não.</h2>
         <p class="lede rise" style="margin-inline:auto">A diferença entre esses dois cenários não é mercado, não é equipe e não é sorte. É o que você decide fazer com o teto que já sabe que existe.</p>
+        <div class="weeks weeks--eco rise" id="eco" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
+        <p class="strip__cap" style="max-width:30rem;margin-inline:auto">As mesmas treze semanas. A diferença é <b>quem decide</b> no ano que vem.</p>
+
         <div class="cta cta--c rise">
           <a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">→</span></a>
           <span class="cta__note">2 minutos · candidatura, não compra · garantia de 60 dias · 9 vagas</span>
@@ -1925,9 +2007,31 @@
         var n=reck.querySelectorAll('li.is-on').length;
         tn.textContent=n;tt.innerHTML=VEREDITO[n];
         tbox.classList.toggle('is-hot',n>=3);
+        tbox.className=tbox.className.replace(/\bn\d\b/g,'').trim()+' n'+n;
+        var seg=document.querySelectorAll('#meter i');
+        for(var q=0;q<seg.length;q++)seg[q].classList.toggle('on',q<n);
+        li.classList.remove('pulsa');void li.offsetWidth;li.classList.add('pulsa');
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'checklist_marcou',marcados:n});
       });
+    }
+
+    /* --- a tira da semana entra junto com o hero --- */
+    var tira=document.getElementById('strip');
+    if(tira){
+      if(reduce)tira.classList.add('on');
+      else setTimeout(function(){tira.classList.add('on');},900);
+    }
+
+    /* --- o eco: as treze semanas se apagam no fechamento --- */
+    var eco=document.getElementById('eco');
+    if(eco&&'IntersectionObserver'in window){
+      new IntersectionObserver(function(en){
+        if(!en[0].isIntersecting)return;
+        if(reduce){eco.classList.add('in','apaga');return;}
+        eco.classList.add('in');
+        setTimeout(function(){eco.classList.add('apaga');},1700);
+      },{threshold:.4}).observe(eco);
     }
 
     /* --- a escada acende o ultimo degrau quando voce chega nela --- */
