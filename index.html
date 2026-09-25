@@ -517,6 +517,91 @@
   @keyframes pisca{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}
   .phone__cap{color:var(--mute);font-size:.86rem;text-align:center;margin-top:.9rem;max-width:264px;line-height:1.5}
 
+  /* visor com tres telas do sistema, trocando com mola */
+  .visor{display:grid;margin-top:1.1rem}
+  .visor > *{grid-area:1/1;transition:opacity .4s var(--ease),transform .6s var(--spring),filter .4s var(--ease)}
+  .visor > *[hidden]{display:block;visibility:hidden;opacity:0;pointer-events:none;
+    transform:translateY(12px) scale(.99);filter:blur(5px);
+    transition:opacity .35s var(--ease),transform .5s var(--spring),filter .35s var(--ease),visibility 0s linear .4s}
+  .vcap{color:var(--mute);margin-top:1.1rem;line-height:1.6;min-height:3.2rem}
+
+  /* navegador de processos */
+  .fs{border-radius:20px;overflow:hidden;position:relative;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),var(--glass-shadow);max-width:34rem;width:100%}
+  .fs__bar{display:flex;align-items:center;gap:.5rem;padding:.7rem .95rem;border-bottom:.5px solid var(--line)}
+  .fs__dots{display:flex;gap:.3rem}
+  .fs__dots i{width:.52rem;height:.52rem;border-radius:50%;background:rgba(244,240,230,.2)}
+  .fs__path{font-size:.72rem;color:var(--mute);letter-spacing:.02em}
+  .fs__path b{color:var(--gold-3);font-weight:700}
+  .fs__list{padding:.35rem 0}
+  .fs__row{display:flex;align-items:center;gap:.7rem;padding:.55rem 1rem;font-size:.9rem;
+    border-top:.5px solid transparent;transition:background .3s var(--ease)}
+  .fs__row+.fs__row{border-top-color:var(--line)}
+  .fs__row:hover{background:rgba(255,255,255,.04)}
+  .fs__ico{width:1.35rem;height:1.35rem;flex:none;display:grid;place-items:center}
+  .fs__ico svg{width:100%;height:100%;stroke:var(--gold-3);stroke-width:1.3;fill:none;opacity:.9}
+  .fs__row--f .fs__ico svg{stroke:var(--mute)}
+  .fs__n{flex:1;min-width:0;color:var(--cream);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .fs__row--f .fs__n{color:var(--gold-3);font-weight:700;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+  .fs__w{color:var(--mute-2);font-size:.78rem;white-space:nowrap}
+  .fs .fs__row{opacity:0;transform:translateX(-8px);
+    transition:opacity .45s var(--ease),transform .6s var(--spring),background .3s var(--ease)}
+  .fs.in .fs__row{opacity:1;transform:none}
+  .fs.in .fs__row:nth-child(2){transition-delay:.05s}.fs.in .fs__row:nth-child(3){transition-delay:.1s}
+  .fs.in .fs__row:nth-child(4){transition-delay:.15s}.fs.in .fs__row:nth-child(5){transition-delay:.2s}
+  .fs.in .fs__row:nth-child(6){transition-delay:.25s}.fs.in .fs__row:nth-child(7){transition-delay:.3s}
+  .fs.in .fs__row:nth-child(8){transition-delay:.35s}
+
+  /* decisoes devolvidas */
+  .dev{display:grid;gap:.7rem;max-width:34rem}
+  .dev__i{border-radius:18px;padding:1rem 1.15rem;position:relative;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi)}
+  .dev__t{display:flex;align-items:center;gap:.6rem;color:var(--cream);font-weight:700;font-size:.99rem}
+  .dev__t::before{content:"";width:1.1rem;height:1.1rem;flex:none;border-radius:50%;
+    background:linear-gradient(180deg,var(--gold-3),var(--gold));
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' d='M5 13l4.5 4.5L19 7'/></svg>") center/76% no-repeat;
+    mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round' d='M5 13l4.5 4.5L19 7'/></svg>") center/76% no-repeat}
+  .dev__m{display:flex;flex-wrap:wrap;gap:.4rem .9rem;margin-top:.55rem;font-size:.85rem;color:var(--mute)}
+  .dev__m b{color:var(--text);font-weight:600}
+  .dev__c{margin-top:.6rem;padding:.5rem .7rem;border-radius:11px;background:rgba(0,0,0,.26);
+    border:.5px dashed var(--gold-line);color:var(--gold-3);font-size:.84rem}
+
+  /* painel que o dono passa a olhar */
+  .board{border-radius:20px;overflow:hidden;position:relative;margin-top:1.6rem;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),var(--glass-shadow)}
+  .board__h{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1.1rem;
+    border-bottom:.5px solid var(--line);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-3);font-weight:700}
+  .board__h span:last-child{color:var(--mute-2);letter-spacing:.1em}
+  .board__g{display:grid;grid-template-columns:repeat(3,1fr)}
+  .board__k{padding:1rem 1.1rem;border-right:.5px solid var(--line)}
+  .board__k:last-child{border-right:0}
+  .board__lab{font-size:.68rem;color:var(--mute-2);letter-spacing:.06em;line-height:1.35;min-height:2.3rem}
+  .board__v{font-family:var(--sans);font-weight:800;letter-spacing:-.035em;color:var(--gold-3);
+    font-size:clamp(1.5rem,4.4vw,2rem);line-height:1;margin-top:.4rem;font-variant-numeric:tabular-nums}
+  .board__v small{font-size:.44em;color:var(--mute);font-weight:700;letter-spacing:0}
+  .spark{display:flex;align-items:flex-end;gap:2px;height:1.9rem;margin-top:.6rem}
+  .spark i{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(180deg,var(--gold-2),rgba(176,141,79,.25));
+    height:0;transition:height .9s var(--spring)}
+  .board.in .spark i{height:var(--h)}
+  .board.in .spark i:nth-child(2){transition-delay:.06s}.board.in .spark i:nth-child(3){transition-delay:.12s}
+  .board.in .spark i:nth-child(4){transition-delay:.18s}.board.in .spark i:nth-child(5){transition-delay:.24s}
+  .board.in .spark i:nth-child(6){transition-delay:.3s}.board.in .spark i:nth-child(7){transition-delay:.36s}
+  .board.in .spark i:nth-child(8){transition-delay:.42s}
+  .board__f{padding:.75rem 1.1rem;border-top:.5px solid var(--line);color:var(--mute);font-size:.86rem}
+  @media(max-width:560px){
+    .board__g{grid-template-columns:1fr}
+    .board__k{border-right:0;border-bottom:.5px solid var(--line)}
+    .board__k:last-child{border-bottom:0}
+    .board__lab{min-height:0}
+  }
+
   /* a matriz que faz aquela conversa existir */
   .matrix{border-radius:20px;overflow:hidden;position:relative;
     background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
@@ -685,6 +770,66 @@
   .brand-logo{view-transition-name:marca}
   ::view-transition-group(marca){animation-duration:.52s;animation-timing-function:var(--spring)}
 
+  /* ===== PARALLAX EM CAMADAS =====
+     usa as propriedades independentes translate/rotate/scale, entao o
+     deslocamento compoe com o transform dos reveals em vez de sobrescrever.
+     tudo em animation-timeline: vai pro compositor, nao pro fio principal. */
+  @supports (animation-timeline:view()){
+    /* o retrato desliza dentro da moldura, mais lento que a pagina.
+       view() na propria imagem fica inerte: o overflow:hidden da moldura
+       vira scroll container. Entao a moldura publica uma linha do tempo
+       nomeada e a imagem se pendura nela. */
+    .auth__portrait{overflow:hidden;view-timeline-name:--retrato;view-timeline-axis:block}
+    .auth__portrait img.is-loaded{scale:1.16;animation:pxRetrato linear both;
+      animation-timeline:--retrato;animation-range:cover 0% cover 100%}
+    @keyframes pxRetrato{from{translate:0 -7%}to{translate:0 7%}}
+
+    /* titulo de secao sobe mais devagar que o corpo */
+    .h-sec{animation:pxTitulo linear both;animation-timeline:view();
+      animation-range:entry 15% exit 85%}
+    @keyframes pxTitulo{from{translate:0 26px}to{translate:0 -26px}}
+    .eyebrow{animation:pxEyebrow linear both;animation-timeline:view();
+      animation-range:entry 10% exit 90%}
+    @keyframes pxEyebrow{from{translate:0 34px}to{translate:0 -34px}}
+
+    /* numeros grandes flutuam contra o texto */
+    .stat__fig,.slam__fig,.anchor__v,.out__big,.tally__n{animation:pxNum linear both;
+      animation-timeline:view();animation-range:entry 20% exit 80%}
+    @keyframes pxNum{from{translate:0 18px}to{translate:0 -18px}}
+
+    /* as pecas grandes tem profundidade propria */
+    .week,.board,.weeks,.bars,.mirror,.road{animation:pxPeca linear both;
+      animation-timeline:view();animation-range:entry 0% exit 100%}
+    @keyframes pxPeca{from{translate:0 30px}to{translate:0 -22px}}
+
+    /* o celular gira e flutua enquanto atravessa a tela */
+    .pratica{perspective:1400px}
+    .phone__body{animation:pxFone linear both;animation-timeline:view();
+      animation-range:entry 0% exit 100%}
+    @keyframes pxFone{
+      from{translate:0 54px;rotate:x 12deg;scale:.94}
+      48%{translate:0 0;rotate:x 0deg;scale:1}
+      to{translate:0 -44px;rotate:x -8deg;scale:.97}}
+    .visor{animation:pxVisor linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+    @keyframes pxVisor{from{translate:0 34px}to{translate:0 -26px}}
+
+    /* o retrato e o bloco de autoridade andam em sentidos opostos */
+    .auth__portrait{animation:pxMoldura linear both;animation-timeline:view();
+      animation-range:entry 0% exit 100%}
+    @keyframes pxMoldura{from{translate:0 40px}to{translate:0 -30px}}
+
+    /* a lente de fundo acompanha o scroll alem de respirar */
+    .amb{animation:respira 34s ease-in-out infinite,pxFundo linear both;
+      animation-timeline:auto,scroll(root block)}
+    @keyframes pxFundo{from{translate:0 -4vh}to{translate:0 8vh}}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .auth__portrait img.is-loaded,.h-sec,.eyebrow,.stat__fig,.slam__fig,.anchor__v,
+    .out__big,.tally__n,.week,.board,.weeks,.bars,.mirror,.road,.phone__body,
+    .visor,.auth__portrait,.amb{animation:none!important;translate:none!important;
+      rotate:none!important}
+  }
+
   /* ===== linhas do tempo nativas: sai do fio principal, vai pro compositor ===== */
   @supports (animation-timeline:scroll()){
     .topbar__prog{animation:progresso linear both;animation-timeline:scroll(root block)}
@@ -692,7 +837,11 @@
     .hero::before{animation:heroSobe linear both;animation-timeline:scroll(root block);
       animation-range:0 900px;will-change:transform}
     @keyframes heroSobe{from{transform:translate3d(0,0,0) scale(1)}
-      to{transform:translate3d(0,198px,0) scale(1.346)}}
+      to{transform:translate3d(0,320px,0) scale(1.52)}}
+    /* o conteudo do hero sobe mais devagar que a pagina */
+    .hero__in{animation:pxHero linear both;animation-timeline:scroll(root block);
+      animation-range:0 760px}
+    @keyframes pxHero{from{translate:0 0;opacity:1}to{translate:0 88px;opacity:.25}}
   }
 
   /* ===== a dobra engrossa quando voce rola rapido ===== */
@@ -1258,6 +1407,25 @@
           <li class="rise"><span class="mk">&rarr;</span><span>Gente boa fica, porque agora existe clareza e autonomia.</span></li>
           <li class="rise"><span class="mk">&rarr;</span><span>Você some por uns dias e a empresa continua decidindo.</span></li>
         </ul>
+        <div class="board rise">
+          <div class="board__h"><span>O painel que você passa a olhar</span><span>exemplo</span></div>
+          <div class="board__g">
+            <div class="board__k">
+              <div class="board__lab">Suas horas em decisão que não era sua, nesta semana</div>
+              <div class="board__v">2<small>h</small></div>
+              <div class="spark"><i style="--h:92%"></i><i style="--h:86%"></i><i style="--h:78%"></i><i style="--h:70%"></i><i style="--h:58%"></i><i style="--h:46%"></i><i style="--h:34%"></i><i style="--h:26%"></i></div>
+            </div>
+            <div class="board__k">
+              <div class="board__lab">Decisões devolvidas com critério escrito</div>
+              <div class="board__v">14</div>
+            </div>
+            <div class="board__k">
+              <div class="board__lab">Processos documentados e em uso</div>
+              <div class="board__v">23</div>
+            </div>
+          </div>
+          <div class="board__f">É isso que substitui o apaga-incêndio: você lê números, em vez de responder perguntas.</div>
+        </div>
         <p class="pull rise">A sua empresa aguenta quinze dias sem você?</p>
       </div>
     </section>
@@ -1315,14 +1483,34 @@
             <p class="phone__cap rise">Antes da matriz, essa conversa era uma pergunta esperando você.</p>
           </div>
           <div>
-            <div class="matrix rise">
+            <div class="flip rise" id="visorTabs" role="tablist" style="margin-bottom:0">
+              <span class="flip__ind" aria-hidden="true"></span>
+              <button type="button" class="is-on" role="tab" aria-selected="true" data-v="matriz">Alçada</button>
+              <button type="button" role="tab" aria-selected="false" data-v="processos">Processos</button>
+              <button type="button" role="tab" aria-selected="false" data-v="devolucoes">Devoluções</button>
+            </div>
+            <div class="visor">
+              <div id="v-matriz">
+                <div class="matrix rise">
               <div class="matrix__h"><span>Matriz de alçada</span><span>exemplo</span></div>
               <table>
                 <thead><tr><th>Decisão</th><th>Quem decide</th><th>Limite</th></tr></thead>
                 <tbody><tr><td>Desconto comercial</td><td>Gestor comercial</td><td>até 15%</td></tr><tr><td>Compra de insumo</td><td>Operações</td><td>até R$ 3.000</td></tr><tr><td>Reembolso a cliente</td><td>Atendimento</td><td>até R$ 800</td></tr><tr><td>Contratação júnior</td><td>Gestor da área</td><td>sem teto</td></tr><tr><td>Acima disso</td><td>Você</td><td>—</td></tr></tbody>
               </table>
             </div>
-            <p class="lede rise" style="margin-top:1.1rem">Uma página. É ela que transforma “posso aprovar?” em “fechei e tô te avisando”, e é o primeiro documento que sai do papel na sua empresa.</p>
+              </div>
+              <div id="v-processos" hidden>
+                <div class="fs rise">
+                  <div class="fs__bar"><span class="fs__dots"><i></i><i></i><i></i></span>
+                    <span class="fs__path">Processos <b>/ a empresa inteira</b></span></div>
+                  <div class="fs__list"><div class="fs__row fs__row--f"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="fs__n">01 · Comercial</span><span class="fs__w"></span></div><div class="fs__row"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="fs__n">Proposta e desconto</span><span class="fs__w">Comercial</span></div><div class="fs__row"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="fs__n">Follow-up e cadência</span><span class="fs__w">Comercial</span></div><div class="fs__row fs__row--f"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="fs__n">02 · Operações</span><span class="fs__w"></span></div><div class="fs__row"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="fs__n">Compra de insumo</span><span class="fs__w">Operações</span></div><div class="fs__row"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="fs__n">Recebimento e conferência</span><span class="fs__w">Operações</span></div><div class="fs__row fs__row--f"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span><span class="fs__n">03 · Financeiro</span><span class="fs__w"></span></div><div class="fs__row"><span class="fs__ico"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg></span><span class="fs__n">Pagamento a fornecedor</span><span class="fs__w">Financeiro</span></div></div>
+                </div>
+              </div>
+              <div id="v-devolucoes" hidden>
+                <div class="dev stagger"><div class="dev__i rise"><div class="dev__t">Aprovar desconto comercial</div><div class="dev__m"><span>Assumida por <b>Gestor comercial</b></span><span>Devolvida na <b>semana 1</b></span></div><div class="dev__c">Critério escrito: Margem final igual ou acima de 32%</div></div><div class="dev__i rise"><div class="dev__t">Compra de insumo até R$ 3.000</div><div class="dev__m"><span>Assumida por <b>Operações</b></span><span>Devolvida na <b>semana 1</b></span></div><div class="dev__c">Critério escrito: Fornecedor homologado e prazo de até 7 dias</div></div><div class="dev__i rise"><div class="dev__t">Reembolso a cliente até R$ 800</div><div class="dev__m"><span>Assumida por <b>Atendimento</b></span><span>Devolvida na <b>semana 1</b></span></div><div class="dev__c">Critério escrito: Pedido em até 30 dias da compra</div></div></div>
+              </div>
+            </div>
+            <p class="vcap rise" id="vcap">Uma página. É ela que transforma “posso aprovar?” em “fechei e tô te avisando”, e é o primeiro documento que sai do papel na sua empresa.</p>
           </div>
         </div>
         <p class="lede rise center" style="margin-top:1.8rem;max-width:44rem;margin-inline:auto">São 9 encontros individuais nos marcos: encontro &rarr; tarefa &rarr; feedback &rarr; call de lapidação. O método te convoca, você não precisa lembrar de marcar nada.</p>
@@ -1607,6 +1795,45 @@
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'checklist_marcou',marcados:n});
       });
+    }
+
+    /* --- visor: tres telas do sistema num controle segmentado --- */
+    var vt=document.getElementById('visorTabs');
+    if(vt){
+      var vInd=vt.querySelector('.flip__ind'),
+          vBtn=[].slice.call(vt.querySelectorAll('button')),
+          vCap=document.getElementById('vcap'),
+          LEG={
+            matriz:'Uma página. É ela que transforma “posso aprovar?” em “fechei e tô te avisando”, e é o primeiro documento que sai do papel na sua empresa.',
+            processos:'O que morava só na sua cabeça vira arquivo com dono. Quando alguém sai, o processo fica.',
+            devolucoes:'As três primeiras saem da sua mesa ainda na semana 1. Não é promessa de 120 dias: é a primeira coisa que acontece.'
+          };
+      function vMove(){
+        var on=vt.querySelector('button.is-on');if(!on)return;
+        vInd.style.width=on.offsetWidth+'px';
+        vInd.style.transform='translateX('+on.offsetLeft+'px)';
+        vInd.classList.add('is-ready');
+      }
+      function vShow(k){
+        vBtn.forEach(function(b){
+          var on=b.dataset.v===k;
+          b.classList.toggle('is-on',on);b.setAttribute('aria-selected',on?'true':'false');
+        });
+        ['matriz','processos','devolucoes'].forEach(function(n){
+          var el=document.getElementById('v-'+n);if(!el)return;
+          if(n===k){el.removeAttribute('hidden');el.removeAttribute('aria-hidden');
+            el.querySelectorAll('.rise').forEach(function(e){e.classList.add('in');});}
+          else{el.setAttribute('hidden','');el.setAttribute('aria-hidden','true');}
+        });
+        if(vCap)vCap.textContent=LEG[k];
+        vMove();
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'visor_sistema',tela:k});
+      }
+      vBtn.forEach(function(b){b.addEventListener('click',function(){vShow(b.dataset.v);});});
+      window.addEventListener('resize',vMove,{passive:true});
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(vMove);
+      vMove();
     }
 
     /* --- a conversa no celular entra em cadencia, com digitando --- */
