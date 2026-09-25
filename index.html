@@ -251,7 +251,10 @@
     box-shadow:inset 0 .5px 0 var(--glass-hi),0 26px 60px rgba(0,0,0,.46)}
   .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:1rem;
     background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold-3)}
-  .ico svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.2;fill:none;opacity:.85}
+  /* sistema: grade de 24, traco 1.4, pontas redondas, sem preenchimento */
+  .ico svg,.fs__ico svg,.mirror__g svg{stroke-linecap:round;stroke-linejoin:round;fill:none}
+  .ico svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.4;opacity:.92}
+  .fs__ico svg{stroke-width:1.4}
   .card__t{font-weight:700;color:var(--cream);font-size:1.08rem;letter-spacing:-.01em}
   .card__d{color:var(--mute);margin-top:.5rem;line-height:1.6;font-size:.98rem}
 
@@ -468,6 +471,47 @@
     .auth__portrait img{opacity:1!important;filter:none!important;transform:none!important}
     .amb{animation:none!important}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
+
+  /* ===== o medidor da garantia das 10 horas ===== */
+  .gar{border-radius:20px;padding:1.5rem 1.6rem;margin-top:1.4rem;position:relative;
+    background:linear-gradient(180deg,var(--gold-soft),var(--glass));border:.5px solid var(--gold-line);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),var(--glass-shadow)}
+  .gar__h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-3);font-weight:700}
+  .gar__h span:last-child{color:var(--mute-2);letter-spacing:.1em}
+  .gar__t{position:relative;margin:1.5rem 0 .45rem;height:2px;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold-line),var(--line-2))}
+  .gar__t i{position:absolute;top:50%;width:.6rem;height:.6rem;border-radius:50%;translate:-50% -50%;
+    background:var(--gold-2);box-shadow:0 0 0 4px var(--gold-soft)}
+  .gar__t i:first-child{left:0}.gar__t i:last-child{left:100%}
+  .gar__tl{display:flex;justify-content:space-between;gap:1rem;font-size:.74rem;color:var(--mute);line-height:1.4}
+  .gar__tl b{display:block;color:var(--cream);font-size:.8rem;font-weight:700}
+  .gar__tl span:last-child{text-align:right}
+  .gar__lab{margin-top:1.6rem;font-size:.72rem;color:var(--mute-2);letter-spacing:.14em;
+    text-transform:uppercase;font-weight:700}
+  .gar__bar{position:relative;height:2.7rem;border-radius:12px;margin-top:.55rem;overflow:hidden;
+    background:rgba(0,0,0,.3);border:.5px solid var(--line)}
+  .gar__fill{position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:11px;
+    background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.055));
+    transition:width 1.5s var(--spring) .35s}
+  .gar.in .gar__fill{width:62%}
+  .gar__cut{position:absolute;top:0;bottom:0;right:0;width:38%;border-radius:0 11px 11px 0;
+    background:linear-gradient(90deg,rgba(196,154,82,.45),rgba(196,154,82,.22));
+    border-left:1px dashed var(--gold-2);display:grid;place-items:center;
+    font-size:.74rem;font-weight:800;color:#F6EFDD;letter-spacing:.02em;text-align:center;padding:.2rem}
+  .gar__foot{margin-top:1.15rem;padding-top:1rem;border-top:1px solid var(--gold-line);
+    color:var(--text);line-height:1.6;font-size:.98rem}
+  .gar__foot b{color:var(--gold-3)}
+  .gar__cond{color:var(--mute);font-size:.88rem;line-height:1.5;margin-top:.7rem}
+  /* na secao clara o branco translucido some: inverte a receita */
+  .section--light .gar{background:linear-gradient(180deg,rgba(154,111,20,.09),rgba(255,255,255,.7))}
+  .section--light .gar__bar{background:rgba(20,16,10,.06);border-color:rgba(20,16,10,.12)}
+  .section--light .gar__fill{background:linear-gradient(90deg,rgba(20,16,10,.17),rgba(20,16,10,.1))}
+  .section--light .gar__cut{background:linear-gradient(90deg,rgba(154,111,20,.9),rgba(154,111,20,.68));
+    color:#FFF8EA;border-left-color:#8A6410}
+  .section--light .gar__h span:first-child,.section--light .gar__foot b{color:#7A5709}
+  @media(max-width:520px){.gar{padding:1.2rem 1.15rem}.gar__cut{font-size:.66rem}.gar__tl{font-size:.68rem}}
 
   /* ===== a escada: Operacao -> Gestao -> Estrategia ===== */
   .lad{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.9rem;align-items:end}
@@ -1311,17 +1355,17 @@
 
         <div class="grid g-3 stagger rise" style="margin-top:clamp(3rem,6vw,4.5rem);text-align:left">
           <div class="card rise">
-            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.9 7.2 18.7l.9-5.4L4.2 8.7l5.4-.8z"/></svg></div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 8.7a3.3 3.3 0 100 6.6 3.3 3.3 0 000-6.6"/><path d="M12 5.4V2.8M12 5.4l1.8 1.8M12 5.4 10.2 7.2"/><path d="M18.6 12h2.6M18.6 12l-1.8-1.8M18.6 12l-1.8 1.8"/><path d="M12 18.6v2.6M12 18.6l1.8-1.8M12 18.6l-1.8-1.8"/><path d="M5.4 12H2.8M5.4 12 3.6 13.8M5.4 12 3.6 10.2"/></svg></div>
             <div class="card__t">Você</div>
             <p class="card__d">Sai do gargalo e volta pra decisão do ano, não a do dia.</p>
           </div>
           <div class="card rise">
-            <div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M15 11a3 3 0 100-6M3 20a6 6 0 0112 0M15 14a6 6 0 016 6"/></svg></div>
+            <div class="ico"><svg viewBox="0 0 24 24"><circle cx="9.2" cy="8.4" r="3.1"/><path d="M3.5 19.5a5.7 5.7 0 0111.4 0"/><path d="M15.8 13.6l1.9 1.9 4-4.3"/></svg></div>
             <div class="card__t">Sua equipe</div>
             <p class="card__d">Passa a decidir sozinha o que hoje ainda precisa de você.</p>
           </div>
           <div class="card rise">
-            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M21 7v5M21 7h-5"/></svg></div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 20.6V9.4"/><path d="M3 17.2l4.5-4.5 3.4 3.4L19.6 7.4"/><path d="M19.6 7.4h-4.3M19.6 7.4v4.3"/><path d="M2.4 4.4h19.2" stroke-dasharray="2.6 2.6" opacity=".5"/></svg></div>
             <div class="card__t">Sua empresa</div>
             <p class="card__d">Volta a crescer sem depender de você estar dentro dela.</p>
           </div>
@@ -1675,7 +1719,16 @@
           <div class="num rise"><span class="num__n">1</span><div><div class="num__t">Você preenche uma candidatura de 2 minutos.</div></div></div>
           <div class="num rise"><span class="num__n">2</span><div><div class="num__t" style="font-weight:600;color:var(--text)">A gente conversa pra ver se faz sentido, pros dois lados.</div></div></div>
           <div class="num rise"><span class="num__n">3</span><div><div class="num__t" style="font-weight:600;color:var(--text)">Se entrar, tem <strong>7 dias pra ver por dentro</strong> e desistir com 100% de volta, sem justificativa.</div></div></div>
-          <div class="num rise"><span class="num__n">4</span><div><div class="num__t" style="font-weight:600;color:var(--text)">E tem a <strong>Garantia das 10 Horas</strong>: se no dia 60 você não tiver de volta pelo menos 10 horas por semana das que hoje somem em decisão que não é sua, eu sigo trabalhando sem cobrar até isso acontecer.</div><div style="color:var(--mute);font-size:.92em;margin-top:.4rem">Vale enquanto você comparecer às calls, entregar os documentos de cada marco no prazo e aplicar a matriz de decisão com a equipe.</div></div></div>
+          <div class="num rise"><span class="num__n">4</span><div><div class="num__t" style="font-weight:600;color:var(--text)">E tem a <strong>Garantia das 10 Horas</strong>, que é a única promessa que eu assino com número.</div></div></div>
+        </div>
+        <div class="gar rise">
+          <div class="gar__h"><span>Garantia das 10 Horas</span><span>dia 60</span></div>
+          <div class="gar__t"><i></i><i></i></div>
+          <div class="gar__tl"><span><b>Semana 1</b>a régua mede a sua linha de base</span><span><b>Dia 60</b>a conta é feita com o mesmo número</span></div>
+          <p class="gar__lab">As suas horas em decisão que não era sua</p>
+          <div class="gar__bar"><span class="gar__fill"></span><span class="gar__cut">&minus;10h por semana</span></div>
+          <p class="gar__foot">Seja qual for a sua linha de base, <b>essas dez horas têm que sair</b> até o dia 60. Se não saírem, eu sigo trabalhando sem cobrar mensalidade até saírem.</p>
+          <p class="gar__cond">Vale enquanto você comparecer às calls, entregar os documentos de cada marco no prazo e aplicar a matriz de decisão com a equipe.</p>
         </div>
         <p class="scarce rise">Turma fundadora · <em>9 vagas</em> · o preço sobe depois delas.</p>
         <div class="cta rise">
