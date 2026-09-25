@@ -466,7 +466,60 @@
     .edge i{opacity:1!important}
     .sheet__in,body > main,body > header{transition:none!important}
     .auth__portrait img{opacity:1!important;filter:none!important;transform:none!important}
+    .amb{animation:none!important}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
+
+  /* ===== terceiro tom: quente e escuro, pras secoes que falam de custo ===== */
+  .section--warm{
+    background:linear-gradient(180deg,#1A1512,#231A14 45%,#1A1512);
+    --panel:rgba(255,255,255,.05);
+    --glass:rgba(255,255,255,.06);--glass-2:rgba(255,255,255,.095);
+    --line:rgba(244,240,230,.12);--line-2:rgba(244,240,230,.2);
+    --gold-soft:rgba(196,154,82,.18);--gold-line:rgba(196,154,82,.42)}
+  .section--warm::before,.section--warm::after{content:"";position:absolute;left:0;right:0;height:5rem;pointer-events:none}
+  .section--warm::before{top:0;background:linear-gradient(180deg,var(--bg),transparent)}
+  .section--warm::after{bottom:0;background:linear-gradient(0deg,var(--bg),transparent)}
+
+  /* ===== movimento ambiente: o fundo respira, muito devagar ===== */
+  .amb{position:fixed;inset:-20%;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(38rem 30rem at 14% 10%,rgba(196,154,82,.085),transparent 62%),
+      radial-gradient(34rem 28rem at 86% 52%,rgba(176,141,79,.065),transparent 64%),
+      radial-gradient(30rem 26rem at 44% 88%,rgba(220,187,126,.05),transparent 62%);
+    animation:respira 34s ease-in-out infinite;will-change:transform}
+  @keyframes respira{
+    0%,100%{transform:scale(1) translate(0,0)}
+    34%{transform:scale(1.14) translate(1.8%,-1.4%)}
+    67%{transform:scale(1.06) translate(-1.8%,1.1%)}}
+  body > header,body > main,body > footer,.dock,.edge{position:relative;z-index:1}
+  .topbar{z-index:60}.edge{z-index:50}.dock{z-index:55}
+
+  /* ===== a semana do dono: enche de decisao que nao era dele, e esvazia ===== */
+  .week{margin-top:1.6rem}
+  .week__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.4rem}
+  .week__col{display:flex;flex-direction:column;gap:.4rem}
+  .week__d{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute-2);
+    font-weight:700;text-align:center;margin-bottom:.55rem}
+  .blk{border-radius:8px;min-height:2.1rem;padding:.35rem .45rem;font-size:.63rem;line-height:1.24;
+    display:flex;align-items:center;overflow:hidden;
+    transition:opacity .55s var(--ease),transform .7s var(--spring),background .5s var(--ease)}
+  .blk--mine{background:rgba(255,255,255,.055);border:.5px solid var(--line);color:var(--mute-2)}
+  .blk--gap{background:transparent;border:.5px dashed rgba(244,240,230,.07)}
+  .blk--noise{background:linear-gradient(180deg,rgba(196,154,82,.34),rgba(176,141,79,.2));
+    border:.5px solid var(--gold-line);color:#efe4cd;font-weight:600;
+    box-shadow:0 2px 10px rgba(0,0,0,.28)}
+  .week.is-clear .blk--noise{opacity:0;transform:scale(.82) translateY(-6px)}
+  .week.is-clear .blk--gap,.week.is-clear .blk--mine{background:rgba(255,255,255,.03)}
+  .week__legend{display:flex;gap:1.3rem;flex-wrap:wrap;margin-top:1rem;color:var(--mute);font-size:.86rem}
+  .week__legend i{width:.62rem;height:.62rem;border-radius:3px;display:inline-block;margin-right:.45rem}
+  .week__legend i.n{background:var(--gold-2)}
+  .week__legend i.m{background:rgba(255,255,255,.14)}
+  .week__cap{margin-top:.9rem;color:var(--cream);font-weight:600;font-size:1.02rem;
+    transition:opacity .4s var(--ease)}
+  @media(max-width:620px){
+    .blk{font-size:0;min-height:1.5rem;padding:.2rem}
+    .week__d{font-size:.6rem;letter-spacing:.08em}
+  }
 
   /* ===== a folha: sheet do iOS, com a pagina recuando atras ===== */
   .sheet{border:0;padding:0;background:transparent;max-width:none;max-height:none;
@@ -962,6 +1015,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFWQMKV3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
+  <div class="amb" aria-hidden="true"></div>
   <div class="edge" id="edge" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
   <header class="topbar">
@@ -1025,7 +1079,7 @@
             <p class="eyebrow rise">Quem vai te conduzir</p>
             <h2 class="auth__name rise">Matheus Martins</h2>
             <p class="auth__role rise">Gestão · Liderança · Perfil comportamental</p>
-            <p class="auth__body rise">7 anos estruturando empresas por dentro: cultura, liderança, processos e gestão. Formado pela G4 nos programas Gestão &amp; Estratégia e Traction (o método de estruturar processos e tirar o dono do gargalo), e em análise de perfil comportamental (CIS Assessment) pela Febracis. Hoje ocupo cadeira de conselheiro em empresas de clientes.</p>
+            <p class="auth__body rise">7 anos estruturando empresas por dentro: cultura, liderança, processos e gestão. Formado pela G4 em Gestão &amp; Estratégia e Traction, e em perfil comportamental (CIS Assessment) pela Febracis. Hoje ocupo cadeira de conselheiro em empresas de clientes.</p>
             <div class="stat rise">
               <span class="stat__fig">7&ndash;18×</span>
               <span class="stat__cap">o marketing que faço pros meus clientes <b>nunca rendeu menos de 7 vezes</b> o valor investido. Nos melhores casos, 18. Não é teoria de sala: eu opero.</span>
@@ -1043,10 +1097,8 @@
         <p class="eyebrow rise">O ponto de virada</p>
         <h2 class="h-sec rise">Existe um momento na vida do dono que é o mais difícil de todos.</h2>
         <div class="body-col" style="margin-top:1.4rem">
-          <p class="rise">Não é o começo. No começo, esforço resolve tudo: você faz, você decide, você carrega nas costas. E funciona.</p>
-          <p class="rise">O problema é que o que te trouxe até aqui é exatamente o que te prende agora. A empresa cresceu em cima de você. Cada decisão passa por você, nada anda sem a sua palavra final e, sem perceber, você treinou todo mundo a te perguntar tudo.</p>
-          <p class="rise">E tem uma parte que ninguém admite: ser indispensável vicia. Resolver o problema que só você resolve dá uma sensação de controle, e sem perceber você recria esse problema toda semana, porque ele prova que a empresa ainda precisa de você. É esse conforto que te mantém preso, não a falta de gente boa.</p>
-          <p class="rise">Você não virou o gargalo por acidente. Você virou o teto. E teto não se resolve trabalhando mais: se resolve mudando o seu papel.</p>
+          <p class="rise">No começo, esforço resolve tudo. O problema é que o que te trouxe até aqui é exatamente o que te prende agora: a empresa cresceu em cima de você, e sem perceber você treinou todo mundo a te perguntar tudo.</p>
+          <p class="rise">E tem uma parte que ninguém admite: ser indispensável vicia. Resolver o problema que só você resolve dá uma sensação de controle, e você recria esse problema toda semana, porque ele prova que a empresa ainda precisa de você. É esse conforto que te prende, não a falta de gente boa.</p>
         </div>
         <p class="pull rise">O executor precisa virar gestor. Sair da decisão do dia e entrar na decisão do ano.</p>
       </div>
@@ -1083,14 +1135,14 @@
         <p class="eyebrow eyebrow--c rise">O princípio que guia tudo</p>
         <h2 class="h-sec rise">O Princípio do Espelho</h2>
         <p class="lede rise" style="color:var(--gold-3)">A empresa é o reflexo do dono.</p>
+
         <div class="mirror rise">
           <div class="mirror__head"><span>O que você faz</span><span aria-hidden="true"></span><span>O que ela devolve</span></div>
           <div class="mirror__row"><span class="mirror__a">Aprova cada decisão</span><span class="mirror__g" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span><span class="mirror__b">Espera pra decidir</span></div>
           <div class="mirror__row"><span class="mirror__a">Guarda o processo na cabeça</span><span class="mirror__g" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span><span class="mirror__b">Perde o processo quando alguém sai</span></div>
           <div class="mirror__row"><span class="mirror__a">Não tira férias de verdade</span><span class="mirror__g" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span><span class="mirror__b">Nunca aprendeu a rodar sem você</span></div>
         </div>
-        <p class="rise" style="margin-top:1.8rem;max-width:38rem;margin-inline:auto;color:var(--mute)">Por isso a gente não começa consertando a empresa. Começa calibrando quem decide.</p>
-        <p class="pull rise" style="text-align:left;display:inline-block;margin-top:1.6rem">Some o dono do meio, e o que sobra é o tamanho real da empresa.</p>
+        <p class="pull rise" style="text-align:left;display:inline-block;margin-top:1.8rem">Some o dono do meio, e o que sobra é o tamanho real da empresa.</p>
       </div>
     </section>
 
@@ -1107,28 +1159,28 @@
           <button type="button" class="is-on" role="tab" aria-selected="true" data-f="hoje">Hoje</button>
           <button type="button" role="tab" aria-selected="false" data-f="depois">Depois</button>
         </div>
-        <div class="swap rise">
-          <div id="f-hoje">
-        <ul class="reckon ">
-          <li><span class="mk" style="transform:none">—</span><span>Fatura mais e sobra menos.</span></li>
-          <li><span class="mk" style="transform:none">—</span><span>O gestor decide, mas ainda precisa da sua aprovação.</span></li>
-          <li><span class="mk" style="transform:none">—</span><span>A folha cresce mais rápido que a margem.</span></li>
-          <li><span class="mk" style="transform:none">—</span><span>Férias de verdade não acontecem há mais de dois anos.</span></li>
-          <li><span class="mk" style="transform:none">—</span><span>Gente boa vai embora cansada de esperar autonomia.</span></li>
-          <li><span class="mk" style="transform:none">—</span><span>Você some por uns dias e a empresa para de decidir.</span></li>
-        </ul>
+        <div class="week rise" id="week">
+          <div class="week__grid">
+            <div class="week__col"><span class="week__d">Seg</span><span class="blk blk--mine">Reunião comercial</span><span class="blk blk--noise">Aprovar compra</span><span class="blk blk--mine"></span><span class="blk blk--noise">Desempatar time</span><span class="blk blk--gap"></span><span class="blk blk--noise">Liberar acesso</span></div>
+            <div class="week__col"><span class="week__d">Ter</span><span class="blk blk--noise">Aprovar pagamento</span><span class="blk blk--mine">Planejamento</span><span class="blk blk--gap"></span><span class="blk blk--noise">Revisar o que já estava certo</span><span class="blk blk--mine"></span><span class="blk blk--gap"></span></div>
+            <div class="week__col"><span class="week__d">Qua</span><span class="blk blk--mine">Visita a cliente</span><span class="blk blk--gap"></span><span class="blk blk--noise">Validar proposta</span><span class="blk blk--noise">Decidir prioridade</span><span class="blk blk--mine"></span><span class="blk blk--gap"></span></div>
+            <div class="week__col"><span class="week__d">Qui</span><span class="blk blk--noise">Autorizar desconto</span><span class="blk blk--gap"></span><span class="blk blk--mine">Financeiro</span><span class="blk blk--gap"></span><span class="blk blk--noise">Responder de novo</span><span class="blk blk--mine"></span></div>
+            <div class="week__col"><span class="week__d">Sex</span><span class="blk blk--gap"></span><span class="blk blk--noise">Confirmar prazo</span><span class="blk blk--mine">Fechamento</span><span class="blk blk--gap"></span><span class="blk blk--gap"></span><span class="blk blk--mine"></span></div>
           </div>
-          <div id="f-depois" hidden>
-        <ul class="reckon reckon--win">
-          <li><span class="mk" style="transform:none">→</span><span>O faturamento que cresce volta a virar lucro que fica.</span></li>
-          <li><span class="mk" style="transform:none">→</span><span>O gestor decide e te informa. Não pergunta: resolve.</span></li>
-          <li><span class="mk" style="transform:none">→</span><span>A folha estabiliza em relação à margem.</span></li>
-          <li><span class="mk" style="transform:none">→</span><span>Você tira quinze dias reais e a empresa nem sente.</span></li>
-          <li><span class="mk" style="transform:none">→</span><span>Gente boa fica, porque agora existe clareza e autonomia.</span></li>
-          <li><span class="mk" style="transform:none">→</span><span>Você some por uns dias e a empresa continua decidindo.</span></li>
-        </ul>
-          </div>
+          <p class="week__legend">
+            <span><i class="n"></i>Decisão que não era sua</span>
+            <span><i class="m"></i>O que só você podia fazer</span>
+          </p>
+          <p class="week__cap" id="weekCap">Dez blocos na semana. Nenhum deles precisava de você.</p>
         </div>
+        <ul class="reckon reckon--win stagger">
+          <li class="rise"><span class="mk">&rarr;</span><span>O faturamento que cresce volta a virar lucro que fica.</span></li>
+          <li class="rise"><span class="mk">&rarr;</span><span>O gestor decide e te informa. Não pergunta: resolve.</span></li>
+          <li class="rise"><span class="mk">&rarr;</span><span>A folha estabiliza em relação à margem.</span></li>
+          <li class="rise"><span class="mk">&rarr;</span><span>Você tira quinze dias reais e a empresa nem sente.</span></li>
+          <li class="rise"><span class="mk">&rarr;</span><span>Gente boa fica, porque agora existe clareza e autonomia.</span></li>
+          <li class="rise"><span class="mk">&rarr;</span><span>Você some por uns dias e a empresa continua decidindo.</span></li>
+        </ul>
         <p class="pull rise">A sua empresa aguenta quinze dias sem você?</p>
       </div>
     </section>
@@ -1172,7 +1224,7 @@
     <hr class="rule rise" />
 
     <!-- 8 · A CONTA -->
-    <section>
+    <section class="section--warm">
       <div class="wrap measure">
         <p class="eyebrow rise">A conta que ninguém faz</p>
         <h2 class="h-sec rise" data-dock="O gerente: <b>R$ 168 mil</b> por ano">Contratar um gerente custa mais e resolve menos.</h2>
@@ -1232,7 +1284,7 @@
     <hr class="rule rise" />
 
     <!-- 10 · CUSTO DA INAÇÃO -->
-    <section>
+    <section class="section--warm">
       <div class="wrap measure">
         <p class="eyebrow eyebrow--muted rise">O outro preço</p>
         <h2 class="h-sec rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
@@ -1256,15 +1308,15 @@
         <h2 class="h-sec rise" data-dock="<b>R$ 23.400</b> em valor entregue">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
         <ul class="offer pile">
-          <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">Na primeira semana a gente mede quantas horas você perde com decisão que não é sua. Esse número vira a sua linha de base, e é ele que a garantia tem que derrubar.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="120 dias é muito tempo pra sentir alguma coisa" data-det="Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você sente a diferença antes de ter um único processo documentado. É de propósito: ninguém aguenta quatro meses sem sentir nada."><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você ganha tempo antes de ter um único processo documentado.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="já fiz mentoria genérica que não se aplicava" data-det="Cinco pilares aplicados à sua empresa, no estágio em que ela está: Calibração do Gestor, Hierarquia &amp; Liderança, Processos &amp; Cultura, Eficiência com IA e, por último, Marketing &amp; Vendas. Marketing é o último de propósito &mdash; ele acelera o que já existe, e acelerar caos produz mais caos."><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="as mentorias grandes ensinam empresa de R$1M a R$3bi" data-det="Comigo, não com atendente, e não em turma. Cada call está amarrada a um marco do método e olha o seu negócio no estágio em que ele está. É a diferença entre aprender gestão e instalar gestão."><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma em cada marco, olhando o seu negócio, não um conteúdo genérico.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="quando trava, eu volto a fazer sozinho" data-det="Comigo e com a Carine, nossa gestora de sucesso, pelos doze meses. Sem fila e sem esperar a próxima call. O motivo é simples: o momento em que você trava é o momento em que você volta a fazer sozinho, e aí o processo morre."><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, nossa gestora de sucesso. Sem fila.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="a dúvida aparece domingo à noite" data-det="Uma IA treinada no conteúdo da mentoria, disponível 24 horas, pra diagnóstico e consulta ao método. Serve pra quando a dúvida aparece fora do horário da call &mdash; que é quase sempre."><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra quando a dúvida aparece fora da call.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="não tenho tempo de escrever processo" data-det="DISC, RACI, SLAs, scripts e dashboards prontos. Você preenche, não redige. O trabalho de escrever processo do zero é justamente o que trava todo mundo, então ele já vem feito."><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">Modelos prontos: DISC, RACI, SLAs, scripts e dashboards.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="o problema é a minha equipe" data-det="Seu perfil de decisão mapeado pelo CIS Assessment da Febracis, com três ajustes personalizados. O primeiro sistema a calibrar é o dono, e isso precisa sair de um instrumento, não da minha opinião sobre você."><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão mapeado pelo CIS Assessment (Febracis), com 3 ajustes personalizados.<span class="offer__more">Ver o detalhe</span></div></div></li>
-          <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">O método de produtividade: Foco, Ação, Sistema e Tempo.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">O número de horas que você perde, medido na semana 1.</div></div></li>
+          <li class="rise" data-obj="120 dias é muito tempo pra sentir alguma coisa" data-det="Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você sente a diferença antes de ter um único processo documentado. É de propósito: ninguém aguenta quatro meses sem sentir nada."><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Três decisões voltam pra equipe já na primeira semana.</div></div></li>
+          <li class="rise" data-obj="já fiz mentoria genérica que não se aplicava" data-det="Cinco pilares aplicados à sua empresa, no estágio em que ela está: Calibração do Gestor, Hierarquia &amp; Liderança, Processos &amp; Cultura, Eficiência com IA e, por último, Marketing &amp; Vendas. Marketing é o último de propósito &mdash; ele acelera o que já existe, e acelerar caos produz mais caos."><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à sua empresa.</div></div></li>
+          <li class="rise" data-obj="as mentorias grandes ensinam empresa de R$1M a R$3bi" data-det="Comigo, não com atendente, e não em turma. Cada call está amarrada a um marco do método e olha o seu negócio no estágio em que ele está. É a diferença entre aprender gestão e instalar gestão."><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma por marco, comigo, olhando o seu negócio.</div></div></li>
+          <li class="rise" data-obj="quando trava, eu volto a fazer sozinho" data-det="Comigo e com a Carine, nossa gestora de sucesso, pelos doze meses. Sem fila e sem esperar a próxima call. O motivo é simples: o momento em que você trava é o momento em que você volta a fazer sozinho, e aí o processo morre."><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, pelos 12 meses. Sem fila.</div></div></li>
+          <li class="rise" data-obj="a dúvida aparece domingo à noite" data-det="Uma IA treinada no conteúdo da mentoria, disponível 24 horas, pra diagnóstico e consulta ao método. Serve pra quando a dúvida aparece fora do horário da call &mdash; que é quase sempre."><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra dúvida que aparece fora da call.</div></div></li>
+          <li class="rise" data-obj="não tenho tempo de escrever processo" data-det="DISC, RACI, SLAs, scripts e dashboards prontos. Você preenche, não redige. O trabalho de escrever processo do zero é justamente o que trava todo mundo, então ele já vem feito."><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">DISC, RACI, SLAs, scripts e dashboards prontos.</div></div></li>
+          <li class="rise" data-obj="o problema é a minha equipe" data-det="Seu perfil de decisão mapeado pelo CIS Assessment da Febracis, com três ajustes personalizados. O primeiro sistema a calibrar é o dono, e isso precisa sair de um instrumento, não da minha opinião sobre você."><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão pelo CIS Assessment, da Febracis.</div></div></li>
+          <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">Foco, Ação, Sistema e Tempo: a rotina que se sustenta.</div></div></li>
         </ul>
         <div class="anchor rise">
           <span class="anchor__k">Valor de tudo isso</span>
@@ -1578,11 +1630,13 @@
           var on=b.dataset.f===k;
           b.classList.toggle('is-on',on);b.setAttribute('aria-selected',on?'true':'false');
         });
-        ['hoje','depois'].forEach(function(n){
-          var el=document.getElementById('f-'+n);if(!el)return;
-          if(n===k){el.removeAttribute('hidden');el.removeAttribute('aria-hidden');}
-          else{el.setAttribute('hidden','');el.setAttribute('aria-hidden','true');}
-        });
+        var sem=document.getElementById('week'),cap=document.getElementById('weekCap');
+        if(sem){
+          sem.classList.toggle('is-clear',k==='depois');
+          if(cap)cap.textContent = k==='depois'
+            ? 'A mesma semana, com as decisões onde elas deviam estar.'
+            : 'Dez blocos na semana. Nenhum deles precisava de você.';
+        }
         moveFlip();
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'virou_a_chave',lado:k});
