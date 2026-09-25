@@ -109,7 +109,14 @@
     --ink:#0C0C0C;
     --sans:'DM Sans',system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
     --serif:'Fraunces',Georgia,'Times New Roman',serif;
-    --frame:72rem; --measure:40rem;
+    --frame:72rem;
+  /* medidas que o sangramento usa: altura da topbar e a distancia da coluna
+     de conteudo ate a borda da tela */
+  --tb:5.375rem;
+  --gut:clamp(1.25rem,5vw,2.25rem);
+  /* borda direita da coluna de texto, em coordenada de tela */
+  --linha-dir:calc(50vw + min(calc(100vw - 2 * var(--gut)),var(--frame)) / 2 - var(--gut));
+  --art-w:clamp(30rem,44vw,50rem); --measure:40rem;
     --ease:cubic-bezier(.22,1,.36,1);
     --ease-soft:cubic-bezier(.16,.72,.2,1);
     /* molas iOS · fallback em cubic-bezier, upgrade em linear() abaixo */
@@ -288,10 +295,29 @@
     /* sem margem negativa: em grid, margem negativa realimenta o calculo das
        faixas fr e a coluna cresce sozinha (estourou 287px pra fora da tela).
        o sangramento de verdade ja mora na secao 01, logo abaixo. */
-    .hero__art{height:clamp(27rem,38vw,34rem);border-radius:22px}
+    /* IMPONENCIA: o retrato sobe ate o topo da tela (por tras da capsula
+       transparente da topbar) e sangra ate a borda direita. o sangramento sai
+       de uma LARGURA calculada, nao de margem negativa: em grid, margem
+       negativa realimenta o calculo das faixas fr e a coluna cresce sozinha.
+       com minmax(0,.88fr) a faixa nao acompanha a largura explicita. */
+    .hero{margin-top:calc(-1 * var(--tb));padding-top:calc(var(--tb) + clamp(2rem,4vw,3.4rem))}
+    /* o retrato sai da grade e ancora na SECAO: top 0 = topo da tela, por tras
+       da capsula transparente da topbar. fora da grade, o texto fica numa
+       coluna so e o espaco livre vem de padding calculado a partir dos mesmos
+       tokens -- nunca de margem negativa em item de grid. */
+    .hero__top{grid-template-columns:minmax(0,1fr);
+      min-height:calc(100svh - var(--tb) - 1.5rem);align-content:center;
+      padding-right:max(0rem,calc(var(--linha-dir) - (100vw - var(--art-w)) + 2.5rem))}
+    .hero__art{position:absolute;top:0;right:0;width:var(--art-w);
+      height:min(100svh,54rem);border-radius:0;z-index:0}
+    /* ARMADILHA: position:relative no .wrap faz do .wrap o bloco de referencia
+       do retrato absoluto -- ele ancorava na coluna de conteudo (1296px) em vez
+       da borda da tela. quem sobe de camada e o conteudo, um por um. */
+    .hero__in,.hero .creds,.hero .strip,.hero .grid{position:relative;z-index:1}
     .hero__art::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-      background:linear-gradient(92deg,rgba(18,17,16,.72) 0%,rgba(18,17,16,.14) 30%,transparent 62%),
-                 linear-gradient(0deg,rgba(18,17,16,.55) 0%,transparent 30%)}
+      background:linear-gradient(94deg,var(--bg) 0%,rgba(18,17,16,.74) 12%,rgba(18,17,16,.3) 34%,transparent 66%),
+                 linear-gradient(0deg,var(--bg) 0%,rgba(18,17,16,.78) 12%,rgba(18,17,16,.3) 30%,transparent 52%),
+                 linear-gradient(180deg,rgba(18,17,16,.55) 0%,transparent 16%)}
   }
   @media (max-width:999px){
     /* a faixa precisa caber o queixo e o ombro: com 272px o retrato cortava
@@ -302,6 +328,76 @@
     .hero__art::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
       background:linear-gradient(0deg,var(--bg) 1%,rgba(18,17,16,.5) 24%,transparent 62%)}
     .hero{padding-top:clamp(1rem,3vw,2rem)}
+  }
+
+
+  /* ===== os icones deixam de ser glifo e viram tracado: cada caminho se
+     desenha quando o item entra em tela. o comprimento vai por --l, medido
+     em JS com getTotalLength() -- dasharray chutado erra o tempo de cada um. */
+  .oic svg path,.oic svg circle,.oic svg rect,.oic svg line,.oic svg polyline,
+  .cred__ic svg path,.cred__ic svg circle,.cred__ic svg rect,
+  .faq__ico svg path,.faq__ico svg circle,
+  .ico svg path,.ico svg circle{
+    stroke-dasharray:var(--l,0);stroke-dashoffset:var(--l,0)}
+  .traca.in .oic svg *,.traca.in .cred__ic svg *,.traca.in .faq__ico svg *,
+  .traca.in .ico svg *{
+    animation:tracar .78s var(--ease-soft) both;animation-delay:var(--d,0ms)}
+  @keyframes tracar{to{stroke-dashoffset:0}}
+  /* sem JS o icone tem que aparecer inteiro, nao sumir */
+  html.sem-traco .oic svg *,html.sem-traco .cred__ic svg *,
+  html.sem-traco .faq__ico svg *,html.sem-traco .ico svg *{
+    stroke-dasharray:none;stroke-dashoffset:0}
+  @media (prefers-reduced-motion:reduce){
+    .oic svg *,.cred__ic svg *,.faq__ico svg *,.ico svg *{
+      stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+  }
+
+
+  /* ===== o grafo da decisao · mesmos seis nos nos dois estados. o que muda e
+     quem fala com quem, e onde o dono fica. amarrado na mesma chave Hoje/Depois
+     que ja governa a semana logo abaixo. ===== */
+  .grafo{margin:1.8rem auto 0;max-width:46rem;position:relative}
+  .grafo svg{width:100%;height:auto;display:block;overflow:visible}
+  .grafo .g-lin{fill:none;stroke-linecap:round;stroke-width:1.6}
+  .grafo .g-no{fill:var(--bg-2);stroke:var(--line-2);stroke-width:1.4}
+  .grafo .g-rot{fill:none;stroke:var(--gold-line);stroke-width:1}
+  .grafo .g-tx{font-family:var(--sans);font-size:13px;font-weight:600;fill:var(--mute);
+    letter-spacing:.01em}
+  .grafo .g-eu{font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;fill:var(--ink)}
+  .grafo .g-pt{fill:var(--gold-2)}
+  /* os dois feixes vivem juntos; a chave decide qual esta aceso */
+  .g-hoje .g-lin{stroke:var(--gold);opacity:.85}
+  .g-depois .g-lin{stroke:var(--gold-3);opacity:.7}
+  .g-hoje,.g-depois{transition:opacity .5s var(--ease-soft)}
+  .grafo[data-est="hoje"] .g-depois,.grafo[data-est="depois"] .g-hoje{opacity:0}
+  /* ARMADILHA: `translate` composto com `scale` num <g> volta a ser medido em
+     pixel de tela, nao em unidade do viewBox -- o no saia 27px pra fora da
+     caixa. As duas posicoes do dono viram dois grupos em coordenada do SVG e
+     se cruzam; o deslize fica por conta de um empurrao pequeno, que e o unico
+     valor tolerante a escala. */
+  .g-eu-grupo{transition:opacity .5s var(--ease-soft),translate .62s var(--spring)}
+  .grafo[data-est="hoje"] .g-eu--fora,
+  .grafo[data-est="depois"] .g-eu--centro{opacity:0}
+  .grafo[data-est="depois"] .g-eu--centro{translate:0 -10px}
+  .grafo[data-est="hoje"] .g-eu--fora{translate:0 10px}
+  .g-eu-disco{fill:var(--gold-2);stroke:var(--gold-3);stroke-width:1.4}
+  .grafo__pes{display:flex;justify-content:center;gap:1.4rem;margin-top:.4rem;
+    color:var(--mute-2);font-size:.85rem;line-height:1.45;text-align:center}
+  .grafo__leg{max-width:34rem;margin:.3rem auto 0;color:var(--mute);font-size:.95rem;
+    line-height:1.5;text-align:center}
+  .grafo__leg b{color:var(--cream)}
+  /* o traco do grafo tambem se desenha, com o mesmo motor dos icones */
+  .grafo .g-lin{stroke-dasharray:var(--l,0);stroke-dashoffset:var(--l,0)}
+  .grafo.traca .g-lin{animation:tracar .9s var(--ease-soft) both;animation-delay:var(--d,0ms)}
+  html.sem-traco .grafo .g-lin{stroke-dasharray:none;stroke-dashoffset:0}
+  @media (prefers-reduced-motion:reduce){
+    .grafo .g-lin{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
+    .g-eu-grupo{transition:none}
+  }
+  @media (max-width:640px){
+    .grafo .g-tx{font-size:16px}
+    .grafo__leg{font-size:.9rem}
   }
 
   /* eyebrow with ornaments */
@@ -1370,6 +1466,19 @@
   }
 
   /* ===== linhas do tempo nativas: sai do fio principal, vai pro compositor ===== */
+  /* ARMADILHA: filter e uma propriedade so. Animar brightness sozinho apaga
+     o grayscale do duotone e a foto volta a cor no meio da rolagem -- a cadeia
+     inteira tem que estar nos dois quadros. */
+  @keyframes pxHeroArt{
+    from{scale:1.06;translate:0 0;filter:blur(0) grayscale(1) contrast(1.05) brightness(.92)}
+    to{scale:1;translate:0 4.5rem;filter:blur(0) grayscale(1) contrast(1.08) brightness(.62)}
+  }
+  @supports (animation-timeline:scroll()){
+    /* o retrato do hero recua enquanto o texto sobe: a primeira tela ganha
+       profundidade em vez de deslizar inteira */
+    .hero__art img{animation:pxHeroArt linear both;animation-timeline:scroll(root block);
+      animation-range:0 92svh;transform-origin:62% 34%}
+  }
   @supports (animation-timeline:scroll()){
     .topbar__prog{animation:progresso linear both;animation-timeline:scroll(root block)}
     @keyframes progresso{from{transform:scaleX(0)}to{transform:scaleX(1)}}
@@ -1997,6 +2106,46 @@
           <span class="flip__ind" aria-hidden="true"></span>
           <button type="button" class="is-on" role="tab" aria-selected="true" data-f="hoje">Hoje</button>
           <button type="button" role="tab" aria-selected="false" data-f="depois">Depois</button>
+        </div>
+
+        <div class="grafo rise" id="grafo" data-est="hoje">
+          <svg viewBox="0 0 760 372" role="img" aria-labelledby="grafoT grafoD">
+            <title id="grafoT">A empresa com você no meio e sem você no meio</title>
+            <desc id="grafoD">Hoje, as seis áreas só falam com o dono. Depois, elas falam entre si e o dono acompanha de fora.</desc>
+            <g class="g-hoje">
+              <path class="g-lin" d="M365 174 L335.5 123"/><path class="g-lin" d="M395 174 L424.5 123"/>
+              <path class="g-lin" d="M410 200 L469 200"/><path class="g-lin" d="M395 226 L424.5 277"/>
+              <path class="g-lin" d="M365 226 L335.5 277"/><path class="g-lin" d="M350 200 L291 200"/>
+            </g>
+            <g class="g-depois">
+              <path class="g-lin" d="M343.5 109.1 L416.5 109.1"/><path class="g-lin" d="M440.5 123 L477 186.1"/>
+              <path class="g-lin" d="M477 213.9 L440.5 277"/><path class="g-lin" d="M416.5 290.9 L343.5 290.9"/>
+              <path class="g-lin" d="M319.5 277 L283 213.9"/><path class="g-lin" d="M283 186.1 L319.5 123"/>
+              <path class="g-lin" d="M367.7 57.8 L337.4 96.5" opacity=".38"/>
+              <path class="g-lin" d="M392.3 57.8 L422.6 96.5" opacity=".38"/>
+            </g>
+            <circle class="g-no" cx="327.5" cy="109.1" r="16"/><circle class="g-no" cx="432.5" cy="109.1" r="16"/>
+            <circle class="g-no" cx="485" cy="200" r="16"/><circle class="g-no" cx="432.5" cy="290.9" r="16"/>
+            <circle class="g-no" cx="327.5" cy="290.9" r="16"/><circle class="g-no" cx="275" cy="200" r="16"/>
+            <circle class="g-pt" cx="327.5" cy="109.1" r="3.4"/><circle class="g-pt" cx="432.5" cy="109.1" r="3.4"/>
+            <circle class="g-pt" cx="485" cy="200" r="3.4"/><circle class="g-pt" cx="432.5" cy="290.9" r="3.4"/>
+            <circle class="g-pt" cx="327.5" cy="290.9" r="3.4"/><circle class="g-pt" cx="275" cy="200" r="3.4"/>
+            <text class="g-tx" x="304" y="72.4" text-anchor="middle">Comercial</text>
+            <text class="g-tx" x="456" y="72.4" text-anchor="middle">Operações</text>
+            <text class="g-tx" x="532" y="204" text-anchor="start">Financeiro</text>
+            <text class="g-tx" x="456" y="335.6" text-anchor="middle">Atendimento</text>
+            <text class="g-tx" x="304" y="335.6" text-anchor="middle">Compras</text>
+            <text class="g-tx" x="228" y="204" text-anchor="end">Marketing</text>
+            <g class="g-eu-grupo g-eu--centro">
+              <circle class="g-eu-disco" cx="380" cy="200" r="30"/>
+              <text class="g-eu" x="380" y="205" text-anchor="middle">Você</text>
+            </g>
+            <g class="g-eu-grupo g-eu--fora">
+              <circle class="g-eu-disco" cx="380" cy="42" r="22"/>
+              <text class="g-eu" x="380" y="46.5" text-anchor="middle" style="font-size:11px">Você</text>
+            </g>
+          </svg>
+          <p class="grafo__leg" id="grafoLeg"><b>Hoje:</b> seis áreas e um só caminho. Toda decisão sobe até você e desce de novo.</p>
         </div>
         <div class="week rise" id="week">
           <div class="week__grid">
@@ -2745,7 +2894,16 @@
         });
         var sem=document.getElementById('week'),cap=document.getElementById('weekCap'),
             gan=document.getElementById('ganhos'),ganT=document.getElementById('ganhosT'),
+            grafo=document.getElementById('grafo'),grafoLeg=document.getElementById('grafoLeg'),
             depois=k==='depois';
+        /* o grafo e a semana contam a mesma coisa em duas linguagens: um so
+           interruptor governa os dois, senao a pagina se contradiz na tela */
+        if(grafo){
+          grafo.dataset.est=k;
+          if(grafoLeg)grafoLeg.innerHTML = depois
+            ? '<b>Depois:</b> as áreas decidem entre si com critério escrito. Você acompanha de fora e só entra no que sai da alçada.'
+            : '<b>Hoje:</b> seis áreas e um só caminho. Toda decisão sobe até você e desce de novo.';
+        }
         if(sem){
           sem.classList.toggle('is-clear',depois);
           if(cap)cap.textContent = depois
@@ -2969,6 +3127,56 @@
         if(alvo&&alvo.classList.contains('is-done')){clearInterval(esperaTick);conta();}
       },400);
       setTimeout(function(){clearInterval(esperaTick);},15000);
+    })();
+
+
+    /* --- os icones se desenham: mede cada caminho e solta quando entra em tela.
+           ARMADILHA: sem medir, um dasharray fixo faz circulo de 52px de
+           perimetro terminar em 38% do tempo e caminho de 180px nunca fechar. --- */
+    (function(){
+      var caixas=[].slice.call(document.querySelectorAll(
+        '.offer li,.num,.cred,.faq__i,.card,.road__leg'));
+      if(!caixas.length)return;
+      if(!('IntersectionObserver'in window)||reduce){
+        document.documentElement.classList.add('sem-traco');return;
+      }
+      var mediu=false;
+      /* ARMADILHA: no WebKit o animation-fill-mode:both nem sempre fecha em
+         stroke-dashoffset:0 quando o valor vem de var() -- sobra um resto de
+         8 a 60px e o traco fica pela metade PARA SEMPRE. O estado final tem
+         que ser escrito na mao, no fim da animacao e num prazo de seguranca. */
+      var fechar=function(el){
+        el.style.strokeDasharray='none';el.style.strokeDashoffset='0';
+      };
+      var medir=function(caixa){
+        var pecas=caixa.querySelectorAll('.oic svg > *,.cred__ic svg > *,.faq__ico svg > *,.ico svg > *,.g-lin');
+        for(var i=0;i<pecas.length;i++){
+          (function(el,i){
+            var L=0;
+            try{ L=el.getTotalLength?el.getTotalLength():0; }catch(e){ L=0; }
+            if(!L||!isFinite(L)){ fechar(el); return; }
+            var atraso=i*70;
+            el.style.setProperty('--l',Math.ceil(L));
+            el.style.setProperty('--d',atraso+'ms');
+            el.addEventListener('animationend',function(){fechar(el);},{once:true});
+            setTimeout(function(){fechar(el);},atraso+1100);
+          })(pecas[i],i);
+        }
+        mediu=true;
+      };
+      var io=new IntersectionObserver(function(ens){
+        ens.forEach(function(en){
+          if(!en.isIntersecting)return;
+          medir(en.target);
+          en.target.classList.add('traca');
+          /* o .in de reveal pode chegar antes ou depois; garante os dois */
+          requestAnimationFrame(function(){en.target.classList.add('in');});
+          io.unobserve(en.target);
+        });
+      },{rootMargin:'0px 0px -12% 0px',threshold:.15});
+      caixas.forEach(function(c){io.observe(c);});
+      /* rede de seguranca: se nada foi medido em 6s, mostra tudo inteiro */
+      setTimeout(function(){ if(!mediu)document.documentElement.classList.add('sem-traco'); },6000);
     })();
 
     /* --- contadores --- */
