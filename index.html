@@ -474,6 +474,49 @@
     .mirror__b::after{opacity:0}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== objecoes: glifo por objecao, marca de lida e contador ===== */
+  .faq__q{gap:.85rem}
+  .faq__i .faq__ico{flex:none;width:2.15rem;height:2.15rem;border-radius:11px;display:grid;place-items:center;
+    background:var(--panel);border:.5px solid var(--line);color:var(--mute);
+    transition:color .45s var(--ease),background .45s var(--ease),border-color .45s var(--ease),
+      transform .6s var(--spring)}
+  .faq__i .faq__ico svg{width:17px;height:17px;stroke:currentColor;stroke-width:1.45;fill:none;
+    stroke-linecap:round;stroke-linejoin:round}
+  .faq__i.is-open .faq__ico{color:var(--gold-3);background:var(--gold-soft);border-color:var(--gold-line);
+    transform:scale(1.06)}
+  .faq__i.lida .faq__ico{color:var(--gold-2)}
+  .faq__txt{flex:1;min-width:0}
+  /* ponto discreto de lida, nao um check gritante */
+  .faq__q::after{content:"";position:absolute;left:.62rem;top:50%;translate:0 -50%;
+    width:.3rem;height:.3rem;border-radius:50%;background:var(--gold-2);
+    opacity:0;scale:.3;transition:opacity .5s var(--ease),scale .6s var(--spring)}
+  .faq__i.lida .faq__q::after{opacity:.85;scale:1}
+  .faq__q{position:relative;padding-left:1.7rem}
+  /* contador de lidas no cabecalho da secao */
+  .lidas{display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;
+    padding:.4rem .95rem;border-radius:999px;font-size:.82rem;color:var(--mute);
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi);transition:color .5s var(--ease),border-color .5s var(--ease)}
+  .lidas b{color:var(--gold-3);font-weight:800;font-variant-numeric:tabular-nums}
+  .lidas.cheio{border-color:var(--gold-line);color:var(--text)}
+  .lidas__p{display:flex;gap:.2rem}
+  .lidas__p i{width:.34rem;height:.34rem;border-radius:50%;background:var(--line-2);
+    transition:background .45s var(--spring),scale .5s var(--spring)}
+  .lidas__p i.on{background:var(--gold-2);scale:1.25}
+  /* fecho que so aparece quando as seis foram lidas */
+  .faq__fim{margin-top:1.3rem;padding:1.2rem 1.35rem;border-radius:18px;text-align:center;
+    background:linear-gradient(180deg,var(--gold-soft),var(--glass));border:.5px solid var(--gold-line);
+    color:var(--text);line-height:1.6;
+    opacity:0;translate:0 12px;pointer-events:none;
+    transition:opacity .6s var(--ease),translate .8s var(--spring)}
+  .faq__fim.on{opacity:1;translate:0 0;pointer-events:auto}
+  .faq__fim b{color:var(--gold-3)}
+  .faq__fim .btn{margin-top:.9rem}
+  @media (prefers-reduced-motion:reduce){
+    .faq__fim{transition:none}.faq__i .faq__ico{transition:none}
+  }
+
   /* ===== tira compacta da semana, no hero ===== */
   /* folga maior que o atraso maximo do hero (46px), senao a pilula invade */
   .strip{margin-top:clamp(5rem,10vw,6.5rem)}
@@ -1866,31 +1909,36 @@
       <div class="wrap measure">
         <p class="eyebrow eyebrow--muted rise">Antes de você dizer “agora não”</p>
         <h2 class="h-sec rise">As seis coisas que você está pensando agora.</h2>
+        <p class="lidas rise" id="lidas"><span class="lidas__p" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b id="lidasN">1</b> de 6 lidas</span></p>
         <div class="faq stagger" id="faq">
-          <div class="faq__i rise is-open">
-            <button type="button" class="faq__q" aria-expanded="true"><span>“Não tenho tempo.”</span><i class="faq__c" aria-hidden="true"></i></button>
+          <div class="faq__i rise is-open lida">
+            <button type="button" class="faq__q" aria-expanded="true"><span class="faq__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12.6" r="8"/><path d="M12 8.4v4.2l2.8 1.7"/><path d="M9 2.8h6"/></svg></span><span class="faq__txt">“Não tenho tempo.”</span><i class="faq__c" aria-hidden="true"></i></button>
             <div class="faq__a"><div><p>Você não vai encontrar tempo, ele não está sobrando em canto nenhum. São 9 calls em 12 meses, e a primeira já te devolve horas da semana.</p></div></div>
           </div>
           <div class="faq__i rise">
-            <button type="button" class="faq__q" aria-expanded="false"><span>“Já tentei contratar e não resolveu.”</span><i class="faq__c" aria-hidden="true"></i></button>
+            <button type="button" class="faq__q" aria-expanded="false"><span class="faq__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7.6" r="3"/><path d="M3.4 19.4a5.6 5.6 0 0111.2 0"/><path d="M17 12.4h4.6m0 0-2-2m2 2-2 2"/></svg></span><span class="faq__txt">“Já tentei contratar e não resolveu.”</span><i class="faq__c" aria-hidden="true"></i></button>
             <div class="faq__a"><div><p>Sem processo documentado, você não delegou responsabilidade. Delegou o caos. Aqui a gente documenta primeiro.</p></div></div>
           </div>
           <div class="faq__i rise">
-            <button type="button" class="faq__q" aria-expanded="false"><span>“Já comprei curso que nunca usei.”</span><i class="faq__c" aria-hidden="true"></i></button>
+            <button type="button" class="faq__q" aria-expanded="false"><span class="faq__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.6 8.4 12 4.4l8.4 4v7.2L12 19.6l-8.4-4z"/><path d="M3.6 8.4 12 12.4l8.4-4M12 12.4v7.2"/></svg></span><span class="faq__txt">“Já comprei curso que nunca usei.”</span><i class="faq__c" aria-hidden="true"></i></button>
             <div class="faq__a"><div><p>Esse não depende da sua disciplina. O método te convoca: a plataforma marca a call, e a sua parte é aparecer.</p></div></div>
           </div>
           <div class="faq__i rise">
-            <button type="button" class="faq__q" aria-expanded="false"><span>“Você tem quantos casos?”</span><i class="faq__c" aria-hidden="true"></i></button>
+            <button type="button" class="faq__q" aria-expanded="false"><span class="faq__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.4 19.6V13m4.6 6.6V8.6m4.6 11V4.4m4.6 15.2v-7.8"/></svg></span><span class="faq__txt">“Você tem quantos casos?”</span><i class="faq__c" aria-hidden="true"></i></button>
             <div class="faq__a"><div><p>Um documentado, a Biotop, e é exatamente por isso que essa turma tem esse preço e essa garantia. Quando eu tiver dez, o preço será outro e a garantia será menor. Você está entrando no momento em que eu preciso que dê certo.</p></div></div>
           </div>
           <div class="faq__i rise">
-            <button type="button" class="faq__q" aria-expanded="false"><span>“Deve ser caro.”</span><i class="faq__c" aria-hidden="true"></i></button>
+            <button type="button" class="faq__q" aria-expanded="false"><span class="faq__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.8 3.6H19a1.4 1.4 0 011.4 1.4v6.2a1.4 1.4 0 01-.4 1l-8.4 8.4a1.4 1.4 0 01-2 0l-6.2-6.2a1.4 1.4 0 010-2l8.4-8.4a1.4 1.4 0 011-.4z"/><circle cx="16.4" cy="7.6" r="1.3"/></svg></span><span class="faq__txt">“Deve ser caro.”</span><i class="faq__c" aria-hidden="true"></i></button>
             <div class="faq__a"><div><p>Custa menos de 10% do gerente que você pensou em contratar, e devolve dez horas por semana já nos primeiros 60 dias &mdash; ou eu sigo trabalhando sem cobrar. O número exato eu falo na conversa, depois de entender se faz sentido pra você.</p></div></div>
           </div>
           <div class="faq__i rise">
-            <button type="button" class="faq__q" aria-expanded="false"><span>“Meu setor é diferente.”</span><i class="faq__c" aria-hidden="true"></i></button>
+            <button type="button" class="faq__q" aria-expanded="false"><span class="faq__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.6a8.4 8.4 0 00-8.4 8.4v2.2"/><path d="M20.4 12a8.4 8.4 0 00-4.2-7.3"/><path d="M8 12a4 4 0 018 0v2.4a5.6 5.6 0 01-1 3.2"/><path d="M12 12v3.4a9 9 0 01-1.6 5.1"/><path d="M20.2 15.6a12 12 0 01-.9 3.6"/></svg></span><span class="faq__txt">“Meu setor é diferente.”</span><i class="faq__c" aria-hidden="true"></i></button>
             <div class="faq__a"><div><p>O método não mexe no seu produto. Mexe em quem decide. E quem decide é igual em todo setor: você.</p></div></div>
           </div>
+        </div>
+        <div class="faq__fim" id="faqFim">
+          Você leu as seis. <b>Nenhuma delas é o motivo de verdade</b> — o motivo aparece na conversa, e é lá que a gente vê se faz sentido.
+          <div><a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">&rarr;</span></a></div>
         </div>
       </div>
     </section>
@@ -2221,6 +2269,17 @@
     /* --- objecoes: abre uma por vez --- */
     var faq=document.getElementById('faq');
     if(faq){
+      /* a primeira ja nasce aberta e lida: os pontos tem que nascer junto */
+      function pintaLidas(){
+        var n=faq.querySelectorAll('.faq__i.lida').length,
+            cx=document.getElementById('lidas'),cn=document.getElementById('lidasN'),
+            fim=document.getElementById('faqFim'),pts=document.querySelectorAll('#lidas .lidas__p i');
+        if(cn)cn.textContent=n;
+        if(cx)cx.classList.toggle('cheio',n>=6);
+        for(var z=0;z<pts.length;z++)pts[z].classList.toggle('on',z<n);
+        if(fim)fim.classList.toggle('on',n>=6);
+      }
+      pintaLidas();
       faq.addEventListener('click',function(ev){
         var q=ev.target.closest('.faq__q');if(!q)return;
         var item=q.parentNode,abrir=!item.classList.contains('is-open');
@@ -2229,6 +2288,8 @@
           x.querySelector('.faq__q').setAttribute('aria-expanded','false');
         });
         if(abrir){item.classList.add('is-open');q.setAttribute('aria-expanded','true');}
+        item.classList.add('lida');
+        pintaLidas();
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'objecao_aberta',objecao:q.textContent.trim().slice(0,60)});
       });
