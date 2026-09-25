@@ -543,7 +543,10 @@
     .custo__in{grid-template-columns:1fr;gap:2rem}
     .custo__fig{margin-left:-.2rem;font-size:clamp(5rem,26vw,9rem)}
     .custo__fig--longo{margin-left:0;font-size:clamp(2.4rem,12.8vw,5rem)}
-    .custo::after{display:none}
+    /* o feixe existia so no desktop: no mobile ele so muda de angulo */
+    .custo::after{right:-30%;top:-14%;width:120%;height:128%;rotate:-14deg;
+      background:linear-gradient(104deg,transparent 44%,rgba(196,154,82,.09) 45.5%,rgba(196,154,82,.09) 49%,transparent 50.5%)}
+    .custo--dir::after{left:-30%;right:auto;rotate:14deg}
     .custo--dir .custo__fig,.custo--dir .custo__k,.custo--dir .custo__un{
       margin-right:0;text-align:left}
     .custo__k,.custo__un{margin-left:0;margin-right:0}
@@ -1237,6 +1240,10 @@
       background:linear-gradient(180deg,rgba(196,154,82,.26),var(--glass))}
     .mirror__row:hover .mirror__g::before{box-shadow:0 0 20px rgba(196,154,82,.65),0 0 4px rgba(220,187,126,.8)}
   }
+  .mirror__row.toque .mirror__a{border-color:var(--line-2)}
+  .mirror__row.toque .mirror__b{border-color:var(--gold-2);
+    background:linear-gradient(180deg,rgba(196,154,82,.26),var(--glass))}
+  .mirror__row.toque .mirror__g::before{box-shadow:0 0 20px rgba(196,154,82,.65),0 0 4px rgba(220,187,126,.8)}
   .mirror.rise .mirror__a{transform:translateX(-14px);opacity:0}
   .mirror.rise .mirror__b{transform:translateX(14px);opacity:0}
   .mirror.rise.in .mirror__a,.mirror.rise.in .mirror__b{transform:none;opacity:1}
@@ -1478,6 +1485,10 @@
     .card:hover::after,.num:hover::after,.cell:hover::after,
     .depo:hover::after,.obj__row:hover::after,.offer li:hover::after{opacity:1}
   }
+  /* no toque nao existe hover: o brilho acende no contato e apaga sozinho */
+  .card.toque::after,.num.toque::after,.cell.toque::after,
+  .depo.toque::after,.obj__row.toque::after,.offer li.toque::after{opacity:1}
+  .card.toque,.num.toque,.offer li.toque{border-color:var(--gold-line)}
 
   /* titulo de secao entra desfocado, como folha do iOS */
   .h-sec.rise{filter:blur(7px)}
@@ -2360,7 +2371,28 @@
       mainEl.style.transform='';
       setTimeout(function(){document.body.classList.remove('band-back');mainEl.style.willChange='';},680);
     }
+    /* o rubber band so existia no wheel: no celular nao acontecia nada */
+    var tY0=null;
     if(mainEl&&!reduce){
+      window.addEventListener('touchstart',function(ev){
+        tY0=ev.touches.length===1?ev.touches[0].clientY:null;
+      },{passive:true});
+      window.addEventListener('touchmove',function(ev){
+        if(tY0===null||document.body.classList.contains('sheet-on'))return;
+        var de=document.documentElement,
+            noTopo=window.scrollY<=0,
+            noFim=window.scrollY+window.innerHeight>=de.scrollHeight-1,
+            d=ev.touches[0].clientY-tY0;
+        if((noTopo&&d>0)||(noFim&&d<0)){
+          mainEl.style.willChange='transform';
+          banda=Math.max(-54,Math.min(54,d*0.3));
+          document.body.classList.add('band');document.body.classList.remove('band-back');
+          mainEl.style.transform='translateY('+banda.toFixed(1)+'px)';
+        }
+      },{passive:true});
+      var fimToque=function(){tY0=null;soltarBanda();};
+      window.addEventListener('touchend',fimToque,{passive:true});
+      window.addEventListener('touchcancel',fimToque,{passive:true});
       window.addEventListener('wheel',function(ev){
         if(document.body.classList.contains('sheet-on'))return;
         var de=document.documentElement,
@@ -2609,15 +2641,33 @@
       },6000);
     }
 
-    /* --- brilho especular segue o ponteiro --- */
-    if(!reduce&&window.matchMedia&&window.matchMedia('(hover:hover)').matches){
-      var glassy=document.querySelectorAll('.card,.num,.cell,.depo,.obj__row,.offer li');
+    /* --- brilho especular: segue o ponteiro no mouse, acende no toque --- */
+    if(!reduce){
+      var temHover=window.matchMedia&&window.matchMedia('(hover:hover)').matches,
+          glassy=document.querySelectorAll('.card,.num,.cell,.depo,.obj__row,.offer li,.mirror__row');
+      var marca=function(el,ev){
+        var r=el.getBoundingClientRect();
+        el.style.setProperty('--mx',((ev.clientX-r.left)/r.width*100).toFixed(1)+'%');
+        el.style.setProperty('--my',((ev.clientY-r.top)/r.height*100).toFixed(1)+'%');
+      };
       glassy.forEach(function(el){
-        el.addEventListener('pointermove',function(ev){
-          var r=el.getBoundingClientRect();
-          el.style.setProperty('--mx',((ev.clientX-r.left)/r.width*100).toFixed(1)+'%');
-          el.style.setProperty('--my',((ev.clientY-r.top)/r.height*100).toFixed(1)+'%');
+        if(temHover)el.addEventListener('pointermove',function(ev){marca(el,ev);},{passive:true});
+        /* no toque nao ha hover: acende no contato e apaga sozinho */
+        el.addEventListener('pointerdown',function(ev){
+          if(ev.pointerType==='mouse')return;
+          marca(el,ev);el.classList.add('toque');
+          clearTimeout(el._tq);
+          el._tq=setTimeout(function(){el.classList.remove('toque');},1400);
         },{passive:true});
+        /* o brilho nao pode ficar preso se o toque abrir uma folha ou
+           se outro pointerdown reiniciar o prazo */
+        var apaga=function(){
+          clearTimeout(el._tq);
+          el._tq=setTimeout(function(){el.classList.remove('toque');},520);
+        };
+        el.addEventListener('pointerup',apaga,{passive:true});
+        el.addEventListener('pointercancel',apaga,{passive:true});
+        el.addEventListener('pointerleave',apaga,{passive:true});
       });
     }
 
