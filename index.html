@@ -480,6 +480,48 @@
     .mirror__b::after{opacity:0}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== QUEBRA DE FORMA: a secao do custo sai da coluna de 40rem =====
+     full-bleed, duas colunas desiguais, e um numero em escala que a
+     pagina inteira nao tinha. Aqui o maior elemento deixa de ser o h1. */
+  .custo{position:relative;overflow:hidden;padding-block:clamp(4rem,9vw,7rem)}
+  .custo__in{max-width:88rem;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,3rem);
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:clamp(1.5rem,5vw,4.5rem);align-items:center}
+  /* o numero sangra pra fora da margem esquerda */
+  .custo__fig{position:relative;margin-left:clamp(-4.5rem,-5vw,-1rem);line-height:.8;
+    font-family:var(--sans);font-weight:800;letter-spacing:-.055em;
+    font-size:clamp(7.5rem,21vw,16.5rem);
+    background:linear-gradient(168deg,#F2E4C4 4%,var(--gold-3) 34%,var(--gold) 68%,#6E5522 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  /* o .tick tem filter e opacity proprios, e filter num descendente quebra
+     o background-clip:text do pai: o numero saia transparente */
+  .custo__fig .tick{filter:none!important;opacity:1!important;transform:none!important;
+    -webkit-text-fill-color:transparent;color:transparent;display:inline}
+  .custo__un{display:block;font-family:var(--sans);font-weight:800;
+    font-size:clamp(.72rem,1.1vw,.86rem);letter-spacing:.24em;text-transform:uppercase;
+    color:var(--mute-2);margin-top:1.3rem;margin-left:.35em;line-height:1.2}
+  .custo__k{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;
+    color:var(--gold-3);margin-bottom:1.1rem;margin-left:.3rem}
+  .custo__h{font-size:clamp(1.55rem,3.4vw,2.35rem);margin-bottom:1rem}
+  .custo__p{color:var(--mute);line-height:1.65;max-width:30rem}
+  .custo__p strong{color:var(--cream)}
+  /* a regua de 52 vira coluna, nao faixa */
+  .custo .weeks{grid-template-columns:repeat(13,1fr);max-width:none;margin-top:0}
+  .custo__cut{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--gold-line);
+    color:var(--cream);font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.4;font-weight:600}
+  .custo__cut b{color:var(--gold-3)}
+  /* um traco diagonal: a unica coisa da pagina que nao e retangulo */
+  .custo::after{content:"";position:absolute;right:-12%;top:-30%;width:58%;height:170%;
+    pointer-events:none;
+    background:linear-gradient(110deg,transparent 46%,rgba(196,154,82,.075) 47%,rgba(196,154,82,.075) 50%,transparent 51%);
+    rotate:-4deg}
+  @media(max-width:860px){
+    .custo__in{grid-template-columns:1fr;gap:2rem}
+    .custo__fig{margin-left:-.2rem;font-size:clamp(6rem,30vw,10rem)}
+    .custo::after{display:none}
+  }
+
   /* ===== os ganhos seguem a chave: apagados em Hoje, acendem em Depois ===== */
   .reckon--win li{transition:opacity .55s var(--ease),border-color .55s var(--ease),
     background .55s var(--ease),translate .7s var(--spring)}
@@ -1865,18 +1907,25 @@
     <hr class="rule rise" />
 
     <!-- 10 · CUSTO DA INAÇÃO -->
-    <section class="section--warm">
-      <div class="wrap measure">
-        <p class="eyebrow eyebrow--muted rise">O outro preço</p>
-        <h2 class="h-sec rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
-        <p class="lede rise">Não em dinheiro. Em coisa que você não fez.</p>
-        <div class="weeks rise" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
-        <p class="weeks__legend rise">
-          <span><i></i>Uma semana sua</span>
-          <span><i class="lost"></i><b>Treze semanas</b> por ano, pagas em decisão que não era sua</span>
-        </p>
-        <p class="rise" style="margin-top:1.4rem">Dez horas por semana somem assim: <strong><span class="tick" data-to="520">520</span> horas por ano</strong>. Um ano tem 52.</p>
-        <p class="pull rise">Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente.</p>
+    <section class="section--warm custo">
+      <div class="custo">
+        <div class="custo__in">
+          <div>
+            <p class="custo__k rise">O custo de ficar como está</p>
+            <div class="custo__fig rise"><span class="tick" data-to="520">520</span></div>
+            <span class="custo__un rise">horas por ano, todo ano</span>
+          </div>
+          <div>
+            <h2 class="h-sec custo__h rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
+            <p class="custo__p rise">Dez horas por semana somem em decisão que não era sua. Não em dinheiro: em coisa que você não fez.</p>
+            <div class="weeks rise" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
+            <p class="weeks__legend rise">
+              <span><i></i>Uma semana sua</span>
+              <span><i class="lost"></i><b>Treze semanas</b> pagas em decisão que não era sua</span>
+            </p>
+            <p class="custo__cut rise">Trabalho duro te trouxe até aqui. <b>Não vai te levar daqui pra frente.</b></p>
+          </div>
+        </div>
       </div>
     </section>
 
