@@ -386,7 +386,16 @@
 
   /* final */
   .final{background:linear-gradient(180deg,transparent,var(--gold-soft));text-align:center}
-  .final h2{font-size:clamp(1.8rem,4.5vw,2.8rem)}
+  /* o fechamento tambem sai da coluna: a frase e a peca, nao um paragrafo */
+  .fim__h{font-size:clamp(1.9rem,5.6vw,4.2rem);line-height:1.04;letter-spacing:-.03em;
+    max-width:24ch;margin-inline:auto}
+  .fim__h em{display:inline-block;margin-top:.12em}
+  .custo--fim{overflow:visible}
+  .custo--fim::after{display:none}
+  /* .custo .weeks{max-width:none} tinha pegado o eco: os pontos viravam
+     padrao decorativo e a leitura de "52 semanas" se perdia */
+  .custo--fim .weeks{max-width:32rem;margin-inline:auto;margin-top:2.2rem}
+  .custo--anc::after{opacity:.6}
 
   /* footer */
   .foot{border-top:1px solid var(--line);padding-block:2rem}
@@ -488,6 +497,15 @@
     display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
     gap:clamp(1.5rem,5vw,4.5rem);align-items:center}
   /* o numero sangra pra fora da margem esquerda */
+  /* espelhado: o numero sangra pra direita */
+  .custo--dir .custo__in{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+  .custo--dir .custo__fig{margin-left:0;margin-right:clamp(-4.5rem,-5vw,-1rem);text-align:right}
+  .custo--dir .custo__k,.custo--dir .custo__un{text-align:right;margin-left:0;margin-right:.35rem}
+  .custo--dir::after{right:auto;left:-12%;rotate:4deg}
+  /* centrado: um so bloco, sem coluna de texto */
+  .custo--meio .custo__in{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .custo--meio .custo__fig{margin-left:0}
+  .custo--meio .custo__k,.custo--meio .custo__un{margin-left:0}
   .custo__fig{position:relative;margin-left:clamp(-4.5rem,-5vw,-1rem);line-height:.8;
     font-family:var(--sans);font-weight:800;letter-spacing:-.055em;
     font-size:clamp(7.5rem,21vw,16.5rem);
@@ -516,10 +534,19 @@
     pointer-events:none;
     background:linear-gradient(110deg,transparent 46%,rgba(196,154,82,.075) 47%,rgba(196,154,82,.075) 50%,transparent 51%);
     rotate:-4deg}
+  /* "R$ 168.000" tem 10 caracteres contra 3 do "520": mesmo clamp faz
+     o bloco centrado sangrar 123px pra fora no celular */
+  /* algarismo cortado parece bug. So o numero curto sangra. */
+  .custo__fig--longo{font-size:clamp(2.4rem,9.4vw,7rem);letter-spacing:-.045em;
+    margin-left:0!important;margin-right:0!important;padding-right:.06em}
   @media(max-width:860px){
     .custo__in{grid-template-columns:1fr;gap:2rem}
-    .custo__fig{margin-left:-.2rem;font-size:clamp(6rem,30vw,10rem)}
+    .custo__fig{margin-left:-.2rem;font-size:clamp(5rem,26vw,9rem)}
+    .custo__fig--longo{margin-left:0;font-size:clamp(2.4rem,12.8vw,5rem)}
     .custo::after{display:none}
+    .custo--dir .custo__fig,.custo--dir .custo__k,.custo--dir .custo__un{
+      margin-right:0;text-align:left}
+    .custo__k,.custo__un{margin-left:0;margin-right:0}
   }
 
   /* ===== os ganhos seguem a chave: apagados em Hoje, acendem em Depois ===== */
@@ -1842,12 +1869,13 @@
     <hr class="rule rise" />
 
     <!-- 8 · A CONTA -->
-    <section class="section--warm">
-      <div class="wrap measure">
-        <p class="eyebrow rise">A conta que ninguém faz</p>
-        <h2 class="h-sec rise" data-dock="O gerente: <b>R$ 168 mil</b> por ano">Contratar um gerente custa mais e resolve menos.</h2>
-        <p class="lede rise">O caminho óbvio é contratar alguém. Veja os dois lado a lado.</p>
-        <div class="bars rise">
+    <section class="section--warm custo custo--dir">
+      <div class="custo custo--dir">
+        <div class="custo__in">
+          <div>
+            <h2 class="h-sec custo__h rise" data-dock="O gerente: <b>R$ 168 mil</b> por ano">Contratar um gerente custa mais e resolve menos.</h2>
+            <p class="custo__p rise">O caminho óbvio é contratar alguém pra tirar isso das suas costas. Veja os dois lado a lado.</p>
+            <div class="bars rise">
           <div class="bar">
             <span class="bar__k"><span class="bar__name">Um gerente</span>
               <span class="bar__v"><span class="tick" data-to="168000" data-pre="R$ ">R$ 168.000</span> / ano</span></span>
@@ -1861,9 +1889,13 @@
             <p class="bar__note">Pelos doze meses. E o que ela instala fica, mesmo quando alguém sai.</p>
           </div>
         </div>
-        <div class="slam rise">
-          <div class="slam__fig">Menos de 10% disso.</div>
-          <p class="slam__sub">Sem processo documentado você não delega responsabilidade, delega o caos, e a decisão volta pra sua mesa. O valor exato a gente vê na conversa.</p>
+            <p class="custo__cut rise">Sem processo documentado você não delega responsabilidade: <b>delega o caos</b>, e a decisão volta pra sua mesa.</p>
+          </div>
+          <div>
+            <p class="custo__k rise">O que ele custa por ano</p>
+            <div class="custo__fig custo__fig--longo rise"><span class="tick" data-to="168000" data-pre="R$ ">R$ 168.000</span></div>
+            <span class="custo__un rise">a mentoria inteira custa menos de 10% disso</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1949,12 +1981,17 @@
           <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">Foco, Ação, Sistema e Tempo: a rotina que se sustenta.</div></div></li>
           <li class="rise" data-obj="minha equipe vai resistir" data-det="Uma call conduzida por mim com o seu time, para a mudança não chegar como ordem sua. Equipe não resiste a processo: resiste a ser avisada de que agora é assim. Quando ela participa da instalação, a matriz de alçada para de ser papel e vira combinado."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sessão de Implantação com a sua equipe</span><span class="offer__dots"></span><span class="offer__val">R$ 1.200</span></div><div class="offer__desc">Uma call minha com o seu time, pra mudança não chegar como ordem sua.</div><span class="offer__more">Ver o detalhe</span></div></li>
         </ul>
-        <div class="anchor rise">
-          <span class="anchor__k">Valor de tudo isso</span>
-          <span class="anchor__v"><span class="tick" data-to="24600" data-pre="R$ ">R$ 24.600</span></span>
-          <p class="anchor__note">O que você investe, a gente vê na conversa. E não é esse número.</p>
-        </div>
         <p class="reckon__close rise">Consultoria comum otimiza o que já existe. Aqui a gente calibra quem decide, por isso o resultado se sustenta depois que a mentoria acaba.</p>
+      </div>
+      <div class="custo custo--meio custo--anc">
+        <div class="custo__in">
+          <div>
+            <p class="custo__k rise">Valor de tudo isso</p>
+            <div class="custo__fig custo__fig--longo rise"><span class="tick" data-to="24600" data-pre="R$ ">R$ 24.600</span></div>
+            <span class="custo__un rise">o que você investe, a gente vê na conversa</span>
+            <p class="custo__cut rise" style="max-width:34rem;margin-inline:auto;text-align:center">E <b>não é esse número</b>.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2031,11 +2068,11 @@
     </section>
 
     <!-- 14 · FECHAMENTO -->
-    <section class="final">
-      <div class="wrap measure">
+    <section class="final custo custo--meio custo--fim">
+      <div class="wrap">
         <p class="eyebrow eyebrow--c rise">A decisão</p>
-        <h2 class="rise">Daqui a um ano você vai estar exatamente onde está hoje. Ou não.</h2>
-        <p class="lede rise" style="margin-inline:auto">A diferença entre esses dois cenários não é mercado, não é equipe e não é sorte. É o que você decide fazer com o teto que já sabe que existe.</p>
+        <h2 class="rise fim__h">Daqui a um ano você vai estar<br>exatamente onde está hoje.<br><em>Ou não.</em></h2>
+        <p class="lede rise" style="margin-inline:auto;max-width:34rem">A diferença não é mercado, não é equipe e não é sorte. É o que você decide fazer com o teto que já sabe que existe.</p>
         <div class="weeks weeks--eco rise" id="eco" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
         <p class="strip__cap" style="max-width:30rem;margin-inline:auto">As mesmas treze semanas. A diferença é <b>quem decide</b> no ano que vem.</p>
 
