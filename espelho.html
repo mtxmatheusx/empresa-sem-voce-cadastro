@@ -239,6 +239,19 @@
     ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
   }
 
+  /* ---- refracao: o aro amostra o fundo diferente do centro ---- */
+  .lens{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+    -webkit-backdrop-filter:blur(1px) brightness(1.22) saturate(1.45);
+    backdrop-filter:blur(1px) brightness(1.22) saturate(1.45);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    mask-composite:exclude;padding:5px;opacity:.55}
+  @media (prefers-reduced-transparency: reduce){.lens{display:none}}
+
+  /* ---- rubber band nas pontas ---- */
+  body.band main{transition:none}
+  body.band-back main{transition:transform .62s var(--spring)}
+
   /* ---- linhas do tempo nativas: sai do fio principal ---- */
   @supports (animation-timeline:scroll()){
     .topbar__prog{animation:progresso linear both;animation-timeline:scroll(root block)}
@@ -398,6 +411,7 @@
     <div class="topbar__in">
       <a href="/" class="mark" aria-label="Empresa Sem Você"><img class="brand-logo" src="/assets/logo.png" alt="Empresa Sem Você" width="300" height="155" /></a>
       <a class="btn btn--ghost" href="/cadastro">Candidatura</a>
+      <span class="lens" aria-hidden="true"></span>
       <span class="topbar__prog" aria-hidden="true"></span>
     </div>
   </header>
@@ -654,6 +668,30 @@
     var edge=document.getElementById('edge');
     if(edge){var onEdge=function(){edge.classList.toggle('is-on',window.scrollY>8);};
       onEdge();window.addEventListener('scroll',onEdge,{passive:true});}
+
+    /* rubber band: as pontas cedem e voltam */
+    var mainEl=document.querySelector('main'),banda=0,bandaTo=0;
+    function soltarBanda(){
+      if(!banda)return;
+      banda=0;
+      document.body.classList.remove('band');document.body.classList.add('band-back');
+      mainEl.style.transform='';
+      setTimeout(function(){document.body.classList.remove('band-back');mainEl.style.willChange='';},680);
+    }
+    if(mainEl&&!reduce){
+      window.addEventListener('wheel',function(ev){
+        var de=document.documentElement,
+            noTopo=window.scrollY<=0,
+            noFim=window.scrollY+window.innerHeight>=de.scrollHeight-1;
+        if((noTopo&&ev.deltaY<0)||(noFim&&ev.deltaY>0)){
+          mainEl.style.willChange='transform';
+          banda=Math.max(-46,Math.min(46,banda-ev.deltaY*0.20));
+          document.body.classList.add('band');document.body.classList.remove('band-back');
+          mainEl.style.transform='translateY('+banda.toFixed(1)+'px)';
+          clearTimeout(bandaTo);bandaTo=setTimeout(soltarBanda,90);
+        }
+      },{passive:true});
+    }
 
     /* pilha grudada + progresso do nav */
     var pileId=0,

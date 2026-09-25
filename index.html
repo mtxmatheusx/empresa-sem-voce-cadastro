@@ -464,7 +464,86 @@
   @media (prefers-reduced-motion:reduce){
     ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
     .edge i{opacity:1!important}
+    .sheet__in,body > main,body > header{transition:none!important}
+    .auth__portrait img{opacity:1!important;filter:none!important;transform:none!important}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
+
+  /* ===== a folha: sheet do iOS, com a pagina recuando atras ===== */
+  .sheet{border:0;padding:0;background:transparent;max-width:none;max-height:none;
+    width:100%;height:100%;margin:0;overflow:visible;color:var(--text)}
+  .sheet::backdrop{background:rgba(6,6,5,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    opacity:0;transition:opacity .45s var(--ease)}
+  .sheet.is-in::backdrop{opacity:1}
+  .sheet__in{position:absolute;left:0;right:0;bottom:0;max-height:88svh;display:flex;flex-direction:column;
+    border-radius:26px 26px 0 0;padding:.6rem clamp(1.25rem,5vw,2rem) calc(1.6rem + env(safe-area-inset-bottom,0px));
+    background:linear-gradient(180deg,rgba(34,32,29,.92),rgba(18,17,16,.96));
+    border:.5px solid var(--glass-edge);border-bottom:0;
+    -webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),0 -24px 70px rgba(0,0,0,.6);
+    transform:translateY(100%);transition:transform .58s var(--spring);
+    touch-action:none}
+  .sheet.is-in .sheet__in{transform:translateY(var(--drag,0px))}
+  .sheet.is-drag .sheet__in{transition:none}
+  @media(min-width:760px){
+    .sheet__in{left:50%;right:auto;width:min(34rem,92vw);transform:translate(-50%,100%);
+      border-radius:26px;bottom:2.5rem;border-bottom:.5px solid var(--glass-edge)}
+    .sheet.is-in .sheet__in{transform:translate(-50%,var(--drag,0px))}
+  }
+  .sheet__grab{flex:none;width:2.4rem;height:.28rem;border-radius:999px;background:var(--line-2);
+    margin:.35rem auto .9rem;cursor:grab}
+  .sheet__scroll{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .sheet__k{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .sheet__t{font-family:var(--serif);font-weight:400;font-size:clamp(1.35rem,3.6vw,1.75rem);
+    color:var(--cream);line-height:1.2}
+  .sheet__v{font-family:var(--sans);font-weight:800;letter-spacing:-.03em;color:var(--gold-3);
+    font-variant-numeric:tabular-nums;font-size:1.15rem;white-space:nowrap}
+  .sheet__obj{margin-top:1.3rem;padding:1.1rem 1.2rem;border-radius:16px;
+    background:var(--gold-soft);border:.5px solid var(--gold-line);
+    color:var(--gold-3);font-style:italic;line-height:1.5}
+  .sheet__obj b{display:block;font-style:normal;font-size:.68rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--mute);font-weight:700;margin-bottom:.45rem}
+  .sheet__d{color:var(--text);line-height:1.68;margin-top:1.2rem}
+  .sheet__cta{margin-top:1.6rem;display:flex;flex-direction:column;gap:.7rem}
+  .sheet__cta .btn{width:100%}
+  .sheet__close{position:absolute;top:.9rem;right:.9rem;width:2rem;height:2rem;border-radius:50%;
+    border:.5px solid var(--glass-edge);background:rgba(255,255,255,.08);color:var(--mute);
+    cursor:pointer;font-size:1rem;line-height:1;display:grid;place-items:center;
+    transition:transform .4s var(--spring),color .3s var(--ease)}
+  .sheet__close:hover{color:var(--cream);transform:scale(1.08)}
+  /* a pagina recua atras da folha, como no iOS */
+  body.sheet-on{overflow:hidden}
+  /* o main tem 15 mil px: escalar a partir do topo desloca o conteudo e
+     revela a secao de baixo. O pivo tem que ser o centro do que esta na tela. */
+  body > main{transform-origin:50% calc(var(--sy,0px) + 44vh);
+    transition:transform .58s var(--spring)}
+  body.sheet-on > main{transform:scale(.94)}
+  body > header{transition:opacity .4s var(--ease)}
+  body.sheet-on > header{opacity:0;pointer-events:none}
+  body.sheet-on .dock,body.sheet-on .edge{opacity:0!important;pointer-events:none}
+  .offer.pile li{cursor:pointer}
+  .offer__more{display:inline-flex;align-items:center;gap:.3rem;margin-top:.5rem;
+    font-size:.82rem;color:var(--gold-3);font-weight:700;letter-spacing:.02em;
+    opacity:calc(1 - var(--p,0) * 1.6)}
+  .offer__more::after{content:"›";font-size:1.05em;line-height:1}
+
+  /* ===== refracao: o aro do vidro amostra o fundo diferente do centro ===== */
+  .lens{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;
+    -webkit-backdrop-filter:blur(1px) brightness(1.22) saturate(1.45);
+    backdrop-filter:blur(1px) brightness(1.22) saturate(1.45);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    mask-composite:exclude;padding:5px;opacity:.55}
+  @media (prefers-reduced-transparency: reduce){.lens{display:none}}
+
+  /* ===== rubber band: as pontas cedem e voltam ===== */
+  body.band main{transition:none}
+  body.band-back main{transition:transform .62s var(--spring)}
+
+  /* ===== a foto entra saindo do desfoque ===== */
+  .auth__portrait{background:linear-gradient(140deg,#2A2621,#15130F)}
+  .auth__portrait img{opacity:0;filter:blur(16px);transform:scale(1.05);
+    transition:opacity .8s var(--ease),filter 1s var(--ease-soft),transform 1.2s var(--spring)}
+  .auth__portrait img.is-loaded{opacity:1;filter:blur(0);transform:none}
 
   /* ===== transicao entre paginas: a landing empurra o /espelho e o /cadastro ===== */
   @view-transition{navigation:auto}
@@ -886,7 +965,7 @@
   <div class="edge" id="edge" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
   <header class="topbar">
-    <div class="topbar__in">
+    <div class="topbar__in"><span class="lens" aria-hidden="true"></span>
       <a href="/" class="mark" aria-label="Empresa Sem Você"><img class="brand-logo" src="/assets/logo.png" alt="Empresa Sem Você" width="300" height="155" /></a>
       <a class="btn btn--ghost" href="/cadastro">Candidatura</a>
       <span class="topbar__prog" aria-hidden="true"></span>
@@ -940,7 +1019,7 @@
       <div class="wrap frame">
         <div class="auth__grid">
           <div class="auth__portrait rise">
-            <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" loading="lazy" width="900" height="1003" />
+            <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1003" />
           </div>
           <div>
             <p class="eyebrow rise">Quem vai te conduzir</p>
@@ -1177,15 +1256,15 @@
         <h2 class="h-sec rise" data-dock="<b>R$ 23.400</b> em valor entregue">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
         <ul class="offer pile">
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">Na primeira semana a gente mede quantas horas você perde com decisão que não é sua. Esse número vira a sua linha de base, e é ele que a garantia tem que derrubar.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você ganha tempo antes de ter um único processo documentado.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma em cada marco, olhando o seu negócio, não um conteúdo genérico.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, nossa gestora de sucesso. Sem fila.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra quando a dúvida aparece fora da call.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">Modelos prontos: DISC, RACI, SLAs, scripts e dashboards.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão mapeado pelo CIS Assessment (Febracis), com 3 ajustes personalizados.</div></div></li>
-          <li class="rise"><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">O método de produtividade: Foco, Ação, Sistema e Tempo.</div></div></li>
+          <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">Na primeira semana a gente mede quantas horas você perde com decisão que não é sua. Esse número vira a sua linha de base, e é ele que a garantia tem que derrubar.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="120 dias é muito tempo pra sentir alguma coisa" data-det="Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você sente a diferença antes de ter um único processo documentado. É de propósito: ninguém aguenta quatro meses sem sentir nada."><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você ganha tempo antes de ter um único processo documentado.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="já fiz mentoria genérica que não se aplicava" data-det="Cinco pilares aplicados à sua empresa, no estágio em que ela está: Calibração do Gestor, Hierarquia &amp; Liderança, Processos &amp; Cultura, Eficiência com IA e, por último, Marketing &amp; Vendas. Marketing é o último de propósito &mdash; ele acelera o que já existe, e acelerar caos produz mais caos."><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="as mentorias grandes ensinam empresa de R$1M a R$3bi" data-det="Comigo, não com atendente, e não em turma. Cada call está amarrada a um marco do método e olha o seu negócio no estágio em que ele está. É a diferença entre aprender gestão e instalar gestão."><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma em cada marco, olhando o seu negócio, não um conteúdo genérico.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="quando trava, eu volto a fazer sozinho" data-det="Comigo e com a Carine, nossa gestora de sucesso, pelos doze meses. Sem fila e sem esperar a próxima call. O motivo é simples: o momento em que você trava é o momento em que você volta a fazer sozinho, e aí o processo morre."><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, nossa gestora de sucesso. Sem fila.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="a dúvida aparece domingo à noite" data-det="Uma IA treinada no conteúdo da mentoria, disponível 24 horas, pra diagnóstico e consulta ao método. Serve pra quando a dúvida aparece fora do horário da call &mdash; que é quase sempre."><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra quando a dúvida aparece fora da call.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="não tenho tempo de escrever processo" data-det="DISC, RACI, SLAs, scripts e dashboards prontos. Você preenche, não redige. O trabalho de escrever processo do zero é justamente o que trava todo mundo, então ele já vem feito."><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">Modelos prontos: DISC, RACI, SLAs, scripts e dashboards.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="o problema é a minha equipe" data-det="Seu perfil de decisão mapeado pelo CIS Assessment da Febracis, com três ajustes personalizados. O primeiro sistema a calibrar é o dono, e isso precisa sair de um instrumento, não da minha opinião sobre você."><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão mapeado pelo CIS Assessment (Febracis), com 3 ajustes personalizados.<span class="offer__more">Ver o detalhe</span></div></div></li>
+          <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">O método de produtividade: Foco, Ação, Sistema e Tempo.<span class="offer__more">Ver o detalhe</span></div></div></li>
         </ul>
         <div class="anchor rise">
           <span class="anchor__k">Valor de tudo isso</span>
@@ -1276,11 +1355,30 @@
   </footer>
 
   <div class="dock" id="dock">
-    <div class="dock__in">
+    <div class="dock__in"><span class="lens" aria-hidden="true"></span>
       <span class="dock__txt" id="dockTxt"><span><b>9 vagas</b> · turma fundadora</span></span>
       <a class="btn" href="/cadastro">Candidatura <span class="btn__arrow">&rarr;</span></a>
     </div>
   </div>
+
+  <dialog class="sheet" id="sheet" aria-labelledby="sheetT">
+    <div class="sheet__in">
+      <button type="button" class="sheet__close" id="sheetX" aria-label="Fechar">&times;</button>
+      <span class="sheet__grab" aria-hidden="true"></span>
+      <div class="sheet__scroll">
+        <div class="sheet__k">
+          <span class="sheet__t" id="sheetT"></span>
+          <span class="sheet__v" id="sheetV"></span>
+        </div>
+        <p class="sheet__obj"><b>A objeção que isso derruba</b><span id="sheetOT"></span></p>
+        <p class="sheet__d" id="sheetD"></p>
+        <div class="sheet__cta">
+          <a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">&rarr;</span></a>
+          <span class="cta__note" style="text-align:center">2 minutos &middot; é candidatura, não compra</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
   <script>
   (function(){
@@ -1349,6 +1447,103 @@
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'checklist_marcou',marcados:n});
       });
+    }
+
+    /* --- a folha: cada item da oferta abre em sheet, com a objecao que derruba --- */
+    var folha=document.getElementById('sheet'),
+        folhaIn=folha&&folha.querySelector('.sheet__in'),
+        folhaSc=folha&&folha.querySelector('.sheet__scroll'),
+        dY0=null,dCur=0;
+    function abrirFolha(li){
+      if(!folha)return;
+      document.getElementById('sheetT').textContent=li.querySelector('.offer__name').textContent.trim();
+      document.getElementById('sheetV').textContent=li.querySelector('.offer__val').textContent.trim();
+      document.getElementById('sheetOT').textContent='\u201C'+li.getAttribute('data-obj')+'\u201D';
+      document.getElementById('sheetD').innerHTML=li.getAttribute('data-det');
+      folhaSc.scrollTop=0;
+      folhaIn.style.setProperty('--drag','0px');
+      document.body.style.setProperty('--sy',window.scrollY+'px');
+      folha.showModal();
+      document.body.classList.add('sheet-on');
+      requestAnimationFrame(function(){requestAnimationFrame(function(){folha.classList.add('is-in');});});
+      window.dataLayer=window.dataLayer||[];
+      window.dataLayer.push({event:'folha_aberta',item:li.querySelector('.offer__name').textContent.trim()});
+    }
+    function fecharFolha(){
+      if(!folha||!folha.open)return;
+      folha.classList.remove('is-in','is-drag');
+      document.body.classList.remove('sheet-on');
+      setTimeout(function(){if(folha.open)folha.close();folhaIn.style.setProperty('--drag','0px');},580);
+    }
+    if(folha){
+      document.getElementById('sheetX').addEventListener('click',fecharFolha);
+      folha.addEventListener('click',function(ev){if(ev.target===folha)fecharFolha();});
+      folha.addEventListener('cancel',function(ev){ev.preventDefault();fecharFolha();});
+      /* arrastar pra baixo fecha, como no iOS */
+      folhaIn.addEventListener('pointerdown',function(ev){
+        if(ev.target.closest('a,button'))return;
+        if(folhaSc.scrollTop>0&&!ev.target.closest('.sheet__grab'))return;
+        dY0=ev.clientY;dCur=0;folha.classList.add('is-drag');
+        try{folhaIn.setPointerCapture(ev.pointerId);}catch(e){}
+      });
+      folhaIn.addEventListener('pointermove',function(ev){
+        if(dY0===null)return;
+        dCur=Math.max(0,ev.clientY-dY0);
+        folhaIn.style.setProperty('--drag',dCur+'px');
+      });
+      var soltarFolha=function(){
+        if(dY0===null)return;
+        folha.classList.remove('is-drag');dY0=null;
+        if(dCur>110)fecharFolha();else folhaIn.style.setProperty('--drag','0px');
+      };
+      folhaIn.addEventListener('pointerup',soltarFolha);
+      folhaIn.addEventListener('pointercancel',soltarFolha);
+      document.querySelectorAll('.offer.pile > li[data-obj]').forEach(function(li){
+        li.setAttribute('role','button');li.setAttribute('tabindex','0');
+        li.addEventListener('click',function(ev){if(ev.target.closest('a'))return;abrirFolha(li);});
+        li.addEventListener('keydown',function(ev){
+          if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();abrirFolha(li);}
+        });
+      });
+    }
+
+    /* --- rubber band: as pontas cedem e voltam --- */
+    var mainEl=document.querySelector('main'),banda=0,bandaTo=0;
+    function soltarBanda(){
+      if(!banda)return;
+      banda=0;
+      document.body.classList.remove('band');document.body.classList.add('band-back');
+      mainEl.style.transform='';
+      setTimeout(function(){document.body.classList.remove('band-back');mainEl.style.willChange='';},680);
+    }
+    if(mainEl&&!reduce){
+      window.addEventListener('wheel',function(ev){
+        if(document.body.classList.contains('sheet-on'))return;
+        var de=document.documentElement,
+            noTopo=window.scrollY<=0,
+            noFim=window.scrollY+window.innerHeight>=de.scrollHeight-1;
+        if((noTopo&&ev.deltaY<0)||(noFim&&ev.deltaY>0)){
+          mainEl.style.willChange='transform';
+          banda=Math.max(-46,Math.min(46,banda-ev.deltaY*0.20));
+          document.body.classList.add('band');document.body.classList.remove('band-back');
+          mainEl.style.transform='translateY('+banda.toFixed(1)+'px)';
+          clearTimeout(bandaTo);bandaTo=setTimeout(soltarBanda,90);
+        }
+      },{passive:true});
+    }
+
+    /* --- a foto sai do desfoque quando termina de carregar --- */
+    var foto=document.querySelector('.auth__portrait img');
+    if(foto){
+      var pronta=function(){foto.classList.add('is-loaded');};
+      if(foto.complete&&foto.naturalWidth)pronta();
+      else{
+        foto.addEventListener('load',pronta,{once:true});
+        foto.addEventListener('error',pronta,{once:true});
+        /* se a imagem demorar ou nunca chegar, o retrato nao pode ficar
+           invisivel pra sempre: revela assim mesmo. */
+        setTimeout(pronta,2500);
+      }
     }
 
     /* --- objecoes: abre uma por vez --- */
