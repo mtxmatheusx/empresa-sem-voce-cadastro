@@ -469,6 +469,43 @@
     .amb{animation:none!important}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== a escada: Operacao -> Gestao -> Estrategia ===== */
+  .lad{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.9rem;align-items:end}
+  .lad__d{position:relative;border-radius:18px;padding:1.1rem 1.15rem;overflow:hidden;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi);
+    transition:transform .8s var(--spring),border-color .5s var(--ease),background .5s var(--ease)}
+  .lad__d:nth-child(1){min-height:8.5rem;padding-bottom:1.1rem}
+  .lad__d:nth-child(2){min-height:10.5rem;padding-bottom:1.1rem}
+  .lad__d:nth-child(3){min-height:12.5rem;border-color:var(--gold-line);
+    background:linear-gradient(180deg,var(--gold-soft),var(--glass))}
+  .lad.rise .lad__d{transform:translateY(26px)}
+  .lad.rise.in .lad__d{transform:none}
+  .lad.rise.in .lad__d:nth-child(2){transition-delay:.12s}
+  .lad.rise.in .lad__d:nth-child(3){transition-delay:.24s}
+  .lad__n{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mute-2);font-weight:700}
+  .lad__t{color:var(--cream);font-weight:700;font-size:1.02rem;margin-top:.35rem;line-height:1.25}
+  .lad__d:nth-child(3) .lad__t{color:var(--gold-3)}
+  .lad__q{color:var(--mute);font-size:.9rem;line-height:1.5;margin-top:.45rem}
+  .lad__you:empty,.lad__you--off{opacity:0;pointer-events:none}
+  .lad__you{position:absolute;right:.75rem;top:.75rem;font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:800;padding:.2rem .5rem;border-radius:999px;
+    background:rgba(0,0,0,.34);border:.5px solid var(--line-2);color:var(--mute-2);
+    transition:all .7s var(--spring)}
+  .lad__d--aqui .lad__you{background:linear-gradient(180deg,var(--gold-3),var(--gold));
+    border-color:transparent;color:var(--ink)}
+  .lad__rail{height:2px;border-radius:999px;margin-top:1rem;position:relative;
+    background:linear-gradient(90deg,var(--line-2),var(--gold-line))}
+  .lad__dot{position:absolute;top:50%;width:.72rem;height:.72rem;border-radius:50%;
+    background:linear-gradient(180deg,var(--gold-3),var(--gold));box-shadow:0 0 0 4px var(--gold-soft);
+    translate:-50% -50%;left:16.6%;transition:left 1.1s var(--spring)}
+  .lad--fim .lad__dot{left:83.3%}
+  @media(max-width:660px){
+    .lad{grid-template-columns:1fr;align-items:stretch}
+    .lad__d:nth-child(1),.lad__d:nth-child(2),.lad__d:nth-child(3){min-height:0}
+  }
+
   /* ===== o sistema na pratica: celular animado + a matriz que o explica ===== */
   .pratica{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.6rem,4vw,3.2rem);
     align-items:center;margin-top:clamp(2rem,4vw,3rem)}
@@ -1326,7 +1363,9 @@
           <p class="rise">No começo, esforço resolve tudo. O problema é que o que te trouxe até aqui é exatamente o que te prende agora: a empresa cresceu em cima de você, e sem perceber você treinou todo mundo a te perguntar tudo.</p>
           <p class="rise">E tem uma parte que ninguém admite: ser indispensável vicia. Resolver o problema que só você resolve dá uma sensação de controle, e você recria esse problema toda semana, porque ele prova que a empresa ainda precisa de você. É esse conforto que te prende, não a falta de gente boa.</p>
         </div>
-        <p class="pull rise">O executor precisa virar gestor. Sair da decisão do dia e entrar na decisão do ano.</p>
+        <div class="lad rise" id="lad"><div class="lad__d lad__d--aqui"><span class="lad__you">você aqui</span><div class="lad__n">Hoje</div><div class="lad__t">Operação</div><p class="lad__q">A pergunta chega na sua mesa porque não existe critério escrito.</p></div><div class="lad__d"><span class="lad__you lad__you--off"></span><div class="lad__n">Mês 4</div><div class="lad__t">Gestão</div><p class="lad__q">Você acompanha quem decide, e só entra quando o caso sai da alçada.</p></div><div class="lad__d"><span class="lad__you lad__you--off"></span><div class="lad__n">Mês 12</div><div class="lad__t">Estratégia</div><p class="lad__q">Você olha o painel e decide o que muda o ano. A decisão do dia já não passa por você.</p></div></div>
+        <div class="lad__rail rise"><span class="lad__dot"></span></div>
+        <p class="pull rise" style="margin-top:1.8rem">O executor precisa virar gestor. Sair da decisão do dia e entrar na decisão do ano.</p>
       </div>
     </section>
 
@@ -1601,7 +1640,7 @@
     <section>
       <div class="wrap measure">
         <p class="eyebrow rise">A oferta</p>
-        <h2 class="h-sec rise" data-dock="<b>R$ 23.400</b> em valor entregue">O que você leva.</h2>
+        <h2 class="h-sec rise" data-dock="<b>R$ 24.600</b> em valor entregue">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
         <ul class="offer pile">
           <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">O número de horas que você perde, medido na semana 1.</div></div></li>
@@ -1613,10 +1652,11 @@
           <li class="rise" data-obj="não tenho tempo de escrever processo" data-det="DISC, RACI, SLAs, scripts e dashboards prontos. Você preenche, não redige. O trabalho de escrever processo do zero é justamente o que trava todo mundo, então ele já vem feito."><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">DISC, RACI, SLAs, scripts e dashboards prontos.</div></div></li>
           <li class="rise" data-obj="o problema é a minha equipe" data-det="Seu perfil de decisão mapeado pelo CIS Assessment da Febracis, com três ajustes personalizados. O primeiro sistema a calibrar é o dono, e isso precisa sair de um instrumento, não da minha opinião sobre você."><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão pelo CIS Assessment, da Febracis.</div></div></li>
           <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">Foco, Ação, Sistema e Tempo: a rotina que se sustenta.</div></div></li>
+          <li class="rise" data-obj="minha equipe vai resistir" data-det="Uma call conduzida por mim com o seu time, para a mudança não chegar como ordem sua. Equipe não resiste a processo: resiste a ser avisada de que agora é assim. Quando ela participa da instalação, a matriz de alçada para de ser papel e vira combinado."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sessão de Implantação com a sua equipe</span><span class="offer__dots"></span><span class="offer__val">R$ 1.200</span></div><div class="offer__desc">Uma call minha com o seu time, pra mudança não chegar como ordem sua.</div><span class="offer__more">Ver o detalhe</span></div></li>
         </ul>
         <div class="anchor rise">
           <span class="anchor__k">Valor de tudo isso</span>
-          <span class="anchor__v"><span class="tick" data-to="23400" data-pre="R$ ">R$ 23.400</span></span>
+          <span class="anchor__v"><span class="tick" data-to="24600" data-pre="R$ ">R$ 24.600</span></span>
           <p class="anchor__note">O que você investe, a gente vê na conversa. E não é esse número.</p>
         </div>
         <p class="reckon__close rise">Consultoria comum otimiza o que já existe. Aqui a gente calibra quem decide, por isso o resultado se sustenta depois que a mentoria acaba.</p>
@@ -1795,6 +1835,23 @@
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'checklist_marcou',marcados:n});
       });
+    }
+
+    /* --- a escada acende o ultimo degrau quando voce chega nela --- */
+    var lad=document.getElementById('lad');
+    if(lad&&'IntersectionObserver'in window&&!reduce){
+      new IntersectionObserver(function(en){
+        if(!en[0].isIntersecting)return;
+        setTimeout(function(){
+          var d=lad.querySelectorAll('.lad__d'),r=lad.nextElementSibling;
+          d[0].classList.remove('lad__d--aqui');
+          d[2].classList.add('lad__d--aqui');
+          var p2=d[2].querySelector('.lad__you'),p0=d[0].querySelector('.lad__you');
+          p2.textContent='você aqui';p2.classList.remove('lad__you--off');
+          p0.textContent='';p0.classList.add('lad__you--off');
+          if(r&&r.classList.contains('lad__rail'))r.classList.add('lad--fim');
+        },1500);
+      },{threshold:.5}).observe(lad);
     }
 
     /* --- visor: tres telas do sistema num controle segmentado --- */
