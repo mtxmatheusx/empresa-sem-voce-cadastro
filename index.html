@@ -142,12 +142,122 @@
   .wrap{width:100%;margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem)}
   .frame{max-width:var(--frame);margin-inline:auto}
   .measure{max-width:var(--measure);margin-inline:auto}
-  section{padding-block:clamp(4.5rem,9vw,8.5rem);position:relative}
+  section{padding-block:clamp(2.8rem,4.7vw,4.5rem);position:relative}
   .center{text-align:center}
 
   /* dividers */
   .rule{border:0;height:1px;max-width:var(--frame);margin:0 auto;
     background:linear-gradient(90deg,transparent,var(--line-2),transparent)}
+
+
+  /* numero de secao · o indice que diz que a pagina foi desenhada inteira */
+  .eyebrow__n{font-variant-numeric:tabular-nums;font-weight:800;font-size:.78rem;
+    letter-spacing:.04em;color:var(--gold);opacity:.9;position:relative;padding-right:.75rem}
+  .eyebrow__n::after{content:"";position:absolute;right:0;top:50%;width:.42rem;height:1px;
+    background:var(--gold-line)}
+  .eyebrow--c .eyebrow__n{padding-right:.6rem}
+  .eyebrow--muted .eyebrow__n{color:var(--mute-2)}
+  .eyebrow--muted .eyebrow__n::after{background:var(--line-2)}
+  .custo__k{display:inline-flex;align-items:center;gap:.7rem}
+  .custo--dir .custo__k{justify-content:flex-end}
+  .custo--meio .custo__k{justify-content:center}
+
+
+  /* barra de prova do hero · quatro numeros que ja estao na pagina,
+     postos antes da primeira rolagem em vez de espalhados nela */
+  .creds{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(2.4rem,5vw,3.4rem);
+    border:.5px solid var(--glass-edge);border-radius:22px;overflow:hidden;text-align:left;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),var(--glass-shadow)}
+  .cred{padding:1.15rem 1.25rem;position:relative;display:flex;gap:.85rem;align-items:flex-start}
+  .cred + .cred::before{content:"";position:absolute;left:0;top:18%;bottom:18%;width:1px;
+    background:linear-gradient(180deg,transparent,var(--line-2),transparent)}
+  .cred__ic{flex:none;width:1.65rem;height:1.65rem;margin-top:.15rem;color:var(--gold-2)}
+  .cred__ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;
+    stroke-linecap:round;stroke-linejoin:round}
+  .cred__fig{display:block;font-family:var(--sans);font-weight:800;font-variant-numeric:tabular-nums;
+    font-size:clamp(1.12rem,2.1vw,1.5rem);letter-spacing:-.025em;color:var(--cream);line-height:1.1}
+  .cred__cap{display:block;margin-top:.3rem;color:var(--mute);font-size:.84rem;line-height:1.42}
+  @media (max-width:900px){
+    .creds{grid-template-columns:1fr 1fr}
+    .cred:nth-child(3)::before,.cred:nth-child(1)::before{content:none}
+    .cred:nth-child(n+3)::after{content:"";position:absolute;left:1.25rem;right:1.25rem;top:0;height:1px;
+      background:var(--line)}
+  }
+  @media (max-width:520px){
+    .creds{grid-template-columns:1fr}
+    .cred + .cred::before{content:none}
+    .cred + .cred::after{content:"";position:absolute;left:1.25rem;right:1.25rem;top:0;height:1px;
+      background:var(--line)}
+    .cred{padding:1rem 1.1rem}
+  }
+
+
+  /* ===== iconografia autoral · um tracado por item, mesma gramatica
+     (24x24, stroke 1.5, canto redondo) do resto da pagina ===== */
+  .oic{flex:none;width:1.45rem;height:1.45rem;color:var(--gold-2);display:block;margin-top:.12rem}
+  .oic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;
+    stroke-linecap:round;stroke-linejoin:round}
+  .offer li:hover .oic,.offer li.is-open .oic{color:var(--gold-3)}
+  .oic--lg{width:1.85rem;height:1.85rem}
+  .num .oic--lg{margin-top:.1rem}
+
+
+  /* icone de apoio no fim da linha do pilar · peso visual sem apertar o numero */
+  .num__ic{margin-left:auto;align-self:center;opacity:.55;
+    transition:opacity .5s var(--ease),color .5s var(--ease)}
+  .num:hover .num__ic{opacity:1;color:var(--gold-3)}
+  @media (max-width:640px){ .num__ic{display:none} }
+
+  /* ===== trilho da candidatura · o no acende conforme a etapa entra em tela ===== */
+  .trilho{position:relative;margin-top:1.6rem;padding-left:clamp(2.2rem,5vw,3.2rem)}
+  .trilho::before{content:"";position:absolute;left:clamp(.85rem,2.2vw,1.3rem);top:1.6rem;bottom:1.6rem;
+    width:1px;background:var(--line-2)}
+  .trilho__luz{position:absolute;left:clamp(.85rem,2.2vw,1.3rem);top:1.6rem;width:1px;
+    height:var(--h,0px);background:linear-gradient(180deg,var(--gold-3),var(--gold));
+    box-shadow:0 0 10px rgba(196,154,82,.55);transition:height .45s var(--ease-soft)}
+  .trilho .num{margin-bottom:.8rem}
+  .trilho .num::before{content:"";position:absolute;left:calc(-1 * clamp(2.2rem,5vw,3.2rem) + clamp(.85rem,2.2vw,1.3rem) - 4.5px);
+    top:1.7rem;width:9px;height:9px;border-radius:50%;background:var(--bg);
+    border:1px solid var(--line-2);transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+  .trilho .num.aceso::before{background:var(--gold-3);border-color:var(--gold-3);
+    box-shadow:0 0 0 3px rgba(196,154,82,.16),0 0 12px rgba(196,154,82,.6)}
+  .trilho .num.aceso{border-color:var(--gold-line)}
+  @media (prefers-reduced-motion:reduce){ .trilho__luz{transition:none} }
+
+
+  /* ===== a conta ao vivo · o 520 deixa de ser o meu numero e vira o dele.
+     mesmo modelo do /espelho: horas x 52, semanas = horas / jornada. ===== */
+  .conta{margin-top:1.5rem;display:grid;gap:1rem}
+  .ctrl{background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi);border-radius:16px;padding:.95rem 1.15rem}
+  .ctrl__top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+  .ctrl__k{color:var(--mute);font-size:.88rem;line-height:1.4}
+  .ctrl__v{font-family:var(--sans);font-weight:800;font-variant-numeric:tabular-nums;
+    color:var(--gold-3);font-size:1.12rem;white-space:nowrap}
+  .ctrl input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:26px;
+    background:transparent;margin-top:.5rem;cursor:pointer;display:block}
+  .ctrl input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:3px;
+    background:linear-gradient(90deg,var(--gold) var(--pct,40%),var(--line-2) var(--pct,40%))}
+  .ctrl input[type=range]::-moz-range-track{height:3px;border-radius:3px;background:var(--line-2)}
+  .ctrl input[type=range]::-moz-range-progress{height:3px;border-radius:3px;background:var(--gold)}
+  .ctrl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:19px;height:19px;border-radius:50%;background:var(--cream);margin-top:-8px;
+    border:1px solid rgba(0,0,0,.35);box-shadow:0 2px 8px rgba(0,0,0,.45);
+    transition:transform .2s var(--spring)}
+  .ctrl input[type=range]::-moz-range-thumb{width:19px;height:19px;border-radius:50%;
+    background:var(--cream);border:1px solid rgba(0,0,0,.35);box-shadow:0 2px 8px rgba(0,0,0,.45)}
+  .ctrl input[type=range]:active::-webkit-slider-thumb{transform:scale(1.18)}
+  .ctrl input[type=range]:focus-visible{outline:2px solid var(--gold-3);outline-offset:4px;border-radius:8px}
+  .conta__out{border-top:1px solid var(--gold-line);padding-top:.9rem;display:grid;gap:.5rem}
+  .conta__ln{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+    color:var(--mute);font-size:.92rem;line-height:1.4}
+  .conta__lv{font-family:var(--sans);font-weight:800;font-variant-numeric:tabular-nums;
+    color:var(--cream);white-space:nowrap;font-size:1.02rem}
+  .conta__nota{color:var(--mute-2);font-size:.78rem;line-height:1.45;margin-top:.2rem}
+  .custo__fig.is-live .tick{transition:none}
 
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
@@ -364,7 +474,7 @@
     border-radius:16px;padding:1rem 1.2rem;position:relative;isolation:isolate;
     transition:border-color .4s var(--ease),transform .5s var(--spring)}
   .offer li:hover{border-color:var(--gold-line);transform:translateX(3px)}
-  .offer li::before{content:"✓";color:var(--gold-3);font-weight:800;line-height:1.5}
+  /* o tique generico virou icone por item */
   .offer__name{font-weight:700;color:var(--cream)}
   .offer__desc{color:var(--mute);font-size:.95rem}
   .offer__name span{color:var(--gold-3)}
@@ -492,7 +602,7 @@
   /* ===== FORMA 1 · a secao corta em diagonal de verdade ===== */
   .diag{clip-path:polygon(0 var(--corte), 100% 0, 100% calc(100% - var(--corte)), 0 100%);
     --corte:3.4vw;margin-block:calc(var(--corte) * -.5);
-    padding-block:calc(clamp(4.5rem,9vw,8.5rem) + var(--corte))}
+    padding-block:calc(clamp(2.8rem,4.7vw,4.5rem) + var(--corte))}
   @media(max-width:700px){.diag{--corte:6vw}}
 
   /* ===== FORMA 2 · o retrato sangra de borda a borda, sem moldura ===== */
@@ -539,7 +649,7 @@
   /* ===== QUEBRA DE FORMA: a secao do custo sai da coluna de 40rem =====
      full-bleed, duas colunas desiguais, e um numero em escala que a
      pagina inteira nao tinha. Aqui o maior elemento deixa de ser o h1. */
-  .custo{position:relative;overflow:hidden;padding-block:clamp(4rem,9vw,7rem)}
+  .custo{position:relative;overflow:hidden;padding-block:clamp(2.6rem,4.3vw,4rem)}
   .custo__in{max-width:88rem;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,3rem);
     display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
     gap:clamp(1.5rem,5vw,4.5rem);align-items:center}
@@ -587,7 +697,10 @@
   .custo__fig--longo{font-size:clamp(2.4rem,9.4vw,7rem);letter-spacing:-.045em;
     margin-left:0!important;margin-right:0!important;padding-right:.06em}
   @media(max-width:860px){
-    .custo__in{grid-template-columns:1fr;gap:2rem}
+    /* ARMADILHA: @media nao levanta especificidade. .custo--dir .custo__in (0,2,0)
+       vencia .custo__in (0,1,0) aqui dentro, a secao seguia em duas colunas no
+       celular e o numero longo sangrava 48px pra fora da tela. */
+    .custo__in,.custo--dir .custo__in{grid-template-columns:1fr;gap:2rem}
     .custo__fig{margin-left:-.2rem;font-size:clamp(5rem,26vw,9rem)}
     .custo__fig--longo{margin-left:0;font-size:clamp(2.4rem,12.8vw,5rem)}
     /* o feixe existia so no desktop: no mobile ele so muda de angulo */
@@ -1109,9 +1222,33 @@
 
   /* ===== a foto entra saindo do desfoque ===== */
   .auth__portrait{background:linear-gradient(140deg,#2A2621,#15130F)}
-  .auth__portrait img{opacity:0;filter:blur(16px);transform:scale(1.05);
+  .auth__portrait img{opacity:0;filter:blur(16px) grayscale(1) contrast(1.08) brightness(.84);transform:scale(1.05);
     transition:opacity .8s var(--ease),filter 1s var(--ease-soft),transform 1.2s var(--spring)}
-  .auth__portrait img.is-loaded{opacity:1;filter:blur(0);transform:none}
+  .auth__portrait img.is-loaded{opacity:1;filter:blur(0) grayscale(1) contrast(1.08) brightness(.84);transform:none}
+
+
+  /* ===== duotone bronze: a foto entra na paleta em vez de brigar com ela.
+     o grayscale mora no filter da <img>; aqui vem a tinta e a vinheta.
+     wrapper proprio porque o ::after do .auth__portrait ja e o degrade
+     que derrete a foto no fundo. ===== */
+  .autor .auth__portrait{isolation:isolate}
+  /* ARMADILHA: z-index no .duo cria contexto de empilhamento proprio e o
+     mix-blend-mode passa a misturar com o nada em vez de misturar com a foto
+     (resultado: mancha dourada chapada). Sem z-index, e o blend mora no
+     proprio .duo, nao num pseudo dele. */
+  .duo{position:absolute;inset:0;pointer-events:none;opacity:0;
+    transition:opacity .9s var(--ease);mix-blend-mode:color;
+    background:linear-gradient(168deg,#D8B77A 0%,var(--gold) 46%,#6A5324 100%)}
+  img.is-loaded + .duo{opacity:.82}
+  /* vinheta separada, fora do .duo, senao ela cai dentro do mesmo blend */
+  .autor .auth__portrait::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
+    background:radial-gradient(76% 70% at 44% 32%,transparent 30%,rgba(12,11,10,.55) 100%)}
+  .autor .auth__portrait::after{z-index:2}
+  @supports not (mix-blend-mode:color){ .duo{display:none} }
+
+  /* frase de autoria · fica no lugar da assinatura ate o png real chegar */
+  .assina{margin-top:1.5rem;padding-left:1rem;border-left:1px solid var(--gold-line);
+    color:var(--mute);font-size:.95rem;line-height:1.5;font-style:italic}
 
   /* ===== transicao entre paginas: a landing empurra o /espelho e o /cadastro ===== */
   @view-transition{navigation:auto}
@@ -1668,6 +1805,18 @@
           <div class="proofpill rise">
             <span class="avs"><span class="av">D</span><span class="av">J</span><span class="av av--ph">+</span></span>
             <span>Donos como o <b>Dinarte</b> já fizeram essa virada.</span>
+
+        </div>
+
+          <div class="creds rise" role="list">
+            <div class="cred" role="listitem"><span class="cred__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.4 20.4V14m4.6 6.4V9.6m4.6 10.8V5.2m4.6 15.2v-8.2"/><path d="M2.6 20.6h18.8"/></svg></span>
+              <span><b class="cred__fig">7 anos</b><span class="cred__cap">dentro de empresas, não em sala de aula</span></span></div>
+            <div class="cred" role="listitem"><span class="cred__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.6 16.4 9 10.6l3.4 3.2 5.8-6.6"/><path d="M14.6 6.8h4.2v4.2"/><path d="M2.8 20.6h18.4"/></svg></span>
+              <span><b class="cred__fig">7&ndash;18&times;</b><span class="cred__cap">o retorno do marketing que eu entrego</span></span></div>
+            <div class="cred" role="listitem"><span class="cred__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12.4" r="8.2"/><path d="M12 7.6v4.8l3.2 1.9"/></svg></span>
+              <span><b class="cred__fig">10 h/semana</b><span class="cred__cap">a garantia que eu assino com número</span></span></div>
+            <div class="cred" role="listitem"><span class="cred__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.4 20.2v-1.4a4.2 4.2 0 014.2-4.2h2.8a4.2 4.2 0 014.2 4.2v1.4"/><circle cx="10" cy="7.8" r="3.4"/><path d="M17.6 4.6h4m-2 -2v4"/></svg></span>
+              <span><b class="cred__fig">9 vagas</b><span class="cred__cap">turma fundadora, e eu escolho quem entra</span></span></div>
           </div>
         </div>
 
@@ -1701,10 +1850,10 @@
     <section class="autor">
         <div class="auth__grid">
           <div class="auth__portrait rise">
-            <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1003" />
+            <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1003" /><span class="duo" aria-hidden="true"></span>
           </div>
           <div class="autor__txt">
-            <p class="eyebrow rise">Quem vai te conduzir</p>
+            <p class="eyebrow rise"><i class="eyebrow__n">01</i>Quem vai te conduzir</p>
             <h2 class="auth__name rise">Matheus Martins</h2>
             <p class="auth__role rise">Gestão · Liderança · Perfil comportamental</p>
             <p class="auth__body rise">7 anos estruturando empresas por dentro: cultura, liderança, processos e gestão. Formado pela G4 em Gestão &amp; Estratégia e Traction, e em perfil comportamental (CIS Assessment) pela Febracis. Hoje ocupo cadeira de conselheiro em empresas de clientes.</p>
@@ -1712,6 +1861,7 @@
               <span class="stat__fig">7&ndash;18×</span>
               <span class="stat__cap">o marketing que faço pros meus clientes <b>nunca rendeu menos de 7 vezes</b> o valor investido. Nos melhores casos, 18. Não é teoria de sala: eu opero.</span>
             </div>
+            <p class="assina rise">Quem assina a mentoria é quem conduz cada call.</p>
           </div>
         </div>
     </section>
@@ -1721,7 +1871,7 @@
     <!-- 3 · O PONTO DE VIRADA -->
     <section>
       <div class="wrap measure">
-        <p class="eyebrow rise">O ponto de virada</p>
+        <p class="eyebrow rise"><i class="eyebrow__n">02</i>O ponto de virada</p>
         <h2 class="h-sec rise">Existe um momento na vida do dono que é o mais difícil de todos.</h2>
         <div class="body-col" style="margin-top:1.4rem">
           <p class="rise">No começo, esforço resolve tudo. O problema é que o que te trouxe até aqui é exatamente o que te prende agora: a empresa cresceu em cima de você, e sem perceber você treinou todo mundo a te perguntar tudo.</p>
@@ -1738,7 +1888,7 @@
     <!-- 4 · DIAGNÓSTICO -->
     <section>
       <div class="wrap measure">
-        <p class="eyebrow rise">O diagnóstico honesto</p>
+        <p class="eyebrow rise"><i class="eyebrow__n">03</i>O diagnóstico honesto</p>
         <h2 class="h-sec rise">Como você sabe que chegou nesse ponto.</h2>
         <p class="lede rise">Marque o que você reconhece.</p>
         <ul class="reckon reckon--live" id="reckon">
@@ -1762,7 +1912,7 @@
     <!-- 5 · PRINCÍPIO DO ESPELHO -->
     <section class="center">
       <div class="wrap measure">
-        <p class="eyebrow eyebrow--c rise">O princípio que guia tudo</p>
+        <p class="eyebrow eyebrow--c rise"><i class="eyebrow__n">04</i>O princípio que guia tudo</p>
         <h2 class="h-sec rise">O Princípio do Espelho</h2>
         <p class="lede rise" style="color:var(--gold-3)">A empresa é o reflexo do dono.</p>
 
@@ -1781,7 +1931,7 @@
     <!-- 6 · O OUTRO LADO -->
     <section>
       <div class="wrap measure">
-        <p class="eyebrow rise">O outro lado</p>
+        <p class="eyebrow rise"><i class="eyebrow__n">05</i>O outro lado</p>
         <h2 class="h-sec rise">Agora leia a mesma lista do outro lado.</h2>
         <p class="lede rise">Vire a chave e leia a mesma lista.</p>
         <div class="flip rise" id="flip" role="tablist">
@@ -1841,16 +1991,16 @@
     <section>
       <div class="wrap frame">
         <div class="measure" style="margin-bottom:2.2rem">
-          <p class="eyebrow rise">O método</p>
+          <p class="eyebrow rise"><i class="eyebrow__n">06</i>O método</p>
           <h2 class="h-sec rise" data-dock="<b>5 pilares</b> · na ordem certa">Como o executor vira gestor.</h2>
           <p class="lede rise">Cinco pilares, na ordem certa. Não dá pra vender mais numa casa desorganizada, por isso marketing é o último, não o primeiro.</p>
         </div>
         <div class="stack stagger pile">
-          <div class="num rise"><span class="num__n">01</span><div><div class="num__t">Calibração do Gestor</div><p class="num__d">Sua empresa não está travada. Você está travado nela. Aqui você volta pra decisão estratégica.</p></div></div>
-          <div class="num rise"><span class="num__n">02</span><div><div class="num__t">Hierarquia &amp; Liderança</div><p class="num__d">Equipe que não pode decidir nunca cresce com você. Aqui ela passa a decidir sozinha.</p></div></div>
-          <div class="num rise"><span class="num__n">03</span><div><div class="num__t">Processos &amp; Cultura</div><p class="num__d">Tudo que mora só na sua cabeça morre quando você sai. Aqui vira processo.</p></div></div>
-          <div class="num rise"><span class="num__n">04</span><div><div class="num__t">Eficiência com IA</div><p class="num__d">A maioria contrata gente quando devia automatizar tarefa. Aqui você escala sem inchar a folha.</p></div></div>
-          <div class="num rise"><span class="num__n">05</span><div><div class="num__t">Marketing &amp; Vendas</div><p class="num__d">Vender mais sem virar gerente comercial. Por último, de propósito: acelera o que já está de pé.</p></div></div>
+          <div class="num rise"><span class="num__n">01</span><div><div class="num__t">Calibração do Gestor</div><p class="num__d">Sua empresa não está travada. Você está travado nela. Aqui você volta pra decisão estratégica.</p></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><path d="M15.4 8.6 10.8 14l-2.2-2.2"/><path d="M12 3.6v1.8M20.4 12h-1.8M12 20.4v-1.8M3.6 12h1.8"/></svg></span></div>
+          <div class="num rise"><span class="num__n">02</span><div><div class="num__t">Hierarquia &amp; Liderança</div><p class="num__d">Equipe que não pode decidir nunca cresce com você. Aqui ela passa a decidir sozinha.</p></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="2.8" width="6" height="4.2" rx="1"/><rect x="2.6" y="16.8" width="5.6" height="4.2" rx="1"/><rect x="15.8" y="16.8" width="5.6" height="4.2" rx="1"/><path d="M12 7v4.4M5.4 16.8v-2.6h13.2v2.6M12 11.4v2.8"/></svg></span></div>
+          <div class="num rise"><span class="num__n">03</span><div><div class="num__t">Processos &amp; Cultura</div><p class="num__d">Tudo que mora só na sua cabeça morre quando você sai. Aqui vira processo.</p></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.2 3.6h9l4.6 4.6v11.2a1.4 1.4 0 01-1.4 1.4H5.2a1.4 1.4 0 01-1.4-1.4V5a1.4 1.4 0 011.4-1.4z"/><path d="M14 3.8v4.6h4.6"/><path d="m7.4 13.4 1.8 1.8 3.6-3.8"/><path d="M7.4 17.6h8"/></svg></span></div>
+          <div class="num rise"><span class="num__n">04</span><div><div class="num__t">Eficiência com IA</div><p class="num__d">A maioria contrata gente quando devia automatizar tarefa. Aqui você escala sem inchar a folha.</p></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7.4" y="7.4" width="9.2" height="9.2" rx="2"/><path d="M11 11h2.4v2.4H11z"/><path d="M10 3.6v3.8M14 3.6v3.8M10 16.6v3.8M14 16.6v3.8M3.6 10h3.8M3.6 14h3.8M16.6 10h3.8M16.6 14h3.8"/></svg></span></div>
+          <div class="num rise"><span class="num__n">05</span><div><div class="num__t">Marketing &amp; Vendas</div><p class="num__d">Vender mais sem virar gerente comercial. Por último, de propósito: acelera o que já está de pé.</p></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.4 14.4v-4a1.4 1.4 0 011.4-1.4h2.6l7.4-4.4v15.6l-7.4-4.4H4.8a1.4 1.4 0 01-1.4-1.4z"/><path d="M18.4 9.4a4.2 4.2 0 010 5.2"/><path d="M7.4 15.2v3.4a1.6 1.6 0 003.2 0v-1.6"/></svg></span></div>
         </div>
 
         <h3 class="h-sec rise" style="font-size:clamp(1.3rem,2.6vw,1.7rem);margin-top:3rem;text-align:center">120 dias pra deixar de ser o gargalo. 12 meses pra consolidar.</h3>
@@ -1862,9 +2012,9 @@
           </div>
           <p class="road__pin">No mês 4 você deixa de ser o gargalo. O resto do ano é pra isso não voltar.</p>
           <div class="road__legs">
-            <div class="road__leg"><b>Implementação</b><p>Os pilares 1 a 4 entram, na ordem.</p></div>
-            <div class="road__leg"><b>Consolidação</b><p>Pilar 5, marketing e vendas, agora com a casa em ordem.</p></div>
-            <div class="road__leg"><b>Sustentação</b><p>Correção de rota até virar rotina sem você.</p></div>
+            <div class="road__leg"><span class="oic road__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.4 20.6V9.4l5.2-3.8 5.2 3.8v11.2"/><path d="M13.8 20.6V12l3.4-2.4 3.4 2.4v8.6"/><path d="M2.6 20.8h18.8"/></svg></span><b>Implementação</b><p>Os pilares 1 a 4 entram, na ordem.</p></div>
+            <div class="road__leg"><span class="oic road__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.2 20.4 7 12 10.8 3.6 7z"/><path d="M3.6 12 12 15.8 20.4 12"/><path d="M3.6 16.6 12 20.4l8.4-3.8"/></svg></span><b>Consolidação</b><p>Pilar 5, marketing e vendas, agora com a casa em ordem.</p></div>
+            <div class="road__leg"><span class="oic road__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.4 12a8.4 8.4 0 11-2.5-6"/><path d="M20.6 3.4v4.2h-4.2"/><path d="m9 12.2 2.2 2.2 4.2-4.6"/></svg></span><b>Sustentação</b><p>Correção de rota até virar rotina sem você.</p></div>
           </div>
         </div>
 
@@ -1948,7 +2098,7 @@
             <p class="custo__cut rise">Sem processo documentado você não delega responsabilidade: <b>delega o caos</b>, e a decisão volta pra sua mesa.</p>
           </div>
           <div>
-            <p class="custo__k rise">O que ele custa por ano</p>
+            <p class="custo__k rise"><i class="eyebrow__n">07</i>O que ele custa por ano</p>
             <div class="custo__fig custo__fig--longo rise"><span class="tick" data-to="168000" data-pre="R$ ">R$ 168.000</span></div>
             <span class="custo__un rise">a mentoria inteira custa menos de 10% disso</span>
           </div>
@@ -1962,7 +2112,7 @@
     <section class="section--light diag">
       <div class="wrap frame">
         <div class="measure">
-          <p class="eyebrow rise">Prova</p>
+          <p class="eyebrow rise"><i class="eyebrow__n">08</i>Prova</p>
           <h2 class="h-sec rise" data-dock="<b>Biotop</b> · o dono saiu de cada decisão">Funciona com dono de verdade.</h2>
           <p class="lede rise">A Biotop vivia dependente do dono: tudo passava pelo Dinarte. Veja o que os dois sócios dizem depois do método.</p>
         </div>
@@ -1999,17 +2149,39 @@
       <div class="custo">
         <div class="custo__in">
           <div>
-            <p class="custo__k rise">O custo de ficar como está</p>
-            <div class="custo__fig rise"><span class="tick" data-to="520">520</span></div>
+            <p class="custo__k rise"><i class="eyebrow__n">09</i>O custo de ficar como está</p>
+            <div class="custo__fig rise" id="cFig"><span class="tick" data-to="520">520</span></div>
             <span class="custo__un rise">horas por ano, todo ano</span>
           </div>
           <div>
             <h2 class="h-sec custo__h rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
-            <p class="custo__p rise">Dez horas por semana somem em decisão que não era sua. Não em dinheiro: em coisa que você não fez.</p>
+            <p class="custo__p rise">Dez horas por semana somem em decisão que não era sua. Mexa nos números e veja a sua conta, não a minha.</p>
+            <div class="conta rise">
+              <div class="ctrl">
+                <div class="ctrl__top"><label class="ctrl__k" for="cPerd">Horas por semana que você gasta com decisão que não precisava passar por você</label>
+                  <span class="ctrl__v"><span id="cPerdV">10</span> h</span></div>
+                <input id="cPerd" type="range" min="1" max="25" step="1" value="10" aria-label="Horas por semana perdidas" />
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__top"><label class="ctrl__k" for="cTot">Horas por semana que você trabalha, no total</label>
+                  <span class="ctrl__v"><span id="cTotV">55</span> h</span></div>
+                <input id="cTot" type="range" min="30" max="90" step="1" value="55" aria-label="Horas trabalhadas por semana" />
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__top"><label class="ctrl__k" for="cFat">Quanto a empresa fatura por mês</label>
+                  <span class="ctrl__v" id="cFatV">R$ 200.000</span></div>
+                <input id="cFat" type="range" min="50" max="600" step="10" value="200" aria-label="Faturamento mensal em milhares de reais" />
+              </div>
+              <div class="conta__out" aria-live="polite">
+                <p class="conta__ln"><span>Isso vira, por ano</span><span class="conta__lv"><span id="cSem">13,0</span> semanas de trabalho</span></p>
+                <p class="conta__ln"><span>O faturamento que passa pelas suas mãos nessas horas</span><span class="conta__lv" id="cDin">R$ 436.364</span></p>
+                <p class="conta__nota">Conta educativa: horas por semana &times; 52, divididas pela sua jornada. O faturamento é rateado pela hora, não é lucro nem custo.</p>
+              </div>
+            </div>
             <div class="weeks rise" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
             <p class="weeks__legend rise">
               <span><i></i>Uma semana sua</span>
-              <span><i class="lost"></i><b>Treze semanas</b> pagas em decisão que não era sua</span>
+              <span><i class="lost"></i><b><span id="cSemW">9,5</span> semanas</b> pagas em decisão que não era sua</span>
             </p>
             <p class="custo__cut rise">Trabalho duro te trouxe até aqui. <b>Não vai te levar daqui pra frente.</b></p>
           </div>
@@ -2022,20 +2194,20 @@
     <!-- 11 · A OFERTA -->
     <section>
       <div class="wrap measure">
-        <p class="eyebrow rise">A oferta</p>
+        <p class="eyebrow rise"><i class="eyebrow__n">10</i>A oferta</p>
         <h2 class="h-sec rise" data-dock="<b>R$ 24.600</b> em valor entregue">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
         <ul class="offer pile">
-          <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">O número de horas que você perde, medido na semana 1.</div></div></li>
-          <li class="rise" data-obj="120 dias é muito tempo pra sentir alguma coisa" data-det="Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você sente a diferença antes de ter um único processo documentado. É de propósito: ninguém aguenta quatro meses sem sentir nada."><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Três decisões voltam pra equipe já na primeira semana.</div></div></li>
-          <li class="rise" data-obj="já fiz mentoria genérica que não se aplicava" data-det="Cinco pilares aplicados à sua empresa, no estágio em que ela está: Calibração do Gestor, Hierarquia &amp; Liderança, Processos &amp; Cultura, Eficiência com IA e, por último, Marketing &amp; Vendas. Marketing é o último de propósito &mdash; ele acelera o que já existe, e acelerar caos produz mais caos."><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à sua empresa.</div></div></li>
-          <li class="rise" data-obj="as mentorias grandes ensinam empresa de R$1M a R$3bi" data-det="Comigo, não com atendente, e não em turma. Cada call está amarrada a um marco do método e olha o seu negócio no estágio em que ele está. É a diferença entre aprender gestão e instalar gestão."><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma por marco, comigo, olhando o seu negócio.</div></div></li>
-          <li class="rise" data-obj="quando trava, eu volto a fazer sozinho" data-det="Comigo e com a Carine, nossa gestora de sucesso, pelos doze meses. Sem fila e sem esperar a próxima call. O motivo é simples: o momento em que você trava é o momento em que você volta a fazer sozinho, e aí o processo morre."><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, pelos 12 meses. Sem fila.</div></div></li>
-          <li class="rise" data-obj="a dúvida aparece domingo à noite" data-det="Uma IA treinada no conteúdo da mentoria, disponível 24 horas, pra diagnóstico e consulta ao método. Serve pra quando a dúvida aparece fora do horário da call &mdash; que é quase sempre."><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra dúvida que aparece fora da call.</div></div></li>
-          <li class="rise" data-obj="não tenho tempo de escrever processo" data-det="DISC, RACI, SLAs, scripts e dashboards prontos. Você preenche, não redige. O trabalho de escrever processo do zero é justamente o que trava todo mundo, então ele já vem feito."><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">DISC, RACI, SLAs, scripts e dashboards prontos.</div></div></li>
-          <li class="rise" data-obj="o problema é a minha equipe" data-det="Seu perfil de decisão mapeado pelo CIS Assessment da Febracis, com três ajustes personalizados. O primeiro sistema a calibrar é o dono, e isso precisa sair de um instrumento, não da minha opinião sobre você."><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão pelo CIS Assessment, da Febracis.</div></div></li>
-          <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">Foco, Ação, Sistema e Tempo: a rotina que se sustenta.</div></div></li>
-          <li class="rise" data-obj="minha equipe vai resistir" data-det="Uma call conduzida por mim com o seu time, para a mudança não chegar como ordem sua. Equipe não resiste a processo: resiste a ser avisada de que agora é assim. Quando ela participa da instalação, a matriz de alçada para de ser papel e vira combinado."><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sessão de Implantação com a sua equipe</span><span class="offer__dots"></span><span class="offer__val">R$ 1.200</span></div><div class="offer__desc">Uma call minha com o seu time, pra mudança não chegar como ordem sua.</div><span class="offer__more">Ver o detalhe</span></div></li>
+          <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.8 9.2h18.4a1 1 0 011 1v3.6a1 1 0 01-1 1H2.8a1 1 0 01-1-1v-3.6a1 1 0 011-1z"/><path d="M6.4 9.2v2.6M10 9.2v3.6M13.6 9.2v2.6M17.2 9.2v3.6"/></svg></span><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">O número de horas que você perde, medido na semana 1.</div></div></li>
+          <li class="rise" data-obj="120 dias é muito tempo pra sentir alguma coisa" data-det="Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você sente a diferença antes de ter um único processo documentado. É de propósito: ninguém aguenta quatro meses sem sentir nada."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.4 12.6a8.4 8.4 0 11-2.6-6"/><path d="M20.6 3.2v4.2h-4.2"/><path d="M8.6 12.4h6.2m-2.4-2.4 2.4 2.4-2.4 2.4"/></svg></span><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Três decisões voltam pra equipe já na primeira semana.</div></div></li>
+          <li class="rise" data-obj="já fiz mentoria genérica que não se aplicava" data-det="Cinco pilares aplicados à sua empresa, no estágio em que ela está: Calibração do Gestor, Hierarquia &amp; Liderança, Processos &amp; Cultura, Eficiência com IA e, por último, Marketing &amp; Vendas. Marketing é o último de propósito &mdash; ele acelera o que já existe, e acelerar caos produz mais caos."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.9 21 7l-9 4.1L3 7z"/><path d="M3 12.1 12 16.2l9-4.1"/><path d="M3 16.6 12 20.7l9-4.1"/></svg></span><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à sua empresa.</div></div></li>
+          <li class="rise" data-obj="as mentorias grandes ensinam empresa de R$1M a R$3bi" data-det="Comigo, não com atendente, e não em turma. Cada call está amarrada a um marco do método e olha o seu negócio no estágio em que ele está. É a diferença entre aprender gestão e instalar gestão."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8.4" cy="8" r="3.2"/><path d="M2.8 19.6a5.6 5.6 0 0111.2 0"/><rect x="14.8" y="11.4" width="7" height="5.4" rx="1.2"/><path d="m21.8 12.8 2-1.2v4.8l-2-1.2"/></svg></span><div><div class="offer__row"><span class="offer__name">9 calls individuais</span><span class="offer__dots"></span><span class="offer__val">R$ 5.400</span></div><div class="offer__desc">Uma por marco, comigo, olhando o seu negócio.</div></div></li>
+          <li class="rise" data-obj="quando trava, eu volto a fazer sozinho" data-det="Comigo e com a Carine, nossa gestora de sucesso, pelos doze meses. Sem fila e sem esperar a próxima call. O motivo é simples: o momento em que você trava é o momento em que você volta a fazer sozinho, e aí o processo morre."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.4 11.8a8 8 0 01-11.6 7.1L3.6 20.4l1.5-5.1A8 8 0 1120.4 11.8z"/><path d="M8.8 10.4h6.4M8.8 13.6h4.2"/></svg></span><div><div class="offer__row"><span class="offer__name">WhatsApp direto</span><span class="offer__dots"></span><span class="offer__val">R$ 2.500</span></div><div class="offer__desc">Comigo e com a Carine, pelos 12 meses. Sem fila.</div></div></li>
+          <li class="rise" data-obj="a dúvida aparece domingo à noite" data-det="Uma IA treinada no conteúdo da mentoria, disponível 24 horas, pra diagnóstico e consulta ao método. Serve pra quando a dúvida aparece fora do horário da call &mdash; que é quase sempre."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7.6" y="7.6" width="8.8" height="8.8" rx="2.2"/><path d="M10.6 11h2.8m-2.8 2.4h2.8"/><path d="M12 3.4v4.2M12 16.4v4.2M3.4 12h4.2M16.4 12h4.2"/></svg></span><div><div class="offer__row"><span class="offer__name">IA da mentoria</span><span class="offer__dots"></span><span class="offer__val">R$ 2.000</span></div><div class="offer__desc">Diagnóstico 24h, pra dúvida que aparece fora da call.</div></div></li>
+          <li class="rise" data-obj="não tenho tempo de escrever processo" data-det="DISC, RACI, SLAs, scripts e dashboards prontos. Você preenche, não redige. O trabalho de escrever processo do zero é justamente o que trava todo mundo, então ele já vem feito."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.4 3.6h6.2l4.6 4.6v9.6a1.6 1.6 0 01-1.6 1.6H7.4a1.6 1.6 0 01-1.6-1.6V5.2a1.6 1.6 0 011.6-1.6z"/><path d="M13.4 3.8V8.4h4.6"/><path d="M9 12.4h6M9 15.6h4"/></svg></span><div><div class="offer__row"><span class="offer__name">Swipe File Espelho</span><span class="offer__dots"></span><span class="offer__val">R$ 1.500</span></div><div class="offer__desc">DISC, RACI, SLAs, scripts e dashboards prontos.</div></div></li>
+          <li class="rise" data-obj="o problema é a minha equipe" data-det="Seu perfil de decisão mapeado pelo CIS Assessment da Febracis, com três ajustes personalizados. O primeiro sistema a calibrar é o dono, e isso precisa sair de um instrumento, não da minha opinião sobre você."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="2.4"/><path d="M12 3.6v17M3.6 12h16.8"/><circle cx="8" cy="8" r="1.5"/><circle cx="16" cy="16" r="1.5"/></svg></span><div><div class="offer__row"><span class="offer__name">Análise DISC</span><span class="offer__dots"></span><span class="offer__val">R$ 1.000</span></div><div class="offer__desc">Seu perfil de decisão pelo CIS Assessment, da Febracis.</div></div></li>
+          <li class="rise" data-obj="eu começo e não mantenho" data-det="Foco, Ação, Sistema e Tempo: o método de produtividade que faz a rotina nova sobreviver ao terceiro mês. É o ponto em que a maioria das mudanças morre."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="4.4"/><circle cx="12" cy="12" r="1.2"/></svg></span><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sistema RIC</span><span class="offer__dots"></span><span class="offer__val">R$ 800</span></div><div class="offer__desc">Foco, Ação, Sistema e Tempo: a rotina que se sustenta.</div></div></li>
+          <li class="rise" data-obj="minha equipe vai resistir" data-det="Uma call conduzida por mim com o seu time, para a mudança não chegar como ordem sua. Equipe não resiste a processo: resiste a ser avisada de que agora é assim. Quando ela participa da instalação, a matriz de alçada para de ser papel e vira combinado."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8.2" cy="8.4" r="2.9"/><path d="M2.8 19.4a5.4 5.4 0 0110.8 0"/><circle cx="16.6" cy="7" r="2.3"/><path d="M13.4 15.4a4.4 4.4 0 017.8 2.6"/></svg></span><div><div class="offer__row"><span class="offer__name"><span>Bônus ·</span> Sessão de Implantação com a sua equipe</span><span class="offer__dots"></span><span class="offer__val">R$ 1.200</span></div><div class="offer__desc">Uma call minha com o seu time, pra mudança não chegar como ordem sua.</div><span class="offer__more">Ver o detalhe</span></div></li>
         </ul>
         <p class="reckon__close rise">Consultoria comum otimiza o que já existe. Aqui a gente calibra quem decide, por isso o resultado se sustenta depois que a mentoria acaba.</p>
       </div>
@@ -2056,14 +2228,15 @@
     <!-- 12 · CANDIDATURA -->
     <section id="candidatura" class="section--light">
       <div class="wrap measure">
-        <p class="eyebrow rise">Como entrar</p>
+        <p class="eyebrow rise"><i class="eyebrow__n">11</i>Como entrar</p>
         <h2 class="h-sec rise" data-dock="<b>9 vagas</b> · turma fundadora">Não é compra. É candidatura.</h2>
         <p class="lede rise">São 9 vagas nesta turma, e eu escolho quem entra. Não é sobre quem tem dinheiro: pra quem fatura o que você fatura, o valor não é o obstáculo. É porque esta turma vira meus próximos casos, e eu quero os donos certos.</p>
-        <div class="stack stagger" style="margin-top:1.6rem">
-          <div class="num rise"><span class="num__n">1</span><div><div class="num__t">Você preenche uma candidatura de 2 minutos.</div></div></div>
-          <div class="num rise"><span class="num__n">2</span><div><div class="num__t" style="font-weight:600;color:var(--text)">A gente conversa pra ver se faz sentido, pros dois lados.</div></div></div>
-          <div class="num rise"><span class="num__n">3</span><div><div class="num__t" style="font-weight:600;color:var(--text)">Se entrar, tem <strong>7 dias pra ver por dentro</strong> e desistir com 100% de volta, sem justificativa.</div></div></div>
-          <div class="num rise"><span class="num__n">4</span><div><div class="num__t" style="font-weight:600;color:var(--text)">E tem a <strong>Garantia das 10 Horas</strong>, que é a única promessa que eu assino com número.</div></div></div>
+        <div class="stack stagger trilho" id="trilho">
+          <span class="trilho__luz" aria-hidden="true"></span>
+          <div class="num rise"><span class="num__n">1</span><div><div class="num__t">Você preenche uma candidatura de 2 minutos.</div></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4.4" y="2.8" width="15.2" height="18.4" rx="2"/><path d="M8.4 8h7.2M8.4 12h7.2M8.4 16h4.2"/></svg></span></div>
+          <div class="num rise"><span class="num__n">2</span><div><div class="num__t" style="font-weight:600;color:var(--text)">A gente conversa pra ver se faz sentido, pros dois lados.</div></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.6 6.4a1.8 1.8 0 011.8-1.8h9a1.8 1.8 0 011.8 1.8v5.4a1.8 1.8 0 01-1.8 1.8H8l-4.4 3z"/><path d="M18.2 9.2h1.2a1.4 1.4 0 011.4 1.4v4.6a1.4 1.4 0 01-1.4 1.4h-.8l-2.8 2.4v-2.4"/></svg></span></div>
+          <div class="num rise"><span class="num__n">3</span><div><div class="num__t" style="font-weight:600;color:var(--text)">Se entrar, tem <strong>7 dias pra ver por dentro</strong> e desistir com 100% de volta, sem justificativa.</div></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2.9 4.6 6v6.4c0 4 3 7.3 7.4 8.7 4.4-1.4 7.4-4.7 7.4-8.7V6z"/><path d="m8.8 12.2 2.2 2.2 4.2-4.6"/></svg></span></div>
+          <div class="num rise"><span class="num__n">4</span><div><div class="num__t" style="font-weight:600;color:var(--text)">E tem a <strong>Garantia das 10 Horas</strong>, que é a única promessa que eu assino com número.</div></div><span class="oic oic--lg num__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12.4" r="8.2"/><path d="M12 7.8v4.6l3 1.8"/><path d="M9.2 2.6h5.6"/></svg></span></div>
         </div>
         <div class="gar rise">
           <div class="gar__h"><span>Garantia das 10 Horas</span><span>dia 60</span></div>
@@ -2087,7 +2260,7 @@
     <!-- 13 · OBJEÇÕES -->
     <section>
       <div class="wrap measure">
-        <p class="eyebrow eyebrow--muted rise">Antes de você dizer “agora não”</p>
+        <p class="eyebrow eyebrow--muted rise"><i class="eyebrow__n">12</i>Antes de você dizer “agora não”</p>
         <h2 class="h-sec rise">As seis coisas que você está pensando agora.</h2>
         <p class="lidas rise" id="lidas"><span class="lidas__p" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b id="lidasN">1</b> de 6 lidas</span></p>
         <div class="faq stagger" id="faq">
@@ -2130,7 +2303,7 @@
         <h2 class="rise fim__h">Daqui a um ano você vai estar<br>exatamente onde está hoje.<br><em>Ou não.</em></h2>
         <p class="lede rise" style="margin-inline:auto;max-width:34rem">A diferença não é mercado, não é equipe e não é sorte. É o que você decide fazer com o teto que já sabe que existe.</p>
         <div class="weeks weeks--eco rise" id="eco" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
-        <p class="strip__cap" style="max-width:30rem;margin-inline:auto">As mesmas treze semanas. A diferença é <b>quem decide</b> no ano que vem.</p>
+        <p class="strip__cap" style="max-width:30rem;margin-inline:auto">As mesmas <span id="cSemE">9,5</span> semanas. A diferença é <b>quem decide</b> no ano que vem.</p>
 
         <div class="cta cta--c rise">
           <a class="btn" href="/cadastro">Fazer minha candidatura <span class="btn__arrow">→</span></a>
@@ -2655,6 +2828,90 @@
       document.addEventListener('visibilitychange',function(){if(!document.hidden)frame();});
       frame();
     }
+
+
+    /* --- trilho da candidatura: o no acende quando a etapa cruza o meio da tela,
+           e a luz do fio para no ultimo no aceso. rAF com guarda de aba escondida,
+           mesma armadilha do empilhamento. --- */
+    (function(){
+      var tr=document.getElementById('trilho'); if(!tr)return;
+      var luz=tr.querySelector('.trilho__luz'), passos=[].slice.call(tr.querySelectorAll('.num'));
+      if(!luz||!passos.length)return;
+      if(reduce){passos.forEach(function(e){e.classList.add('aceso');});
+                 luz.style.setProperty('--h',(tr.clientHeight-51)+'px');return;}
+      var id=null,to=null;
+      function frame(){
+        id=null;
+        var linha=window.innerHeight*0.62, base=tr.getBoundingClientRect().top+27, ultimo=-1;
+        passos.forEach(function(el,i){
+          var y=el.getBoundingClientRect().top+27;
+          if(y<=linha){el.classList.add('aceso');ultimo=i;}
+          else el.classList.remove('aceso');
+        });
+        var h=0;
+        if(ultimo>=0) h=Math.max(0,(passos[ultimo].getBoundingClientRect().top+27)-base);
+        luz.style.setProperty('--h',h+'px');
+      }
+      function kick(){ if(id)cancelAnimationFrame(id); id=requestAnimationFrame(frame);
+        clearTimeout(to); to=setTimeout(frame,140); }
+      window.addEventListener('scroll',kick,{passive:true});
+      window.addEventListener('resize',kick,{passive:true});
+      document.addEventListener('visibilitychange',function(){if(!document.hidden)frame();});
+      frame();
+    })();
+
+
+    /* --- a conta ao vivo: mesmo modelo do /espelho, pra as duas paginas
+           nunca darem numeros diferentes pro mesmo dono.
+           o 520 so passa a ser dirigido daqui DEPOIS que o contador terminar,
+           senao os dois brigam pelo mesmo textContent. --- */
+    (function(){
+      var perd=document.getElementById('cPerd'), tot=document.getElementById('cTot'),
+          fat=document.getElementById('cFat'), fig=document.getElementById('cFig');
+      if(!perd||!tot||!fat||!fig)return;
+      var alvo=fig.querySelector('.tick'),
+          semanas=document.querySelectorAll('.custo .weeks span');
+      function br(n){return n.toLocaleString('pt-BR');}
+      function pct(el){
+        var mn=+el.min, mx=+el.max;
+        el.style.setProperty('--pct', ((el.value-mn)/(mx-mn)*100)+'%');
+      }
+      function conta(){
+        var p=+perd.value, t=+tot.value, f=+fat.value*1000;
+        var horasAno=p*52, sem=horasAno/t, porHora=(f*12)/(t*52);
+        document.getElementById('cPerdV').textContent=p;
+        document.getElementById('cTotV').textContent=t;
+        document.getElementById('cFatV').textContent='R$ '+br(f);
+        var semTxt=sem.toFixed(1).replace('.',',');
+        document.getElementById('cSem').textContent=semTxt;
+        ['cSemW','cSemE'].forEach(function(id){
+          var e=document.getElementById(id); if(e)e.textContent=semTxt;
+        });
+        document.getElementById('cDin').textContent='R$ '+br(Math.round(porHora*horasAno));
+        if(alvo&&alvo.classList.contains('is-done')){
+          fig.classList.add('is-live'); alvo.textContent=br(horasAno);
+        }
+        var perdidas=Math.min(52,Math.max(0,Math.round(sem)));
+        var eco=document.querySelectorAll('.weeks--eco span');
+        /* redistribui as semanas marcadas em vez de pintar as primeiras:
+           bloco no comeco leria como "os tres primeiros meses", que nao e o caso */
+        var passo=perdidas>0?52/perdidas:0, marca={};
+        for(var i=0;i<perdidas;i++) marca[Math.min(51,Math.round(i*passo+passo/2))]=1;
+        for(var j=0;j<semanas.length;j++) semanas[j].classList.toggle('lost',!!marca[j]);
+        for(var e2=0;e2<eco.length;e2++) eco[e2].classList.toggle('lost',!!marca[e2]);
+        [perd,tot,fat].forEach(pct);
+      }
+      [perd,tot,fat].forEach(function(el){
+        el.addEventListener('input',conta);
+        el.addEventListener('change',conta);
+      });
+      conta();
+      /* o contador ainda esta rodando quando isso monta; espera ele fechar */
+      var esperaTick=setInterval(function(){
+        if(alvo&&alvo.classList.contains('is-done')){clearInterval(esperaTick);conta();}
+      },400);
+      setTimeout(function(){clearInterval(esperaTick);},15000);
+    })();
 
     /* --- contadores --- */
     function fmt(n){return n.toLocaleString('pt-BR');}
