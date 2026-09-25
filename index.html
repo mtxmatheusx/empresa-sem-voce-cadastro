@@ -132,9 +132,11 @@
   ::selection{background:var(--gold);color:#14110B}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
-  h1,h2,h3{font-family:var(--serif);font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;line-height:1.16;letter-spacing:-.012em;text-wrap:balance;margin:0;color:var(--cream)}
+  h1,h2{font-family:var(--serif);font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0;line-height:1.16;letter-spacing:-.012em;text-wrap:balance;margin:0;color:var(--cream)}
+  h3{font-family:var(--sans);font-weight:700;letter-spacing:-.018em;line-height:1.25;text-wrap:balance;margin:0;color:var(--cream)}
   p{margin:0;text-wrap:pretty}
-  em{font-family:var(--serif);font-style:italic;color:var(--gold-3);font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0}
+  em{font-style:italic;color:var(--gold-3);font-weight:500;font-family:inherit}
+  h1 em,h2 em{font-family:var(--serif);font-weight:400;font-variation-settings:'opsz' 144,'SOFT' 0,'WONK' 0}
   strong{color:var(--cream);font-weight:700}
 
   .wrap{width:100%;margin:0 auto;padding-inline:clamp(1.25rem,5vw,2.25rem)}
@@ -185,7 +187,7 @@
   /* topbar */
   .topbar{position:sticky;top:0;z-index:60;background:transparent;border:0;
     padding:.7rem clamp(1rem,4vw,2.25rem);transition:padding .6s var(--spring)}
-  .topbar__in{max-width:var(--frame);margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  .topbar__in{position:relative;max-width:var(--frame);margin:0 auto;display:flex;align-items:center;justify-content:space-between;
     gap:1rem;padding:.5rem .55rem .5rem 1rem;border-radius:999px;
     background:transparent;border:.5px solid transparent;box-shadow:none;
     -webkit-backdrop-filter:none;backdrop-filter:none;
@@ -198,6 +200,11 @@
     border-color:var(--glass-edge);
     -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
     box-shadow:inset 0 .5px 0 var(--glass-hi),0 10px 34px rgba(0,0,0,.38)}
+  .topbar__prog{position:absolute;left:.9rem;right:.9rem;bottom:.34rem;height:1.5px;border-radius:999px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-3));pointer-events:none;
+    transform:scaleX(var(--sp,0));transform-origin:left center;
+    opacity:0;transition:opacity .5s var(--ease)}
+  .topbar.is-scrolled .topbar__prog{opacity:.8}
   .brand-logo{height:38px;width:auto;transition:height .55s var(--spring)}
   .topbar.is-scrolled .brand-logo{height:30px}
 
@@ -276,7 +283,8 @@
     -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
     box-shadow:inset 0 .5px 0 var(--glass-hi),var(--glass-shadow);
     border-radius:20px;padding:1.4rem 1.6rem;margin-top:1.6rem}
-  .stat__fig{font-family:var(--serif);font-size:clamp(2.1rem,5.2vw,3rem);font-weight:400;color:var(--gold-3);line-height:1;flex:none}
+  .stat__fig{font-family:var(--sans);font-size:clamp(2.1rem,5.2vw,3rem);font-weight:800;letter-spacing:-.035em;
+    font-variant-numeric:tabular-nums;color:var(--gold-3);line-height:1;flex:none}
   .stat__cap{color:var(--text);font-size:.98rem;line-height:1.5}
   .stat__cap b{color:var(--cream)}
 
@@ -301,7 +309,7 @@
   .cell__note{color:var(--mute);font-size:.92rem;line-height:1.5}
   .slam{margin-top:1.6rem;text-align:center;background:var(--panel);border:1px solid var(--gold-line);
     border-radius:16px;padding:2rem 1.6rem}
-  .slam__fig{font-family:var(--serif);font-size:clamp(1.9rem,4.8vw,2.7rem);font-weight:400;color:var(--gold-2)}
+  .slam__fig{font-family:var(--sans);font-size:clamp(1.9rem,4.8vw,2.7rem);font-weight:800;letter-spacing:-.03em;color:var(--gold-2)}
   .slam__sub{color:var(--text);max-width:38rem;margin:.7rem auto 0;line-height:1.6}
 
   /* depoimentos */
@@ -331,7 +339,7 @@
   .anchor{margin-top:2rem;padding-top:1.4rem;border-top:1px solid var(--gold-line);
     display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
   .anchor__k{color:var(--mute);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
-  .anchor__v{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,4.2vw,2.4rem);
+  .anchor__v{font-family:var(--sans);font-weight:800;font-size:clamp(1.7rem,4.2vw,2.4rem);letter-spacing:-.035em;
     color:var(--gold-3);font-variant-numeric:tabular-nums}
   .anchor__note{color:var(--mute);font-size:.98rem;margin-top:.5rem;flex-basis:100%}
   .offer li{display:grid;grid-template-columns:auto 1fr;gap:.9rem;align-items:start;
@@ -450,6 +458,44 @@
 .stagger .rise:nth-child(12){transition-delay:0.77s}
   @media (prefers-reduced-motion:reduce){.rise,.h-sec.rise,.hero__in h1.rise{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== pilha grudada · os cards empilham conforme voce rola ===== */
+  .pile{--stick:5.6rem;--peek:.78rem;gap:clamp(1.5rem,3.6vw,2.8rem)}
+  .offer.pile > li,.stack.pile > .num{position:sticky;top:calc(var(--stick) + var(--i,0) * var(--peek))}
+  .pile > *:nth-child(1){--i:0}
+  .pile > *:nth-child(2){--i:1}
+  .pile > *:nth-child(3){--i:2}
+  .pile > *:nth-child(4){--i:3}
+  .pile > *:nth-child(5){--i:4}
+  .pile > *:nth-child(6){--i:5}
+  .pile > *:nth-child(7){--i:6}
+  .pile > *:nth-child(8){--i:7}
+  .pile > *:nth-child(9){--i:8}
+  .pile > *:nth-child(10){--i:9}
+  /* o card de cima precisa cobrir de verdade o de baixo, e projetar sombra
+     pra cima, na fresta que sobra do anterior */
+  .offer.pile li,.stack.pile .num{
+    background:linear-gradient(180deg,rgba(32,30,27,.92),rgba(20,19,17,.90));
+    -webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),0 -10px 26px rgba(0,0,0,.44),0 12px 30px rgba(0,0,0,.26)}
+  /* o card recua de verdade enquanto o proximo sobe por cima:
+     --p vai de 0 (livre) a 1 (coberto), calculado no scroll */
+  .offer.pile li,.stack.pile .num{transform-origin:50% 0%;
+    filter:brightness(calc(1 - var(--p,0) * .2)) saturate(calc(1 - var(--p,0) * .18));
+    transition:filter .18s linear}
+  .offer.pile li.rise.in,.stack.pile .num.rise.in,
+  .offer.pile li:hover,.stack.pile .num:hover{
+    transform:scale(calc(1 - var(--p,0) * .055)) translateY(calc(var(--p,0) * -3px))}
+  /* icone e numero entram com mola, nao com fade */
+  .ico,.num__n{transform:scale(.66);opacity:0;
+    transition:transform .85s var(--spring) .12s,opacity .45s var(--ease-soft) .12s}
+  .card.in .ico,.num.in .num__n{transform:none;opacity:1}
+  /* brilho do hero acompanha o scroll de leve */
+  .hero::before{transform:translate3d(0,var(--py,0px),0) scale(var(--ps,1));will-change:transform}
+  @media (prefers-reduced-motion:reduce){.pile > *{position:static}}
+  @media (prefers-reduced-transparency: reduce){
+    .offer.pile li,.stack.pile .num{background:#1A1917;-webkit-backdrop-filter:none;backdrop-filter:none}
+  }
+
   /* ===== iOS 27 · especular, doca de vidro, contadores ===== */
 
   /* brilho especular que segue o cursor, dentro da peca de vidro */
@@ -558,6 +604,7 @@
     <div class="topbar__in">
       <a href="/" class="mark" aria-label="Empresa Sem Você"><img class="brand-logo" src="/assets/logo.png" alt="Empresa Sem Você" width="300" height="155" /></a>
       <a class="btn btn--ghost" href="/cadastro">Candidatura</a>
+      <span class="topbar__prog" aria-hidden="true"></span>
     </div>
   </header>
 
@@ -708,7 +755,7 @@
           <h2 class="h-sec rise">Como o executor vira gestor.</h2>
           <p class="lede rise">Cinco pilares, na ordem certa. Não dá pra vender mais numa casa desorganizada, por isso marketing é o último, não o primeiro.</p>
         </div>
-        <div class="stack stagger">
+        <div class="stack stagger pile">
           <div class="num rise"><span class="num__n">01</span><div><div class="num__t">Calibração do Gestor</div><p class="num__d">Sua empresa não está travada. Você está travado nela. Aqui você volta pra decisão estratégica.</p></div></div>
           <div class="num rise"><span class="num__n">02</span><div><div class="num__t">Hierarquia &amp; Liderança</div><p class="num__d">Equipe que não pode decidir nunca cresce com você. Aqui ela passa a decidir sozinha.</p></div></div>
           <div class="num rise"><span class="num__n">03</span><div><div class="num__t">Processos &amp; Cultura</div><p class="num__d">Tudo que mora só na sua cabeça morre quando você sai. Aqui vira processo.</p></div></div>
@@ -801,7 +848,7 @@
         <p class="eyebrow rise">A oferta</p>
         <h2 class="h-sec rise">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
-        <ul class="offer">
+        <ul class="offer pile">
           <li class="rise"><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">Na primeira semana a gente mede quantas horas você perde com decisão que não é sua. Esse número vira a sua linha de base, e é ele que a garantia tem que derrubar.</div></div></li>
           <li class="rise"><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você ganha tempo antes de ter um único processo documentado.</div></div></li>
           <li class="rise"><div><div class="offer__row"><span class="offer__name">Método Empresa Sem Você</span><span class="offer__dots"></span><span class="offer__val">R$ 6.000</span></div><div class="offer__desc">Os 5 pilares, na ordem certa, aplicados à SUA empresa.</div></div></li>
@@ -904,9 +951,9 @@
       els.forEach(function(e){if(!e.closest('.hero')){io.observe(e);pend.push(e);}});
       /* rede: salto de ancora ou flick rapido faz o observer perder o elemento.
          Nada pode ficar desfocado depois de ja ter passado pela dobra. */
-      var tick=false;
+      var sweepId=0;
       function sweep(){
-        tick=false;
+        sweepId=0;
         var h=window.innerHeight,rest=[];
         for(var i=0;i<pend.length;i++){
           var e=pend[i];
@@ -916,14 +963,53 @@
         }
         pend=rest;
       }
-      window.addEventListener('scroll',function(){
-        if(tick||!pend.length)return;tick=true;requestAnimationFrame(sweep);
-      },{passive:true});
-      window.addEventListener('resize',sweep,{passive:true});
+      function askSweep(){
+        if(!pend.length)return;
+        if(sweepId)cancelAnimationFrame(sweepId);
+        sweepId=requestAnimationFrame(sweep);
+      }
+      window.addEventListener('scroll',askSweep,{passive:true});
+      window.addEventListener('resize',askSweep,{passive:true});
+      document.addEventListener('visibilitychange',function(){if(!document.hidden)sweep();});
       setTimeout(sweep,60);
     }
     var tb=document.querySelector('.topbar');
     if(tb){var onScroll=function(){tb.classList.toggle('is-scrolled',window.scrollY>8);};onScroll();window.addEventListener('scroll',onScroll,{passive:true});}
+
+    /* --- pilha: cada card recua enquanto o proximo sobe por cima --- */
+    var piles=[].slice.call(document.querySelectorAll('.pile > *')),
+        heroSec=document.querySelector('.hero'),
+        pileId=0;
+    function frame(){
+      pileId=0;
+      for(var i=0;i<piles.length;i++){
+        var el=piles[i],nx=el.nextElementSibling;
+        if(!nx){el.style.setProperty('--p',0);continue;}
+        var h=el.offsetHeight;if(!h){continue;}
+        var d=nx.getBoundingClientRect().top-el.getBoundingClientRect().top;
+        var pr=1-(d/h);
+        el.style.setProperty('--p',(pr<0?0:pr>1?1:pr).toFixed(3));
+      }
+      var y=window.scrollY;
+      if(heroSec){
+        heroSec.style.setProperty('--py',(y*0.22).toFixed(1)+'px');
+        heroSec.style.setProperty('--ps',(1+Math.min(y,900)/2600).toFixed(3));
+      }
+      if(tb){
+        var max=document.documentElement.scrollHeight-window.innerHeight;
+        tb.style.setProperty('--sp',(max>0?Math.min(y/max,1):0).toFixed(4));
+      }
+    }
+    if(!reduce){
+      var kick=function(){
+        if(pileId)cancelAnimationFrame(pileId);
+        pileId=requestAnimationFrame(frame);
+      };
+      window.addEventListener('scroll',kick,{passive:true});
+      window.addEventListener('resize',kick,{passive:true});
+      document.addEventListener('visibilitychange',function(){if(!document.hidden)frame();});
+      frame();
+    }
 
     /* --- contadores --- */
     function fmt(n){return n.toLocaleString('pt-BR');}
