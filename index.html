@@ -259,6 +259,47 @@
   .conta__nota{color:var(--mute-2);font-size:.78rem;line-height:1.45;margin-top:.2rem}
   .custo__fig.is-live .tick{transition:none}
 
+
+  /* ===== hero com rosto · duas colunas no desktop, retrato sangrando ate a
+     borda direita da tela. o h1 continua sendo a peca maior: ele encolhe de
+     4,7rem pra 4rem, nao pra 3. ===== */
+  .hero__top{display:grid;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+  .hero__art{position:relative;isolation:isolate;overflow:hidden;
+    border-radius:0;background:linear-gradient(140deg,#2A2621,#15130F)}
+  .hero__art img{width:100%;height:100%;object-fit:cover;object-position:50% 26%;display:block}
+  /* ARMADILHA: .hero{text-align:center} e definida DEPOIS na folha, entao
+     .hero{text-align:left} aqui empatava em especificidade e perdia por ordem.
+     section.hero (0,1,1) resolve sem !important. */
+  @media (min-width:1000px){
+    section.hero{text-align:left}
+    .hero__top{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+      align-items:center;gap:clamp(2rem,4.5vw,3.6rem)}
+    .hero__in{max-width:none;margin:0}
+    .hero h1{font-size:clamp(2.5rem,4.15vw,4rem)}
+    .hero__sub{font-size:clamp(1.15rem,2.1vw,1.6rem)}
+    .hero__promise{margin-left:0;margin-right:0;max-width:33rem}
+    .hero .eyebrow--c{display:inline-flex;justify-content:flex-start}
+    .hero .cta--c{align-items:flex-start}
+    .hero .proofpill{margin-left:0;margin-right:auto}
+    /* sem margem negativa: em grid, margem negativa realimenta o calculo das
+       faixas fr e a coluna cresce sozinha (estourou 287px pra fora da tela).
+       o sangramento de verdade ja mora na secao 01, logo abaixo. */
+    .hero__art{height:clamp(27rem,38vw,34rem);border-radius:22px}
+    .hero__art::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+      background:linear-gradient(92deg,rgba(18,17,16,.72) 0%,rgba(18,17,16,.14) 30%,transparent 62%),
+                 linear-gradient(0deg,rgba(18,17,16,.55) 0%,transparent 30%)}
+  }
+  @media (max-width:999px){
+    /* a faixa precisa caber o queixo e o ombro: com 272px o retrato cortava
+       no bigode. 78vw da 304px em 390 e o rosto fica no terco de cima. */
+    .hero__art{margin-inline:calc(50% - 50vw);height:clamp(19rem,78vw,25rem);margin-bottom:1.5rem;
+      order:-1}
+    .hero__art img{object-position:50% 32%}
+    .hero__art::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+      background:linear-gradient(0deg,var(--bg) 1%,rgba(18,17,16,.5) 24%,transparent 62%)}
+    .hero{padding-top:clamp(1rem,3vw,2rem)}
+  }
+
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
     text-transform:uppercase;color:var(--gold-3);font-weight:500;margin:0 0 1.6rem}
@@ -613,7 +654,7 @@
     min-height:clamp(24rem,46vw,38rem);view-timeline-name:--retrato;view-timeline-axis:block}
   .autor .auth__portrait::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(94deg,transparent 42%,var(--bg) 99%)}
-  .autor .auth__portrait img{height:100%;width:100%;object-fit:cover;object-position:50% 16%}
+  .autor .auth__portrait img{height:100%;width:100%;object-fit:cover;object-position:54% 30%}
   .autor__txt{padding:clamp(2.6rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);
     display:flex;flex-direction:column;justify-content:center}
   @media(max-width:860px){
@@ -1222,16 +1263,16 @@
 
   /* ===== a foto entra saindo do desfoque ===== */
   .auth__portrait{background:linear-gradient(140deg,#2A2621,#15130F)}
-  .auth__portrait img{opacity:0;filter:blur(16px) grayscale(1) contrast(1.08) brightness(.84);transform:scale(1.05);
+  .auth__portrait img,.hero__art img{opacity:0;filter:blur(16px) grayscale(1) contrast(1.08) brightness(.84);transform:scale(1.05);
     transition:opacity .8s var(--ease),filter 1s var(--ease-soft),transform 1.2s var(--spring)}
-  .auth__portrait img.is-loaded{opacity:1;filter:blur(0) grayscale(1) contrast(1.08) brightness(.84);transform:none}
+  .auth__portrait img.is-loaded,.hero__art img.is-loaded{opacity:1;filter:blur(0) grayscale(1) contrast(1.08) brightness(.84);transform:none}
 
 
   /* ===== duotone bronze: a foto entra na paleta em vez de brigar com ela.
      o grayscale mora no filter da <img>; aqui vem a tinta e a vinheta.
      wrapper proprio porque o ::after do .auth__portrait ja e o degrade
      que derrete a foto no fundo. ===== */
-  .autor .auth__portrait{isolation:isolate}
+  .autor .auth__portrait,.hero__art{isolation:isolate}
   /* ARMADILHA: z-index no .duo cria contexto de empilhamento proprio e o
      mix-blend-mode passa a misturar com o nada em vez de misturar com a foto
      (resultado: mancha dourada chapada). Sem z-index, e o blend mora no
@@ -1240,6 +1281,10 @@
     transition:opacity .9s var(--ease);mix-blend-mode:color;
     background:linear-gradient(168deg,#D8B77A 0%,var(--gold) 46%,#6A5324 100%)}
   img.is-loaded + .duo{opacity:.82}
+  /* no hero a foto e a primeira coisa que ele ve: tinta mais leve, pra
+     camisa continuar lendo como branca e o rosto ter profundidade */
+  .hero__art img.is-loaded + .duo{opacity:.6}
+  .hero__art img.is-loaded{filter:blur(0) grayscale(1) contrast(1.05) brightness(.92)}
   /* vinheta separada, fora do .duo, senao ela cai dentro do mesmo blend */
   .autor .auth__portrait::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background:radial-gradient(76% 70% at 44% 32%,transparent 30%,rgba(12,11,10,.55) 100%)}
@@ -1793,6 +1838,7 @@
     <!-- 1 · HERO -->
     <section class="hero">
       <div class="wrap frame">
+        <div class="hero__top">
         <div class="hero__in">
           <p class="eyebrow eyebrow--c rise">Mentoria de gestão · donos de R$100k a R$500k / mês</p>
           <h1 class="rise">Você tem time. Tem faturamento. E tudo <em>trava</em> quando você não está.</h1>
@@ -1808,6 +1854,16 @@
 
         </div>
 
+        </div>
+
+        <div class="hero__art rise">
+          <img src="/assets/matheus-2026.jpg"
+               srcset="/assets/matheus-2026-540.jpg 540w, /assets/matheus-2026.jpg 900w"
+               sizes="(min-width:1000px) 48vw, 100vw"
+               alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1200" /><span class="duo" aria-hidden="true"></span>
+        </div>
+        </div>
+
           <div class="creds rise" role="list">
             <div class="cred" role="listitem"><span class="cred__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3.4 20.4V14m4.6 6.4V9.6m4.6 10.8V5.2m4.6 15.2v-8.2"/><path d="M2.6 20.6h18.8"/></svg></span>
               <span><b class="cred__fig">7 anos</b><span class="cred__cap">dentro de empresas, não em sala de aula</span></span></div>
@@ -1818,7 +1874,6 @@
             <div class="cred" role="listitem"><span class="cred__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4.4 20.2v-1.4a4.2 4.2 0 014.2-4.2h2.8a4.2 4.2 0 014.2 4.2v1.4"/><circle cx="10" cy="7.8" r="3.4"/><path d="M17.6 4.6h4m-2 -2v4"/></svg></span>
               <span><b class="cred__fig">9 vagas</b><span class="cred__cap">turma fundadora, e eu escolho quem entra</span></span></div>
           </div>
-        </div>
 
         <div class="strip rise" id="strip">
           <div class="strip__g"><div class="strip__c"><i class="" style="--i:0"></i><i class="n" style="--i:1"></i><i class="" style="--i:2"></i><i class="n" style="--i:3"></i></div><div class="strip__c"><i class="n" style="--i:4"></i><i class="" style="--i:5"></i><i class="n" style="--i:6"></i><i class="" style="--i:7"></i></div><div class="strip__c"><i class="" style="--i:8"></i><i class="n" style="--i:9"></i><i class="" style="--i:10"></i><i class="n" style="--i:11"></i></div><div class="strip__c"><i class="n" style="--i:12"></i><i class="" style="--i:13"></i><i class="n" style="--i:14"></i><i class="" style="--i:15"></i></div><div class="strip__c"><i class="" style="--i:16"></i><i class="n" style="--i:17"></i><i class="" style="--i:18"></i><i class="n" style="--i:19"></i></div></div>
@@ -1850,7 +1905,7 @@
     <section class="autor">
         <div class="auth__grid">
           <div class="auth__portrait rise">
-            <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1003" /><span class="duo" aria-hidden="true"></span>
+            <img src="/assets/matheus-2026-amb.jpg" alt="Matheus Martins" decoding="async" width="1100" height="1100" /><span class="duo" aria-hidden="true"></span>
           </div>
           <div class="autor__txt">
             <p class="eyebrow rise"><i class="eyebrow__n">01</i>Quem vai te conduzir</p>
@@ -2627,8 +2682,7 @@
     }
 
     /* --- a foto sai do desfoque quando termina de carregar --- */
-    var foto=document.querySelector('.auth__portrait img');
-    if(foto){
+    [].slice.call(document.querySelectorAll('.auth__portrait img,.hero__art img')).forEach(function(foto){
       var pronta=function(){foto.classList.add('is-loaded');};
       if(foto.complete&&foto.naturalWidth)pronta();
       else{
@@ -2638,7 +2692,7 @@
            invisivel pra sempre: revela assim mesmo. */
         setTimeout(pronta,2500);
       }
-    }
+    });
 
     /* --- objecoes: abre uma por vez --- */
     var faq=document.getElementById('faq');
