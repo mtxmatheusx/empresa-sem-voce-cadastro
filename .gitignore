@@ -1,3 +1,7 @@
 *.bak
 .DS_Store
 node_modules/
+
+# Documentos de trabalho (copy, VSL, roteiro de criativo).
+# A Vercel publica a arvore inteira: se entrar no commit, vira URL publica.
+*.md
