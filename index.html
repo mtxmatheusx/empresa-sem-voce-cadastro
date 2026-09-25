@@ -489,6 +489,53 @@
     .mirror__b::after{opacity:0}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== FORMA 1 · a secao corta em diagonal de verdade ===== */
+  .diag{clip-path:polygon(0 var(--corte), 100% 0, 100% calc(100% - var(--corte)), 0 100%);
+    --corte:3.4vw;margin-block:calc(var(--corte) * -.5);
+    padding-block:calc(clamp(4.5rem,9vw,8.5rem) + var(--corte))}
+  @media(max-width:700px){.diag{--corte:6vw}}
+
+  /* ===== FORMA 2 · o retrato sangra de borda a borda, sem moldura ===== */
+  .autor{padding-block:0;position:relative;overflow:hidden}
+  .autor .auth__grid{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+    gap:0;align-items:stretch}
+  .autor .auth__portrait{border-radius:0;border:0;margin:0;max-width:none;
+    min-height:clamp(24rem,46vw,38rem);view-timeline-name:--retrato;view-timeline-axis:block}
+  .autor .auth__portrait::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(94deg,transparent 42%,var(--bg) 99%)}
+  .autor .auth__portrait img{height:100%;width:100%;object-fit:cover;object-position:50% 16%}
+  .autor__txt{padding:clamp(2.6rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);
+    display:flex;flex-direction:column;justify-content:center}
+  @media(max-width:860px){
+    .autor .auth__grid{grid-template-columns:1fr}
+    .autor .auth__portrait{min-height:clamp(18rem,62vw,26rem)}
+    .autor .auth__portrait::after{background:linear-gradient(180deg,transparent 46%,var(--bg) 99%)}
+    .autor__txt{padding-top:0}
+  }
+
+  /* ===== FORMA 3 · o espelho sem card nenhum: so tipo sobre o fundo ===== */
+  .mirror--nu{gap:0;max-width:52rem;margin-inline:auto}
+  .mirror--nu .mirror__a,.mirror--nu .mirror__b{
+    background:none!important;border:0;box-shadow:none;border-radius:0;
+    padding:clamp(.85rem,1.9vw,1.25rem) clamp(.6rem,1.6vw,1.4rem);
+    font-size:clamp(1rem,1.85vw,1.24rem);line-height:1.35}
+  .mirror--nu .mirror__b{color:var(--gold-3)}
+  .mirror--nu .mirror__a{color:var(--mute)}
+  .mirror--nu .mirror__row+.mirror__row{border-top:1px solid var(--line)}
+  .mirror--nu .mirror__g{width:clamp(2.4rem,5vw,3.6rem)}
+  /* sem card, os segmentos do plano deixavam falha entre as linhas */
+  .mirror--nu .mirror__g::before{top:-.8rem;bottom:-.8rem}
+  .mirror--nu .mirror__row:first-of-type .mirror__g::before{top:-.5rem}
+  .mirror--nu .mirror__row:last-child .mirror__g::before{bottom:-.5rem}
+  .mirror--nu .mirror__head{padding-inline:clamp(.6rem,1.6vw,1.4rem);margin-bottom:.4rem}
+  .mirror--nu .mirror__b::after{border-radius:0}
+  @media(max-width:700px){
+    .mirror--nu .mirror__row+.mirror__row{border-top:0}
+    .mirror--nu .mirror__row{padding-block:.5rem}
+    .mirror--nu .mirror__a{padding-bottom:.2rem}
+    .mirror--nu .mirror__b{padding-top:.2rem}
+  }
+
   /* ===== QUEBRA DE FORMA: a secao do custo sai da coluna de 40rem =====
      full-bleed, duas colunas desiguais, e um numero em escala que a
      pagina inteira nao tinha. Aqui o maior elemento deixa de ser o h1. */
@@ -1651,13 +1698,12 @@
     <hr class="rule rise" />
 
     <!-- 2 · AUTORIDADE -->
-    <section>
-      <div class="wrap frame">
+    <section class="autor">
         <div class="auth__grid">
           <div class="auth__portrait rise">
             <img src="https://gdbvrexbpiwdubusciwm.supabase.co/storage/v1/object/public/esv-hero/matheus.jpg" alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1003" />
           </div>
-          <div>
+          <div class="autor__txt">
             <p class="eyebrow rise">Quem vai te conduzir</p>
             <h2 class="auth__name rise">Matheus Martins</h2>
             <p class="auth__role rise">Gestão · Liderança · Perfil comportamental</p>
@@ -1668,7 +1714,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <hr class="rule rise" />
@@ -1721,7 +1766,7 @@
         <h2 class="h-sec rise">O Princípio do Espelho</h2>
         <p class="lede rise" style="color:var(--gold-3)">A empresa é o reflexo do dono.</p>
 
-        <div class="mirror rise">
+        <div class="mirror mirror--nu rise">
           <div class="mirror__head"><span>O que você faz</span><span aria-hidden="true"></span><span>O que ela devolve</span></div>
           <div class="mirror__row"><span class="mirror__a">Aprova cada decisão</span><span class="mirror__g" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span><span class="mirror__b">Espera pra decidir</span></div>
           <div class="mirror__row"><span class="mirror__a">Guarda o processo na cabeça</span><span class="mirror__g" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span><span class="mirror__b">Perde o processo com quem sai</span></div>
@@ -1914,7 +1959,7 @@
     <hr class="rule rise" />
 
     <!-- 9 · PROVA -->
-    <section class="section--light">
+    <section class="section--light diag">
       <div class="wrap frame">
         <div class="measure">
           <p class="eyebrow rise">Prova</p>
