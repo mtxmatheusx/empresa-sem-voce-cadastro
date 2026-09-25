@@ -227,6 +227,30 @@
   .pil__d{color:var(--mute);margin-top:.28rem;font-size:.97rem;line-height:1.58}
   .pil__i--last{border-color:var(--gold-line);background:linear-gradient(180deg,var(--gold-soft),var(--glass))}
 
+  /* ===== transicao entre paginas ===== */
+  @view-transition{navigation:auto}
+  ::view-transition-old(root){animation:vtOut .36s cubic-bezier(.16,.72,.2,1) both}
+  ::view-transition-new(root){animation:vtIn .52s cubic-bezier(.22,1,.36,1) both}
+  @keyframes vtOut{to{opacity:0;transform:scale(.986);filter:blur(5px)}}
+  @keyframes vtIn{from{opacity:0;transform:translateY(16px) scale(.99);filter:blur(7px)}}
+  .brand-logo{view-transition-name:marca}
+  ::view-transition-group(marca){animation-duration:.52s;animation-timing-function:cubic-bezier(.22,1,.36,1)}
+  @media (prefers-reduced-motion:reduce){
+    ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+  }
+
+  /* ---- linhas do tempo nativas: sai do fio principal ---- */
+  @supports (animation-timeline:scroll()){
+    .topbar__prog{animation:progresso linear both;animation-timeline:scroll(root block)}
+    @keyframes progresso{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  }
+
+  /* ---- a dobra engrossa quando voce rola rapido ---- */
+  .edge{--vel:0}
+  .edge i:nth-child(3){opacity:calc(.55 + var(--vel) * .45)}
+  .edge i:nth-child(4){opacity:calc(.28 + var(--vel) * .72)}
+  .edge i{transition:opacity .25s linear}
+
   /* ---- aro especular: o que faz o vidro parecer vidro ---- */
   .glass::before,.seg::before,.topbar__in::before,.freepill::before,.q::before,.out::before{
     content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
@@ -632,7 +656,9 @@
       onEdge();window.addEventListener('scroll',onEdge,{passive:true});}
 
     /* pilha grudada + progresso do nav */
-    var pileId=0;
+    var pileId=0,
+        nativo=!!(window.CSS&&CSS.supports&&CSS.supports('animation-timeline','scroll()')),
+        yPrev=window.scrollY,tPrev=performance.now(),vel=0;
     function frame(){
       pileId=0;
       var piles=document.querySelectorAll('.pile > *');
@@ -644,9 +670,22 @@
         var pr=1-(d/h);
         el.style.setProperty('--p',(pr<0?0:pr>1?1:pr).toFixed(3));
       }
-      if(tb){
+      if(tb&&!nativo){
         var max=document.documentElement.scrollHeight-window.innerHeight;
         tb.style.setProperty('--sp',(max>0?Math.min(window.scrollY/max,1):0).toFixed(4));
+      }
+      if(edge){
+        var y=window.scrollY,agora=performance.now(),
+            dt=Math.max(agora-tPrev,1),
+            v=Math.abs(y-yPrev)/dt;
+        yPrev=y;tPrev=agora;
+        vel=vel*0.78+Math.min(v/3.4,1)*0.22;
+        if(vel<0.012)vel=0;
+        edge.style.setProperty('--vel',vel.toFixed(3));
+        if(vel>0){
+          if(pileId)cancelAnimationFrame(pileId);
+          pileId=requestAnimationFrame(frame);
+        }
       }
     }
     if(!reduce){
