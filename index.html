@@ -253,7 +253,8 @@
     background:var(--gold-soft);border:1px solid var(--gold-line);color:var(--gold-3)}
   /* sistema: grade de 24, traco 1.4, pontas redondas, sem preenchimento */
   .ico svg,.fs__ico svg,.mirror__g svg{stroke-linecap:round;stroke-linejoin:round;fill:none}
-  .ico svg{width:21px;height:21px;stroke:currentColor;stroke-width:1.4;opacity:.92}
+  .ico svg{width:24px;height:24px;stroke:currentColor;stroke-width:1.45;opacity:.95}
+  .ico{width:50px;height:50px}
   .fs__ico svg{stroke-width:1.4}
   .card__t{font-weight:700;color:var(--cream);font-size:1.08rem;letter-spacing:-.01em}
   .card__d{color:var(--mute);margin-top:.5rem;line-height:1.6;font-size:.98rem}
@@ -474,7 +475,8 @@
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
   /* ===== tira compacta da semana, no hero ===== */
-  .strip{margin-top:clamp(2.2rem,4.5vw,3rem)}
+  /* folga maior que o atraso maximo do hero (46px), senao a pilula invade */
+  .strip{margin-top:clamp(5rem,10vw,6.5rem)}
   .strip__g{display:grid;grid-template-columns:repeat(5,1fr);gap:.34rem;max-width:26rem;margin-inline:auto}
   .strip__c{display:flex;flex-direction:column;gap:.34rem}
   .strip__c i{height:1.05rem;border-radius:5px;background:rgba(255,255,255,.055);
@@ -992,7 +994,7 @@
     /* o conteudo do hero sobe mais devagar que a pagina */
     .hero__in{animation:pxHero linear both;animation-timeline:scroll(root block);
       animation-range:0 760px}
-    @keyframes pxHero{from{translate:0 0;opacity:1}to{translate:0 88px;opacity:.25}}
+    @keyframes pxHero{from{translate:0 0;opacity:1}to{translate:0 46px;opacity:.28}}
   }
 
   /* ===== a dobra engrossa quando voce rola rapido ===== */
@@ -1468,7 +1470,7 @@
         </div>
         <div class="grid g-3 stagger rise" style="margin-top:clamp(3rem,6vw,4.5rem);text-align:left">
           <div class="card rise">
-            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 8.7a3.3 3.3 0 100 6.6 3.3 3.3 0 000-6.6"/><path d="M12 5.4V2.8M12 5.4l1.8 1.8M12 5.4 10.2 7.2"/><path d="M18.6 12h2.6M18.6 12l-1.8-1.8M18.6 12l-1.8 1.8"/><path d="M12 18.6v2.6M12 18.6l1.8-1.8M12 18.6l-1.8-1.8"/><path d="M5.4 12H2.8M5.4 12 3.6 13.8M5.4 12 3.6 10.2"/></svg></div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 8.9a3.1 3.1 0 100 6.2 3.1 3.1 0 000-6.2"/><path d="M12 5.8V2.4m0 3.4 1.9 1.9M12 5.8 10.1 7.7"/><path d="M18.2 12h3.4m-3.4 0 1.9-1.9m-1.9 1.9 1.9 1.9"/><path d="M5.8 12H2.4m3.4 0-1.9 1.9m1.9-1.9L3.9 10.1"/></svg></div>
             <div class="card__t">Você</div>
             <p class="card__d">Sai do gargalo e volta pra decisão do ano, não a do dia.</p>
           </div>
