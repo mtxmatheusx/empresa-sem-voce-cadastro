@@ -463,6 +463,85 @@
 .stagger .rise:nth-child(12){transition-delay:0.77s}
   @media (prefers-reduced-motion:reduce){.rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== grade das 52 semanas ===== */
+  .weeks{display:grid;grid-template-columns:repeat(13,1fr);gap:.5rem;margin-top:1.8rem;max-width:26rem}
+  .weeks span{aspect-ratio:1;border-radius:50%;background:var(--line);
+    transform:scale(.3);opacity:0;transition:transform .6s var(--spring),opacity .4s var(--ease),
+      background .5s var(--ease),box-shadow .5s var(--ease)}
+  .weeks.in span{transform:none;opacity:1;transition-delay:calc(var(--i,0) * .013s)}
+  .weeks span.lost{background:var(--gold-2);box-shadow:0 0 0 1px var(--gold-line),0 0 12px rgba(196,154,82,.4)}
+  .weeks.in span.lost{transition-delay:calc(.75s + var(--i,0) * .013s)}
+  .weeks__legend{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1.2rem;color:var(--mute);font-size:.9rem}
+  .weeks__legend b{color:var(--cream);font-weight:700}
+  .weeks__legend i{width:.62rem;height:.62rem;border-radius:50%;display:inline-block;
+    margin-right:.45rem;vertical-align:baseline;background:var(--line)}
+  .weeks__legend i.lost{background:var(--gold-2);box-shadow:0 0 10px rgba(196,154,82,.45)}
+  @media(max-width:520px){.weeks{gap:.34rem;max-width:none}}
+
+  /* ===== checklist que responde ===== */
+  .reckon--live li{padding:0}
+  .reckon__b{width:100%;display:flex;gap:.9rem;align-items:flex-start;text-align:left;cursor:pointer;
+    background:transparent;border:0;padding:.95rem 1.1rem;color:var(--text);font:inherit;line-height:1.5;
+    border-radius:inherit;transition:color .3s var(--ease)}
+  .reckon__box{flex:none;width:1.32rem;height:1.32rem;border-radius:.45rem;margin-top:.14rem;
+    border:1.5px solid var(--line-2);display:grid;place-items:center;
+    transition:background .4s var(--spring),border-color .4s var(--ease),transform .5s var(--spring)}
+  .reckon__box svg{width:.8rem;height:.8rem;stroke:var(--ink);stroke-width:3;fill:none;
+    stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.4);
+    transition:opacity .3s var(--ease),transform .5s var(--spring)}
+  .reckon--live li.is-on{border-color:var(--gold-line)}
+  li.is-on .reckon__box{background:linear-gradient(180deg,var(--gold-3),var(--gold));border-color:transparent;transform:scale(1.06)}
+  li.is-on .reckon__box svg{opacity:1;transform:none}
+  li.is-on .reckon__b{color:var(--cream)}
+  .tally{margin-top:1.6rem;padding:1.4rem 1.5rem;border-radius:20px;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi);position:relative;
+    display:flex;gap:1.2rem;align-items:center;transition:border-color .5s var(--ease)}
+  .tally.is-hot{border-color:var(--gold-line)}
+  .tally__n{font-family:var(--sans);font-weight:800;font-size:clamp(2rem,6vw,2.7rem);letter-spacing:-.04em;
+    color:var(--gold-3);line-height:1;flex:none;font-variant-numeric:tabular-nums}
+  .tally__n small{font-size:.42em;color:var(--mute);font-weight:700;letter-spacing:0}
+  .tally__t{color:var(--text);line-height:1.5;font-size:.98rem}
+  .tally__t b{color:var(--cream)}
+
+  /* ===== alternador hoje / depois ===== */
+  .flip{position:relative;display:inline-flex;gap:.25rem;padding:.3rem;border-radius:999px;margin-bottom:1.4rem;
+    background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+    border:.5px solid var(--glass-edge);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi)}
+  .flip__ind{position:absolute;top:.3rem;bottom:.3rem;left:0;border-radius:999px;pointer-events:none;
+    background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08));
+    border:.5px solid rgba(244,240,230,.22);box-shadow:inset 0 .5px 0 rgba(255,255,255,.2);
+    width:0;opacity:0;transition:transform .55s var(--spring),width .55s var(--spring),opacity .3s var(--ease)}
+  .flip__ind.is-ready{opacity:1}
+  .flip button{position:relative;z-index:1;cursor:pointer;border:0;background:transparent;font-family:var(--sans);
+    font-weight:700;font-size:.88rem;color:var(--mute);padding:.6rem 1.15rem;border-radius:999px;
+    white-space:nowrap;transition:color .35s var(--ease)}
+  .flip button.is-on{color:var(--cream)}
+  .swap{display:grid}
+  .swap > *{grid-area:1/1;transition:opacity .4s var(--ease),transform .6s var(--spring),filter .4s var(--ease)}
+  .swap > *{visibility:visible}
+  .swap > *[hidden]{display:block;visibility:hidden;opacity:0;pointer-events:none;
+    transform:translateY(14px) scale(.99);filter:blur(5px);
+    transition:opacity .35s var(--ease),transform .5s var(--spring),filter .35s var(--ease),visibility 0s linear .4s}
+
+  /* ===== barras comparativas ===== */
+  .bars{display:grid;gap:1.4rem;margin-top:1.9rem}
+  .bar__k{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin-bottom:.6rem}
+  .bar__name{color:var(--cream);font-weight:700}
+  .bar__v{color:var(--mute);font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .bar--win .bar__v{color:var(--gold-3)}
+  .bar__track{display:block;height:.7rem;border-radius:999px;background:rgba(0,0,0,.34);
+    border:.5px solid var(--line);overflow:hidden}
+  .bar__track i{display:block;height:100%;width:0;border-radius:999px;
+    background:linear-gradient(90deg,#4A443A,#6B6255);
+    transition:width 1.5s var(--spring)}
+  .bar--win .bar__track i{background:linear-gradient(90deg,var(--gold),var(--gold-3));
+    box-shadow:0 0 18px rgba(196,154,82,.45)}
+  .bars.in .bar__track i{width:var(--w)}
+  .bar__note{color:var(--mute);font-size:.92rem;margin-top:.55rem;line-height:1.5}
+
   /* ===== pilha grudada · os cards empilham conforme voce rola ===== */
   /* a fresta que sobra de cada card e exatamente a altura do cabecalho dele,
      entao a pilha vira a lista itemizada com nome e valor a mostra */
@@ -610,11 +689,12 @@
   .dock__txt span b{color:#DCBB7E;font-weight:700}
   .dock__txt span.is-out{transform:translateY(-115%);opacity:0;filter:blur(4px)}
   .dock__txt span.is-in{transform:translateY(115%);opacity:0;filter:blur(4px)}
-  .dock .btn{padding:.72rem 1.3rem;font-size:.9rem;flex:none}
+  /* a regra mobile .btn{width:100%} vazava pra ca e estourava a capsula */
+  .dock .btn{padding:.72rem 1.3rem;font-size:.9rem;flex:none;width:auto}
   @media(max-width:460px){
     .dock__in{padding-left:1rem;gap:.6rem}
     .dock__txt span{font-size:.8rem}
-    .dock .btn{padding:.68rem 1rem;font-size:.84rem}
+    .dock .btn{padding:.68rem 1rem;font-size:.84rem;width:auto}
   }
 
   /* responsive */
@@ -771,16 +851,19 @@
       <div class="wrap measure">
         <p class="eyebrow rise">O diagnóstico honesto</p>
         <h2 class="h-sec rise">Como você sabe que chegou nesse ponto.</h2>
-        <p class="lede rise">Você não precisa de relatório pra saber. Precisa reconhecer a lista.</p>
-        <ul class="reckon">
-          <li class="rise"><span class="mk">—</span><span>Você faturou mais esse ano e sobrou menos.</span></li>
-          <li class="rise"><span class="mk">—</span><span>As decisões passam pelo seu gestor, mas ainda precisam da sua aprovação.</span></li>
-          <li class="rise"><span class="mk">—</span><span>A folha cresce mais rápido que a margem.</span></li>
-          <li class="rise"><span class="mk">—</span><span>Você não tira férias de verdade há mais de dois anos.</span></li>
-          <li class="rise"><span class="mk">—</span><span>Você perdeu gente boa que cansou de esperar autonomia.</span></li>
-          <li class="rise"><span class="mk">—</span><span>Quando você some por uns dias, a empresa não quebra. Ela para de decidir.</span></li>
+        <p class="lede rise">Marque o que você reconhece.</p>
+        <ul class="reckon reckon--live" id="reckon">
+          <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Você faturou mais esse ano e sobrou menos.</span></button></li>
+          <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>As decisões passam pelo seu gestor, mas ainda precisam da sua aprovação.</span></button></li>
+          <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>A folha cresce mais rápido que a margem.</span></button></li>
+          <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Você não tira férias de verdade há mais de dois anos.</span></button></li>
+          <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Você perdeu gente boa que cansou de esperar autonomia.</span></button></li>
+          <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Quando você some por uns dias, a empresa não quebra. Ela para de decidir.</span></button></li>
         </ul>
-        <p class="reckon__close rise">Marcou <strong>três ou mais</strong>? Isso não é sinal de que você fez algo errado. É sinal de que você chegou no limite do modelo que te trouxe até aqui.</p>
+        <div class="tally rise" id="tally">
+          <span class="tally__n"><span id="tallyN">0</span><small> / 6</small></span>
+          <p class="tally__t" id="tallyT">Vá marcando. No fim eu te digo o que essa contagem significa.</p>
+        </div>
       </div>
     </section>
 
@@ -807,17 +890,35 @@
       <div class="wrap measure">
         <p class="eyebrow rise">O outro lado</p>
         <h2 class="h-sec rise">Agora leia a mesma lista do outro lado.</h2>
-        <p class="lede rise">Não é sonho. É o que muda quando o dono muda de papel.</p>
-        <ul class="reckon reckon--win">
-          <li class="rise"><span class="mk">→</span><span>O faturamento que cresce volta a virar lucro que fica.</span></li>
-          <li class="rise"><span class="mk">→</span><span>O gestor decide e te informa. Não pergunta: resolve.</span></li>
-          <li class="rise"><span class="mk">→</span><span>A folha estabiliza em relação à margem.</span></li>
-          <li class="rise"><span class="mk">→</span><span>Você tira quinze dias reais e a empresa nem sente.</span></li>
-          <li class="rise"><span class="mk">→</span><span>Gente boa fica, porque agora existe clareza e autonomia.</span></li>
-          <li class="rise"><span class="mk">→</span><span>Você some por uns dias e a empresa continua decidindo.</span></li>
+        <p class="lede rise">Vire a chave e leia a mesma lista.</p>
+        <div class="flip rise" id="flip" role="tablist">
+          <span class="flip__ind" aria-hidden="true"></span>
+          <button type="button" class="is-on" role="tab" aria-selected="true" data-f="hoje">Hoje</button>
+          <button type="button" role="tab" aria-selected="false" data-f="depois">Depois</button>
+        </div>
+        <div class="swap rise">
+          <div id="f-hoje">
+        <ul class="reckon ">
+          <li><span class="mk" style="transform:none">—</span><span>Fatura mais e sobra menos.</span></li>
+          <li><span class="mk" style="transform:none">—</span><span>O gestor decide, mas ainda precisa da sua aprovação.</span></li>
+          <li><span class="mk" style="transform:none">—</span><span>A folha cresce mais rápido que a margem.</span></li>
+          <li><span class="mk" style="transform:none">—</span><span>Férias de verdade não acontecem há mais de dois anos.</span></li>
+          <li><span class="mk" style="transform:none">—</span><span>Gente boa vai embora cansada de esperar autonomia.</span></li>
+          <li><span class="mk" style="transform:none">—</span><span>Você some por uns dias e a empresa para de decidir.</span></li>
         </ul>
-        <p class="reckon__close rise">E sobra o que faz isso valer a pena: cabeça e agenda pra abrir a segunda unidade. E chegar em casa antes do seu filho dormir, sem que a exceção vire regra.</p>
-        <p class="pull rise">O teste é simples: a sua empresa aguenta quinze dias sem você?</p>
+          </div>
+          <div id="f-depois" hidden>
+        <ul class="reckon reckon--win">
+          <li><span class="mk" style="transform:none">→</span><span>O faturamento que cresce volta a virar lucro que fica.</span></li>
+          <li><span class="mk" style="transform:none">→</span><span>O gestor decide e te informa. Não pergunta: resolve.</span></li>
+          <li><span class="mk" style="transform:none">→</span><span>A folha estabiliza em relação à margem.</span></li>
+          <li><span class="mk" style="transform:none">→</span><span>Você tira quinze dias reais e a empresa nem sente.</span></li>
+          <li><span class="mk" style="transform:none">→</span><span>Gente boa fica, porque agora existe clareza e autonomia.</span></li>
+          <li><span class="mk" style="transform:none">→</span><span>Você some por uns dias e a empresa continua decidindo.</span></li>
+        </ul>
+          </div>
+        </div>
+        <p class="pull rise">A sua empresa aguenta quinze dias sem você?</p>
       </div>
     </section>
 
@@ -856,16 +957,24 @@
       <div class="wrap measure">
         <p class="eyebrow rise">A conta que ninguém faz</p>
         <h2 class="h-sec rise" data-dock="O gerente: <b>R$ 168 mil</b> por ano">Contratar um gerente custa mais e resolve menos.</h2>
-        <div class="body-col" style="margin-top:1.4rem">
-          <p class="rise">O caminho óbvio é contratar um gerente pra tirar isso das suas costas. Um bom gestor sai por R$14 mil por mês com encargos, mais de R$168 mil no ano. E, sem processo documentado, você não delega responsabilidade. Delega o caos. As decisões continuam voltando pra você.</p>
-        </div>
-        <div class="compare">
-          <div class="cell rise"><div class="cell__k">O gerente</div><div class="cell__v"><span class="tick" data-to="168000" data-pre="R$">R$168.000</span><span style="font-size:.5em;color:var(--mute)"> / ano</span></div><div class="cell__note">E, quando pede demissão, o processo vai junto.</div></div>
-          <div class="cell cell--win rise"><div class="cell__k">A mentoria</div><div class="cell__v">Uma fração<span style="font-size:.5em;color:var(--mute)"> disso</span></div><div class="cell__note">Pelos 12 meses. E o que fica é o processo: ele não vai embora.</div></div>
+        <p class="lede rise">O caminho óbvio é contratar alguém. Veja os dois lado a lado.</p>
+        <div class="bars rise">
+          <div class="bar">
+            <span class="bar__k"><span class="bar__name">Um gerente</span>
+              <span class="bar__v"><span class="tick" data-to="168000" data-pre="R$ ">R$ 168.000</span> / ano</span></span>
+            <span class="bar__track"><i style="--w:100%"></i></span>
+            <p class="bar__note">R$ 14 mil por mês com encargos. E quando ele pede demissão, o processo vai junto.</p>
+          </div>
+          <div class="bar bar--win">
+            <span class="bar__k"><span class="bar__name">A mentoria inteira</span>
+              <span class="bar__v">menos de 10% disso</span></span>
+            <span class="bar__track"><i style="--w:9.5%"></i></span>
+            <p class="bar__note">Pelos doze meses. E o que ela instala fica, mesmo quando alguém sai.</p>
+          </div>
         </div>
         <div class="slam rise">
           <div class="slam__fig">Menos de 10% disso.</div>
-          <p class="slam__sub">O gerente custa R$ 168 mil por ano e leva o processo embora quando pede demissão. A mentoria inteira, pelos doze meses, custa <strong>menos de 10% disso</strong> — e o que ela instala fica, mesmo quando alguém sai. O valor exato a gente vê na conversa, junto com se faz sentido você entrar agora.</p>
+          <p class="slam__sub">Sem processo documentado você não delega responsabilidade, delega o caos, e a decisão volta pra sua mesa. O valor exato a gente vê na conversa.</p>
         </div>
       </div>
     </section>
@@ -908,10 +1017,13 @@
       <div class="wrap measure">
         <p class="eyebrow eyebrow--muted rise">O outro preço</p>
         <h2 class="h-sec rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
-        <div class="body-col" style="margin-top:1.4rem">
-          <p class="rise">Há quanto tempo você está assim? Três anos? Cinco? Pensa no que isso já te custou. Não em dinheiro, em coisa que você não fez. A viagem que não teve. O jantar que virou reunião. A ideia que morreu porque você estava apagando incêndio.</p>
-        </div>
-        <p class="rise" style="margin-top:1.4rem">E dá pra medir. Dez horas por semana somem em decisão que não era sua: são <strong><span class="tick" data-to="520">520</span> horas por ano</strong>. Treze semanas de trabalho, todo ano, pagas com a sua vida.</p>
+        <p class="lede rise">Não em dinheiro. Em coisa que você não fez.</p>
+        <div class="weeks rise" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span class="lost" style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span class="lost" style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span class="lost" style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span class="lost" style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span class="lost" style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span class="lost" style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span class="lost" style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span class="lost" style="--i:31"></span><span style="--i:32"></span><span style="--i:33"></span><span style="--i:34"></span><span class="lost" style="--i:35"></span><span style="--i:36"></span><span style="--i:37"></span><span style="--i:38"></span><span class="lost" style="--i:39"></span><span style="--i:40"></span><span style="--i:41"></span><span style="--i:42"></span><span class="lost" style="--i:43"></span><span style="--i:44"></span><span style="--i:45"></span><span style="--i:46"></span><span class="lost" style="--i:47"></span><span style="--i:48"></span><span style="--i:49"></span><span style="--i:50"></span><span class="lost" style="--i:51"></span></div>
+        <p class="weeks__legend rise">
+          <span><i></i>Uma semana sua</span>
+          <span><i class="lost"></i><b>Treze semanas</b> por ano, pagas em decisão que não era sua</span>
+        </p>
+        <p class="rise" style="margin-top:1.4rem">Dez horas por semana somem assim: <strong><span class="tick" data-to="520">520</span> horas por ano</strong>. Um ano tem 52.</p>
         <p class="pull rise">Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente.</p>
       </div>
     </section>
@@ -1054,6 +1166,63 @@
     }
     var tb=document.querySelector('.topbar');
     if(tb){var onScroll=function(){tb.classList.toggle('is-scrolled',window.scrollY>8);};onScroll();window.addEventListener('scroll',onScroll,{passive:true});}
+
+    /* --- checklist que conta e muda o veredito --- */
+    var reck=document.getElementById('reckon');
+    if(reck){
+      var tn=document.getElementById('tallyN'),tt=document.getElementById('tallyT'),
+          tbox=document.getElementById('tally');
+      var VEREDITO=[
+        'Vá marcando. No fim eu te digo o que essa contagem significa.',
+        'Uma só já cobra um preço. Repare de onde ela vem.',
+        'Duas. Ainda dá pra conviver por um tempo — mas não por muito.',
+        '<b>Três.</b> Esse é o ponto em que o modelo que te trouxe até aqui vira o teto.',
+        'Quatro. Não é falta de esforço seu. É excesso de você no meio das decisões.',
+        'Cinco de seis. A empresa não está travada por falta de gente boa.',
+        '<b>Seis de seis.</b> A sua empresa não está travada. Ela está esperando você sair do meio.'
+      ];
+      reck.addEventListener('click',function(ev){
+        var b=ev.target.closest('.reckon__b');if(!b)return;
+        var li=b.parentNode,on=!li.classList.contains('is-on');
+        li.classList.toggle('is-on',on);b.setAttribute('aria-pressed',on?'true':'false');
+        var n=reck.querySelectorAll('li.is-on').length;
+        tn.textContent=n;tt.innerHTML=VEREDITO[n];
+        tbox.classList.toggle('is-hot',n>=3);
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'checklist_marcou',marcados:n});
+      });
+    }
+
+    /* --- alternador hoje / depois --- */
+    var flip=document.getElementById('flip');
+    if(flip){
+      var fInd=flip.querySelector('.flip__ind'),
+          fBtns=[].slice.call(flip.querySelectorAll('button'));
+      function moveFlip(){
+        var on=flip.querySelector('button.is-on');if(!on)return;
+        fInd.style.width=on.offsetWidth+'px';
+        fInd.style.transform='translateX('+on.offsetLeft+'px)';
+        fInd.classList.add('is-ready');
+      }
+      function showFlip(k){
+        fBtns.forEach(function(b){
+          var on=b.dataset.f===k;
+          b.classList.toggle('is-on',on);b.setAttribute('aria-selected',on?'true':'false');
+        });
+        ['hoje','depois'].forEach(function(n){
+          var el=document.getElementById('f-'+n);if(!el)return;
+          if(n===k){el.removeAttribute('hidden');el.removeAttribute('aria-hidden');}
+          else{el.setAttribute('hidden','');el.setAttribute('aria-hidden','true');}
+        });
+        moveFlip();
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'virou_a_chave',lado:k});
+      }
+      fBtns.forEach(function(b){b.addEventListener('click',function(){showFlip(b.dataset.f);});});
+      window.addEventListener('resize',moveFlip,{passive:true});
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(moveFlip);
+      moveFlip();
+    }
 
     /* --- doca com ticker: troca o texto conforme a secao, medindo a largura --- */
     var dockTxt=document.getElementById('dockTxt'),
