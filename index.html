@@ -469,6 +469,83 @@
     .amb{animation:none!important}
     .rise,.h-sec.rise,.hero__in h1.rise,.tick{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}.dock{transition:none}.edge{display:none}.offer.pile li .offer__desc,.stack.pile .num__d{opacity:1!important}.mk{transform:none!important}.rule{transform:none!important;opacity:1!important}.obj__a,.offer__desc{opacity:1!important;transform:none!important}.num__n{opacity:1!important}*{animation:none!important}html{scroll-behavior:auto}}
 
+  /* ===== o sistema na pratica: celular animado + a matriz que o explica ===== */
+  .pratica{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.6rem,4vw,3.2rem);
+    align-items:center;margin-top:clamp(2rem,4vw,3rem)}
+  @media(max-width:820px){.pratica{grid-template-columns:1fr;justify-items:center}}
+
+  .phone{width:264px;flex:none;perspective:1200px}
+  .phone__body{position:relative;border-radius:40px;padding:9px;background:linear-gradient(160deg,#3a372f,#171614 42%,#2b2823);
+    box-shadow:0 30px 70px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.1);
+    transition:transform .9s var(--spring)}
+  .phone.rise .phone__body{transform:translateY(26px) rotateX(9deg) scale(.96)}
+  .phone.rise.in .phone__body{transform:none}
+  .phone__screen{position:relative;border-radius:32px;overflow:hidden;background:#0D0C0B;height:466px;
+    display:flex;flex-direction:column}
+  .phone__island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:74px;height:21px;
+    border-radius:999px;background:#000;z-index:4}
+  .phone__st{display:flex;justify-content:space-between;align-items:center;padding:.62rem .95rem .3rem;
+    font-size:.62rem;color:#E7E3DA;font-weight:700;letter-spacing:.01em}
+  .phone__st b{font-weight:700}
+  .phone__bars{display:flex;gap:2px;align-items:flex-end}
+  .phone__bars i{width:2.5px;background:#E7E3DA;border-radius:1px;display:block}
+  .phone__nav{display:flex;align-items:center;gap:.5rem;padding:.5rem .8rem;
+    background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.045));
+    border-bottom:.5px solid rgba(255,255,255,.1);
+    -webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);z-index:3}
+  .phone__av{width:23px;height:23px;border-radius:50%;flex:none;display:grid;place-items:center;
+    font-size:.6rem;font-weight:800;color:#14110B;background:linear-gradient(140deg,var(--gold-3),var(--gold))}
+  .phone__who{font-size:.68rem;color:#F4F0E6;font-weight:700;line-height:1.2}
+  .phone__who small{display:block;font-size:.56rem;color:#8E8A80;font-weight:500}
+  .phone__chat{flex:1;overflow:hidden;padding:.7rem .7rem 1rem;display:flex;flex-direction:column;
+    gap:.4rem;justify-content:flex-end}
+  .bub{max-width:82%;padding:.44rem .6rem;border-radius:13px;font-size:.645rem;line-height:1.35;
+    opacity:0;transform:translateY(10px) scale(.96);
+    transition:opacity .4s var(--ease),transform .55s var(--spring)}
+  .bub.on{opacity:1;transform:none}
+  .bub--them{align-self:flex-start;background:#26241F;color:#E7E3DA;border-bottom-left-radius:4px}
+  .bub--me{align-self:flex-end;background:linear-gradient(160deg,#6E5A2E,#54441F);color:#F6EFDD;
+    border-bottom-right-radius:4px}
+  .bub__t{display:block;font-size:.5rem;color:#9C978C;text-align:right;margin-top:.12rem}
+  .bub--me .bub__t{color:#C9BB99}
+  .bub__t b{color:#7FC4F2;font-weight:700;letter-spacing:-1px}
+  .typing{align-self:flex-start;display:flex;gap:3px;padding:.5rem .6rem;background:#26241F;
+    border-radius:13px;border-bottom-left-radius:4px;opacity:0;transition:opacity .3s var(--ease)}
+  .typing.on{opacity:1}
+  .typing i{width:4px;height:4px;border-radius:50%;background:#8E8A80;animation:pisca 1.3s infinite}
+  .typing i:nth-child(2){animation-delay:.18s}.typing i:nth-child(3){animation-delay:.36s}
+  @keyframes pisca{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-2px)}}
+  .phone__cap{color:var(--mute);font-size:.86rem;text-align:center;margin-top:.9rem;max-width:264px;line-height:1.5}
+
+  /* a matriz que faz aquela conversa existir */
+  .matrix{border-radius:20px;overflow:hidden;position:relative;
+    background:linear-gradient(180deg,var(--glass-2),var(--glass));border:.5px solid var(--glass-edge);
+    -webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);
+    box-shadow:inset 0 .5px 0 var(--glass-hi),var(--glass-shadow);max-width:34rem;width:100%}
+  .matrix__h{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding:.85rem 1.1rem;border-bottom:.5px solid var(--line);
+    font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-3);font-weight:700}
+  .matrix__h span:last-child{color:var(--mute-2);letter-spacing:.1em}
+  .matrix table{width:100%;border-collapse:collapse;font-size:.88rem}
+  .matrix th{text-align:left;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--mute-2);font-weight:700;padding:.7rem 1.1rem .4rem}
+  .matrix td{padding:.62rem 1.1rem;border-top:.5px solid var(--line);color:var(--text);vertical-align:middle}
+  .matrix tr td:nth-child(2){color:var(--cream);font-weight:600}
+  .matrix tr td:last-child{color:var(--gold-3);font-weight:700;white-space:nowrap;text-align:right;
+    font-variant-numeric:tabular-nums}
+  .matrix tbody tr{opacity:0;transform:translateX(-10px);
+    transition:opacity .5s var(--ease),transform .7s var(--spring)}
+  .matrix.in tbody tr{opacity:1;transform:none}
+  .matrix.in tbody tr:nth-child(2){transition-delay:.09s}
+  .matrix.in tbody tr:nth-child(3){transition-delay:.18s}
+  .matrix.in tbody tr:nth-child(4){transition-delay:.27s}
+  .matrix.in tbody tr:nth-child(5){transition-delay:.36s}
+  .matrix tbody tr:last-child td{color:var(--mute)}
+  .matrix tbody tr:last-child td:nth-child(2){color:var(--gold-3)}
+  @media(max-width:520px){
+    .matrix table{font-size:.8rem}.matrix td,.matrix th{padding-inline:.8rem}
+  }
+
   /* ===== terceiro tom: quente e escuro, pras secoes que falam de custo ===== */
   .section--warm{
     background:linear-gradient(180deg,#1A1512,#231A14 45%,#1A1512);
@@ -1217,6 +1294,37 @@
             <div class="road__leg"><b>Sustentação</b><p>Correção de rota até virar rotina sem você.</p></div>
           </div>
         </div>
+
+        <div class="pratica">
+          <div>
+            <div class="phone rise" id="phone">
+              <div class="phone__body">
+                <div class="phone__screen">
+                  <span class="phone__island"></span>
+                  <div class="phone__st"><b>9:41</b>
+                    <span class="phone__bars"><i style="height:4px"></i><i style="height:6px"></i><i style="height:8px"></i><i style="height:10px"></i></span>
+                  </div>
+                  <div class="phone__nav">
+                    <span class="phone__av">M</span>
+                    <span class="phone__who">Gestor comercial<small>online</small></span>
+                  </div>
+                  <div class="phone__chat" id="chat"><span class="bub bub--them" data-i="0">Cliente pediu 12% de desconto pra fechar hoje.<span class="bub__t">09:12</span></span><span class="bub bub--them" data-i="1">Tá dentro da minha alçada. Fechei e tô te avisando.<span class="bub__t">09:12</span></span><span class="bub bub--me" data-i="2">Boa. Já lançou no sistema?<span class="bub__t">09:14 <b>✓✓</b></span></span><span class="bub bub--them" data-i="3">Lancei e avisei o financeiro.<span class="bub__t">09:14</span></span><span class="typing" id="typing"><i></i><i></i><i></i></span></div>
+                </div>
+              </div>
+            </div>
+            <p class="phone__cap rise">Antes da matriz, essa conversa era uma pergunta esperando você.</p>
+          </div>
+          <div>
+            <div class="matrix rise">
+              <div class="matrix__h"><span>Matriz de alçada</span><span>exemplo</span></div>
+              <table>
+                <thead><tr><th>Decisão</th><th>Quem decide</th><th>Limite</th></tr></thead>
+                <tbody><tr><td>Desconto comercial</td><td>Gestor comercial</td><td>até 15%</td></tr><tr><td>Compra de insumo</td><td>Operações</td><td>até R$ 3.000</td></tr><tr><td>Reembolso a cliente</td><td>Atendimento</td><td>até R$ 800</td></tr><tr><td>Contratação júnior</td><td>Gestor da área</td><td>sem teto</td></tr><tr><td>Acima disso</td><td>Você</td><td>—</td></tr></tbody>
+              </table>
+            </div>
+            <p class="lede rise" style="margin-top:1.1rem">Uma página. É ela que transforma “posso aprovar?” em “fechei e tô te avisando”, e é o primeiro documento que sai do papel na sua empresa.</p>
+          </div>
+        </div>
         <p class="lede rise center" style="margin-top:1.8rem;max-width:44rem;margin-inline:auto">São 9 encontros individuais nos marcos: encontro &rarr; tarefa &rarr; feedback &rarr; call de lapidação. O método te convoca, você não precisa lembrar de marcar nada.</p>
       </div>
     </section>
@@ -1499,6 +1607,35 @@
         window.dataLayer=window.dataLayer||[];
         window.dataLayer.push({event:'checklist_marcou',marcados:n});
       });
+    }
+
+    /* --- a conversa no celular entra em cadencia, com digitando --- */
+    var tel=document.getElementById('phone');
+    if(tel){
+      var bolhas=[].slice.call(tel.querySelectorAll('.bub')),
+          dig=document.getElementById('typing'),tocou=false;
+      function tocar(){
+        if(tocou||reduce){if(reduce)bolhas.forEach(function(b){b.classList.add('on');});return;}
+        tocou=true;
+        var i=0;
+        (function passo(){
+          if(i>=bolhas.length){dig.classList.remove('on');return;}
+          var b=bolhas[i],dela=b.classList.contains('bub--them');
+          if(dela){
+            dig.classList.add('on');
+            setTimeout(function(){
+              dig.classList.remove('on');b.classList.add('on');i++;setTimeout(passo,420);
+            },780);
+          }else{
+            b.classList.add('on');i++;setTimeout(passo,620);
+          }
+        })();
+      }
+      if('IntersectionObserver'in window){
+        new IntersectionObserver(function(en){
+          if(en[0].isIntersecting)tocar();
+        },{threshold:.45}).observe(tel);
+      }else tocar();
     }
 
     /* --- a folha: cada item da oferta abre em sheet, com a objecao que derruba --- */
