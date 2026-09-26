@@ -400,6 +400,33 @@
     .grafo__leg{font-size:.9rem}
   }
 
+
+  /* ===== secao 01 sem retrato · a mesma cara duas vezes em duas telas
+     seguidas dilui as duas. o ancora visual passa a ser o monograma em
+     escala, sangrando pela esquerda -- material de marca, nao decoracao. ===== */
+  .autor--marca{padding-block:clamp(3.6rem,7vw,6.2rem);overflow:hidden;position:relative}
+  .autor__glifo{position:absolute;left:clamp(-14rem,-11vw,-5rem);top:50%;translate:0 -50%;
+    width:clamp(26rem,46vw,52rem);pointer-events:none;z-index:0;
+    opacity:.055;filter:saturate(0)}
+  .autor__glifo img{width:100%;height:auto;display:block}
+  .autor__grid{position:relative;z-index:1;display:grid;
+    grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+    gap:clamp(1.6rem,5vw,4.5rem);align-items:start}
+  .autor--marca .auth__name{font-size:clamp(2.2rem,5.4vw,3.6rem);margin:.4rem 0 .3rem}
+  .autor--marca .auth__body{margin-top:0}
+  .autor--marca .assina{margin-top:1.4rem}
+  @media (max-width:820px){
+    .autor__grid{grid-template-columns:1fr;gap:1.4rem}
+    .autor__glifo{width:min(120vw,34rem);left:-18vw;opacity:.045}
+  }
+  /* o monograma anda devagar contra a rolagem: profundidade sem peso */
+  @keyframes pxGlifo{from{translate:0 calc(-50% + 3.5rem)}to{translate:0 calc(-50% - 3.5rem)}}
+  @supports (animation-timeline:view()){
+    .autor__glifo{animation:pxGlifo linear both;animation-timeline:view();
+      animation-range:cover 0% cover 100%}
+  }
+  @media (prefers-reduced-motion:reduce){ .autor__glifo{animation:none} }
+
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
     text-transform:uppercase;color:var(--gold-3);font-weight:500;margin:0 0 1.6rem}
@@ -2015,23 +2042,23 @@
     <hr class="rule rise" />
 
     <!-- 2 · AUTORIDADE -->
-    <section class="autor">
-        <div class="auth__grid">
-          <div class="auth__portrait rise">
-            <img src="/assets/matheus-2026-amb.jpg" alt="Matheus Martins" decoding="async" width="1100" height="1100" /><span class="duo" aria-hidden="true"></span>
-          </div>
-          <div class="autor__txt">
-            <p class="eyebrow rise"><i class="eyebrow__n">01</i>Quem vai te conduzir</p>
-            <h2 class="auth__name rise">Matheus Martins</h2>
-            <p class="auth__role rise">Gestão · Liderança · Perfil comportamental</p>
-            <p class="auth__body rise">7 anos estruturando empresas por dentro: cultura, liderança, processos e gestão. Formado pela G4 em Gestão &amp; Estratégia e Traction, e em perfil comportamental (CIS Assessment) pela Febracis. Hoje ocupo cadeira de conselheiro em empresas de clientes.</p>
-            <div class="stat rise">
-              <span class="stat__fig">7&ndash;18×</span>
-              <span class="stat__cap">o marketing que faço pros meus clientes <b>nunca rendeu menos de 7 vezes</b> o valor investido. Nos melhores casos, 18. Não é teoria de sala: eu opero.</span>
-            </div>
-            <p class="assina rise">Quem assina a mentoria é quem conduz cada call.</p>
+    <section class="autor autor--marca">
+      <span class="autor__glifo" aria-hidden="true"><img src="/assets/logo.png" alt="" width="300" height="155" decoding="async" /></span>
+      <div class="wrap frame autor__grid">
+        <div class="autor__col">
+          <p class="eyebrow rise"><i class="eyebrow__n">01</i>Quem vai te conduzir</p>
+          <h2 class="auth__name rise">Matheus Martins</h2>
+          <p class="auth__role rise">Gestão · Liderança · Perfil comportamental</p>
+          <p class="assina rise">Quem assina a mentoria é quem conduz cada call.</p>
+        </div>
+        <div class="autor__col">
+          <p class="auth__body rise">7 anos estruturando empresas por dentro: cultura, liderança, processos e gestão. Formado pela G4 em Gestão &amp; Estratégia e Traction, e em perfil comportamental (CIS Assessment) pela Febracis. Hoje ocupo cadeira de conselheiro em empresas de clientes.</p>
+          <div class="stat rise">
+            <span class="stat__fig">7&ndash;18×</span>
+            <span class="stat__cap">o marketing que faço pros meus clientes <b>nunca rendeu menos de 7 vezes</b> o valor investido. Nos melhores casos, 18. Não é teoria de sala: eu opero.</span>
           </div>
         </div>
+      </div>
     </section>
 
     <hr class="rule rise" />
