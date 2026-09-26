@@ -404,19 +404,26 @@
   /* ===== secao 01 sem retrato · a mesma cara duas vezes em duas telas
      seguidas dilui as duas. o ancora visual passa a ser o monograma em
      escala, sangrando pela esquerda -- material de marca, nao decoracao. ===== */
-  .autor--marca{padding-block:clamp(3.6rem,7vw,6.2rem);overflow:hidden;position:relative}
+  /* ARMADILHA (a terceira vez nesta pagina): .autor{padding-block:0} e definida
+     DEPOIS na folha e empata em especificidade -- o respiro nunca entrava e a
+     secao ficava com 255px contra ~1.265 de media das vizinhas.
+     section.autor--marca (0,1,1) resolve. */
+  section.autor--marca{padding-block:clamp(5.5rem,11vw,10.5rem);overflow:hidden;position:relative}
   .autor__glifo{position:absolute;left:clamp(-14rem,-11vw,-5rem);top:50%;translate:0 -50%;
     width:clamp(26rem,46vw,52rem);pointer-events:none;z-index:0;
     opacity:.055;filter:saturate(0)}
   .autor__glifo img{width:100%;height:auto;display:block}
   .autor__grid{position:relative;z-index:1;display:grid;
     grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
-    gap:clamp(1.6rem,5vw,4.5rem);align-items:start}
-  .autor--marca .auth__name{font-size:clamp(2.2rem,5.4vw,3.6rem);margin:.4rem 0 .3rem}
-  .autor--marca .auth__body{margin-top:0}
-  .autor--marca .assina{margin-top:1.4rem}
+    gap:clamp(2rem,6.5vw,6rem);align-items:start}
+  .autor--marca .auth__name{font-size:clamp(2.4rem,5.8vw,4rem);margin:.6rem 0 .45rem;
+    line-height:1.04;letter-spacing:-.03em}
+  .autor--marca .auth__body{margin-top:0;font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.72}
+  .autor--marca .assina{margin-top:2.2rem}
+  .autor--marca .stat{margin-top:2.2rem}
+  .autor--marca .eyebrow{margin-bottom:2rem}
   @media (max-width:820px){
-    .autor__grid{grid-template-columns:1fr;gap:1.4rem}
+    .autor__grid{grid-template-columns:1fr;gap:2rem}
     .autor__glifo{width:min(120vw,34rem);left:-18vw;opacity:.045}
   }
   /* o monograma anda devagar contra a rolagem: profundidade sem peso */
