@@ -356,12 +356,22 @@
   /* ===== o grafo da decisao · mesmos seis nos nos dois estados. o que muda e
      quem fala com quem, e onde o dono fica. amarrado na mesma chave Hoje/Depois
      que ja governa a semana logo abaixo. ===== */
-  .grafo{margin:1.8rem auto 0;max-width:46rem;position:relative}
+  /* o grafo deixa de ser ilustracao de apoio e vira figura: sai da coluna de
+     leitura (40rem) pra largura de quadro. margin-left:50% + translate -50%
+     centra em relacao ao pai sem precisar saber a largura dele. */
+  .grafo{position:relative;margin:2.6rem 0 0;
+    width:min(52rem,calc(100vw - 2.5rem));margin-left:50%;translate:-50% 0}
+  .grafo__rotulo{display:flex;align-items:center;justify-content:center;gap:.8rem;
+    font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-3);
+    font-weight:500;margin-bottom:1.2rem}
+  .grafo__rotulo::before,.grafo__rotulo::after{content:"";width:30px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold-line))}
+  .grafo__rotulo::after{background:linear-gradient(90deg,var(--gold-line),transparent)}
   .grafo svg{width:100%;height:auto;display:block;overflow:visible}
-  .grafo .g-lin{fill:none;stroke-linecap:round;stroke-width:1.6}
-  .grafo .g-no{fill:var(--bg-2);stroke:var(--line-2);stroke-width:1.4}
+  .grafo .g-lin{fill:none;stroke-linecap:round;stroke-width:2.1}
+  .grafo .g-no{fill:var(--bg-2);stroke:var(--line-2);stroke-width:1.8}
   .grafo .g-rot{fill:none;stroke:var(--gold-line);stroke-width:1}
-  .grafo .g-tx{font-family:var(--sans);font-size:13px;font-weight:600;fill:var(--mute);
+  .grafo .g-tx{font-family:var(--sans);font-size:12px;font-weight:600;fill:var(--mute);
     letter-spacing:.01em}
   .grafo .g-eu{font-family:var(--sans);font-size:13px;font-weight:800;letter-spacing:.06em;
     text-transform:uppercase;fill:var(--ink)}
@@ -381,7 +391,29 @@
   .grafo[data-est="depois"] .g-eu--centro{opacity:0}
   .grafo[data-est="depois"] .g-eu--centro{translate:0 -10px}
   .grafo[data-est="hoje"] .g-eu--fora{translate:0 10px}
-  .g-eu-disco{fill:var(--gold-2);stroke:var(--gold-3);stroke-width:1.4}
+  .g-eu-disco{fill:var(--gold-2);stroke:var(--gold-3);stroke-width:1.6}
+  /* no Hoje o dono tem um halo que respira: e nele que tudo para.
+     no Depois o halo some, porque ja nao para nele. */
+  .g-halo{fill:none;stroke:var(--gold-3);stroke-width:1.2;opacity:0;transform-box:view-box;
+    transform-origin:380px 240px}
+  .grafo[data-est="hoje"] .g-halo{animation:haloResp 3.1s var(--ease-soft) infinite}
+  @keyframes haloResp{
+    0%{opacity:.5;scale:1} 60%{opacity:0;scale:1.55} 100%{opacity:0;scale:1.55}
+  }
+  /* o fluxo: no Hoje as decisoes sobem pro centro; no Depois elas correm o anel.
+     camada separada, porque a linha de baixo termina com dasharray inline
+     (o fechamento do traco) e nao pode receber outra animacao de dash. */
+  .g-fluxo{fill:none;stroke-linecap:round;stroke-width:2.6;stroke-dasharray:3 17;
+    opacity:0;transition:opacity .5s var(--ease-soft)}
+  .grafo[data-est="hoje"] .g-fluxo--hoje,
+  .grafo[data-est="depois"] .g-fluxo--depois{opacity:.9;
+    animation:correr 2.4s linear infinite}
+  .g-fluxo--hoje{stroke:var(--gold-3)}
+  .g-fluxo--depois{stroke:var(--gold-3)}
+  @keyframes correr{to{stroke-dashoffset:-40}}
+  @media (prefers-reduced-motion:reduce){
+    .g-halo,.g-fluxo{animation:none!important;opacity:0!important}
+  }
   .grafo__pes{display:flex;justify-content:center;gap:1.4rem;margin-top:.4rem;
     color:var(--mute-2);font-size:.85rem;line-height:1.45;text-align:center}
   .grafo__leg{max-width:34rem;margin:.3rem auto 0;color:var(--mute);font-size:.95rem;
@@ -395,9 +427,17 @@
     .grafo .g-lin{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}
     .g-eu-grupo{transition:none}
   }
+  .grafo__leg{margin-top:1.4rem;font-size:1.02rem}
   @media (max-width:640px){
-    .grafo .g-tx{font-size:16px}
-    .grafo__leg{font-size:.9rem}
+    /* no celular os dois rotulos laterais sobem pra cima do proprio no. sao
+       eles que obrigavam a moldura a ser larga, e era a largura que deixava o
+       desenho pequeno. com eles recolhidos o viewBox aperta (via JS) e o anel
+       cresce ~43%. translate de elemento unico em SVG respeita o viewBox. */
+    .grafo .g-tx{font-size:15px}
+    .grafo--compacto .g-tx--esq{text-anchor:middle;transform:translate(28px,-55px)}
+    .grafo--compacto .g-tx--dir{text-anchor:middle;transform:translate(-28px,-55px)}
+    .grafo__leg{font-size:.95rem}
+    .grafo{margin-top:2rem}
   }
 
 
@@ -2143,40 +2183,56 @@
         </div>
 
         <div class="grafo rise" id="grafo" data-est="hoje">
-          <svg viewBox="0 0 760 372" role="img" aria-labelledby="grafoT grafoD">
+          <p class="grafo__rotulo">O caminho da decisão</p>
+          <svg viewBox="86 22 606 428" role="img" aria-labelledby="grafoT grafoD">
             <title id="grafoT">A empresa com você no meio e sem você no meio</title>
             <desc id="grafoD">Hoje, as seis áreas só falam com o dono. Depois, elas falam entre si e o dono acompanha de fora.</desc>
             <g class="g-hoje">
-              <path class="g-lin" d="M365 174 L335.5 123"/><path class="g-lin" d="M395 174 L424.5 123"/>
-              <path class="g-lin" d="M410 200 L469 200"/><path class="g-lin" d="M395 226 L424.5 277"/>
-              <path class="g-lin" d="M365 226 L335.5 277"/><path class="g-lin" d="M350 200 L291 200"/>
+              <path class="g-lin" d="M361 207.1 L314.5 126.6"/><path class="g-lin" d="M399 207.1 L445.5 126.6"/>
+              <path class="g-lin" d="M418 240 L511 240"/><path class="g-lin" d="M399 272.9 L445.5 353.4"/>
+              <path class="g-lin" d="M361 272.9 L314.5 353.4"/><path class="g-lin" d="M342 240 L249 240"/>
             </g>
             <g class="g-depois">
-              <path class="g-lin" d="M343.5 109.1 L416.5 109.1"/><path class="g-lin" d="M440.5 123 L477 186.1"/>
-              <path class="g-lin" d="M477 213.9 L440.5 277"/><path class="g-lin" d="M416.5 290.9 L343.5 290.9"/>
-              <path class="g-lin" d="M319.5 277 L283 213.9"/><path class="g-lin" d="M283 186.1 L319.5 123"/>
-              <path class="g-lin" d="M367.7 57.8 L337.4 96.5" opacity=".38"/>
-              <path class="g-lin" d="M392.3 57.8 L422.6 96.5" opacity=".38"/>
+              <path class="g-lin" d="M324 110.1 L436 110.1"/><path class="g-lin" d="M464.5 126.6 L520.5 223.5"/>
+              <path class="g-lin" d="M520.5 256.5 L464.5 353.4"/><path class="g-lin" d="M436 369.9 L324 369.9"/>
+              <path class="g-lin" d="M295.5 353.4 L239.5 256.5"/><path class="g-lin" d="M239.5 223.5 L295.5 126.6"/>
+              <path class="g-lin" d="M359.4 67.9 L320 98.5" opacity=".34"/>
+              <path class="g-lin" d="M400.6 67.9 L440 98.5" opacity=".34"/>
             </g>
-            <circle class="g-no" cx="327.5" cy="109.1" r="16"/><circle class="g-no" cx="432.5" cy="109.1" r="16"/>
-            <circle class="g-no" cx="485" cy="200" r="16"/><circle class="g-no" cx="432.5" cy="290.9" r="16"/>
-            <circle class="g-no" cx="327.5" cy="290.9" r="16"/><circle class="g-no" cx="275" cy="200" r="16"/>
-            <circle class="g-pt" cx="327.5" cy="109.1" r="3.4"/><circle class="g-pt" cx="432.5" cy="109.1" r="3.4"/>
-            <circle class="g-pt" cx="485" cy="200" r="3.4"/><circle class="g-pt" cx="432.5" cy="290.9" r="3.4"/>
-            <circle class="g-pt" cx="327.5" cy="290.9" r="3.4"/><circle class="g-pt" cx="275" cy="200" r="3.4"/>
-            <text class="g-tx" x="304" y="72.4" text-anchor="middle">Comercial</text>
-            <text class="g-tx" x="456" y="72.4" text-anchor="middle">Operações</text>
-            <text class="g-tx" x="532" y="204" text-anchor="start">Financeiro</text>
-            <text class="g-tx" x="456" y="335.6" text-anchor="middle">Atendimento</text>
-            <text class="g-tx" x="304" y="335.6" text-anchor="middle">Compras</text>
-            <text class="g-tx" x="228" y="204" text-anchor="end">Marketing</text>
+            <g class="g-fluxo-grupo">
+              <path class="g-fluxo g-fluxo--hoje" d="M314.5 126.6 L361 207.1"/>
+              <path class="g-fluxo g-fluxo--hoje" d="M445.5 126.6 L399 207.1"/>
+              <path class="g-fluxo g-fluxo--hoje" d="M511 240 L418 240"/>
+              <path class="g-fluxo g-fluxo--hoje" d="M445.5 353.4 L399 272.9"/>
+              <path class="g-fluxo g-fluxo--hoje" d="M314.5 353.4 L361 272.9"/>
+              <path class="g-fluxo g-fluxo--hoje" d="M249 240 L342 240"/>
+              <path class="g-fluxo g-fluxo--depois" d="M324 110.1 L436 110.1"/>
+              <path class="g-fluxo g-fluxo--depois" d="M464.5 126.6 L520.5 223.5"/>
+              <path class="g-fluxo g-fluxo--depois" d="M520.5 256.5 L464.5 353.4"/>
+              <path class="g-fluxo g-fluxo--depois" d="M436 369.9 L324 369.9"/>
+              <path class="g-fluxo g-fluxo--depois" d="M295.5 353.4 L239.5 256.5"/>
+              <path class="g-fluxo g-fluxo--depois" d="M239.5 223.5 L295.5 126.6"/>
+            </g>
+            <circle class="g-no" cx="305" cy="110.1" r="19"/><circle class="g-no" cx="455" cy="110.1" r="19"/>
+            <circle class="g-no" cx="530" cy="240" r="19"/><circle class="g-no" cx="455" cy="369.9" r="19"/>
+            <circle class="g-no" cx="305" cy="369.9" r="19"/><circle class="g-no" cx="230" cy="240" r="19"/>
+            <circle class="g-pt" cx="305" cy="110.1" r="4"/><circle class="g-pt" cx="455" cy="110.1" r="4"/>
+            <circle class="g-pt" cx="530" cy="240" r="4"/><circle class="g-pt" cx="455" cy="369.9" r="4"/>
+            <circle class="g-pt" cx="305" cy="369.9" r="4"/><circle class="g-pt" cx="230" cy="240" r="4"/>
+            <text class="g-tx" x="278.5" y="69.2" text-anchor="middle">Comercial</text>
+            <text class="g-tx" x="481.5" y="69.2" text-anchor="middle">Operações</text>
+            <text class="g-tx g-tx--dir" x="583" y="245" text-anchor="start">Financeiro</text>
+            <text class="g-tx" x="481.5" y="420.8" text-anchor="middle">Atendimento</text>
+            <text class="g-tx" x="278.5" y="420.8" text-anchor="middle">Compras</text>
+            <text class="g-tx g-tx--esq" x="177" y="245" text-anchor="end">Marketing</text>
+            <circle class="g-halo" cx="380" cy="240" r="42"/>
             <g class="g-eu-grupo g-eu--centro">
-              <circle class="g-eu-disco" cx="380" cy="200" r="30"/>
-              <text class="g-eu" x="380" y="205" text-anchor="middle">Você</text>
+              <circle class="g-eu-disco" cx="380" cy="240" r="38"/>
+              <text class="g-eu" x="380" y="245.5" text-anchor="middle">Você</text>
             </g>
             <g class="g-eu-grupo g-eu--fora">
-              <circle class="g-eu-disco" cx="380" cy="42" r="22"/>
-              <text class="g-eu" x="380" y="46.5" text-anchor="middle" style="font-size:11px">Você</text>
+              <circle class="g-eu-disco" cx="380" cy="52" r="26"/>
+              <text class="g-eu" x="380" y="56.5" text-anchor="middle" style="font-size:11px">Você</text>
             </g>
           </svg>
           <p class="grafo__leg" id="grafoLeg"><b>Hoje:</b> seis áreas e um só caminho. Toda decisão sobe até você e desce de novo.</p>
@@ -3211,6 +3267,23 @@
       caixas.forEach(function(c){io.observe(c);});
       /* rede de seguranca: se nada foi medido em 6s, mostra tudo inteiro */
       setTimeout(function(){ if(!mediu)document.documentElement.classList.add('sem-traco'); },6000);
+    })();
+
+
+    /* --- o grafo aperta a moldura no celular: os rotulos laterais sobem pra
+           cima do no e o viewBox encolhe, entao o anel ocupa a tela toda. --- */
+    (function(){
+      var g=document.getElementById('grafo'); if(!g)return;
+      var svg=g.querySelector('svg'), largo='86 22 606 428', estreito='158 22 444 428', atual='';
+      function ajusta(){
+        var compacto=window.innerWidth<=640, vb=compacto?estreito:largo;
+        if(vb===atual)return;
+        atual=vb; svg.setAttribute('viewBox',vb);
+        g.classList.toggle('grafo--compacto',compacto);
+      }
+      ajusta();
+      window.addEventListener('resize',ajusta,{passive:true});
+      window.addEventListener('orientationchange',ajusta,{passive:true});
     })();
 
     /* --- contadores --- */
