@@ -1360,9 +1360,38 @@
   .week__cap{margin-top:.9rem;color:var(--cream);font-weight:600;font-size:1.02rem;
     transition:opacity .4s var(--ease)}
   @media(max-width:620px){
-    .blk{font-size:0;min-height:1.5rem;padding:.2rem}
-    .week__d{font-size:.6rem;letter-spacing:.08em}
+    /* o texto estava escondido com font-size:0 porque em 5 colunas de ~65px
+       ele nao cabe. em vez de apagar o conteudo, a grade sangra ate as bordas
+       da tela e rola na horizontal com coluna de 9,5rem: o bloco passa a ser
+       legivel e a semana continua sendo uma semana. */
+    .week{margin-inline:calc(50% - 50vw)}
+    .week__grid{grid-template-columns:repeat(5,9.5rem);gap:.5rem;
+      overflow-x:auto;overflow-y:hidden;padding:0 1.25rem .5rem;
+      /* ARMADILHA: scroll-snap-align:start encosta a coluna na borda do
+         CONTAINER, nao depois do padding -- a grade nascia com scrollLeft:20
+         e o respiro da esquerda sumia. scroll-padding move o snapport. */
+      scroll-snap-type:x proximity;scroll-padding-left:1.25rem;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 3rem),transparent 100%);
+      mask-image:linear-gradient(90deg,#000 calc(100% - 3rem),transparent 100%)}
+    .week__grid::-webkit-scrollbar{display:none}
+    .week__col{scroll-snap-align:start}
+    .blk{font-size:.74rem;min-height:2.5rem;padding:.45rem .6rem;line-height:1.3}
+    .week__d{font-size:.62rem;letter-spacing:.12em}
+    .week__legend,.week__cap{margin-inline:1.25rem}
+    .week__arrasta{display:flex!important}
   }
+  /* ARMADILHA (de novo): esta regra mora DEPOIS do media query acima. Sem o
+     :not() ela empata em especificidade com .week__arrasta{display:flex} e
+     ganha por ordem -- a dica nunca aparecia. */
+  .week__arrasta:not(.week__arrasta--on){display:none}
+  .week__arrasta{align-items:center;gap:.45rem;margin:.6rem 1.25rem 0;
+    color:var(--mute-2);font-size:.74rem;letter-spacing:.02em}
+  .week__arrasta svg{width:.95rem;height:.95rem;fill:none;stroke:currentColor;stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round;animation:deslizaDica 2.6s var(--ease-soft) infinite}
+  @keyframes deslizaDica{0%,70%,100%{transform:translateX(0)}35%{transform:translateX(4px)}}
+  @media (prefers-reduced-motion:reduce){ .week__arrasta svg{animation:none} }
 
   /* ===== a folha: sheet do iOS, com a pagina recuando atras ===== */
   .sheet{border:0;padding:0;background:transparent;max-width:none;max-height:none;
@@ -2245,6 +2274,7 @@
             <div class="week__col"><span class="week__d">Qui</span><span class="blk blk--noise">Autorizar desconto</span><span class="blk blk--gap"></span><span class="blk blk--mine">Financeiro</span><span class="blk blk--gap"></span><span class="blk blk--noise">Responder de novo</span><span class="blk blk--mine"></span></div>
             <div class="week__col"><span class="week__d">Sex</span><span class="blk blk--gap"></span><span class="blk blk--noise">Confirmar prazo</span><span class="blk blk--mine">Fechamento</span><span class="blk blk--gap"></span><span class="blk blk--gap"></span><span class="blk blk--mine"></span></div>
           </div>
+          <p class="week__arrasta" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15m-5-5 5 5-5 5"/></svg>arraste para ver a semana inteira</p>
           <p class="week__legend">
             <span><i class="n"></i>Decisão que não era sua</span>
             <span><i class="m"></i>O que só você podia fazer</span>
