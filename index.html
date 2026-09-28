@@ -501,6 +501,87 @@
   .sec-apoio .eyebrow__n{color:var(--mute)}
   .sec-apoio .eyebrow__n::after{background:var(--line-2)}
 
+
+  /* ===== ILUSTRACAO 1 · o ciclo do gargalo =====
+     Ilustra o paragrafo de 51 palavras sobre "ser indispensavel vicia".
+     Quatro caixas em loop; a saida nao e outra seta -- e o texto no centro,
+     porque o que quebra o ciclo e um criterio, nao um movimento. */
+  .ciclo{margin:2rem auto 0;max-width:38rem}
+  .ciclo svg{width:100%;height:auto;display:block;overflow:visible}
+  .ciclo .c-cx{fill:var(--glass);stroke:var(--line-2);stroke-width:1.2}
+  .ciclo .c-tx{font-family:var(--sans);font-size:15px;font-weight:600;fill:var(--text)}
+  .ciclo .c-seta{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;
+    marker-end:url(#pontaCiclo)}
+  .ciclo .c-mid-k{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em;
+    fill:var(--gold-3);text-transform:uppercase}
+  .ciclo .c-mid-v{font-family:var(--serif);font-size:23px;fill:var(--cream)}
+  .ciclo__leg{margin-top:1rem;color:var(--mute);font-size:.95rem;line-height:1.5;text-align:center}
+  /* as setas se desenham com o mesmo motor dos icones */
+  .ciclo .c-seta{stroke-dasharray:var(--l,0);stroke-dashoffset:var(--l,0)}
+  .ciclo.traca .c-seta{animation:tracar 1s var(--ease-soft) both;animation-delay:var(--d,0ms)}
+  html.sem-traco .ciclo .c-seta{stroke-dasharray:none;stroke-dashoffset:0}
+  @media (prefers-reduced-motion:reduce){
+    .ciclo .c-seta{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}}
+  @media (max-width:560px){ .ciclo .c-tx{font-size:19px} .ciclo .c-mid-v{font-size:28px} }
+
+
+  /* ===== ILUSTRACAO 2 · a linha de producao da Biotop =====
+     A secao tem 348 palavras e o depoimento do Dinarte sozinho tem 103 -- e
+     verbatim, nao se corta. O que faltava era apoio visual. A figura usa as
+     palavras dele: "10, 12 projetos travados" e "organizou tudo numa linha de
+     producao". Doze pecas: antes param num portao, depois atravessam. */
+  .fluxo{margin:1.8rem auto 0;max-width:42rem}
+  .fluxo svg{width:100%;height:auto;display:block}
+  .fluxo .f-lin{fill:none;stroke:var(--line-2);stroke-width:1.4}
+  .fluxo .f-peca{fill:var(--panel-2);stroke:var(--line-2);stroke-width:1}
+  .fluxo .f-peca--parada{opacity:.55}
+  .fluxo .f-peca--anda{fill:var(--gold-soft);stroke:var(--gold-line)}
+  .fluxo .f-portao{fill:var(--gold);opacity:.9}
+  .fluxo .f-k{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.2em;
+    text-transform:uppercase;fill:var(--mute-2)}
+  .fluxo .f-nota{font-family:var(--sans);font-size:13.5px;fill:var(--mute)}
+  .fluxo .f-marca{font-family:var(--sans);font-size:12.5px;font-weight:700;fill:var(--gold-2)}
+  .fluxo .f-eu{fill:var(--gold-2)}
+  .fluxo .f-eu-tx{font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.05em;
+    fill:var(--panel);text-transform:uppercase}
+  .fluxo .f-tracejo{fill:none;stroke:var(--gold-line);stroke-width:1.4;stroke-dasharray:3 5}
+  .fluxo__leg{margin-top:.9rem;color:var(--mute);font-size:.95rem;line-height:1.5;text-align:center}
+  /* as pecas que andam entram em cascata, da esquerda pra direita */
+  .fluxo .f-peca--anda{opacity:0;translate:-14px 0}
+  .fluxo.traca .f-peca--anda{animation:pecaAnda .6s var(--spring) both;animation-delay:var(--d,0ms)}
+  @keyframes pecaAnda{to{opacity:1;translate:0 0}}
+  html.sem-traco .fluxo .f-peca--anda{opacity:1;translate:0 0}
+  @media (prefers-reduced-motion:reduce){
+    .fluxo .f-peca--anda{opacity:1!important;translate:none!important;animation:none!important}}
+  @media (max-width:560px){ .fluxo .f-nota{font-size:17px} .fluxo .f-k{font-size:14px}
+    .fluxo .f-marca{font-size:15px} .fluxo .f-eu-tx{font-size:13px} }
+
+
+  /* ===== ILUSTRACAO 3 · a trajetoria =====
+     A secao 2 tinha um paragrafo corrido de 37 palavras com quatro fatos
+     dentro. Vira trilho de quatro marcos: os mesmos fatos, sem frase. Em HTML
+     e nao SVG porque sao rotulos de texto, que precisam quebrar linha. */
+  .traj{margin-top:.2rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:clamp(.9rem,2vw,1.6rem);position:relative}
+  .traj::before{content:"";position:absolute;left:0;right:0;top:.42rem;height:1px;
+    background:linear-gradient(90deg,var(--gold-line),var(--line-2) 78%,transparent)}
+  .traj__m{position:relative;padding-top:1.6rem}
+  .traj__m::before{content:"";position:absolute;left:0;top:0;width:.55rem;height:.55rem;
+    border-radius:50%;background:var(--bg);border:1.5px solid var(--gold-line);
+    transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+  .traj__m:first-child::before{background:var(--gold-3);border-color:var(--gold-3);
+    box-shadow:0 0 0 3px var(--gold-soft)}
+  .traj__k{display:block;font-family:var(--sans);font-weight:800;font-size:clamp(1.02rem,1.7vw,1.22rem);
+    letter-spacing:-.02em;color:var(--cream);line-height:1.15}
+  .traj__d{display:block;margin-top:.35rem;color:var(--mute);font-size:.88rem;line-height:1.45}
+  @media (max-width:760px){
+    .traj{grid-template-columns:1fr;gap:1.15rem;padding-left:1.1rem}
+    .traj::before{left:.25rem;right:auto;top:.5rem;bottom:.5rem;width:1px;height:auto;
+      background:linear-gradient(180deg,var(--gold-line),var(--line-2) 78%,transparent)}
+    .traj__m{padding-top:0;padding-left:.2rem}
+    .traj__m::before{left:-1.1rem;top:.42rem}
+  }
+
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
     text-transform:uppercase;color:var(--gold-3);font-weight:500;margin:0 0 1.6rem}
@@ -2182,7 +2263,12 @@
           <p class="assina rise">Quem assina a mentoria é quem conduz cada call.</p>
         </div>
         <div class="autor__col">
-          <p class="auth__body rise">7 anos estruturando empresas por dentro: cultura, liderança, processos e gestão. Formado pela G4 em Gestão &amp; Estratégia e Traction, e em perfil comportamental (CIS Assessment) pela Febracis. Hoje ocupo cadeira de conselheiro em empresas de clientes.</p>
+          <div class="traj rise" role="list">
+            <div class="traj__m" role="listitem"><b class="traj__k">7 anos</b><span class="traj__d">cultura, liderança, processos e gestão</span></div>
+            <div class="traj__m" role="listitem"><b class="traj__k">G4</b><span class="traj__d">Gestão &amp; Estratégia e Traction</span></div>
+            <div class="traj__m" role="listitem"><b class="traj__k">Febracis</b><span class="traj__d">CIS Assessment, perfil comportamental</span></div>
+            <div class="traj__m" role="listitem"><b class="traj__k">Hoje</b><span class="traj__d">cadeira de conselheiro em empresas de clientes</span></div>
+          </div>
           <div class="stat rise">
             <span class="stat__fig">7&ndash;18×</span>
             <span class="stat__cap">o marketing que faço pros meus clientes <b>nunca rendeu menos de 7 vezes</b> o valor investido. Nos melhores casos, 18. Não é teoria de sala: eu opero.</span>
@@ -2202,6 +2288,31 @@
           <p class="rise">No começo, esforço resolve tudo. O problema é que o que te trouxe até aqui é exatamente o que te prende agora: a empresa cresceu em cima de você, e sem perceber você treinou todo mundo a te perguntar tudo.</p>
           <p class="rise">E tem uma parte que ninguém admite: ser indispensável vicia. Resolver o problema que só você resolve dá uma sensação de controle, e você recria esse problema toda semana, porque ele prova que a empresa ainda precisa de você. É esse conforto que te prende, não a falta de gente boa.</p>
         </div>
+
+        <figure class="ciclo rise" id="ciclo">
+          <svg viewBox="0 0 640 400" role="img" aria-labelledby="ciT ciD">
+            <title id="ciT">O ciclo que prende o dono</title>
+            <desc id="ciD">A pergunta chega, você resolve, isso dá sensação de controle, e ninguém aprende a decidir — o que faz a pergunta chegar de novo. O que quebra o ciclo é critério escrito.</desc>
+            <defs><marker id="pontaCiclo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0 1l8 4-8 4z" fill="var(--gold)"/></marker></defs>
+            <rect class="c-cx" x="230" y="30" width="180" height="56" rx="14"/>
+            <text class="c-tx" x="320" y="63" text-anchor="middle">A pergunta chega</text>
+            <rect class="c-cx" x="410" y="172" width="180" height="56" rx="14"/>
+            <text class="c-tx" x="500" y="205" text-anchor="middle">Você resolve</text>
+            <rect class="c-cx" x="230" y="314" width="180" height="56" rx="14"/>
+            <text class="c-tx" x="320" y="347" text-anchor="middle">Dá sensação de controle</text>
+            <rect class="c-cx" x="50" y="172" width="180" height="56" rx="14"/>
+            <text class="c-tx" x="140" y="198" text-anchor="middle">Ninguém aprende</text>
+            <text class="c-tx" x="140" y="216" text-anchor="middle">a decidir</text>
+            <path class="c-seta" style="--d:0ms"   d="M410 58 Q500 58 500 166"/>
+            <path class="c-seta" style="--d:170ms" d="M500 234 Q500 342 416 342"/>
+            <path class="c-seta" style="--d:340ms" d="M230 342 Q140 342 140 234"/>
+            <path class="c-seta" style="--d:510ms" d="M140 166 Q140 58 224 58"/>
+            <text class="c-mid-k" x="320" y="182" text-anchor="middle">O que quebra isso</text>
+            <text class="c-mid-v" x="320" y="214" text-anchor="middle">critério escrito</text>
+          </svg>
+          <figcaption class="ciclo__leg">Não é falta de gente boa. É que a pergunta não tem para onde ir.</figcaption>
+        </figure>
         <div class="lad rise" id="lad"><div class="lad__d lad__d--aqui"><span class="lad__you">você aqui</span><div class="lad__n">Hoje</div><div class="lad__t">Operação</div><p class="lad__q">A pergunta chega na sua mesa porque não existe critério escrito.</p></div><div class="lad__d"><span class="lad__you lad__you--off"></span><div class="lad__n">Mês 4</div><div class="lad__t">Gestão</div><p class="lad__q">Você acompanha quem decide, e só entra quando o caso sai da alçada.</p></div><div class="lad__d"><span class="lad__you lad__you--off"></span><div class="lad__n">Mês 12</div><div class="lad__t">Estratégia</div><p class="lad__q">Você olha o painel e decide o que muda o ano. A decisão do dia já não passa por você.</p></div></div>
         <div class="lad__rail rise"><span class="lad__dot"></span></div>
         <p class="pull rise" style="margin-top:1.8rem">O executor precisa virar gestor. Sair da decisão do dia e entrar na decisão do ano.</p>
@@ -2503,6 +2614,53 @@
           <div class="caso__s"><b>4 meses</b></div>
           <div class="caso__c caso__c--d"><div class="caso__k">Depois</div><ul class="caso__l"><li>A Camila resolve dentro de um valor de aval definido.</li><li>O processo está no Drive e o time segue sem perguntar.</li><li>O dono acompanha. Não aprova.</li></ul></div>
         </div>
+
+        <figure class="fluxo rise" id="fluxo">
+          <svg viewBox="0 0 640 362" role="img" aria-labelledby="flT flD">
+            <title id="flT">Os projetos da Biotop, antes e depois</title>
+            <desc id="flD">Antes, os doze projetos paravam num portão: tudo passava pelo dono. Depois, atravessam a linha e o dono acompanha de fora.</desc>
+            <text class="f-k" x="40" y="28">Antes</text>
+            <path class="f-lin" d="M40 86 L600 86"/>
+            <g>
+              <rect class="f-peca f-peca--parada" x="64" y="64" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="104" y="64" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="144" y="64" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="184" y="64" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="224" y="64" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="264" y="64" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="64" y="90" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="104" y="90" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="144" y="90" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="184" y="90" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="224" y="90" width="32" height="22" rx="5"/>
+              <rect class="f-peca f-peca--parada" x="264" y="90" width="32" height="22" rx="5"/>
+            </g>
+            <rect class="f-portao" x="316" y="52" width="9" height="70" rx="2"/>
+            <text class="f-nota" x="345" y="92">nada anda depois daqui</text>
+            <text class="f-marca" x="320" y="142" text-anchor="middle">tudo passava pelo dono</text>
+            <text class="f-k" x="40" y="212">Depois · 4 meses</text>
+            <circle class="f-eu" cx="320" cy="240" r="20"/>
+            <text class="f-eu-tx" x="320" y="244" text-anchor="middle">você</text>
+            <path class="f-tracejo" d="M320 262 L320 284"/>
+            <path class="f-lin" d="M40 310 L600 310"/>
+            <g>
+              <rect class="f-peca f-peca--anda" x="48.0" y="288" width="32" height="22" rx="5" style="--d:0ms"/>
+              <rect class="f-peca f-peca--anda" x="95.3" y="288" width="32" height="22" rx="5" style="--d:55ms"/>
+              <rect class="f-peca f-peca--anda" x="142.6" y="288" width="32" height="22" rx="5" style="--d:110ms"/>
+              <rect class="f-peca f-peca--anda" x="189.9" y="288" width="32" height="22" rx="5" style="--d:165ms"/>
+              <rect class="f-peca f-peca--anda" x="237.2" y="288" width="32" height="22" rx="5" style="--d:220ms"/>
+              <rect class="f-peca f-peca--anda" x="284.5" y="288" width="32" height="22" rx="5" style="--d:275ms"/>
+              <rect class="f-peca f-peca--anda" x="331.8" y="288" width="32" height="22" rx="5" style="--d:330ms"/>
+              <rect class="f-peca f-peca--anda" x="379.1" y="288" width="32" height="22" rx="5" style="--d:385ms"/>
+              <rect class="f-peca f-peca--anda" x="426.4" y="288" width="32" height="22" rx="5" style="--d:440ms"/>
+              <rect class="f-peca f-peca--anda" x="473.7" y="288" width="32" height="22" rx="5" style="--d:495ms"/>
+              <rect class="f-peca f-peca--anda" x="521.0" y="288" width="32" height="22" rx="5" style="--d:550ms"/>
+              <rect class="f-peca f-peca--anda" x="568.3" y="288" width="32" height="22" rx="5" style="--d:605ms"/>
+            </g>
+            <text class="f-marca" x="320" y="348" text-anchor="middle">o time resolve e te mostra pronto</text>
+          </svg>
+          <figcaption class="fluxo__leg">Os doze projetos que estavam travados. Os mesmos doze, depois da linha de produção.</figcaption>
+        </figure>
         <div class="depo-grid stagger">
           <div class="depo rise">
             <div class="depo__head">
@@ -3309,7 +3467,7 @@
            perimetro terminar em 38% do tempo e caminho de 180px nunca fechar. --- */
     (function(){
       var caixas=[].slice.call(document.querySelectorAll(
-        '.offer li,.num,.cred,.faq__i,.card,.road__leg'));
+        '.offer li,.num,.cred,.faq__i,.card,.road__leg,.ciclo,.fluxo'));
       if(!caixas.length)return;
       if(!('IntersectionObserver'in window)||reduce){
         document.documentElement.classList.add('sem-traco');return;
@@ -3323,7 +3481,7 @@
         el.style.strokeDasharray='none';el.style.strokeDashoffset='0';
       };
       var medir=function(caixa){
-        var pecas=caixa.querySelectorAll('.oic svg > *,.cred__ic svg > *,.faq__ico svg > *,.ico svg > *,.g-lin');
+        var pecas=caixa.querySelectorAll('.oic svg > *,.cred__ic svg > *,.faq__ico svg > *,.ico svg > *,.g-lin,.c-seta,.f-lin');
         for(var i=0;i<pecas.length;i++){
           (function(el,i){
             var L=0;
