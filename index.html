@@ -325,6 +325,10 @@
     .hero__art{margin-inline:calc(50% - 50vw);height:clamp(19rem,78vw,25rem);margin-bottom:1.5rem;
       order:-1}
     .hero__art img{object-position:50% 32%}
+    .hero__art--cut{height:clamp(22rem,92vw,28rem);margin-bottom:.6rem}
+    .hero__art--cut img{object-position:bottom center}
+    .hero__art--cut::before{height:30%;bottom:-3%}
+    .hero__halo{inset:10% -10% -2% -10%}
     .hero__art::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
       background:linear-gradient(0deg,var(--bg) 1%,rgba(18,17,16,.5) 24%,transparent 62%)}
     .hero{padding-top:clamp(1rem,3vw,2rem)}
@@ -625,6 +629,31 @@
   .offer__dica{margin:1.1rem 0 0;display:inline-flex;align-items:center;gap:.5rem;
     color:var(--mute);font-size:.88rem;line-height:1.4}
   .offer__dica i{font-style:normal;color:var(--gold-3);font-size:1.05rem;line-height:1}
+
+
+  /* ===== HERO COM RECORTE =====
+     O retrato estava dentro de um retangulo com degrade derretendo nas bordas.
+     Recortado, ele deixa de ser "foto colada na pagina" e vira figura EM PE
+     sobre ela -- que e o que o hero de referencia faz. Sem duotone: a cor e o
+     que faz a camisa branca separar do preto. O halo atras substitui a cena
+     que a referencia tem atras do recorte. */
+  .hero__art--cut{background:none;overflow:visible;isolation:auto;
+    display:flex;align-items:flex-end;justify-content:center}
+  .hero__art--cut picture{display:block;width:100%;height:100%}
+  /* ARMADILHA: o parallax escala a imagem, e com object-position:bottom ela
+     cresce PRA BAIXO -- 29px passavam por fora da mascara de derretimento e
+     apareciam como uma faixa clara de camisa. Ancorar a origem na base faz a
+     escala crescer pra cima, e a base fica onde a mascara alcanca. */
+  .hero__art--cut img{width:100%;height:100%;object-fit:contain;object-position:bottom center;
+    display:block;filter:contrast(1.04) saturate(.96);transform-origin:50% 100%}
+  .hero__art--cut::after{content:none}
+  /* o halo: luz atras da figura, pra ela nao flutuar no preto */
+  .hero__halo{position:absolute;inset:6% -6% -4% -6%;z-index:-1;pointer-events:none;
+    background:radial-gradient(52% 46% at 50% 62%,rgba(196,154,82,.20),rgba(176,141,79,.07) 52%,transparent 74%)}
+  /* a base da figura derrete no fundo em vez de terminar num corte reto */
+  .hero__art--cut::before{content:"";position:absolute;left:-4%;right:-4%;bottom:-2%;height:19%;
+    z-index:1;pointer-events:none;
+    background:linear-gradient(0deg,var(--bg) 6%,rgba(18,17,16,.55) 44%,transparent 100%)}
 
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
@@ -1632,9 +1661,9 @@
 
   /* ===== a foto entra saindo do desfoque ===== */
   .auth__portrait{background:linear-gradient(140deg,#2A2621,#15130F)}
-  .auth__portrait img,.hero__art img{opacity:0;filter:blur(16px) grayscale(1) contrast(1.08) brightness(.84);transform:scale(1.05);
+  .auth__portrait img{opacity:0;filter:blur(16px) grayscale(1) contrast(1.08) brightness(.84);transform:scale(1.05);
     transition:opacity .8s var(--ease),filter 1s var(--ease-soft),transform 1.2s var(--spring)}
-  .auth__portrait img.is-loaded,.hero__art img.is-loaded{opacity:1;filter:blur(0) grayscale(1) contrast(1.08) brightness(.84);transform:none}
+  .auth__portrait img.is-loaded{opacity:1;filter:blur(0) grayscale(1) contrast(1.08) brightness(.84);transform:none}
 
 
   /* ===== duotone bronze: a foto entra na paleta em vez de brigar com ela.
@@ -1656,8 +1685,7 @@
      sepia antiga, nao como retrato tratado. Com grayscale parcial e a tinta
      mais leve, a pele volta ao tom e a camisa volta a ser branca -- a paleta
      da pagina continua, o retrato deixa de parecer datado. */
-  .hero__art img.is-loaded + .duo{opacity:.3}
-  .hero__art img.is-loaded{filter:blur(0) grayscale(.55) contrast(1.04) brightness(.98)}
+  /* o recorte entra em cor: sem duotone e sem blur-up */
   /* vinheta separada, fora do .duo, senao ela cai dentro do mesmo blend */
   .autor .auth__portrait::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background:radial-gradient(76% 70% at 44% 32%,transparent 30%,rgba(12,11,10,.55) 100%)}
@@ -1743,14 +1771,17 @@
      o grayscale do duotone e a foto volta a cor no meio da rolagem -- a cadeia
      inteira tem que estar nos dois quadros. */
   @keyframes pxHeroArt{
-    from{scale:1.06;translate:0 0;filter:blur(0) grayscale(.55) contrast(1.04) brightness(.98)}
-    to{scale:1;translate:0 4.5rem;filter:blur(0) grayscale(.72) contrast(1.06) brightness(.66)}
+    /* com recorte o deslocamento tem que ser pra CIMA: empurrar pra baixo
+       tira a base de dentro da mascara de derretimento e a camisa reaparece
+       como faixa clara no meio da rolagem. */
+    from{scale:1.05;translate:0 0;filter:contrast(1.04) saturate(.96) brightness(1)}
+    to{scale:1;translate:0 -1.4rem;filter:contrast(1.06) saturate(.86) brightness(.7)}
   }
   @supports (animation-timeline:scroll()){
     /* o retrato do hero recua enquanto o texto sobe: a primeira tela ganha
        profundidade em vez de deslizar inteira */
     .hero__art img{animation:pxHeroArt linear both;animation-timeline:scroll(root block);
-      animation-range:0 92svh;transform-origin:62% 34%}
+      animation-range:0 92svh;transform-origin:50% 100%}
   }
   @supports (animation-timeline:scroll()){
     .topbar__prog{animation:progresso linear both;animation-timeline:scroll(root block)}
@@ -2255,11 +2286,14 @@
 
         </div>
 
-        <div class="hero__art rise">
-          <img src="/assets/matheus-2026.jpg"
-               srcset="/assets/matheus-2026-540.jpg 540w, /assets/matheus-2026.jpg 900w"
-               sizes="(min-width:1000px) 48vw, 100vw"
-               alt="Matheus Martins" fetchpriority="high" decoding="async" width="900" height="1200" /><span class="duo" aria-hidden="true"></span>
+        <div class="hero__art hero__art--cut rise">
+          <span class="hero__halo" aria-hidden="true"></span>
+          <picture>
+            <source type="image/webp" srcset="/assets/matheus-cut-540.webp 540w, /assets/matheus-cut.webp 900w"
+                    sizes="(min-width:1000px) 46vw, 100vw" />
+            <img src="/assets/matheus-cut.webp" alt="Matheus Martins"
+                 fetchpriority="high" decoding="async" width="900" height="836" />
+          </picture>
         </div>
         </div>
 
