@@ -1652,8 +1652,12 @@
   img.is-loaded + .duo{opacity:.82}
   /* no hero a foto e a primeira coisa que ele ve: tinta mais leve, pra
      camisa continuar lendo como branca e o rosto ter profundidade */
-  .hero__art img.is-loaded + .duo{opacity:.6}
-  .hero__art img.is-loaded{filter:blur(0) grayscale(1) contrast(1.05) brightness(.92)}
+  /* grayscale(1) + tinta bronze a .6 deixava a pele amarelada: lia como foto
+     sepia antiga, nao como retrato tratado. Com grayscale parcial e a tinta
+     mais leve, a pele volta ao tom e a camisa volta a ser branca -- a paleta
+     da pagina continua, o retrato deixa de parecer datado. */
+  .hero__art img.is-loaded + .duo{opacity:.3}
+  .hero__art img.is-loaded{filter:blur(0) grayscale(.55) contrast(1.04) brightness(.98)}
   /* vinheta separada, fora do .duo, senao ela cai dentro do mesmo blend */
   .autor .auth__portrait::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
     background:radial-gradient(76% 70% at 44% 32%,transparent 30%,rgba(12,11,10,.55) 100%)}
@@ -1739,8 +1743,8 @@
      o grayscale do duotone e a foto volta a cor no meio da rolagem -- a cadeia
      inteira tem que estar nos dois quadros. */
   @keyframes pxHeroArt{
-    from{scale:1.06;translate:0 0;filter:blur(0) grayscale(1) contrast(1.05) brightness(.92)}
-    to{scale:1;translate:0 4.5rem;filter:blur(0) grayscale(1) contrast(1.08) brightness(.62)}
+    from{scale:1.06;translate:0 0;filter:blur(0) grayscale(.55) contrast(1.04) brightness(.98)}
+    to{scale:1;translate:0 4.5rem;filter:blur(0) grayscale(.72) contrast(1.06) brightness(.66)}
   }
   @supports (animation-timeline:scroll()){
     /* o retrato do hero recua enquanto o texto sobe: a primeira tela ganha
