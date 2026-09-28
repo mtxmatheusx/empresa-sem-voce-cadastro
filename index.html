@@ -567,6 +567,52 @@
       font-size:1.5rem;color:var(--cream);letter-spacing:-.01em}
     .ciclo__leg{margin-top:.85rem;font-size:.9rem}
   }
+
+  /* ===== ILUSTRACAO 4 · o depoimento vira linha do tempo =====
+     A secao 9 e a que decide a venda e era a mais estatica da pagina: 2,2
+     telas, 11 elementos com movimento, zero interacao, e um bloco de 103
+     palavras. O depoimento do Dinarte ja tem quatro marcos temporais dentro
+     ("quando comecou", "no primeiro mes", "depois", "e agora"). A ilustracao
+     nao resume nada: recorta as frases DELE e as poe na ordem, com o verbatim
+     inteiro a um toque de distancia. */
+  .marcos{list-style:none;margin:1.4rem 0 0;padding:0 0 0 1.9rem;display:grid;gap:1.15rem;
+    position:relative}
+  .marcos::before{content:"";position:absolute;left:.3rem;top:.65rem;bottom:.65rem;width:1px;
+    background:linear-gradient(180deg,var(--gold-line),var(--line-2))}
+  .marcos li{position:relative}
+  .marcos li::before{content:"";position:absolute;left:-1.9rem;top:.42rem;width:.6rem;height:.6rem;
+    border-radius:50%;background:var(--bg);border:1.5px solid var(--gold-line);
+    transition:background .5s var(--ease),box-shadow .5s var(--ease)}
+  .marcos li:last-child::before{background:var(--gold-3);border-color:var(--gold-3);
+    box-shadow:0 0 0 3px var(--gold-soft)}
+  .marcos__q{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold-3);font-weight:700}
+  .marcos__f{display:block;margin-top:.22rem;color:var(--cream);font-size:1.02rem;line-height:1.45}
+  .depo__inteiro{margin-top:1.3rem}
+  .depo__inteiro summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;
+    gap:.5rem;font-size:.85rem;font-weight:600;color:var(--gold-3);
+    border:1px solid var(--gold-line);border-radius:999px;padding:.5rem .95rem;
+    transition:background .3s var(--ease),border-color .3s var(--ease)}
+  .depo__inteiro summary::-webkit-details-marker{display:none}
+  .depo__inteiro summary:hover{background:var(--gold-soft)}
+  .depo__inteiro summary i{font-style:normal;transition:rotate .35s var(--spring)}
+  .depo__inteiro[open] summary i{rotate:180deg}
+  .depo__inteiro p{margin:.9rem 0 0;color:var(--mute);font-size:.95rem;line-height:1.62}
+  .depo__inteiro[open] p{animation:abreDepo .45s var(--ease-soft) both}
+  @keyframes abreDepo{from{opacity:0;translate:0 -6px}to{opacity:1;translate:0 0}}
+  @media (prefers-reduced-motion:reduce){ .depo__inteiro[open] p{animation:none} }
+
+
+  /* o depoimento do Joao nao tem marcos temporais, tem uma frase que e o
+     argumento inteiro. Ela vira a peca; o resto fica a um toque. */
+  .depo__soco{margin:1.1rem 0 0;font-family:var(--serif);font-weight:400;
+    font-size:clamp(1.25rem,2.4vw,1.62rem);line-height:1.24;letter-spacing:-.018em;
+    color:var(--cream)}
+  .depo__soco em{font-style:italic;color:var(--gold-3)}
+  /* com os depoimentos de alturas diferentes, esticar os dois deixa um vazio
+     grande embaixo do mais curto */
+  .depo-grid{align-items:start}
+
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
     text-transform:uppercase;color:var(--gold-3);font-weight:500;margin:0 0 1.6rem}
@@ -2660,14 +2706,27 @@
               <div class="depo__avatar" style="background-image:url('/assets/dinarte.jpg');background-position:50% 34%;background-size:118%"></div>
               <div><div class="depo__who">Dinarte</div><span class="depo__ctx">Dono da Biotop</span></div>
             </div>
-            <p class="depo__quote">“Quando começou, eu tinha uns 10, 12 projetos travados que eu não conseguia resolver, dependia de um, dependia de outro, estava tudo parado. No primeiro mês já veio a clareza: a gente organizou tudo numa linha de produção, e o que antes passava todo por mim, hoje as meninas resolvem e me mostram pronto. Só de ter essa clareza eu já durmo mais tranquilo, tirei um peso das costas. Depois entrou a parte de IA e foi eficiência gigantesca, o que eu levava horas pra fazer, saiu num comando. E agora a delegação ficou clara de verdade: clareza, prazo e monitoramento. Ficou perfeito.”</p>
+            <ol class="marcos">
+              <li><span class="marcos__q">Quando começou</span><span class="marcos__f">“10, 12 projetos travados que eu não conseguia resolver. Estava tudo parado.”</span></li>
+              <li><span class="marcos__q">No primeiro mês</span><span class="marcos__f">“A gente organizou tudo numa linha de produção. O que antes passava todo por mim, hoje as meninas resolvem e me mostram pronto.”</span></li>
+              <li><span class="marcos__q">Depois</span><span class="marcos__f">“Entrou a parte de IA. O que eu levava horas pra fazer, saiu num comando.”</span></li>
+              <li><span class="marcos__q">E agora</span><span class="marcos__f">“A delegação ficou clara de verdade: clareza, prazo e monitoramento.”</span></li>
+            </ol>
+            <details class="depo__inteiro">
+              <summary>Ler o depoimento inteiro <i aria-hidden="true">↓</i></summary>
+              <p>“Quando começou, eu tinha uns 10, 12 projetos travados que eu não conseguia resolver, dependia de um, dependia de outro, estava tudo parado. No primeiro mês já veio a clareza: a gente organizou tudo numa linha de produção, e o que antes passava todo por mim, hoje as meninas resolvem e me mostram pronto. Só de ter essa clareza eu já durmo mais tranquilo, tirei um peso das costas. Depois entrou a parte de IA e foi eficiência gigantesca, o que eu levava horas pra fazer, saiu num comando. E agora a delegação ficou clara de verdade: clareza, prazo e monitoramento. Ficou perfeito.”</p>
+            </details>
           </div>
           <div class="depo rise">
             <div class="depo__head">
               <div class="depo__avatar" style="background-image:url('/assets/joao.jpg');background-position:50% 8%;background-size:200%"></div>
               <div><div class="depo__who">João</div><span class="depo__ctx">Sócio da Biotop</span></div>
             </div>
-            <p class="depo__quote">“Eu falei pro Matheus logo no começo: o nosso maior trabalho não ia ser na Biotop, ia ser no Dinarte. Porque quem move a empresa são as pessoas, se a empresa tem um problema, muito provavelmente o gestor também tem. E é aí que esse trabalho faz sentido. O produto do Matheus está muito alinhado com o que o mercado precisa hoje: não é só dar visão e estratégia, é entrar e operar junto, botar a mão na massa e ensinar o gestor no processo.”</p>
+            <p class="depo__soco">“O nosso maior trabalho não ia ser na Biotop.<br><em>Ia ser no Dinarte.</em>”</p>
+            <details class="depo__inteiro">
+              <summary>Ler o depoimento inteiro <i aria-hidden="true">↓</i></summary>
+              <p>“Eu falei pro Matheus logo no começo: o nosso maior trabalho não ia ser na Biotop, ia ser no Dinarte. Porque quem move a empresa são as pessoas, se a empresa tem um problema, muito provavelmente o gestor também tem. E é aí que esse trabalho faz sentido. O produto do Matheus está muito alinhado com o que o mercado precisa hoje: não é só dar visão e estratégia, é entrar e operar junto, botar a mão na massa e ensinar o gestor no processo.”</p>
+            </details>
           </div>
         </div>
         <div class="founder rise"><strong>Essa é a turma fundadora, nove vagas.</strong> O preço dela está abaixo do que sustenta a minha operação: é com essa turma que eu monto o banco de casos da mentoria. Quem entra agora vira o resultado que os próximos vão ver nesta página. Depois das nove, o preço sobe e a garantia encolhe.</div>
