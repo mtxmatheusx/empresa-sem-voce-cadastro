@@ -527,37 +527,45 @@
   @media (prefers-reduced-motion:reduce){
     .ciclo .c-seta{stroke-dasharray:none!important;stroke-dashoffset:0!important;animation:none!important}}
 
-  /* a fila vertical so existe no celular */
+  /* a fila vertical so existe no celular.
+     v2: em fila reta aquilo lia como LISTA que acaba, nao como ciclo -- o
+     unico sinal de loop era uma frase no fim. Agora o caminho de volta e
+     desenhado: um "C" na canaleta da esquerda que sai do ultimo card, sobe e
+     entra no primeiro. O desenho passa a dizer o que a frase dizia. */
   .ciclo__fila,.ciclo__volta,.ciclo__quebra{display:none}
   @media (max-width:720px){
     /* ARMADILHA: .ciclo svg{display:block} (0,1,1) vence .ciclo__anel (0,1,0)
-       mesmo aqui dentro -- media query nao levanta especificidade. Sem o
-       .ciclo na frente, o anel e a fila renderizavam os dois juntos. */
+       mesmo aqui dentro -- media query nao levanta especificidade. */
     .ciclo .ciclo__anel{display:none}
     .ciclo{margin-top:1.6rem}
-    .ciclo__fila{display:grid;gap:0;list-style:none;padding:0;margin:0;counter-reset:ci}
+    .ciclo__fila{display:grid;gap:1.15rem;list-style:none;margin:0;
+      padding:.9rem 0 .9rem 2.6rem;position:relative}
+    /* o caminho de volta: sobe pela canaleta e entra no primeiro card */
+    .ciclo__fila::before{content:"";position:absolute;left:.45rem;top:1.55rem;bottom:1.55rem;
+      width:1.5rem;border:1.5px solid var(--gold);border-right:0;
+      border-radius:14px 0 0 14px;opacity:.7}
+    .ciclo__fila::after{content:"";position:absolute;left:1.72rem;top:1.22rem;
+      width:7px;height:7px;border-top:1.6px solid var(--gold);border-right:1.6px solid var(--gold);
+      transform:rotate(45deg);opacity:.9}
     .ciclo__fila li{background:var(--glass);border:1px solid var(--line-2);border-radius:14px;
-      padding:.85rem 1rem;color:var(--text);font-weight:600;font-size:1rem;line-height:1.3;
+      padding:.72rem .95rem;color:var(--text);font-weight:600;font-size:1rem;line-height:1.3;
       position:relative}
-    .ciclo__fila li + li{margin-top:2.1rem}
-    /* a seta entre os passos, em CSS pra nao precisar de outro svg */
-    .ciclo__fila li + li::before{content:"";position:absolute;left:50%;top:-1.75rem;
-      width:1px;height:1.4rem;background:var(--gold);opacity:.75}
-    .ciclo__fila li + li::after{content:"";position:absolute;left:50%;top:-.55rem;
+    /* a seta entre os passos, curta, so pra marcar a direcao */
+    .ciclo__fila li + li::before{content:"";position:absolute;left:1.6rem;top:-1.15rem;
+      width:1px;height:.62rem;background:var(--gold);opacity:.7}
+    .ciclo__fila li + li::after{content:"";position:absolute;left:calc(1.6rem - 3px);top:-.42rem;
       width:7px;height:7px;border-right:1.6px solid var(--gold);border-bottom:1.6px solid var(--gold);
-      transform:translateX(-50%) rotate(45deg);opacity:.75}
-    .ciclo__volta{display:flex;align-items:center;justify-content:center;gap:.6rem;
-      margin:.9rem 0 0;color:var(--gold-3);font-size:.82rem;font-weight:600;
-      letter-spacing:.06em;text-transform:uppercase}
-    .ciclo__volta::before,.ciclo__volta::after{content:"";height:1px;flex:1;max-width:3.4rem;
-      background:linear-gradient(90deg,transparent,var(--gold-line))}
-    .ciclo__volta::after{background:linear-gradient(90deg,var(--gold-line),transparent)}
-    .ciclo__quebra{display:block;margin:1.5rem 0 0;padding:1.15rem 1.2rem;text-align:center;
+      transform:rotate(45deg);opacity:.9}
+    /* o primeiro card e onde a volta desemboca: ele ganha a marca */
+    .ciclo__fila li:first-child{border-color:var(--gold-line)}
+    .ciclo__volta{display:none}
+    .ciclo__quebra{display:block;margin:1.3rem 0 0;padding:1.1rem 1.2rem;text-align:center;
       border:1px solid var(--gold-line);border-radius:16px;background:var(--gold-soft)}
     .ciclo__quebra span{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
       color:var(--gold-3);font-weight:700}
-    .ciclo__quebra b{display:block;margin-top:.3rem;font-family:var(--serif);font-weight:400;
-      font-size:1.55rem;color:var(--cream);letter-spacing:-.01em}
+    .ciclo__quebra b{display:block;margin-top:.28rem;font-family:var(--serif);font-weight:400;
+      font-size:1.5rem;color:var(--cream);letter-spacing:-.01em}
+    .ciclo__leg{margin-top:.85rem;font-size:.9rem}
   }
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
