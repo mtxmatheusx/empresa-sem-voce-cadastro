@@ -474,6 +474,33 @@
   }
   @media (prefers-reduced-motion:reduce){ .autor__glifo{animation:none} }
 
+
+  /* ===== ritmo de tom na primeira metade =====
+     Parecer de terceiro (26/set): "na segunda, terceira secao eu ja tava
+     cansado". Medido: as secoes 1 a 7 eram SETE seguidas no mesmo tom escuro
+     -- 10,4 telas sem uma troca. Da 8 em diante o ritmo ja era bom. Com a 2 e a
+     7 em quente e a 5 em claro, a maior sequencia cai de 7 para 2. */
+  .autor--marca.section--warm{background:linear-gradient(180deg,#171310,#1F1812 50%,#171310)}
+  .autor--marca.section--warm .autor__glifo{opacity:.075}
+  /* o feixe do espelho e dourado sobre preto: no claro ele precisa de outra cor */
+  .section--light .mirror__plano,.section--light .mirror::before{opacity:.5}
+  .section--light .pull{color:var(--cream)}
+
+
+  /* ===== hierarquia: tres pesos de h2 em vez de um =====
+     Eram 13 h2 e 1 h3 -- treze secoes no mesmo nivel, nada dizendo o que e
+     capitulo e o que e apoio. Agora: PILAR (metodo e oferta, o que o leitor
+     precisa reter), padrao (a narrativa) e APOIO (as secoes curtas de
+     argumento). Nenhuma palavra muda: muda o peso. */
+  .h-sec--pilar{font-size:clamp(2.05rem,5vw,3.4rem);letter-spacing:-.035em;line-height:1.05}
+  .h-sec--apoio{font-size:clamp(1.42rem,3vw,2.05rem);letter-spacing:-.022em;line-height:1.16}
+  /* a eyebrow acompanha: no pilar ela ganha marca, no apoio ela recua */
+  .sec-pilar .eyebrow{color:var(--gold-3)}
+  .sec-pilar .eyebrow__n{font-size:.92rem;color:var(--gold-3)}
+  .sec-apoio .eyebrow{color:var(--mute)}
+  .sec-apoio .eyebrow__n{color:var(--mute)}
+  .sec-apoio .eyebrow__n::after{background:var(--line-2)}
+
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
     text-transform:uppercase;color:var(--gold-3);font-weight:500;margin:0 0 1.6rem}
@@ -731,11 +758,23 @@
   /* ===== HÍBRIDO · seções em fundo claro (Prova + Candidatura) ===== */
   .section--light{
     background:#F5F2EA;
-    --cream:#211C15; --text:#3B352C; --mute:#6E675B; --mute-2:#8A8477;
+    --cream:#211C15; --text:#3B352C; --mute:#6E675B;
+    /* #8A8477 dava 3,32:1 sobre o creme: reprova pra rotulo de 11-14px. */
+    --mute-2:#5A544A;
     --panel:#FFFFFF; --panel-2:#FBF9F3;
     --line:rgba(20,16,10,.10); --line-2:rgba(20,16,10,.16);
     --gold-2:#8A6410; --gold-soft:rgba(154,111,20,.10); --gold-line:rgba(154,111,20,.32);
+    /* --gold-3 nao estava sendo redefinido aqui: o bronze claro (#DCBB7E) sobre
+       o creme da 1,64:1 de contraste, contra um minimo de 4,5:1. Metade do
+       espelho e a lede ficavam ilegiveis quando a secao virou clara. */
+    --gold:#7A5709; --gold-3:#7A5709;
   }
+  /* o numero do passo e o destaque de escassez sao bronze sobre bronze-suave:
+     no claro isso cai pra 1,46:1 e o algarismo some. Tinta escura, chapa clara. */
+  .section--light .num__n{color:#5E4206;background:rgba(154,111,20,.14);
+    border-color:rgba(154,111,20,.40)}
+  .section--light .founder{color:#5E4206}
+  .section--light .founder strong{color:#3A2A05}
   .section--light{
     --glass:rgba(255,255,255,.72); --glass-2:rgba(255,255,255,.92);
     --glass-edge:rgba(20,16,10,.10); --glass-hi:rgba(255,255,255,.9);
@@ -1108,8 +1147,10 @@
   .section--light .gar{background:linear-gradient(180deg,rgba(154,111,20,.09),rgba(255,255,255,.7))}
   .section--light .gar__bar{background:rgba(20,16,10,.06);border-color:rgba(20,16,10,.12)}
   .section--light .gar__fill{background:linear-gradient(90deg,rgba(20,16,10,.17),rgba(20,16,10,.1))}
-  .section--light .gar__cut{background:linear-gradient(90deg,rgba(154,111,20,.9),rgba(154,111,20,.68));
-    color:#FFF8EA;border-left-color:#8A6410}
+  /* a chapa a 90%/68% de bronze sobre creme deixava o texto branco de 12px em
+     1,2:1. Chapa opaca e escura resolve sem mudar a familia da cor. */
+  .section--light .gar__cut{background:linear-gradient(90deg,#4A3406,#5E4206);
+    color:#FFF8EA;border-left-color:#3A2A05}
   .section--light .gar__h span:first-child,.section--light .gar__foot b{color:#7A5709}
   @media(max-width:520px){.gar{padding:1.2rem 1.15rem}.gar__cut{font-size:.66rem}.gar__tl{font-size:.68rem}}
 
@@ -2131,7 +2172,7 @@
     <hr class="rule rise" />
 
     <!-- 2 · AUTORIDADE -->
-    <section class="autor autor--marca">
+    <section class="autor autor--marca section--warm">
       <span class="autor__glifo" aria-hidden="true"><img src="/assets/logo.png" alt="" width="300" height="155" decoding="async" /></span>
       <div class="wrap frame autor__grid">
         <div class="autor__col">
@@ -2170,10 +2211,10 @@
     <hr class="rule rise" />
 
     <!-- 4 · DIAGNÓSTICO -->
-    <section>
+    <section class="sec-apoio">
       <div class="wrap measure">
         <p class="eyebrow rise"><i class="eyebrow__n">03</i>O diagnóstico honesto</p>
-        <h2 class="h-sec rise">Como você sabe que chegou nesse ponto.</h2>
+        <h2 class="h-sec h-sec--apoio rise">Como você sabe que chegou nesse ponto.</h2>
         <p class="lede rise">Marque o que você reconhece.</p>
         <ul class="reckon reckon--live" id="reckon">
           <li class="rise"><button type="button" class="reckon__b" aria-pressed="false"><span class="reckon__box"><svg viewBox="0 0 24 24"><path d="M5 13l4.5 4.5L19 7"/></svg></span><span>Você faturou mais esse ano e sobrou menos.</span></button></li>
@@ -2194,10 +2235,10 @@
     <hr class="rule rise" />
 
     <!-- 5 · PRINCÍPIO DO ESPELHO -->
-    <section class="center">
+    <section class="center section--light sec-apoio">
       <div class="wrap measure">
         <p class="eyebrow eyebrow--c rise"><i class="eyebrow__n">04</i>O princípio que guia tudo</p>
-        <h2 class="h-sec rise">O Princípio do Espelho</h2>
+        <h2 class="h-sec h-sec--apoio rise">O Princípio do Espelho</h2>
         <p class="lede rise" style="color:var(--gold-3)">A empresa é o reflexo do dono.</p>
 
         <div class="mirror mirror--nu rise">
@@ -2329,11 +2370,11 @@
     <hr class="rule rise" />
 
     <!-- 7 · O MÉTODO -->
-    <section>
+    <section class="section--warm sec-pilar">
       <div class="wrap frame">
         <div class="measure" style="margin-bottom:2.2rem">
           <p class="eyebrow rise"><i class="eyebrow__n">06</i>O método</p>
-          <h2 class="h-sec rise" data-dock="<b>5 pilares</b> · na ordem certa">Como o executor vira gestor.</h2>
+          <h2 class="h-sec h-sec--pilar rise" data-dock="<b>5 pilares</b> · na ordem certa">Como o executor vira gestor.</h2>
           <p class="lede rise">Cinco pilares, na ordem certa. Não dá pra vender mais numa casa desorganizada, por isso marketing é o último, não o primeiro.</p>
         </div>
         <div class="stack stagger pile">
@@ -2416,11 +2457,11 @@
     <hr class="rule rise" />
 
     <!-- 8 · A CONTA -->
-    <section class="section--warm custo custo--dir">
+    <section class="section--warm custo custo--dir sec-apoio">
       <div class="custo custo--dir">
         <div class="custo__in">
           <div>
-            <h2 class="h-sec custo__h rise" data-dock="O gerente: <b>R$ 168 mil</b> por ano">Contratar um gerente custa mais e resolve menos.</h2>
+            <h2 class="h-sec h-sec--apoio custo__h rise" data-dock="O gerente: <b>R$ 168 mil</b> por ano">Contratar um gerente custa mais e resolve menos.</h2>
             <p class="custo__p rise">O caminho óbvio é contratar alguém pra tirar isso das suas costas. Veja os dois lado a lado.</p>
             <div class="bars rise">
           <div class="bar">
@@ -2486,7 +2527,7 @@
     <hr class="rule rise" />
 
     <!-- 10 · CUSTO DA INAÇÃO -->
-    <section class="section--warm custo">
+    <section class="section--warm custo sec-apoio">
       <div class="custo">
         <div class="custo__in">
           <div>
@@ -2495,7 +2536,7 @@
             <span class="custo__un rise">horas por ano, todo ano</span>
           </div>
           <div>
-            <h2 class="h-sec custo__h rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
+            <h2 class="h-sec h-sec--apoio custo__h rise" data-dock="<b>520 horas</b> por ano, todo ano">Fazer nada também tem preço. Ele só não vem com boleto.</h2>
             <p class="custo__p rise">Dez horas por semana somem em decisão que não era sua. Mexa nos números e veja a sua conta, não a minha.</p>
             <div class="conta rise">
               <div class="ctrl">
@@ -2533,10 +2574,10 @@
     <hr class="rule rise" />
 
     <!-- 11 · A OFERTA -->
-    <section>
+    <section class="sec-pilar">
       <div class="wrap measure">
         <p class="eyebrow rise"><i class="eyebrow__n">10</i>A oferta</p>
-        <h2 class="h-sec rise" data-dock="<b>R$ 24.600</b> em valor entregue">O que você leva.</h2>
+        <h2 class="h-sec h-sec--pilar rise" data-dock="<b>R$ 24.600</b> em valor entregue">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
         <ul class="offer pile">
           <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.8 9.2h18.4a1 1 0 011 1v3.6a1 1 0 01-1 1H2.8a1 1 0 01-1-1v-3.6a1 1 0 011-1z"/><path d="M6.4 9.2v2.6M10 9.2v3.6M13.6 9.2v2.6M17.2 9.2v3.6"/></svg></span><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">O número de horas que você perde, medido na semana 1.</div></div></li>
@@ -2599,10 +2640,10 @@
     <hr class="rule rise" />
 
     <!-- 13 · OBJEÇÕES -->
-    <section>
+    <section class="sec-apoio">
       <div class="wrap measure">
         <p class="eyebrow eyebrow--muted rise"><i class="eyebrow__n">12</i>Antes de você dizer “agora não”</p>
-        <h2 class="h-sec rise">As seis coisas que você está pensando agora.</h2>
+        <h2 class="h-sec h-sec--apoio rise">As seis coisas que você está pensando agora.</h2>
         <p class="lidas rise" id="lidas"><span class="lidas__p" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span><b id="lidasN">1</b> de 6 lidas</span></p>
         <div class="faq stagger" id="faq">
           <div class="faq__i rise is-open lida">
