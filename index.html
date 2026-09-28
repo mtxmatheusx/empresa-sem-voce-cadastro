@@ -607,6 +607,25 @@
      tempo), esticar os dois deixa um vazio grande embaixo do mais curto */
   .depo-grid{align-items:start}
 
+
+  /* ===== a oferta abre, e agora se ve que abre =====
+     Os 10 itens ja guardavam 2.175 caracteres de detalhe em data-det (cada um
+     derrubando uma objecao especifica em data-obj) e a folha ja abria com tudo
+     isso. So que o gatilho visivel existia em 1 item de 10: o resto era
+     conteudo que o leitor nao tinha como descobrir. Uma seta em cada linha
+     custa zero palavra e devolve ~350 palavras de argumento. */
+  .offer__row{padding-right:1.15rem;position:relative}
+  .offer__row::after{content:"›";position:absolute;right:0;top:50%;translate:0 -50%;
+    font-size:1.25rem;line-height:1;color:var(--mute-2);
+    transition:color .35s var(--ease),translate .35s var(--spring)}
+  .offer li:hover .offer__row::after,.offer li.toque .offer__row::after{
+    color:var(--gold-3);translate:3px -50%}
+  /* o item que ja tinha rotulo mantem o rotulo; nos outros a seta fala sozinha */
+  .offer__more{color:var(--gold-3)}
+  .offer__dica{margin:1.1rem 0 0;display:inline-flex;align-items:center;gap:.5rem;
+    color:var(--mute);font-size:.88rem;line-height:1.4}
+  .offer__dica i{font-style:normal;color:var(--gold-3);font-size:1.05rem;line-height:1}
+
   /* eyebrow with ornaments */
   .eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.26em;
     text-transform:uppercase;color:var(--gold-3);font-weight:500;margin:0 0 1.6rem}
@@ -2779,6 +2798,7 @@
         <p class="eyebrow rise"><i class="eyebrow__n">10</i>A oferta</p>
         <h2 class="h-sec h-sec--pilar rise" data-dock="<b>R$ 24.600</b> em valor entregue">O que você leva.</h2>
         <p class="lede rise">Uma mentoria de 120 dias pra tirar você do gargalo, com 12 meses de acesso pra consolidar. Na prática:</p>
+        <p class="offer__dica rise"><i aria-hidden="true">›</i>Toque em qualquer item pra ver a objeção que ele derruba.</p>
         <ul class="offer pile">
           <li class="rise" data-obj="eu nem sei quanto tempo eu perco com isso" data-det="Na primeira semana a gente mede duas coisas: quantas horas por semana você gasta respondendo decisão que não é sua, e quais são as três decisões que mais se repetem. Esse número vira a sua linha de base &mdash; e é exatamente ele que a Garantia das 10 Horas tem que derrubar até o dia 60."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.8 9.2h18.4a1 1 0 011 1v3.6a1 1 0 01-1 1H2.8a1 1 0 01-1-1v-3.6a1 1 0 011-1z"/><path d="M6.4 9.2v2.6M10 9.2v3.6M13.6 9.2v2.6M17.2 9.2v3.6"/></svg></span><div><div class="offer__row"><span class="offer__name">Diagnóstico Espelho + a Régua</span><span class="offer__dots"></span><span class="offer__val">R$ 2.400</span></div><div class="offer__desc">O número de horas que você perde, medido na semana 1.</div></div></li>
           <li class="rise" data-obj="120 dias é muito tempo pra sentir alguma coisa" data-det="Ainda na primeira semana, as três decisões que mais te consomem voltam pra equipe com critério escrito. Você sente a diferença antes de ter um único processo documentado. É de propósito: ninguém aguenta quatro meses sem sentir nada."><span class="oic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.4 12.6a8.4 8.4 0 11-2.6-6"/><path d="M20.6 3.2v4.2h-4.2"/><path d="M8.6 12.4h6.2m-2.4-2.4 2.4 2.4-2.4 2.4"/></svg></span><div><div class="offer__row"><span class="offer__name">As 3 Primeiras Devoluções</span><span class="offer__dots"></span><span class="offer__val">R$ 1.800</span></div><div class="offer__desc">Três decisões voltam pra equipe já na primeira semana.</div></div></li>
