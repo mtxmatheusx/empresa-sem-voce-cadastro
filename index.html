@@ -1607,9 +1607,9 @@
 
   /* ===== a foto entra saindo do desfoque ===== */
   .auth__portrait{background:linear-gradient(140deg,#2A2621,#15130F)}
-  .auth__portrait img{opacity:0;filter:blur(16px) grayscale(1) contrast(1.08) brightness(.84);transform:scale(1.05);
+  .auth__portrait img{opacity:0;filter:blur(16px) contrast(1.04) saturate(.97) brightness(.97);transform:scale(1.05);
     transition:opacity .8s var(--ease),filter 1s var(--ease-soft),transform 1.2s var(--spring)}
-  .auth__portrait img.is-loaded{opacity:1;filter:blur(0) grayscale(1) contrast(1.08) brightness(.84);transform:none}
+  .auth__portrait img.is-loaded{opacity:1;filter:blur(0) contrast(1.04) saturate(.97) brightness(.97);transform:none}
 
 
   /* ===== duotone bronze: a foto entra na paleta em vez de brigar com ela.
