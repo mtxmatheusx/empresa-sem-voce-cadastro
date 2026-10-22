@@ -167,6 +167,47 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1659749545111630&ev=PageView&noscript=1"/></noscript>
   <!-- End Meta Pixel Code -->
+
+<style id="cadastro-2col">
+/* Cadastro em duas colunas: contexto fixo à esquerda, formulário à direita */
+.cad-who{display:flex;align-items:center;gap:1rem;margin:0 auto 1rem;max-width:34rem;
+  padding:1rem;border:1px solid var(--line);border-radius:10px;background:var(--bg-2)}
+.cad-who img{width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 22%;
+  box-shadow:0 0 0 2px var(--bg-2),0 0 0 3px rgba(198,169,108,.5)}
+.cad-who figcaption{display:flex;flex-direction:column;gap:.15rem;line-height:1.3}
+.cad-who strong{color:var(--bone);font-size:.98rem}
+.cad-who span{color:var(--bone-3);font-size:.85rem}
+.cad-terms{max-width:34rem;margin:0 auto 2.5rem;color:var(--bone-3);font-size:.82rem;text-align:center}
+.cad-terms i{font-style:normal;margin:0 .35rem;color:var(--gold)}
+.options{grid-template-columns:repeat(auto-fill,minmax(min(100%,7.6rem),1fr))}
+.options[data-field="investimento"],.options[data-field="gargalo_area"],.options[data-field="ausencia_15dias"]{grid-template-columns:1fr}
+@media (min-width:1000px){
+  .cad-head .container.narrow{max-width:72rem;display:grid;
+    grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(2.5rem,5vw,5rem);align-items:start}
+  .cad-side{position:sticky;top:5.5rem}
+  .cad-side .eyebrow--center{text-align:left;justify-content:flex-start}
+  .cad-side .section__title--center{text-align:left}
+  .cad-side .form-deck{text-align:left;margin-left:0}
+  .cad-side .form-head{margin-bottom:2rem}
+  .cad-side .pilares-mini,.cad-side .cad-who,.cad-side .cad-terms{margin-left:0;max-width:none}
+  .cad-side .pilares-mini{margin-bottom:1.5rem}
+  .cad-side .cad-terms{text-align:left;margin-bottom:0}
+  .cad-head .form-card{max-width:none;margin:0}
+}
+.cad-head .container.narrow > :not(.cad-side):not(.form-card){grid-column:1/-1}
+.options:not([data-field="investimento"]):not([data-field="gargalo_area"]):not([data-field="ausencia_15dias"]) .opt span{white-space:nowrap}
+@media (max-width:520px){
+  .options:not([data-field="investimento"]):not([data-field="gargalo_area"]):not([data-field="ausencia_15dias"]) .opt{padding-inline:.7rem;gap:.5rem;font-size:.86rem}
+}
+@media (max-width:999px){
+  .cad-head .form-card{width:100%}
+  .cad-head .container.narrow > :not(.cad-side):not(.form-card){order:6}
+  /* no celular o formulário vem antes da lista de pilares: menos rolagem até a primeira pergunta */
+  .cad-head .container.narrow{display:flex;flex-direction:column}
+  .cad-side{display:contents}
+  .cad-side .form-head{order:1}.cad-who{order:2}.cad-terms{order:3}.cad-head .form-card{order:4}.cad-side .pilares-mini{order:5;margin-top:2.5rem}
+}
+</style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -183,6 +224,7 @@
 
   <section class="section cad-head" id="formulario">
     <div class="container narrow">
+      <aside class="cad-side">
       <div class="form-head reveal">
         <p class="eyebrow eyebrow--center">Candidatura</p>
         <h2 class="section__title section__title--center">Candidatura à turma <em>fundadora</em></h2>
@@ -201,6 +243,16 @@
           <li class="pm-item"><span class="pm__n">05</span><div><strong>Marketing &amp; Vendas</strong><span>Canal previsível, sobre base pronta.</span></div></li>
         </ul>
       </div>
+
+      <figure class="cad-who">
+        <img src="/assets/matheus-polo.webp" alt="Matheus Martins" width="1254" height="1254" loading="lazy">
+        <figcaption>
+          <strong>Matheus Martins</strong>
+          <span>Mentor do programa Empresa Sem Você</span>
+        </figcaption>
+      </figure>
+      <p class="cad-terms">2 minutos <i aria-hidden="true">·</i> é candidatura, não compra <i aria-hidden="true">·</i> garantia de 60 dias</p>
+      </aside>
 
       <div class="form-card reveal" id="formCard">
         <div class="progress" id="progress">
