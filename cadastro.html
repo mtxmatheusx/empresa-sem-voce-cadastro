@@ -404,5 +404,18 @@
   </footer>
 
   <script type="module" src="script.js"></script>
+<script>
+/* Abertura da landing manda ?faturamento=...: já chega marcado no passo 1 */
+(function(){
+  try{
+    var v=new URLSearchParams(location.search).get('faturamento');
+    if(!v) return;
+    var el=document.querySelector('input[name="faturamento"][value="'+v.replace(/"/g,'')+'"]');
+    if(!el) return;
+    el.checked=true;
+    window.addEventListener('load',function(){ el.dispatchEvent(new Event('change',{bubbles:true})); });
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
