@@ -199,6 +199,19 @@ form.addEventListener("submit", async (e) => {
   try {
     const { error } = await supabase.from("mtx_mentoria_leads").insert([payload]);
     if (error) throw error;
+    // CRM (perfil ESV): não segura a candidatura. keepalive garante o envio mesmo com o redirect para o WhatsApp.
+    fetch("https://vkadlzwcaerdodadpucs.supabase.co/functions/v1/esv-lead", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        nome: payload.nome, whatsapp: payload.whatsapp, instagram: payload.instagram,
+        faturamento: payload.faturamento, funcionarios: payload.funcionarios, tempo_empresa: payload.tempo_empresa,
+        horas_operacional: payload.horas_operacional, ausencia_15dias: payload.ausencia_15dias,
+        gargalo_area: payload.gargalo_area, gargalo: payload.gargalo, urgencia: payload.urgencia,
+        investimento: payload.investimento, porque_voce: payload.porque_voce,
+      }),
+    }).catch((e) => console.error("CRM ESV:", e));
     try {
       await fetch("/api/notify", {
         method: "POST",
