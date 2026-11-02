@@ -269,9 +269,12 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 .road{display:grid;border-top:1px solid var(--line-2)}
 @media (min-width:960px){.road{grid-template-columns:repeat(5,minmax(0,1fr))}}
 .road li{padding:1.3rem 1.2rem 1.4rem 0;display:grid;grid-template-columns:3.4rem minmax(0,1fr);column-gap:.5rem;row-gap:.3rem;align-content:start;border-bottom:1px solid var(--line)}
-.road li > span{grid-row:span 2;font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--gold-2)}
+.road li > span{grid-row:span 3;font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--gold-2)}
 @media (min-width:960px){.road li{border-bottom:0;padding-right:1.6rem;grid-template-columns:1fr;row-gap:.55rem}.road li > span{grid-row:auto;font-size:2.8rem}}
 .road p{font-size:.92rem;color:var(--mute)}
+.road .out{grid-column:2;margin-top:.45rem;font-size:.84rem;line-height:1.4;color:var(--cream);font-weight:600}
+.road .out small{display:block;margin-bottom:.15rem;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-2)}
+@media (min-width:960px){.road .out{grid-column:auto;margin-top:.6rem;padding-top:.7rem;border-top:1px solid var(--line)}}
 .phase{margin-top:2.5rem;display:grid;grid-template-columns:4fr 2fr 6fr;gap:6px}
 .phase div{display:grid;gap:.35rem}
 .phase i{height:8px;border-radius:99px;background:var(--panel-2)}
@@ -369,14 +372,42 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 .faq summary::after{content:"+";color:var(--mute);font-weight:400;font-size:1.3rem;line-height:1;transition:transform .25s var(--ease)}
 .faq details[open] summary::after{transform:rotate(45deg);color:var(--gold-3)}
 .faq p{padding:0 0 1.2rem;color:var(--text);max-width:44rem}
-.end{text-align:center;display:grid;justify-items:center;gap:1.5rem;padding-top:clamp(5rem,10vw,8rem)}
-.end h2{max-width:15ch}
-.end .sign{margin-top:-.5rem}
-.end .terms{justify-content:center}
+.end{display:grid;justify-items:start;gap:1.2rem;max-width:46rem;margin:clamp(4rem,8vw,6.5rem) auto 0;padding:clamp(1.6rem,5vw,3.5rem);border-radius:28px;background:var(--panel);border:1px solid var(--line);box-shadow:0 30px 60px -40px rgba(22,20,15,.35)}
+.end h2{font-size:clamp(2.1rem,1.3rem + 2.6vw,3.3rem);margin-bottom:.4rem}
+.end p.say{font-size:1.06rem;line-height:1.6;color:var(--text)}
+.end .sign{margin-top:.4rem}
+.end .btn{margin-top:.4rem}
 .foot{border-top:1px solid var(--line);padding-block:2rem calc(2rem + env(safe-area-inset-bottom));font-size:.84rem;color:var(--mute)}
 .foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.8rem}
 .foot b{color:var(--cream)}
 .foot a{color:var(--cream);text-decoration:underline;text-underline-offset:3px}
+
+/* ===== custo de continuar assim ===== */
+.cost{display:grid;gap:2.5rem}
+@media (min-width:1020px){.cost{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);column-gap:5rem;align-items:start}}
+.cost__head{display:grid;gap:1rem}
+@media (min-width:1020px){.cost__head{position:sticky;top:7rem}}
+.cost__tx{display:grid;gap:2rem}
+.cost__tx h3{margin-bottom:.8rem;font-size:1.05rem}
+.cost__list{border-top:1px solid var(--line-2)}
+.cost__list li{padding:.95rem 0;border-bottom:1px solid var(--line);color:var(--cream);font-size:1.02rem;line-height:1.5}
+.cost__end{font-size:clamp(1.2rem,1.05rem + .6vw,1.5rem);font-weight:700;line-height:1.3;letter-spacing:-.015em;color:var(--cream)}
+
+/* ===== para quem é ===== */
+.fit{display:grid;gap:1rem}
+@media (min-width:860px){.fit{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.fit__col{border-radius:24px;padding:clamp(1.4rem,3vw,2rem);display:grid;gap:1.1rem;align-content:start;border:1px solid var(--line)}
+.fit__col--yes{background:var(--panel)}
+.fit__col small{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.fit__col--yes small{color:var(--gold)}
+.fit ul{display:grid;gap:.75rem}
+.fit li{display:grid;grid-template-columns:1.1rem minmax(0,1fr);gap:.6rem;font-size:1rem;line-height:1.45;color:var(--text)}
+.fit__col--yes li{color:var(--cream)}
+.fit li::before{content:"✓";color:var(--gold-2);font-weight:700}
+.fit__col--no li::before{content:"×";color:var(--mute-2)}
+
+/* botão no meio da página */
+.mid{margin-top:3rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
 
 /* entrada: visível em repouso; só arma depois do primeiro gesto (print de página inteira sai completo) */
 @media (prefers-reduced-motion:no-preference){
@@ -429,6 +460,35 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
   </ul>
 </div>
 
+<!-- 1b · custo de continuar assim -->
+<section class="sec" id="custo">
+  <div class="wrap cost">
+    <div class="cost__head">
+      <p class="k rv">O custo de continuar assim</p>
+      <h2 class="rv">A empresa cresceu.<br><em>A sua semana encolheu.</em></h2>
+    </div>
+    <div class="cost__tx">
+      <div class="rv">
+        <h3>Você já conhece essa rotina:</h3>
+        <ul class="cost__list">
+          <li>O pagamento espera a sua palavra, mesmo com gente boa no financeiro.</li>
+          <li>A compra passa por você, até a que todo mundo já sabe como fazer.</li>
+          <li>Você viaja com o celular na mão, porque quando sai a empresa para de decidir.</li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3>E a conta sobe com o tempo:</h3>
+        <ul class="cost__list">
+          <li>Quanto mais a empresa cresce, mais perguntas chegam, e a sua agenda vira o teto dela.</li>
+          <li>Você contrata um gestor e, sem critério escrito, a decisão volta para a sua mesa.</li>
+          <li>A estratégia fica para depois. A saúde e a família também.</li>
+        </ul>
+      </div>
+      <p class="cost__end rv">Enquanto toda decisão morar em você, a empresa cresce só até onde você aguenta.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 2 · a virada -->
 <section class="sec tone-dark" id="virada">
   <div class="wrap flip">
@@ -456,6 +516,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
           <caption>Matriz de alçada · exemplo</caption>
         </table>
       </div>
+      <div class="rv"><a class="btn" href="/cadastro">Fazer minha candidatura <span>→</span></a></div>
     </div>
     <div class="flip__ph rv">
       <div class="ph" role="img" aria-label="A mesma tela de bloqueio: hoje, perguntas pedindo aprovação; com a matriz, a equipe avisando o que já resolveu">
@@ -481,11 +542,11 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
       <p class="lead rv">Não dá para vender mais em uma casa desorganizada, por isso marketing é o último.</p>
     </div>
     <ol class="road rv">
-      <li><span>01</span><h3>Calibração do Gestor</h3><p>Você volta para a decisão estratégica.</p></li>
-      <li><span>02</span><h3>Hierarquia &amp; Liderança</h3><p>A equipe passa a decidir sozinha.</p></li>
-      <li><span>03</span><h3>Processos &amp; Cultura</h3><p>O que mora na sua cabeça vira processo.</p></li>
-      <li><span>04</span><h3>Eficiência com IA</h3><p>Escala sem inchar a folha.</p></li>
-      <li><span>05</span><h3>Marketing &amp; Vendas</h3><p>Acelera o que já está de pé.</p></li>
+      <li><span>01</span><h3>Calibração do Gestor</h3><p>Você volta para a decisão estratégica.</p><div class="out"><small>Fica pronto</small>Diário de Sabotagem e Mapa de Decisão</div></li>
+      <li><span>02</span><h3>Hierarquia &amp; Liderança</h3><p>A equipe passa a decidir sozinha.</p><div class="out"><small>Fica pronto</small>Matriz RACI em 1 área</div></li>
+      <li><span>03</span><h3>Processos &amp; Cultura</h3><p>O que mora na sua cabeça vira processo.</p><div class="out"><small>Fica pronto</small>5 processos críticos mapeados e SLAs em 2 áreas</div></li>
+      <li><span>04</span><h3>Eficiência com IA</h3><p>Escala sem inchar a folha.</p><div class="out"><small>Fica pronto</small>1 processo automatizado</div></li>
+      <li><span>05</span><h3>Marketing &amp; Vendas</h3><p>Acelera o que já está de pé.</p><div class="out"><small>Fica pronto</small>Funil comercial instalado e 1 canal previsível rodando</div></li>
     </ol>
     <div class="phase rv" aria-label="Linha do tempo de 12 meses">
       <div><i></i><small>Mês 1 a 4</small><b>Implementação · você sai do gargalo</b></div>
@@ -542,6 +603,10 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
       <img src="/assets/joao.jpg" alt="" width="96" height="96">
       <div><q>“Não é só dar visão e estratégia, é entrar e operar junto, botar a mão na massa e ensinar o gestor no processo.”</q><small>João, sócio da Biotop</small></div>
     </div>
+    <div class="mid rv">
+      <a class="btn" href="/cadastro">Fazer minha candidatura <span>→</span></a>
+      <div class="terms"><span>2 minutos</span><span>candidatura, não compra</span></div>
+    </div>
   </div>
 </section>
 
@@ -559,8 +624,37 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
   </div>
 </section>
 
+<!-- 5b · para quem é -->
+<section class="sec sec--2" id="para-quem">
+  <div class="wrap">
+    <div class="head">
+      <p class="k rv">Antes de se candidatar</p>
+      <h2 class="rv">Para quem é.<br><em>E para quem não é.</em></h2>
+    </div>
+    <div class="fit">
+      <div class="fit__col fit__col--yes rv">
+        <small>É para você se</small>
+        <ul>
+          <li>Você já tem time e a empresa fatura de R$100k a R$500k por mês.</li>
+          <li>Tudo ainda passa pela sua mesa, mesmo com gente boa ao redor.</li>
+          <li>Você já tentou contratar ou fazer curso, e a decisão voltou para você.</li>
+          <li>Você topa escrever o critério e soltar a decisão.</li>
+        </ul>
+      </div>
+      <div class="fit__col fit__col--no rv">
+        <small>Não é para você se</small>
+        <ul>
+          <li>Você ainda não tem equipe para quem delegar.</li>
+          <li>Você quer mais anúncio antes de organizar a casa.</li>
+          <li>Você não vai comparecer às calls nem entregar os documentos.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 6 · oferta -->
-<section class="sec sec--2" id="oferta">
+<section class="sec" id="oferta">
   <div class="wrap">
     <div class="head">
       <p class="k rv">A oferta</p>
@@ -592,7 +686,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 </section>
 
 <!-- 7 · dúvidas + decisão -->
-<section class="sec" id="duvidas">
+<section class="sec sec--2" id="duvidas">
   <div class="wrap">
     <div class="head">
       <p class="k rv">Antes de dizer “agora não”</p>
@@ -608,6 +702,10 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
     </div>
     <div class="end">
       <h2 class="rv">Daqui a um ano você vai estar onde está hoje. <em>Ou não.</em></h2>
+      <p class="say rv">Se você chegou até aqui, provavelmente já leu outras páginas prometendo tirar o dono da operação. Eu entendo a desconfiança.</p>
+      <p class="say rv">Eu não tenho dezenas de casos para te mostrar. Tenho a Biotop documentada e 9 vagas nas quais eu conduzo cada call, porque preciso que dê certo.</p>
+      <p class="say rv">O começo é simples: uma página que diz quem decide o quê, e até quanto. A partir dela, a pergunta que hoje chega em você passa a ter outro dono.</p>
+      <p class="say rv">Se fizer sentido, faça a candidatura. Antes de qualquer decisão, a gente conversa.</p>
       <p class="sign rv" aria-hidden="true">Matheus Martins</p>
       <a class="btn rv" href="/cadastro">Fazer minha candidatura <span>→</span></a>
       <div class="terms rv"><span>2 minutos</span><span>candidatura, não compra</span><span>9 vagas</span></div>
