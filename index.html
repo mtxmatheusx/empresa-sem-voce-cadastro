@@ -69,7 +69,7 @@
           {
             "@type": "Question",
             "name": "Não tenho tempo para fazer a mentoria.",
-            "acceptedAnswer": { "@type": "Answer", "text": "Você não vai encontrar tempo, ele não está sobrando em canto nenhum. São 9 calls em 12 meses, e a primeira já te devolve horas da semana." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Você não vai encontrar tempo, ele não está sobrando em canto nenhum. São 9 calls em 12 meses, de 1 hora cada. A primeira monta o seu plano dos 120 dias." }
           },
           {
             "@type": "Question",
@@ -409,6 +409,18 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 /* botão no meio da página */
 .mid{margin-top:3rem;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
 
+/* princípio do espelho + mapa de decisão */
+.mirror{font-size:clamp(1.08rem,1rem + .45vw,1.3rem);line-height:1.45;font-weight:600;color:var(--gold-3);max-width:32rem}
+.cats{display:grid;gap:2rem;margin-top:clamp(3.5rem,7vw,5.5rem);padding-top:clamp(2.5rem,5vw,4rem);position:relative}
+.cats::before{content:"";position:absolute;top:0;left:var(--gut);right:var(--gut);border-top:1px solid var(--line)}
+.cats__head{display:grid;gap:1rem;max-width:46rem}
+.cats__head h3{font-size:clamp(1.3rem,1.1rem + .9vw,1.8rem);line-height:1.25;letter-spacing:-.015em}
+.cats__g{display:grid;gap:1rem}
+@media (min-width:860px){.cats__g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.cats__g li{display:grid;gap:.5rem;align-content:start;padding:1.3rem 1.4rem;border-radius:20px;background:var(--panel);border:1px solid var(--line)}
+.cats__g b{color:var(--gold-3);font-size:1.05rem}
+.cats__g span{font-size:.96rem;line-height:1.5;color:var(--text)}
+
 /* entrada: visível em repouso; só arma depois do primeiro gesto (print de página inteira sai completo) */
 @media (prefers-reduced-motion:no-preference){
   .armed .rv:not(.in){opacity:.001;transform:translateY(24px)}
@@ -465,7 +477,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
   <div class="wrap cost">
     <div class="cost__head">
       <p class="k rv">O custo de continuar assim</p>
-      <h2 class="rv">A empresa cresceu.<br><em>A sua semana encolheu.</em></h2>
+      <h2 class="rv">A empresa cresceu.<br><em>O seu tempo, não.</em></h2>
     </div>
     <div class="cost__tx">
       <div class="rv">
@@ -495,6 +507,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
     <div class="flip__tx">
       <p class="k rv">O Princípio do Espelho</p>
       <h2 class="rv">Ser indispensável <em>vicia.</em></h2>
+      <p class="mirror rv">A empresa é o reflexo do dono. Onde a empresa trava, é onde o dono está travado.</p>
       <div class="seg rv" id="seg" data-on="0" role="group" aria-label="Comparar antes e depois">
         <i aria-hidden="true"></i>
         <button type="button" aria-pressed="true" data-v="0">Hoje</button>
@@ -516,7 +529,6 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
           <caption>Matriz de alçada · exemplo</caption>
         </table>
       </div>
-      <div class="rv"><a class="btn" href="/cadastro">Fazer minha candidatura <span>→</span></a></div>
     </div>
     <div class="flip__ph rv">
       <div class="ph" role="img" aria-label="A mesma tela de bloqueio: hoje, perguntas pedindo aprovação; com a matriz, a equipe avisando o que já resolveu">
@@ -530,6 +542,18 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
         </div>
       </div>
     </div>
+  </div>
+  <div class="wrap cats">
+    <div class="cats__head">
+      <p class="k rv">O Mapa de Decisão · Pilar 01</p>
+      <h3 class="rv">Toda decisão que passa pela sua mesa é um voto de que a empresa não roda sem você.</h3>
+    </div>
+    <ul class="cats__g" role="list">
+      <li class="rv"><b>Minha</b><span>Decisão de dono: direção, estratégia, contratação-chave e capital. Fica.</span></li>
+      <li class="rv"><b>Delegada</b><span>Alguém do time decide igual ou melhor, com critério claro. Sai da sua mesa.</span></li>
+      <li class="rv"><b>Morta</b><span>Não precisa existir: vira regra fixa, automação ou “isso a gente não faz”.</span></li>
+    </ul>
+    <div class="rv"><a class="btn" href="/cadastro">Fazer minha candidatura <span>→</span></a></div>
   </div>
 </section>
 
@@ -665,7 +689,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
         <div class="blocks">
           <section class="blk"><header><small>Método</small></header><ul><li>Diagnóstico Espelho + a Régua</li><li>As 3 Primeiras Devoluções</li><li>Método Empresa Sem Você</li></ul></section>
           <section class="blk"><header><small>Comigo</small></header><ul><li>9 calls individuais</li><li>WhatsApp direto, 12 meses</li></ul></section>
-          <section class="blk"><header><small>Ferramentas</small></header><ul><li>IA da mentoria, 24h</li><li>Swipe File Espelho</li><li>Análise DISC</li></ul></section>
+          <section class="blk"><header><small>Ferramentas</small></header><ul><li>IA da mentoria, 24h</li><li>Swipe File Espelho</li><li>Análise comportamental CIS</li></ul></section>
           <section class="blk"><header><small>Bônus</small></header><ul><li>Sistema RIC</li><li>Sessão de Implantação com a sua equipe</li></ul></section>
         </div>
         <div class="sum"><p>O investimento a gente vê na conversa.</p></div>
@@ -693,10 +717,10 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
       <h2 class="rv">Seis dúvidas.</h2>
     </div>
     <div class="faq rv">
-      <details><summary>“Não tenho tempo.”</summary><p>São 9 calls em 12 meses, e a primeira já te devolve horas da semana.</p></details>
+      <details><summary>“Não tenho tempo.”</summary><p>São 9 calls em 12 meses, de 1 hora cada. A primeira monta o seu plano dos 120 dias.</p></details>
       <details><summary>“Já tentei contratar e não resolveu.”</summary><p>Sem processo documentado, você não delegou responsabilidade. Delegou o caos. Aqui a gente documenta primeiro.</p></details>
       <details><summary>“Já comprei curso que nunca usei.”</summary><p>Esse não depende da sua disciplina. O método te convoca: a plataforma marca a call, e a sua parte é aparecer.</p></details>
-      <details><summary>“Você tem quantos casos?”</summary><p>Um documentado, a Biotop, e é por isso que essa turma tem esse preço. Você está entrando no momento em que eu preciso que dê certo.</p></details>
+      <details><summary>“Você tem quantos casos?”</summary><p>Um documentado, a Biotop, e é por isso que esta é uma turma fundadora. Você está entrando no momento em que eu preciso que dê certo.</p></details>
       <details><summary>“Deve ser caro.”</summary><p>O valor eu apresento na conversa. É nela que eu vejo se a mentoria faz sentido para a sua empresa.</p></details>
       <details><summary>“Meu setor é diferente.”</summary><p>O método não mexe no seu produto. Mexe em quem decide. E quem decide é igual em todo setor: você.</p></details>
     </div>
