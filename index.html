@@ -13,7 +13,7 @@
   <title>Mentoria Empresa Sem Você · Matheus Martins</title>
   <meta name="description" content="Você virou o teto da própria empresa. Em 120 dias você deixa de ser o gargalo e ela volta a crescer sem depender de você no meio de cada decisão. Sem trabalhar mais e sem contratar ninguém. Para donos de R$100k a R$500k/mês, com 4 a 30 funcionários." />
   <meta property="og:title" content="Você virou o teto da própria empresa" />
-  <meta property="og:description" content="Trabalho duro te trouxe até aqui. Não vai te levar daqui pra frente. Mentoria de gestão para donos que viraram o gargalo do próprio negócio." />
+  <meta property="og:description" content="Trabalho duro te trouxe até aqui. Não vai te levar daqui para frente. Mentoria de gestão para donos que viraram o gargalo do próprio negócio." />
   <meta property="og:type" content="website" />
   <link rel="canonical" href="https://mentoria.mtxestrategia.com.br/" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
@@ -185,7 +185,8 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 @media (min-width:1020px){.hero__g{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
 .hero__tx{display:grid;grid-template-columns:minmax(0,1fr);min-width:0;gap:1.5rem;align-content:center;position:relative;z-index:2}
 .chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,7.4rem),1fr));gap:.5rem;max-width:40rem}
-@media (min-width:1020px){.chips{grid-template-columns:repeat(5,minmax(0,1fr))}.chip{font-size:.86rem}}
+@media (min-width:1020px){.chips{grid-template-columns:repeat(6,minmax(0,1fr))}.chip{grid-column:span 2}.chip:nth-child(n+4){grid-column:span 3}}
+@media (max-width:639px){.chip:last-child{grid-column:1/-1}}
 .chip{display:flex;align-items:center;justify-content:center;height:2.9rem;padding:0 .5rem;border-radius:12px;border:1px solid var(--line-2);background:var(--panel);
   color:var(--cream);text-decoration:none;font-weight:600;font-size:.92rem;white-space:nowrap;transition:border-color .2s,background .2s,transform .25s var(--ease)}
 .chip:hover{border-color:var(--cream);transform:translateY(-1px)}
@@ -196,7 +197,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 .stage__photo{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--bg-3)}
 .stage__photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
 .stage__tag{position:absolute;left:1rem;right:1rem;bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.85rem 1.1rem;border-radius:18px;
-  background:rgba(246,243,238,.72);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.6);font-size:.86rem;color:var(--text)}
+  background:rgba(246,243,238,.94);border:1px solid rgba(255,255,255,.6);font-size:.86rem;color:var(--text)}
 .stage__tag b{display:block;color:var(--cream);font-size:.95rem}
 .stage__tag em{font-style:normal;font-family:var(--serif);font-size:1.7rem;line-height:1;color:var(--cream);white-space:nowrap}
 @media (min-width:1020px){.hero__g{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4rem}}
@@ -261,6 +262,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 .mx tr:last-child td{color:var(--mute)}
 .mx caption{caption-side:bottom;text-align:left;padding:.8rem 1rem;font-size:.8rem;color:var(--mute);border-top:1px solid var(--line)}
 @media (max-width:520px){.mx table{font-size:.84rem}.mx th,.mx td{padding:.7rem .7rem}}
+@media (max-width:350px){.mx table{font-size:.76rem}.mx th,.mx td{padding:.6rem .45rem}}
 
 /* ===== método ===== */
 .head{display:grid;gap:1rem;max-width:44rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
@@ -403,9 +405,9 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
         <b>Comece a candidatura: quanto a sua empresa fatura por mês?</b>
         <div class="chips">
           <a class="chip" href="/cadastro?faturamento=ate-50k">Até R$50k</a>
-          <a class="chip" href="/cadastro?faturamento=50-100k">R$50k–100k</a>
-          <a class="chip" href="/cadastro?faturamento=100-300k">R$100k–300k</a>
-          <a class="chip" href="/cadastro?faturamento=300-500k">R$300k–500k</a>
+          <a class="chip" href="/cadastro?faturamento=50-100k">R$50 a 100k</a>
+          <a class="chip" href="/cadastro?faturamento=100-300k">R$100 a 300k</a>
+          <a class="chip" href="/cadastro?faturamento=300-500k">R$300 a 500k</a>
           <a class="chip" href="/cadastro?faturamento=500k%2B">R$500k+</a>
         </div>
         <div class="terms"><span>2 minutos</span><span>é candidatura, não compra</span><span>7 dias para desistir + garantia das 10 horas</span></div>
@@ -449,7 +451,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
             <tr><td>Desconto comercial</td><td>Gestor comercial</td><td>até 15%</td></tr>
             <tr><td>Compra de insumo</td><td>Operações</td><td>até R$ 3.000</td></tr>
             <tr><td>Reembolso a cliente</td><td>Atendimento</td><td>até R$ 800</td></tr>
-            <tr><td>Acima disso</td><td>Você</td><td>—</td></tr>
+            <tr><td>Acima disso</td><td>Você</td><td>sem limite</td></tr>
           </tbody>
           <caption>Matriz de alçada · exemplo</caption>
         </table>
@@ -476,19 +478,19 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
     <div class="head">
       <p class="k rv">O método</p>
       <h2 class="rv">Cinco pilares. <em>Nessa ordem.</em></h2>
-      <p class="lead rv">Não dá pra vender mais numa casa desorganizada, por isso marketing é o último.</p>
+      <p class="lead rv">Não dá para vender mais em uma casa desorganizada, por isso marketing é o último.</p>
     </div>
     <ol class="road rv">
-      <li><span>01</span><h3>Calibração do Gestor</h3><p>Você volta pra decisão estratégica.</p></li>
+      <li><span>01</span><h3>Calibração do Gestor</h3><p>Você volta para a decisão estratégica.</p></li>
       <li><span>02</span><h3>Hierarquia &amp; Liderança</h3><p>A equipe passa a decidir sozinha.</p></li>
       <li><span>03</span><h3>Processos &amp; Cultura</h3><p>O que mora na sua cabeça vira processo.</p></li>
       <li><span>04</span><h3>Eficiência com IA</h3><p>Escala sem inchar a folha.</p></li>
       <li><span>05</span><h3>Marketing &amp; Vendas</h3><p>Acelera o que já está de pé.</p></li>
     </ol>
     <div class="phase rv" aria-label="Linha do tempo de 12 meses">
-      <div><i></i><small>Mês 1–4</small><b>Implementação · você sai do gargalo</b></div>
-      <div><i></i><small>Mês 5–6</small><b>Consolidação</b></div>
-      <div><i></i><small>Mês 7–12</small><b>Sustentação · rotina sem você</b></div>
+      <div><i></i><small>Mês 1 a 4</small><b>Implementação · você sai do gargalo</b></div>
+      <div><i></i><small>Mês 5 e 6</small><b>Consolidação</b></div>
+      <div><i></i><small>Mês 7 a 12</small><b>Sustentação · rotina sem você</b></div>
     </div>
   </div>
 </section>
@@ -498,7 +500,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
   <div class="wrap">
     <div class="head">
       <p class="k rv">Por dentro</p>
-      <h2 class="rv">O método não fica num PDF. <em>Fica na sua rotina.</em></h2>
+      <h2 class="rv">O método não fica em um PDF. <em>Fica na sua rotina.</em></h2>
     </div>
     <div class="bento">
       <div class="cell cell--big rv">
@@ -552,7 +554,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
       <h2 class="rv">Matheus <em>Martins</em></h2>
       <p class="lead rv">Quem assina a mentoria é quem conduz cada call. Hoje ocupo a cadeira de conselheiro em empresas de clientes.</p>
       <p class="sign rv" aria-hidden="true">Matheus Martins</p>
-      <div class="x rv"><b>7–18×</b><span>o retorno do marketing que faço pros meus clientes. Nunca menos de 7 vezes o investido; nos melhores casos, 18.</span></div>
+      <div class="x rv"><b>7 a 18×</b><span>o retorno do marketing que faço para os meus clientes. Nunca menos de 7 vezes o investido; nos melhores casos, 18.</span></div>
     </div>
   </div>
 </section>
@@ -648,7 +650,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
   var IQ='<svg viewBox="0 0 24 24" fill="none" stroke="#F2C37A" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/></svg>';
   var IOK='<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   var HOJE=[
-    {t:'Comercial',b:'Cliente pediu 12% de desconto pra fechar hoje. Posso?'},
+    {t:'Comercial',b:'Cliente pediu 12% de desconto para fechar hoje. Posso?'},
     {t:'Operações',b:'O insumo subiu, deu R$ 3.200. Compro?'},
     {t:'Financeiro',b:'Libera o pagamento do fornecedor?'},
     {t:'Atendimento',b:'Cliente quer reembolso de R$ 600. Faço?'},

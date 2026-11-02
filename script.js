@@ -130,7 +130,7 @@ function validateStep(stepEl) {
     }
   });
   if (!valid) {
-    showError("Preenche os campos destacados pra continuar.");
+    showError("Preenche os campos destacados para continuar.");
     if (firstInvalid) firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
   }
   return valid;
@@ -212,7 +212,7 @@ form.addEventListener("submit", async (e) => {
       funcionarios: { "so-eu": "Só eu", "1-5": "1–5", "6-10": "6–10", "11-30": "11–30", "30+": "30+" },
       horas_operacional: { "menos-4h": "Menos de 4h/dia", "4-8h": "4–8h/dia", "8-12h": "8–12h/dia", "mais-12h": "Mais de 12h/dia" },
       ausencia_15dias: { "sim": "Roda sem mim", "trava": "Trava em poucos dias", "nunca-testei": "Nunca testei" },
-      gargalo_area: { "tudo-passa-por-mim": "Tudo passa por mim", "equipe-nao-decide": "Equipe não decide sozinha", "sem-processo": "Falta processo", "sem-tempo": "Sem tempo pra estratégia", "outro": "Outro" },
+      gargalo_area: { "tudo-passa-por-mim": "Tudo passa por mim", "equipe-nao-decide": "Equipe não decide sozinha", "sem-processo": "Falta processo", "sem-tempo": "Sem tempo para estratégia", "outro": "Outro" },
       urgencia: { "agora": "Agora", "30d": "Próximos 30 dias", "90d": "Próximos 90 dias", "pesquisando": "Só pesquisando" },
       investimento: { "sim-avista": "Sim, à vista", "sim-parcelado": "Sim, parcelado", "preciso-organizar": "Preciso me organizar", "nao-agora": "Não agora" },
     };
@@ -224,9 +224,9 @@ form.addEventListener("submit", async (e) => {
       "*Meu WhatsApp:* " + (payload.whatsapp || "—"),
       "*Faturamento:* " + waL("faturamento", payload.faturamento),
       "*Funcionários:* " + waL("funcionarios", payload.funcionarios),
-      "*Maior gargalo:* " + waL("gargalo_area", payload.gargalo_area) + (payload.gargalo ? " — " + payload.gargalo : ""),
+      "*Maior gargalo:* " + waL("gargalo_area", payload.gargalo_area) + (payload.gargalo ? ": " + payload.gargalo : ""),
       "*Quando quer resolver:* " + waL("urgencia", payload.urgencia),
-      "*Pronto pra investir:* " + waL("investimento", payload.investimento),
+      "*Pronto para investir:* " + waL("investimento", payload.investimento),
     ];
     if (payload.instagram) waLinhas.push("*Instagram:* " + payload.instagram);
     const waMsg = waLinhas.join("\n");
@@ -271,7 +271,7 @@ const gargaloInput = document.getElementById("gargalo");
 if (gargaloInput) {
   const exemplos = [
     "Ex: passo o dia apagando incêndio",
-    "Ex: a equipe me chama pra tudo",
+    "Ex: a equipe me chama para tudo",
     "Ex: não consigo tirar férias",
   ];
   let gi = 0;
