@@ -109,6 +109,38 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1659749545111630&ev=PageView&noscript=1"/></noscript>
   <!-- End Meta Pixel Code -->
+<style id="esv-narrativa">
+/* A luz conta o dia: noite no custo, madrugada na virada, aurora no método, manhã em Por dentro. Da prova em diante, o off-white original é o dia claro. */
+#custo,#metodo{color-scheme:dark;
+  --panel:rgba(255,248,235,.04);--panel-2:rgba(255,248,235,.07);
+  --line:rgba(244,240,230,.10);--line-2:rgba(244,240,230,.18);
+  --cream:#F4F0E6;--text:#DCD6CA;--mute:#A8A296;--mute-2:#928C80;
+  --gold:#C49A52;--gold-2:#D6B06A;--gold-3:#E8CD95;--gold-soft:rgba(196,154,82,.12);--gold-line:rgba(196,154,82,.36);
+  --btn:#E8CD95;--btn-tx:#0C0B0A;--btn-h:#F1DCB0;color:var(--text)}
+#custo{--bg:#0B0F16;--bg-2:#111622;--bg-3:#181E2B;background:var(--bg)}
+#virada{--bg:#0F1521;--bg-2:#141B29;--bg-3:#1B2333}
+#metodo{--bg:#1D2A3A;--bg-2:#1D2A3A;--bg-3:#27364A;--mute:#BDB7AB;--mute-2:#B3AD9F;background:var(--bg)}
+#dentro{--bg:#DCE1E4;--bg-2:#D2D8DC;--bg-3:#C6CDD2;--mute:#565249;--mute-2:#625D53;
+  background:linear-gradient(180deg,#1D2A3A 0,#DCE1E4 calc(var(--sec)*.8))}
+#prova{--bg-2:#ECE9E3;--mute:#5F5A50}
+
+.bar.tone-dark{background:rgba(11,15,22,.74)}
+.bar.tone-dark .bar__logo img{filter:none}
+
+.filme{display:none}
+.filme-on .filme{display:block;position:relative;height:calc(var(--telas)*100vh);background:var(--depois)}
+.filme-fixo{position:sticky;top:0;height:100vh;height:100lvh;overflow:hidden;background:var(--depois)}
+.filme canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.filme-topo{position:absolute;left:0;right:0;top:0;height:42vh;background:linear-gradient(180deg,var(--antes),transparent);pointer-events:none}
+.filme-leg{position:absolute;left:0;right:0;bottom:0;height:calc(46vh + 100lvh - 100svh);background:linear-gradient(180deg,transparent,var(--depois) 88%);pointer-events:none}
+.filme-fr{position:absolute;left:max(var(--gut),calc((100vw - var(--frame))/2 + var(--gut)));right:var(--gut);bottom:calc(clamp(32px,6vh,64px) + 100lvh - 100svh);max-width:760px;margin:0;color:#F6F3EE;font-family:var(--serif);font-weight:400;font-size:clamp(30px,4.2vw,58px);line-height:1.06;letter-spacing:-.02em;font-variation-settings:"opsz" 144;opacity:0;transform:translate3d(0,14px,0);transition:opacity .45s,transform .45s}
+.filme-fr.on{opacity:1;transform:none}
+.filme-fr em{font-style:italic;color:#E8CD95}
+.filme--dia .filme-fr{color:#16140F}
+.filme--dia .filme-fr em{color:#7C5A22}
+@media (max-width:760px){.filme-on .filme{height:calc(var(--telas)*88vh)}.filme-fr{font-size:clamp(25px,7.2vw,32px);left:20px;right:20px}}
+</style>
+<script>if(!matchMedia('(prefers-reduced-motion:reduce)').matches)document.documentElement.classList.add('filme-on')</script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -473,6 +505,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 </div>
 
 <!-- 1b · custo de continuar assim -->
+<section class="filme" data-de="1" data-ate="30" aria-hidden="true" style="--telas:2;--antes:#F6F3EE;--depois:#0B0F16"><div class="filme-fixo"><canvas></canvas><div class="filme-topo"></div><div class="filme-leg"></div><p class="filme-fr">Você viaja com o celular na mão, <em>porque quando sai a empresa para de decidir.</em></p></div></section>
 <section class="sec" id="custo">
   <div class="wrap cost">
     <div class="cost__head">
@@ -558,6 +591,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 </section>
 
 <!-- 3 · método -->
+<section class="filme" data-de="30" data-ate="60" aria-hidden="true" style="--telas:1.8;--antes:#0F1521;--depois:#1D2A3A"><div class="filme-fixo"><canvas></canvas><div class="filme-topo"></div><div class="filme-leg"></div><p class="filme-fr">“Posso aprovar?” vira <em>“fechei e tô te avisando”.</em></p></div></section>
 <section class="sec sec--2" id="metodo">
   <div class="wrap">
     <div class="head">
@@ -606,6 +640,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 </section>
 
 <!-- 4 · prova -->
+<section class="filme filme--dia" data-de="60" data-ate="82" aria-hidden="true" style="--telas:1.6;--antes:#DCE1E4;--depois:#ECE9E3"><div class="filme-fixo"><canvas></canvas><div class="filme-topo"></div><div class="filme-leg"></div><p class="filme-fr">A equipe passa a <em>decidir sozinha.</em></p></div></section>
 <section class="sec sec--2" id="prova">
   <div class="wrap">
     <p class="k rv" style="margin-bottom:1.5rem">Prova · Biotop</p>
@@ -678,6 +713,7 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 </section>
 
 <!-- 6 · oferta -->
+<section class="filme filme--dia" data-de="82" data-ate="97" aria-hidden="true" style="--telas:1.4;--antes:#EFEBE3;--depois:#F6F3EE"><div class="filme-fixo"><canvas></canvas><div class="filme-topo"></div><div class="filme-leg"></div><p class="filme-fr">O dono acompanha. <em>Não aprova.</em></p></div></section>
 <section class="sec" id="oferta">
   <div class="wrap">
     <div class="head">
@@ -834,5 +870,46 @@ h3{font-weight:700;color:var(--cream);font-size:1.12rem;line-height:1.3;letter-s
 })();
 </script>
 
+<script>
+(function(){
+  var raiz=document.documentElement,bar=document.getElementById('bar');
+  var noite=[].slice.call(document.querySelectorAll('#custo,#virada,#metodo'));
+  var els=raiz.classList.contains('filme-on')?[].slice.call(document.querySelectorAll('.filme')):[];
+  var pequeno=matchMedia('(max-width:760px)').matches,PASTA=pequeno?'assets/filme/v/':'assets/filme/h/',N=97,img=[],LARG=innerWidth;
+  var sonda=document.createElement('div');sonda.style.cssText='position:absolute;left:-9px;top:0;width:1px;height:100vh;height:100lvh;visibility:hidden;pointer-events:none';document.body.appendChild(sonda);
+  var VL=sonda.offsetHeight||innerHeight;
+  function lim(v,a,b){return Math.min(b,Math.max(a,v))}
+  function url(i){return PASTA+'q'+('00'+i).slice(-3)+'.webp'}
+  var caps=els.map(function(f){var cv=f.querySelector('canvas');return {f:f,cv:cv,ctx:cv.getContext('2d'),topo:f.querySelector('.filme-topo'),fr:f.querySelector('.filme-fr'),de:+f.dataset.de,ate:+f.dataset.ate,cur:0,ult:-1,at:0,W:0,H:0,pedido:false}});
+  function carrega(i,c){if(img[i])return;var m=new Image();m.src=url(i);img[i]=m;function ok(){m.ok=true;caps.forEach(function(c){if(i>=c.de&&i<=c.ate&&(!c.at||Math.abs(i-c.n)<3))pinta(c,true)})}if(m.decode)m.decode().then(ok,ok);else m.onload=ok}
+  function pede(c){if(c.pedido)return;c.pedido=true;var n=c.de;carrega(c.de);carrega(c.ate);(function lote(){var q=0;while(n<=c.ate&&q<6){carrega(n++);q++}if(n<=c.ate)setTimeout(lote,60)})()}
+  function mede(c){var r=c.cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,pequeno?2:1.5);c.W=r.width;c.H=r.height;c.cv.width=c.W*d;c.cv.height=c.H*d;c.ult=-1;c.at=0}
+  function pinta(c,forca){
+    var n=Math.round(c.de+c.cur*(c.ate-c.de));c.n=n;if(n===c.at&&!forca)return;
+    var m=null;for(var d=0;d<N;d++){var a=img[n-d],b=img[n+d];if(a&&a.ok&&a.naturalWidth){m=a;break}if(b&&b.ok&&b.naturalWidth){m=b;break}}
+    if(!m)return;c.at=n;
+    var iw=m.naturalWidth,ih=m.naturalHeight,e=Math.max(c.W/iw,c.H/ih),vw=c.W/e,vh=c.H/e,z=1.08-.08*(n/N);vw/=z;vh/=z;
+    c.ctx.drawImage(m,(iw-vw)*(pequeno?.5:.62),(ih-vh)*(pequeno?.92:.5),vw,vh,0,0,c.cv.width,c.cv.height);
+  }
+  var escuro=false;
+  function laco(){
+    caps.forEach(function(c){
+      var r=c.f.getBoundingClientRect();
+      if(r.top<VL*2.5&&r.bottom>-VL)pede(c);
+      if(r.top>VL*1.2||r.bottom<-VL*.2)return;
+      var t=r.height-VL,alvo=t>0?lim(-r.top/t,0,1):0;
+      c.cur+=(alvo-c.cur)*.16;if(Math.abs(alvo-c.cur)<.0005)c.cur=alvo;
+      if(c.cur!==c.ult){c.ult=c.cur;pinta(c);c.topo.style.opacity=lim(1-c.cur/.16,0,1);c.fr.classList.toggle('on',c.cur>.1)}
+    });
+    var e=false;
+    noite.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<34&&r.bottom>34)e=true});
+    caps.forEach(function(c){if(c.de<60){var r=c.f.getBoundingClientRect();if(r.top<34&&r.bottom>34)e=true}});
+    if(e!==escuro&&bar){escuro=e;bar.classList.toggle('tone-dark',e)}
+    requestAnimationFrame(laco);
+  }
+  addEventListener('resize',function(){if(innerWidth!==LARG){LARG=innerWidth;caps.forEach(mede)}VL=sonda.offsetHeight||innerHeight});
+  caps.forEach(mede);laco();
+})();
+</script>
 </body>
 </html>
